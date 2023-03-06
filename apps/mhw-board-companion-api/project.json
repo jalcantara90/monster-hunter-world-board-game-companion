@@ -1,0 +1,62 @@
+{
+  "name": "mhw-board-companion-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/mhw-board-companion-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/mhw-board-companion-api",
+        "main": "apps/mhw-board-companion-api/src/main.ts",
+        "tsConfig": "apps/mhw-board-companion-api/tsconfig.app.json",
+        "assets": ["apps/mhw-board-companion-api/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/mhw-board-companion-api/webpack.config.js"
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/js:node",
+      "options": {
+        "buildTarget": "mhw-board-companion-api:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "mhw-board-companion-api:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/mhw-board-companion-api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/mhw-board-companion-api/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
