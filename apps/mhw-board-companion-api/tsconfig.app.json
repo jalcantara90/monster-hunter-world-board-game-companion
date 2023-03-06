@@ -5,8 +5,19 @@
     "module": "commonjs",
     "types": ["node"],
     "emitDecoratorMetadata": true,
-    "target": "es2015"
+    "target": "es2015",
+    "paths": {
+      "@domain/*": [
+        "apps/mhw-board-companion-api/src/app/domain/*"
+      ],
+      "@infra/*": [
+        "apps/mhw-board-companion-api/src/app/infrastructure/*"
+      ],
+      "@application/*": [
+        "apps/mhw-board-companion-api/src/app/application/*"
+      ]
+    }
   },
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts"],
 }
