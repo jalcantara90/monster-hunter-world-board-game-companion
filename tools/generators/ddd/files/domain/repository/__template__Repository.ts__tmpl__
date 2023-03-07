@@ -1,11 +1,11 @@
-import { CreateBrigadeRequest } from "../requests/Create<%=className%>Request";
-import { UpdateBrigadeRequest } from "../requests/Update<%=className%>Request";
-import { BrigadeResponse } from "../responses/BrigadeResponse";
+import { Create<%=className%>ResponseRequest } from '../requests/Create<%=className%>Request';
+import { Update<%=className%>ResponseRequest } from '../requests/Update<%=className%>Request';
+import { <%=className%>Response } from '../responses/<%=className%>Response';
 
-export interface BrigadeRepository {
-  find(id: string): Promise<Create<%=className%>Request>;
+export interface <%=className%>Repository {
+  find(id: string): Promise<<%=className%>Response>;
   create(<%=propertyName%>: Create<%=className%>Request): Promise<<%=className%>Response>;
-  update(id: string, <%=propertyName%>: Create<%=template%>Request): Promise<<%=className%>Response>;
+  update(id: string, <%=propertyName%>: Update<%=template%>Request): Promise<<%=className%>Response>;
   delete(id: string): Promise<void>;
 }
 
