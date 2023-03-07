@@ -7,8 +7,9 @@ import { HuntersController } from './infrastructure/controller/hunters.controlle
 import { hunterProviders } from './hunters.providers';
 import { HunterEntity } from './domain/entities/Hunter.entity';
 import { CreateHunterHandler } from './application/CreateHunter/CreateHunter.handler';
+import { UpdateHunterHandler } from './application/UpdateHunter/UpdateHunter.handler';
 
-const hunterHandlers = [CreateHunterHandler];
+const hunterHandlers = [CreateHunterHandler, UpdateHunterHandler];
 
 @Module({
   imports: [CqrsModule, TypeOrmModule.forFeature([HunterEntity])],

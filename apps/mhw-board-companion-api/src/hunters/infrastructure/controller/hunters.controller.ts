@@ -6,10 +6,13 @@ import {
   Patch,
   Param,
   Delete,
+  ParseUUIDPipe,
 } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
 import { CreateHunterCommand } from '../../application/CreateHunter/CreateHunter.command';
+import { UpdateHunterCommand } from '../../application/UpdateHunter/UpdateHunter.command';
 import { CreateHunterRequest } from '../../domain/requests/CreateHunterRequest';
+import { UpdateHunterRequest } from '../../domain/requests/UpdateHunterRequest';
 
 @Controller('hunters')
 export class HuntersController {
@@ -30,10 +33,10 @@ export class HuntersController {
   //   return this.huntersService.findOne(+id);
   // }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateHunterDto: UpdateHunterDto) {
-  //   return this.huntersService.update(+id, updateHunterDto);
-  // }
+  @Patch(':id')
+  update(@Param('id', ParseUUIDPipe) id: string, @Body() request: UpdateHunterRequest) {
+    return this.commandBus.execute(new UpdateHunterCommand(id, request.name, request.palicoName));
+  }
 
   // @Delete(':id')
   // remove(@Param('id') id: string) {
