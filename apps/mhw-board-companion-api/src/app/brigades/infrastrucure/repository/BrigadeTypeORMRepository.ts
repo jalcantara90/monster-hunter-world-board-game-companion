@@ -18,7 +18,7 @@ export class BrigadeTypeORMRepository implements BrigadeRepository {
   ) {}
 
   async find(id: string): Promise<BrigadeResponse> {
-    const brigadeEntity = await this.brigadeRepository.findOneBy({ id });
+    const brigadeEntity = await this.brigadeRepository.findOneBy({ id, isActive: true });
 
     if (!brigadeEntity) {
       throw new NotFoundException(`Brigade with id ${id} not exist`);
@@ -39,7 +39,7 @@ export class BrigadeTypeORMRepository implements BrigadeRepository {
     brigade: UpdateBrigadeRequest
   ): Promise<BrigadeResponse> {
     await this.brigadeRepository.update(id, { name: brigade.name });
-    const brigadeEntity = await this.brigadeRepository.findOneBy({ id });
+    const brigadeEntity = await this.brigadeRepository.findOneBy({ id, isActive: true });
 
     return this.brigadeMapper.fromEntity(brigadeEntity);
   }

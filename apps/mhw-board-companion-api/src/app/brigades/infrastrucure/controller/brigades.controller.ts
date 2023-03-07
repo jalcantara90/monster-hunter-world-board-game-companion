@@ -8,8 +8,8 @@ import {
   Delete,
   ParseUUIDPipe,
   HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
-import { HttpStatusCode } from 'axios';
 import { CommandBus } from '@nestjs/cqrs';
 
 import { CreateBrigadeRequest } from '../../domain/requests/CreateBrigadeRequest';
@@ -24,19 +24,19 @@ export class BrigadesController {
   constructor(private readonly commandBus: CommandBus) {}
 
   @Post()
-  @HttpCode(HttpStatusCode.Created)
+  @HttpCode(HttpStatus.CREATED)
   create(@Body() request: CreateBrigadeRequest) {
     return this.commandBus.execute(new CreateBrigadeCommand(request.name));
   }
 
   @Get(':id')
-  @HttpCode(HttpStatusCode.Ok)
+  @HttpCode(HttpStatus.OK)
   findOne(@Param('id', ParseUUIDPipe) id: string) {
     return this.commandBus.execute(new GetBrigadeByIdCommand(id));
   }
 
   @Patch(':id')
-  @HttpCode(HttpStatusCode.Ok)
+  @HttpCode(HttpStatus.OK)
   update(
     @Param('id', ParseUUIDPipe) id: string,
     @Body() request: UpdateBrigadeRequest
@@ -47,7 +47,7 @@ export class BrigadesController {
   }
 
   @Delete(':id')
-  @HttpCode(HttpStatusCode.NoContent)
+  @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id', ParseUUIDPipe) id: string) {
     return this.commandBus.execute(new DeleteBrigadeByIdCommand(id));
   }

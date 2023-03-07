@@ -8,8 +8,15 @@ import { hunterProviders } from './hunters.providers';
 import { HunterEntity } from './domain/entities/Hunter.entity';
 import { CreateHunterHandler } from './application/CreateHunter/CreateHunter.handler';
 import { UpdateHunterHandler } from './application/UpdateHunter/UpdateHunter.handler';
+import { GetHunterByIdHandler } from './application/GetHunter/GetHunterById.handler';
+import { DeleteHunterByIdHandler } from './application/DeleteHunter/DeleteHunterById.handler';
 
-const hunterHandlers = [CreateHunterHandler, UpdateHunterHandler];
+const hunterHandlers = [
+  CreateHunterHandler,
+  UpdateHunterHandler,
+  GetHunterByIdHandler,
+  DeleteHunterByIdHandler,
+];
 
 @Module({
   imports: [CqrsModule, TypeOrmModule.forFeature([HunterEntity])],

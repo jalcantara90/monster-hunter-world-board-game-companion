@@ -1,5 +1,5 @@
 import { Repository } from 'typeorm';
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { HunterMapper } from './HunterMapper';
@@ -17,6 +17,16 @@ export class HunterTypeORMRepository implements HunterRepository {
     private hunterMapper: HunterMapper
   ) {}
 
+  async find(id: string): Promise<HunterResponse> {
+    const hunterEntity = await this.hunterRepository.findOneBy({ id, isActive: true });
+
+    if (!hunterEntity) {
+      throw new NotFoundException(`Brigade with id ${id} not exist`);
+    }
+
+    return this.hunterMapper.fromEntity(hunterEntity);
+  }
+
   async create(hunter: CreateHunterRequest): Promise<HunterResponse> {
     const newHunter = this.hunterRepository.create(hunter);
     const hunterEntity = await this.hunterRepository.save(newHunter);
@@ -26,8 +36,20 @@ export class HunterTypeORMRepository implements HunterRepository {
 
   async update(id: string, hunter: UpdateHunterRequest): Promise<HunterResponse> {
     await this.hunterRepository.update(id, hunter);
-    const hunterEntity = await this.hunterRepository.findOneBy({ id });
+    const hunterEntity = await this.hunterRepository.findOneBy({ id, isActive: true });
 
     return this.hunterMapper.fromEntity(hunterEntity);
+  }
+
+  async delete(id: string): Promise<void> {
+    const hunterEntity = await this.hunterRepository.findOneBy({
+      id,
+    });
+
+    if (!hunterEntity) {
+      throw new NotFoundException(`Hunter with id ${id} not exist`);
+    }
+
+    await this.hunterRepository.update(id, { isActive: false });
   }
 }
