@@ -1,5 +1,5 @@
-import { Create<%=className%>ResponseRequest } from '../requests/Create<%=className%>Request';
-import { Update<%=className%>ResponseRequest } from '../requests/Update<%=className%>Request';
+import { Create<%=className%>Request } from '../requests/Create<%=className%>Request';
+import { Update<%=className%>Request } from '../requests/Update<%=className%>Request';
 import { <%=className%>Response } from '../responses/<%=className%>Response';
 
 export interface <%=className%>Repository {
