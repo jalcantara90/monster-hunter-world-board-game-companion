@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { HuntersModule } from '../hunters/hunters.module';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BrigadesModule } from './brigades/brigades.module';
-import { DatabaseModule } from './infrastructure/database.module';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
@@ -13,7 +14,8 @@ import { DatabaseModule } from './infrastructure/database.module';
       isGlobal: true,
     }),
     DatabaseModule,
-    BrigadesModule
+    BrigadesModule,
+    HuntersModule
   ],
   controllers: [AppController],
   providers: [AppService],

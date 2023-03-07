@@ -2,13 +2,13 @@ import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { BrigadeEntity } from '@infra/entities/Brigade.entity';
-import { CreateBrigadeHandler } from '@application/brigades/CreateBrigade/CreateBrigade.handler';
-import { GetBrigadeByIdHandler } from '@application/brigades/GetBrigadeById/GetBrigadeById.handler';
-import { UpdateBrigadeByIdHandler } from '@application/brigades/UpdateBrigadeById/UpdateBrigadeById.handler';
-import { DeleteBrigadeByIdHandler } from '@application/brigades/DeleteBrigadeById/DeleteBrigadeById.handler';
-
-import { BrigadesController } from './brigades.controller';
+import { brigadeProviders } from './brigades.providers';
+import { BrigadeEntity } from './infrastrucure/entity/Brigade.entity';
+import { BrigadesController } from './infrastrucure/controller/brigades.controller';
+import { CreateBrigadeHandler } from './application/CreateBrigade/CreateBrigade.handler';
+import { GetBrigadeByIdHandler } from './application/GetBrigadeById/GetBrigadeById.handler';
+import { DeleteBrigadeByIdHandler } from './application/DeleteBrigadeById/DeleteBrigadeById.handler';
+import { UpdateBrigadeByIdHandler } from './application/UpdateBrigadeById/UpdateBrigadeById.handler';
 
 const commandHandlers = [
   CreateBrigadeHandler,
@@ -20,6 +20,6 @@ const commandHandlers = [
 @Module({
   imports: [CqrsModule, TypeOrmModule.forFeature([BrigadeEntity])],
   controllers: [BrigadesController],
-  providers: [...commandHandlers],
+  providers: [...commandHandlers, ...brigadeProviders],
 })
 export class BrigadesModule {}
