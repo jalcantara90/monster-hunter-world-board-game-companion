@@ -1,4 +1,12 @@
-import { Tree, formatFiles, installPackagesTask, generateFiles, joinPathFragments, readProjectConfiguration, names } from '@nrwl/devkit';
+import {
+  Tree,
+  formatFiles,
+  installPackagesTask,
+  generateFiles,
+  joinPathFragments,
+  readProjectConfiguration,
+  names,
+} from '@nrwl/devkit';
 import { moduleGenerator } from '@nrwl/nest';
 
 interface DDDSchemaGeneration {
@@ -17,9 +25,9 @@ export default async function (tree: Tree, schema: DDDSchemaGeneration) {
       template: names(schema.name).className,
       className: names(schema.name).className,
       constant: names(schema.name).constantName,
-      property: names(schema.name).propertyName
-    },
-
+      propertyName: names(schema.name).propertyName,
+      tmpl: '',
+    }
   );
   await moduleGenerator(tree, { name: schema.name, project: schema.project });
   await formatFiles(tree);
