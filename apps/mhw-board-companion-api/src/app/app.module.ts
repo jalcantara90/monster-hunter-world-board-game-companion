@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BrigadesModule } from './brigades/brigades.module';
 import { DatabaseModule } from './database/database.module';
+import { CampaignsModule } from './campaigns/campaigns.module';
 
 @Module({
   imports: [
@@ -15,7 +16,8 @@ import { DatabaseModule } from './database/database.module';
     }),
     DatabaseModule,
     BrigadesModule,
-    HuntersModule
+    HuntersModule,
+    CampaignsModule
   ],
   controllers: [AppController],
   providers: [AppService],

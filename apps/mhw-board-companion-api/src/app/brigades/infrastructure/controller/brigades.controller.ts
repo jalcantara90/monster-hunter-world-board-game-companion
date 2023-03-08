@@ -19,6 +19,8 @@ import { GetBrigadeByIdCommand } from '../../application/GetBrigadeById/GetBriga
 import { UpdateBrigadeByIdCommand } from '../../application/UpdateBrigadeById/UpdateBrigadeById.command';
 import { DeleteBrigadeByIdCommand } from '../../application/DeleteBrigadeById/DeleteBrigadeById.command';
 
+import { GetCampaignListByBrigadeIdCommand } from '../../../campaigns/application/GetCampaignListByBrigadeId/GetCampaignListByBrigadeId.command';
+
 @Controller('brigades')
 export class BrigadesController {
   constructor(private readonly commandBus: CommandBus) {}
@@ -33,6 +35,12 @@ export class BrigadesController {
   @HttpCode(HttpStatus.OK)
   findOne(@Param('id', ParseUUIDPipe) id: string) {
     return this.commandBus.execute(new GetBrigadeByIdCommand(id));
+  }
+
+  @Get(':brigadeId/campaigns')
+  @HttpCode(HttpStatus.OK)
+  findAllCampaigns(@Param('brigadeId', ParseUUIDPipe) brigadeId: string) {
+    return this.commandBus.execute(new GetCampaignListByBrigadeIdCommand(brigadeId));
   }
 
   @Patch(':id')

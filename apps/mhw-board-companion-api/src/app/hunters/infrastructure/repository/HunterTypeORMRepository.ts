@@ -1,4 +1,4 @@
-import { Repository } from 'typeorm';
+import { Repository, In } from 'typeorm';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
@@ -18,7 +18,10 @@ export class HunterTypeORMRepository implements HunterRepository {
   ) {}
 
   async find(id: string): Promise<HunterResponse> {
-    const hunterEntity = await this.hunterRepository.findOneBy({ id, isActive: true });
+    const hunterEntity = await this.hunterRepository.findOneBy({
+      id,
+      isActive: true,
+    });
 
     if (!hunterEntity) {
       throw new NotFoundException(`Hunter with id ${id} not exist`);
@@ -34,9 +37,15 @@ export class HunterTypeORMRepository implements HunterRepository {
     return this.hunterMapper.fromEntity(hunterEntity);
   }
 
-  async update(id: string, hunter: UpdateHunterRequest): Promise<HunterResponse> {
+  async update(
+    id: string,
+    hunter: UpdateHunterRequest
+  ): Promise<HunterResponse> {
     await this.hunterRepository.update(id, hunter);
-    const hunterEntity = await this.hunterRepository.findOneBy({ id, isActive: true });
+    const hunterEntity = await this.hunterRepository.findOneBy({
+      id,
+      isActive: true,
+    });
 
     return this.hunterMapper.fromEntity(hunterEntity);
   }
@@ -51,5 +60,31 @@ export class HunterTypeORMRepository implements HunterRepository {
     }
 
     await this.hunterRepository.update(id, { isActive: false });
+  }
+
+  async findCampaignHunters(campaignId: string) {
+    const hunterEntities = await this.hunterRepository
+      .createQueryBuilder('hunters')
+      .leftJoin('hunters.campaigns', 'campaigns')
+      .where('campaigns.id = :campaignId', { campaignId })
+      .getMany();
+
+    return this.hunterMapper.fromEntities(hunterEntities);
+  }
+
+  async findAll({
+    hunterIds,
+    isApiResponse = true,
+  }: {
+    hunterIds?: string[];
+    isApiResponse?: boolean;
+  }): Promise<HunterResponse[] | HunterEntity[]> {
+    const hunterEntities = await this.hunterRepository.findBy({ id: In(hunterIds) });
+
+    if (!isApiResponse) {
+      return hunterEntities;
+    }
+
+    return this.hunterMapper.fromEntities(hunterEntities);
   }
 }

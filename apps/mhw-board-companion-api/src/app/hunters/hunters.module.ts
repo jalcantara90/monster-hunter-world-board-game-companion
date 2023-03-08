@@ -10,12 +10,14 @@ import { CreateHunterHandler } from './application/CreateHunter/CreateHunter.han
 import { UpdateHunterHandler } from './application/UpdateHunter/UpdateHunter.handler';
 import { GetHunterByIdHandler } from './application/GetHunter/GetHunterById.handler';
 import { DeleteHunterByIdHandler } from './application/DeleteHunter/DeleteHunterById.handler';
+import { GetCampaignHuntersHandler } from './application/GetCampaignHunters/GetCampaignHunters.handler';
 
 const hunterHandlers = [
   CreateHunterHandler,
   UpdateHunterHandler,
   GetHunterByIdHandler,
   DeleteHunterByIdHandler,
+  GetCampaignHuntersHandler
 ];
 
 @Module({
