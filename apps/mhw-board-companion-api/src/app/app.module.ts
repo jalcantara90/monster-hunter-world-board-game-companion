@@ -7,6 +7,7 @@ import { AppService } from './app.service';
 import { BrigadesModule } from './brigades/brigades.module';
 import { DatabaseModule } from './database/database.module';
 import { CampaignsModule } from './campaigns/campaigns.module';
+import { MaterialsModule } from './materials/materials.module';
 
 @Module({
   imports: [
@@ -17,7 +18,8 @@ import { CampaignsModule } from './campaigns/campaigns.module';
     DatabaseModule,
     BrigadesModule,
     HuntersModule,
-    CampaignsModule
+    CampaignsModule,
+    MaterialsModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,24 +1,16 @@
 import { Column, Entity } from 'typeorm';
-import { MaterialType } from '../enums/MaterialType';
-import { BaseEntity } from './Base.entity';
-
-export enum MaterialQuality {
-  RARITY1,
-  RARITY2,
-  RARITY3,
-  RARITY4,
-  RARITY5,
-}
+import { BaseEntity } from '../../../database/entities/Base.entity';
+import { MaterialType } from '../../../database/enums/MaterialType';
 
 @Entity({ name: 'materials' })
 export class MaterialEntity extends BaseEntity {
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', unique: true })
   name: string;
 
   @Column({ type: 'boolean', default: false })
   isCommon: boolean;
 
-  @Column({ type: 'number' })
+  @Column({ type: 'int' })
   rarity: number;
 
   @Column({ type: 'enum', enum: MaterialType })

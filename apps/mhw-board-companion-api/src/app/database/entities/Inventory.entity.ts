@@ -1,12 +1,15 @@
-import { Entity, OneToMany, OneToOne } from "typeorm";
+import { Entity, JoinColumn, ManyToOne } from "typeorm";
+import { CampaignEntity } from "../../campaigns/infrastructure/entity/Campaign.entity";
+import { HunterEntity } from "../../hunters/infrastructure/entity/Hunter.entity";
 import { BaseEntity } from "./Base.entity";
-import { MaterialEntity } from "./Material.entity";
 
 @Entity({ name: 'inventories' })
 export class InventoryEntity extends BaseEntity {
-  @OneToOne(() => MaterialEntity, (material) => material.id)
-  hunterId: string;
+  @ManyToOne(() => HunterEntity, (hunter) => hunter.id)
+  @JoinColumn({ name: 'hunterId' })
+  hunter: string;
 
-  @OneToMany(() => MaterialEntity, (materials) => materials.id)
-  materials: string[];
+  @ManyToOne(() => CampaignEntity, (campaign) => campaign.id)
+  @JoinColumn({ name: 'campaignId' })
+  campaign: string;
 }
