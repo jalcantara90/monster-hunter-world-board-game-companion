@@ -3,18 +3,18 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { <%=propertyName%>Providers } from './<%=propertyName%>s.providers';
-import { <%=className%>Entity } from './infrastrucure/entity/<%=className%>.entity';
-import { <%=className%>sController } from './infrastrucure/controller/<%=propertyName%>s.controller';
+import { <%=className%>Entity } from './infrastructure/entity/<%=className%>.entity';
+import { <%=className%>sController } from './infrastructure/controller/<%=propertyName%>s.controller';
 import { Create<%=className%>Handler } from './application/Create<%=className%>/Create<%=className%>.handler';
-import { Get<%=className%>ByIdHandler } from './application/Get<%=className%>ById/Get<%=className%>ById.handler';
-import { Delete<%=className%>ByIdHandler } from './application/Delete<%=className%>ById/Delete<%=className%>ById.handler';
-import { Update<%=className%>ByIdHandler } from './application/Update<%=className%>ById/Update<%=className%>ById.handler';
+import { Get<%=className%>Handler } from './application/Get<%=className%>/Get<%=className%>.handler';
+import { Delete<%=className%>Handler } from './application/Delete<%=className%>/Delete<%=className%>.handler';
+import { Update<%=className%>Handler } from './application/Update<%=className%>/Update<%=className%>.handler';
 
 const commandHandlers = [
   Create<%=className%>Handler,
-  Get<%=className%>ByIdHandler,
-  Update<%=className%>ByIdHandler,
-  Delete<%=className%>ByIdHandler,
+  Get<%=className%>Handler,
+  Update<%=className%>Handler,
+  Delete<%=className%>Handler,
 ];
 
 @Module({

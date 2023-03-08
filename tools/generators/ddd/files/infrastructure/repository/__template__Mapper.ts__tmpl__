@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { <%=className%>Entity } from '../../domain/entities/<%=className%>.entity';
+import { <%=className%>Entity } from '../entity/<%=className%>.entity';
 import { <%=className%>Response } from '../../domain/responses/<%=className%>Response';
 
 @Injectable()

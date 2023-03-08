@@ -20,13 +20,13 @@ export default async function (tree: Tree, schema: DDDSchemaGeneration) {
   generateFiles(
     tree,
     joinPathFragments(__dirname, './files'),
-    joinPathFragments(projectRoot, 'src', schema.name),
+    joinPathFragments(projectRoot, 'src', 'app', schema.name),
     {
       template: names(entityName).className,
       className: names(entityName).className,
       constant: names(entityName).constantName,
       propertyName: names(entityName).propertyName,
-      fileName: names(entityName).fileName,
+      fileName: names(schema.name).fileName,
       tmpl: '',
     }
   );

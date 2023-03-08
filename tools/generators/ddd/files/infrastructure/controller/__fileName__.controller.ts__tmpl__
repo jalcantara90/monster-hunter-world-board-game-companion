@@ -15,11 +15,11 @@ import { CommandBus } from '@nestjs/cqrs';
 import { Create<%=className%>Request } from '../../domain/requests/Create<%=className%>Request';
 import { Update<%=className%>Request } from '../../domain/requests/Update<%=className%>Request';
 import { Create<%=className%>Command } from '../../application/Create<%=className%>/Create<%=className%>.command';
-import { Get<%=className%>ByIdCommand } from '../../application/Get<%=className%>ById/Get<%=className%>ById.command';
-import { Update<%=className%>ByIdCommand } from '../../application/Update<%=className%>ById/Update<%=className%>ById.command';
-import { Delete<%=className%>ByIdCommand } from '../../application/Delete<%=className%>ById/Delete<%=className%>ById.command';
+import { Get<%=className%>Command } from '../../application/Get<%=className%>/Get<%=className%>.command';
+import { Update<%=className%>Command } from '../../application/Update<%=className%>/Update<%=className%>.command';
+import { Delete<%=className%>Command } from '../../application/Delete<%=className%>/Delete<%=className%>.command';
 
-@Controller('<%=fileName%>s')
+@Controller('<%=fileName%>')
 export class <%=className%>sController {
   constructor(private readonly commandBus: CommandBus) {}
 
@@ -32,7 +32,7 @@ export class <%=className%>sController {
   @Get(':id')
   @HttpCode(HttpStatus.OK)
   findOne(@Param('id', ParseUUIDPipe) id: string) {
-    return this.commandBus.execute(new Get<%=className%>ByIdCommand(id));
+    return this.commandBus.execute(new Get<%=className%>Command(id));
   }
 
   @Patch(':id')
@@ -42,13 +42,13 @@ export class <%=className%>sController {
     @Body() request: Update<%=className%>Request
   ) {
     return this.commandBus.execute(
-      new Update<%=className%>ByIdCommand(id, request.name)
+      new Update<%=className%>Command(id, request.name)
     );
   }
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id', ParseUUIDPipe) id: string) {
-    return this.commandBus.execute(new Delete<%=className%>ByIdCommand(id));
+    return this.commandBus.execute(new Delete<%=className%>Command(id));
   }
 }

@@ -4,17 +4,17 @@ import {
   <%=constant%>_REPOSITORY,
   <%=className%>Repository,
 } from '../../domain/repository/<%=className%>Repository';
-import { Get<%=className%>ByIdCommand } from './Get<%=className%>ById.command';
+import { Get<%=className%>Command } from './Get<%=className%>.command';
 
-@CommandHandler(Get<%=className%>ByIdCommand)
-export class Get<%=className%>ByIdHandler
-  implements ICommandHandler<Get<%=className%>ByIdCommand>
+@CommandHandler(Get<%=className%>Command)
+export class Get<%=className%>Handler
+  implements ICommandHandler<Get<%=className%>Command>
 {
   constructor(
     @Inject(<%=constant%>_REPOSITORY) private <%=propertyName%>Repository: <%=className%>Repository
   ) {}
 
-  async execute(command: Get<%=className%>ByIdCommand) {
+  async execute(command: Get<%=className%>Command) {
     return this.<%=propertyName%>Repository.find(command.id);
   }
 }
