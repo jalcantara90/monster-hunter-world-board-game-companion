@@ -21,7 +21,7 @@ export class HunterTypeORMRepository implements HunterRepository {
     const hunterEntity = await this.hunterRepository.findOneBy({ id, isActive: true });
 
     if (!hunterEntity) {
-      throw new NotFoundException(`Brigade with id ${id} not exist`);
+      throw new NotFoundException(`Hunter with id ${id} not exist`);
     }
 
     return this.hunterMapper.fromEntity(hunterEntity);
