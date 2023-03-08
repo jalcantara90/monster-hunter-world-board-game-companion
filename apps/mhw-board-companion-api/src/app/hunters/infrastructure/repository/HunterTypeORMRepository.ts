@@ -3,7 +3,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { HunterMapper } from './HunterMapper';
-import { HunterEntity } from '../../domain/entities/Hunter.entity';
+import { HunterEntity } from '../entity/Hunter.entity';
 import { HunterResponse } from '../../domain/responses/HunterResponse';
 import { HunterRepository } from '../../domain/repository/HuntersRepository';
 import { CreateHunterRequest } from '../../domain/requests/CreateHunterRequest';

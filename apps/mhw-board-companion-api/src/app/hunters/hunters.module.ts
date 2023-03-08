@@ -5,7 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { HuntersController } from './infrastructure/controller/hunters.controller';
 
 import { hunterProviders } from './hunters.providers';
-import { HunterEntity } from './domain/entities/Hunter.entity';
+import { HunterEntity } from './infrastructure/entity/Hunter.entity';
 import { CreateHunterHandler } from './application/CreateHunter/CreateHunter.handler';
 import { UpdateHunterHandler } from './application/UpdateHunter/UpdateHunter.handler';
 import { GetHunterByIdHandler } from './application/GetHunter/GetHunterById.handler';

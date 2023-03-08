@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { HunterEntity } from '../../domain/entities/Hunter.entity';
+import { HunterEntity } from '../entity/Hunter.entity';
 import { HunterResponse } from '../../domain/responses/HunterResponse';
 
 @Injectable()
