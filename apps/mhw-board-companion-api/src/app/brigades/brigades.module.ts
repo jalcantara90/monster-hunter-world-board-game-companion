@@ -3,8 +3,8 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { brigadeProviders } from './brigades.providers';
-import { BrigadeEntity } from './infrastrucure/entity/Brigade.entity';
-import { BrigadesController } from './infrastrucure/controller/brigades.controller';
+import { BrigadeEntity } from './infrastructure/entity/Brigade.entity';
+import { BrigadesController } from './infrastructure/controller/brigades.controller';
 import { CreateBrigadeHandler } from './application/CreateBrigade/CreateBrigade.handler';
 import { GetBrigadeByIdHandler } from './application/GetBrigadeById/GetBrigadeById.handler';
 import { DeleteBrigadeByIdHandler } from './application/DeleteBrigadeById/DeleteBrigadeById.handler';

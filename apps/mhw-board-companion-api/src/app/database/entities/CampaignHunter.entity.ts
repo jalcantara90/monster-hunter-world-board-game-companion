@@ -4,7 +4,7 @@ import {
 } from 'typeorm';
 import { BaseEntity } from './Base.entity';
 import { CampaignEntity } from './Campaign.entity';
-import { HunterEntity } from '../../../hunters/domain/entities/Hunter.entity';
+import { HunterEntity } from '../../hunters/domain/entities/Hunter.entity';
 
 @Entity({ name: 'campaign_hunters'})
 export class CampaignHunterEntity extends BaseEntity {

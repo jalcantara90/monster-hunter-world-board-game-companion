@@ -4,7 +4,7 @@ import {
   OneToOne,
 } from 'typeorm';
 import { BaseEntity } from './Base.entity';
-import { BrigadeEntity } from '../../brigades/infrastrucure/entity/Brigade.entity';
+import { BrigadeEntity } from '../../brigades/infrastructure/entity/Brigade.entity';
 
 @Entity({ name: 'campaings' })
 export class CampaignEntity  extends BaseEntity {

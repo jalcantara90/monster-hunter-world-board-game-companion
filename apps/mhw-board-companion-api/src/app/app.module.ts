@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { HuntersModule } from '../hunters/hunters.module';
+import { HuntersModule } from './hunters/hunters.module';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
