@@ -1,0 +1,13 @@
+import { Provider } from '@nestjs/common';
+
+import { <%=className%>Mapper } from './infrastructure/repository/<%=className%>Mapper';
+import { <%=constant%>_REPOSITORY } from './domain/repository/<%=className%>sRepository';
+import { <%=className%>TypeORMRepository } from './infrastructure/repository/<%=className%>TypeORMRepository';
+
+export const <%=propertyName%>Providers: Provider[] = [
+  {
+    provide: <%=constant%>_REPOSITORY,
+    useClass: <%=className%>TypeORMRepository,
+  },
+  <%=className%>Mapper
+];

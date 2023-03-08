@@ -1,0 +1,19 @@
+import { Inject } from '@nestjs/common';
+import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
+
+import { Delete<%=className%>ByIdCommand } from './Delete<%=className%>ById.command';
+import {
+  <%=constant%>_REPOSITORY,
+  <%=className%>Repository,
+} from '../../domain/repository/<%=className%>Repository';
+
+@CommandHandler(Delete<%=className%>ByIdCommand)
+export class Delete<%=className%>ByIdHandler implements ICommandHandler<Delete<%=className%>ByIdCommand> {
+  constructor(
+    @Inject(<%=constant%>_REPOSITORY) private <%=propertyName%>Repository: <%=className%>Repository
+  ) {}
+
+  async execute(command: Delete<%=className%>ByIdCommand) {
+    await this.<%=propertyName%>Repository.delete(command.id);
+  }
+}

@@ -7,7 +7,6 @@ import {
   readProjectConfiguration,
   names,
 } from '@nrwl/devkit';
-import { moduleGenerator } from '@nrwl/nest';
 
 interface DDDSchemaGeneration {
   name: string;
@@ -27,11 +26,11 @@ export default async function (tree: Tree, schema: DDDSchemaGeneration) {
       className: names(entityName).className,
       constant: names(entityName).constantName,
       propertyName: names(entityName).propertyName,
+      fileName: names(entityName).fileName,
       tmpl: '',
     }
   );
 
-  await moduleGenerator(tree, { name: schema.name, project: schema.project });
   await formatFiles(tree);
   return () => {
     installPackagesTask(tree);

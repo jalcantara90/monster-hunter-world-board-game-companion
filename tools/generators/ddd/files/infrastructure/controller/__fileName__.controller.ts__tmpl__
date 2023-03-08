@@ -1,0 +1,54 @@
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  ParseUUIDPipe,
+  HttpCode,
+  HttpStatus,
+} from '@nestjs/common';
+import { CommandBus } from '@nestjs/cqrs';
+
+import { Create<%=className%>Request } from '../../domain/requests/Create<%=className%>Request';
+import { Update<%=className%>Request } from '../../domain/requests/Update<%=className%>Request';
+import { Create<%=className%>Command } from '../../application/Create<%=className%>/Create<%=className%>.command';
+import { Get<%=className%>ByIdCommand } from '../../application/Get<%=className%>ById/Get<%=className%>ById.command';
+import { Update<%=className%>ByIdCommand } from '../../application/Update<%=className%>ById/Update<%=className%>ById.command';
+import { Delete<%=className%>ByIdCommand } from '../../application/Delete<%=className%>ById/Delete<%=className%>ById.command';
+
+@Controller('<%=fileName%>s')
+export class <%=className%>sController {
+  constructor(private readonly commandBus: CommandBus) {}
+
+  @Post()
+  @HttpCode(HttpStatus.CREATED)
+  create(@Body() request: Create<%=className%>Request) {
+    return this.commandBus.execute(new Create<%=className%>Command(request.name));
+  }
+
+  @Get(':id')
+  @HttpCode(HttpStatus.OK)
+  findOne(@Param('id', ParseUUIDPipe) id: string) {
+    return this.commandBus.execute(new Get<%=className%>ByIdCommand(id));
+  }
+
+  @Patch(':id')
+  @HttpCode(HttpStatus.OK)
+  update(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() request: Update<%=className%>Request
+  ) {
+    return this.commandBus.execute(
+      new Update<%=className%>ByIdCommand(id, request.name)
+    );
+  }
+
+  @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  remove(@Param('id', ParseUUIDPipe) id: string) {
+    return this.commandBus.execute(new Delete<%=className%>ByIdCommand(id));
+  }
+}

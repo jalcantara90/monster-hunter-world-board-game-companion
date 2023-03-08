@@ -2,6 +2,8 @@
   "$schema": "http://json-schema.org/schema",
   "cli": "nx",
   "$id": "ddd",
+  "title": "nestjs ddd - feature",
+  "description": "Create ddd structure for a feature",
   "type": "object",
   "properties": {
     "name": {

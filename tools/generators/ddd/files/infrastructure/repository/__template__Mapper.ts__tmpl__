@@ -1,0 +1,10 @@
+import { Injectable } from '@nestjs/common';
+import { <%=className%>Entity } from '../../domain/entities/<%=className%>.entity';
+import { <%=className%>Response } from '../../domain/responses/<%=className%>Response';
+
+@Injectable()
+export class <%=className%>Mapper {
+  fromEntity(<%=propertyName%>: <%=className%>Entity): <%=className%>Response {
+    return new <%=className%>Response(<%=propertyName%>.id, <%=propertyName%>.name);
+  }
+}

@@ -1,0 +1,18 @@
+import { Inject } from '@nestjs/common';
+import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
+
+import { Update<%=className%>ByIdCommand } from './Update<%=className%>ById.command';
+import { <%=constant%>_REPOSITORY, <%=className%>Repository } from '../../domain/repository/<%=className%>Repository';
+
+@CommandHandler(Update<%=className%>ByIdCommand)
+export class Update<%=className%>ByIdHandler
+  implements ICommandHandler<Update<%=className%>ByIdCommand>
+{
+  constructor(
+    @Inject(<%=constant%>_REPOSITORY) private <%=propertyName%>Repository: <%=className%>Repository
+  ) {}
+
+  async execute(command: Update<%=className%>ByIdCommand) {
+    return this.<%=propertyName%>Repository.update(command.id, { name: command.name });
+  }
+}

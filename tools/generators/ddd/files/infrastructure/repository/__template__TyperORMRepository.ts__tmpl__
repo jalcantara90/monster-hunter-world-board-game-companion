@@ -1,0 +1,58 @@
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Injectable, NotFoundException } from '@nestjs/common';
+
+import { <%=className%>Mapper } from './<%=className%>Mapper';
+import { <%=className%>Entity } from '../entity/<%=className%>.entity';
+import { <%=className%>Repository } from '../../domain/repository/<%=className%>Repository';
+import { <%=className%>Response } from '../../domain/responses/<%=className%>Response';
+import { Create<%=className%>Request } from '../../domain/requests/Create<%=className%>Request';
+import { Update<%=className%>Request } from '../../domain/requests/Update<%=className%>Request';
+
+@Injectable()
+export class <%=className%>TypeORMRepository implements <%=className%>Repository {
+  constructor(
+    @InjectRepository(<%=className%>Entity)
+    private <%=propertyName%>Repository: Repository<<%=className%>Entity>,
+    private <%=propertyName%>Mapper: <%=className%>Mapper
+  ) {}
+
+  async find(id: string): Promise<<%=className%>Response> {
+    const <%=propertyName%>Entity = await this.<%=propertyName%>Repository.findOneBy({ id, isActive: true });
+
+    if (!<%=propertyName%>Entity) {
+      throw new NotFoundException(`<%=className%> with id ${id} not exist`);
+    }
+
+    return this.<%=propertyName%>Mapper.fromEntity(<%=propertyName%>Entity);
+  }
+
+  async create(<%=propertyName%>: Create<%=className%>Request): Promise<<%=className%>Response> {
+    const new<%=className%> = this.<%=propertyName%>Repository.create({ name: <%=propertyName%>.name });
+    const <%=propertyName%>Entity = await this.<%=propertyName%>Repository.save(new<%=className%>);
+
+    return this.<%=propertyName%>Mapper.fromEntity(<%=propertyName%>Entity);
+  }
+
+  async update(
+    id: string,
+    <%=propertyName%>: Update<%=className%>Request
+  ): Promise<<%=className%>Response> {
+    await this.<%=propertyName%>Repository.update(id, { name: <%=propertyName%>.name });
+    const <%=propertyName%>Entity = await this.<%=propertyName%>Repository.findOneBy({ id, isActive: true });
+
+    return this.<%=propertyName%>Mapper.fromEntity(<%=propertyName%>Entity);
+  }
+
+  async delete(id: string): Promise<void> {
+    const <%=propertyName%>Entity = await this.<%=propertyName%>Repository.findOneBy({
+      id,
+    });
+
+    if (!<%=propertyName%>Entity) {
+      throw new NotFoundException(`<%=className%> with id ${id} not exist`);
+    }
+
+    await this.<%=propertyName%>Repository.update(id, { isActive: false });
+  }
+}
