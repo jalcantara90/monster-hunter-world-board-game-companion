@@ -1,8 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ArmorEntity } from './entities/Armor.entity';
-import { CampaignEntity } from './entities/Campaign.entity';
-import { CampaignHunterEntity } from './entities/CampaignHunter.entity';
 import { CraftingMaterialEntity } from './entities/CraftMaterial.entity';
 import { InventoryEntity } from './entities/Inventory.entity';
 import { MaterialEntity } from './entities/Material.entity';
