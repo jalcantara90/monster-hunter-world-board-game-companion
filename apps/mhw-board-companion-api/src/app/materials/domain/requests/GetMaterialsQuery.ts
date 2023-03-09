@@ -1,4 +1,4 @@
-import { MaterialType } from '../../../database/enums/MaterialType';
+import { MaterialType } from '../enums/MaterialType';
 
 export interface GetMaterialsQuery {
   rarity?: number;

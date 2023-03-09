@@ -1,6 +1,6 @@
 import { Column, Entity } from 'typeorm';
 import { BaseEntity } from '../../../database/entities/Base.entity';
-import { MaterialType } from '../../../database/enums/MaterialType';
+import { MaterialType } from '../../domain/enums/MaterialType';
 
 @Entity({ name: 'materials' })
 export class MaterialEntity extends BaseEntity {

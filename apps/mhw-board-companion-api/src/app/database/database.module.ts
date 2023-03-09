@@ -1,9 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ArmorEntity } from './entities/Armor.entity';
-import { CraftingMaterialEntity } from './entities/CraftMaterial.entity';
 import { InventoryEntity } from './entities/Inventory.entity';
-import { MaterialEntity } from './entities/Material.entity';
 import { SupplyEntity } from './entities/Supply.entity';
 import { WeaponEntity } from './entities/Weapon.entity';
 import { WeaponCardEntity } from './entities/WeaponCards.entity';
@@ -19,17 +17,6 @@ import { WeaponCardEntity } from './entities/WeaponCards.entity';
       database: process.env.POSTGRES_DATABASE,
       synchronize: true,
       autoLoadEntities: true,
-      entities: [
-        // ArmorEntity,
-        // CampaignEntity,
-        // CampaignHunterEntity,
-        // CraftingMaterialEntity,
-        // InventoryEntity,
-        // MaterialEntity,
-        // SupplyEntity,
-        // WeaponEntity,
-        // WeaponCardEntity
-      ]
     }),
   ],
   exports: [TypeOrmModule],
