@@ -8,7 +8,7 @@ export class <%=className%>Mapper {
     return new <%=className%>Response(<%=propertyName%>.id, <%=propertyName%>.name);
   }
 
-  fromEntities(<%=propertyName%>: <%=className%>Entity[]): <%=className%>Response[] {
+  fromEntities(<%=propertyName%>List: <%=className%>Entity[]): <%=className%>Response[] {
     return <%=propertyName%>List.map((<%=propertyName%>) => this.fromEntity(<%=propertyName%>));
   }
 }

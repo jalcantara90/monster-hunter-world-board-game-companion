@@ -9,6 +9,7 @@ import {
   ParseUUIDPipe,
   HttpCode,
   HttpStatus,
+  Query
 } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
 

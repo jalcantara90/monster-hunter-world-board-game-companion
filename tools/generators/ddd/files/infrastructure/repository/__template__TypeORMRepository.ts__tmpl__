@@ -8,6 +8,7 @@ import { <%=className%>Repository } from '../../domain/repository/<%=className%>
 import { <%=className%>Response } from '../../domain/responses/<%=className%>Response';
 import { Create<%=className%>Request } from '../../domain/requests/Create<%=className%>Request';
 import { Update<%=className%>Request } from '../../domain/requests/Update<%=className%>Request';
+import { Get<%=className%>Query } from '../../domain/requests/Get<%=className%>Query';
 
 @Injectable()
 export class <%=className%>TypeORMRepository implements <%=className%>Repository {
