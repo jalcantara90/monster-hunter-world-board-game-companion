@@ -10,6 +10,7 @@ import { CampaignsModule } from './campaigns/campaigns.module';
 import { MaterialsModule } from './materials/materials.module';
 import { MonstersModule } from './monsters/monsters.module';
 import { ArmorsModule } from './armors/armors.module';
+import { WeaponsModule } from './weapons/weapons.module';
 
 @Module({
   imports: [
@@ -23,7 +24,8 @@ import { ArmorsModule } from './armors/armors.module';
     CampaignsModule,
     MaterialsModule,
     MonstersModule,
-    ArmorsModule
+    ArmorsModule,
+    WeaponsModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,6 +1,6 @@
 import { IsEnum, IsInt, IsOptional, IsString, IsUUID, MinLength } from 'class-validator';
 import { ArmorPiece } from '../enum/ArmorPiece';
-import { CrafingBranch } from '../enum/CraftingBranch';
+import { CraftingBranch } from '../enum/CraftingBranch';
 import { Element } from '../../../database/enums/ElementType';
 
 export class CreateArmorRequest {
@@ -22,8 +22,8 @@ export class CreateArmorRequest {
   @IsEnum(ArmorPiece)
   armorPiece: ArmorPiece;
 
-  @IsEnum(CrafingBranch)
-  branch: CrafingBranch;
+  @IsEnum(CraftingBranch)
+  branch: CraftingBranch;
 
   @IsUUID()
   @IsOptional()

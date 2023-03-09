@@ -1,5 +1,5 @@
 import { ArmorPiece } from '../enum/ArmorPiece';
-import { CrafingBranch } from '../enum/CraftingBranch';
+import { CraftingBranch } from '../enum/CraftingBranch';
 import { Element } from '../../../database/enums/ElementType';
 
 export interface GetArmorQuery {
@@ -8,6 +8,6 @@ export interface GetArmorQuery {
   elementalDefenseType: Element;
   elementalDefense: number;
   armorPiece: ArmorPiece;
-  branch: CrafingBranch;
+  branch: CraftingBranch;
   monster: string;
 }

@@ -36,7 +36,7 @@ export class <%=className%>TypeORMRepository implements <%=className%>Repository
   }
 
   async create(<%=propertyName%>: Create<%=className%>Request): Promise<<%=className%>Response> {
-    const new<%=className%> = this.<%=propertyName%>Repository.create({ name: <%=propertyName%>.name });
+    const new<%=className%> = this.<%=propertyName%>Repository.create(<%=propertyName%>);
     const <%=propertyName%>Entity = await this.<%=propertyName%>Repository.save(new<%=className%>);
 
     return this.<%=propertyName%>Mapper.fromEntity(<%=propertyName%>Entity);

@@ -1,6 +1,6 @@
 import { ArmorPiece } from "../enum/ArmorPiece";
 import { Element } from '../../../database/enums/ElementType';
-import { CrafingBranch } from "../enum/CraftingBranch";
+import { CraftingBranch } from "../enum/CraftingBranch";
 import { MonsterEntity } from "../../../monsters/infrastructure/entity/Monster.entity";
 import { MonsterResponse } from "../../../monsters/domain/responses/MonsterResponse";
 import { MonsterMapper } from "../../../monsters/infrastructure/repository/MonsterMapper";
@@ -12,7 +12,7 @@ export class ArmorResponse {
     public readonly name: string,
     public readonly defense: number,
     public readonly armorPiece: ArmorPiece,
-    public readonly branch: CrafingBranch,
+    public readonly branch: CraftingBranch,
     public readonly elementalDefenseType: Element,
     public readonly elementalDefense: number,
     monster: string | MonsterEntity,
