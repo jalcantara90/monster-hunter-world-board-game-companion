@@ -9,12 +9,14 @@ import { Create<%=className%>Handler } from './application/Create<%=className%>/
 import { Get<%=className%>Handler } from './application/Get<%=className%>/Get<%=className%>.handler';
 import { Delete<%=className%>Handler } from './application/Delete<%=className%>/Delete<%=className%>.handler';
 import { Update<%=className%>Handler } from './application/Update<%=className%>/Update<%=className%>.handler';
+import { Get<%=className%>ListHandler } from './application/Get<%=className%>List/Get<%=className%>List.handler';
 
 const commandHandlers = [
   Create<%=className%>Handler,
   Get<%=className%>Handler,
   Update<%=className%>Handler,
   Delete<%=className%>Handler,
+  Get<%=className%>ListHandler
 ];
 
 @Module({

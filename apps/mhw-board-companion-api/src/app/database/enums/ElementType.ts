@@ -1,4 +1,4 @@
-export enum ElementType {
+export enum Element {
   NONELEMENTAL,
   FIRE,
   WATER,

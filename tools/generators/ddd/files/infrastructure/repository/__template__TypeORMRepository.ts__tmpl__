@@ -27,6 +27,13 @@ export class <%=className%>TypeORMRepository implements <%=className%>Repository
     return this.<%=propertyName%>Mapper.fromEntity(<%=propertyName%>Entity);
   }
 
+  async findAll(query?: Partial<Get<%=className%>Query>): Promise<<%=className%>Response[]> {
+    const <%=propertyName%>Entities = await this.<%=propertyName%>Repository.find({
+      where: {...query, isActive: true }
+    });
+    return this.<%=propertyName%>Mapper.fromEntities(<%=propertyName%>Entities);
+  }
+
   async create(<%=propertyName%>: Create<%=className%>Request): Promise<<%=className%>Response> {
     const new<%=className%> = this.<%=propertyName%>Repository.create({ name: <%=propertyName%>.name });
     const <%=propertyName%>Entity = await this.<%=propertyName%>Repository.save(new<%=className%>);

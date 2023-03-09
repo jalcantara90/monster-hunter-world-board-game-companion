@@ -1,0 +1,18 @@
+import { Inject } from '@nestjs/common';
+import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
+import {
+  <%=constant%>_REPOSITORY,
+  <%=className%>Repository,
+} from '../../domain/repository/<%=className%>Repository';
+import { Get<%=className%>ListCommand } from './Get<%=className%>List.command';
+
+@CommandHandler(Get<%=className%>ListCommand)
+export class Get<%=className%>ListHandler implements ICommandHandler<Get<%=className%>ListCommand> {
+  constructor(
+    @Inject(<%=constant%>_REPOSITORY) private <%=propertyName%>Repository: <%=className%>Repository
+  ) {}
+
+  async execute(command: Get<%=className%>ListCommand) {
+    return this.<%=propertyName%>Repository.findAll(command.query);
+  }
+}

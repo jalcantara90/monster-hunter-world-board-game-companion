@@ -1,5 +1,5 @@
 import { Column } from 'typeorm';
-import { ElementType } from '../enums/ElementType';
+import { Element } from '../enums/ElementType';
 import { BaseEntity } from './Base.entity';
 
 export class ArmorEntity extends BaseEntity {
@@ -13,7 +13,7 @@ export class ArmorEntity extends BaseEntity {
   defense: number;
 
   @Column({ type: 'enum' })
-  elementalDefenseType: ElementType;
+  elementalDefenseType: Element;
 
   @Column({ type: 'int', default: 0 })
   elementalDefense: number;

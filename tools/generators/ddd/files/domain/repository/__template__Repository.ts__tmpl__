@@ -1,9 +1,12 @@
 import { Create<%=className%>Request } from '../requests/Create<%=className%>Request';
 import { Update<%=className%>Request } from '../requests/Update<%=className%>Request';
+import { Get<%=className%>Query } from '../requests/Get<%=className%>Query';
 import { <%=className%>Response } from '../responses/<%=className%>Response';
+import { Get<%=className%>Query } from '../../domain/requests/Get<%=className%>Query';
 
 export interface <%=className%>Repository {
   find(id: string): Promise<<%=className%>Response>;
+  findAll(query?: Partial<Get<%=className%>Query>): Promise<<%=className%>Response[]>;
   create(<%=propertyName%>: Create<%=className%>Request): Promise<<%=className%>Response>;
   update(id: string, <%=propertyName%>: Update<%=template%>Request): Promise<<%=className%>Response>;
   delete(id: string): Promise<void>;

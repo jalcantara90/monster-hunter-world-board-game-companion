@@ -18,6 +18,8 @@ import { Create<%=className%>Command } from '../../application/Create<%=classNam
 import { Get<%=className%>Command } from '../../application/Get<%=className%>/Get<%=className%>.command';
 import { Update<%=className%>Command } from '../../application/Update<%=className%>/Update<%=className%>.command';
 import { Delete<%=className%>Command } from '../../application/Delete<%=className%>/Delete<%=className%>.command';
+import { Get<%=className%>Query } from '../../domain/requests/Get<%=className%>Query';
+import { Get<%=className%>ListCommand } from '../../application/Get<%=className%>List/Get<%=className%>List.command';
 
 @Controller('<%=fileName%>')
 export class <%=className%>sController {
@@ -27,6 +29,12 @@ export class <%=className%>sController {
   @HttpCode(HttpStatus.CREATED)
   create(@Body() request: Create<%=className%>Request) {
     return this.commandBus.execute(new Create<%=className%>Command(request.name));
+  }
+
+  @Get()
+  @HttpCode(HttpStatus.OK)
+  findAll(@Query() query: Get<%=className%>Query) {
+    return this.commandBus.execute(new Get<%=className%>ListCommand(query));
   }
 
   @Get(':id')

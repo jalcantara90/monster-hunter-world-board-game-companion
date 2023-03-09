@@ -8,6 +8,8 @@ import { BrigadesModule } from './brigades/brigades.module';
 import { DatabaseModule } from './database/database.module';
 import { CampaignsModule } from './campaigns/campaigns.module';
 import { MaterialsModule } from './materials/materials.module';
+import { MonstersModule } from './monsters/monsters.module';
+import { ArmorsModule } from './armors/armors.module';
 
 @Module({
   imports: [
@@ -19,7 +21,9 @@ import { MaterialsModule } from './materials/materials.module';
     BrigadesModule,
     HuntersModule,
     CampaignsModule,
-    MaterialsModule
+    MaterialsModule,
+    MonstersModule,
+    ArmorsModule
   ],
   controllers: [AppController],
   providers: [AppService],
