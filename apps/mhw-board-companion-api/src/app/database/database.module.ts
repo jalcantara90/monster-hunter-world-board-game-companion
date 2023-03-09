@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ArmorEntity } from './entities/Armor.entity';
 import { InventoryEntity } from './entities/Inventory.entity';
 import { SupplyEntity } from './entities/Supply.entity';
 import { WeaponEntity } from './entities/Weapon.entity';
