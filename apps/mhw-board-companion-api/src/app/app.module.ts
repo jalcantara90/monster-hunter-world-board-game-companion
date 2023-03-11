@@ -11,6 +11,7 @@ import { MaterialsModule } from './materials/materials.module';
 import { MonstersModule } from './monsters/monsters.module';
 import { ArmorsModule } from './armors/armors.module';
 import { WeaponsModule } from './weapons/weapons.module';
+import { InventoriesModule } from './inventories/inventories.module';
 
 @Module({
   imports: [
@@ -25,7 +26,8 @@ import { WeaponsModule } from './weapons/weapons.module';
     MaterialsModule,
     MonstersModule,
     ArmorsModule,
-    WeaponsModule
+    WeaponsModule,
+    InventoriesModule
   ],
   controllers: [AppController],
   providers: [AppService],
