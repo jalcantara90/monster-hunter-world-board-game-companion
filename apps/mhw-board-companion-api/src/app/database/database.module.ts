@@ -2,8 +2,6 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { InventoryEntity } from './entities/Inventory.entity';
 import { SupplyEntity } from './entities/Supply.entity';
-import { WeaponEntity } from './entities/Weapon.entity';
-import { WeaponCardEntity } from './entities/WeaponCards.entity';
 
 @Module({
   imports: [
