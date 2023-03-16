@@ -7,7 +7,10 @@ export interface ArmorRepository {
   find(id: string): Promise<ArmorResponse>;
   findAll(query?: Partial<GetArmorQuery>): Promise<ArmorResponse[]>;
   create(armor: CreateArmorRequest): Promise<ArmorResponse>;
-  update(id: string, armor: Partial<UpdateArmorRequest>): Promise<ArmorResponse>;
+  update(
+    id: string,
+    armor: Partial<UpdateArmorRequest>
+  ): Promise<ArmorResponse>;
   delete(id: string): Promise<void>;
 }
 

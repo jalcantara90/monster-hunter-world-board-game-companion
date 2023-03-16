@@ -21,6 +21,9 @@ import { UpdateArmorCommand } from '../../application/UpdateArmor/UpdateArmor.co
 import { DeleteArmorCommand } from '../../application/DeleteArmor/DeleteArmor.command';
 import { GetArmorQuery } from '../../domain/requests/GetArmorQuery';
 import { GetArmorListCommand } from '../../application/GetArmorList/GetArmorList.command';
+import { AddCraftingMaterialsRequest } from '../../domain/requests/AddCraftingMaterialsRequest';
+import { AddCraftingMaterialsCommand } from '../../application/AddCraftingMaterials/AddCraftingMaterials.command';
+import { GetCraftingMaterialsCommand } from '../../application/GetCraftingMaterials/GetCraftingMaterials.command';
 
 @Controller('armors')
 export class ArmorsController {
@@ -38,6 +41,32 @@ export class ArmorsController {
         request.monster,
         request.elementalDefenseType,
         request.elementalDefense
+      )
+    );
+  }
+
+  @Get(':armorId/crafting-materials')
+  @HttpCode(HttpStatus.CREATED)
+  GetCraftingMaterials(
+    @Param('armorId', ParseUUIDPipe) armorId: string
+  ) {
+    return this.commandBus.execute(
+      new GetCraftingMaterialsCommand(
+        armorId
+      )
+    );
+  }
+
+  @Post(':armorId/crafting-materials')
+  @HttpCode(HttpStatus.CREATED)
+  AddCraftingMaterials(
+    @Param('armorId', ParseUUIDPipe) armorId: string,
+    @Body() request: AddCraftingMaterialsRequest
+  ) {
+    return this.commandBus.execute(
+      new AddCraftingMaterialsCommand(
+        armorId,
+        request.craftingMaterialList
       )
     );
   }
