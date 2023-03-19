@@ -22,22 +22,22 @@ export class InventoryEntity extends BaseEntity {
 
 @Entity({ name: 'inventory_items' })
 export class InventoryItemsEntity extends BaseEntity {
-  @OneToOne(() => InventoryEntity, (inventory) => inventory.id)
+  @ManyToOne(() => InventoryEntity, (inventory) => inventory.id)
   @JoinColumn({ name: 'inventoryId' })
   inventoryId: string;
 
   @ManyToOne(() => MaterialEntity, (material) => material.id)
   @JoinColumn({ name: 'materialId' })
-  materials: string;
+  material: string;
 
   @Column({ type: 'int', default: 1 })
   quantity: number;
 
   @ManyToOne(() => ArmorEntity, (armor) => armor.id)
   @JoinColumn({ name: 'armorId' })
-  armors: string;
+  armor: string;
 
   @ManyToOne(() => WeaponEntity, (weapon) => weapon.id)
   @JoinColumn({ name: 'weaponId' })
-  weapons: string;
+  weapon: string;
 }

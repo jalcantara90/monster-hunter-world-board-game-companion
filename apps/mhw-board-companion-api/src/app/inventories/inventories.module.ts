@@ -14,6 +14,9 @@ import { DeleteInventorieHandler } from './application/DeleteInventorie/DeleteIn
 import { UpdateInventorieHandler } from './application/UpdateInventorie/UpdateInventorie.handler';
 import { GetInventorieListHandler } from './application/GetInventorieList/GetInventorieList.handler';
 import { AddMaterialHandler } from './application/AddMaterial/AddMaterial.handler';
+import { CraftArmorHandler } from './application/CraftArmor/CraftArmor.handler';
+import { armorProviders } from '../armors/armors.providers';
+import { ArmorCraftingEntity, ArmorEntity } from '../armors/infrastructure/entity/Armor.entity';
 
 const commandHandlers = [
   CreateInventoryeHandler,
@@ -22,14 +25,15 @@ const commandHandlers = [
   DeleteInventorieHandler,
   GetInventorieListHandler,
   AddMaterialHandler,
+  CraftArmorHandler
 ];
 
 @Module({
   imports: [
     CqrsModule,
-    TypeOrmModule.forFeature([InventoryEntity, InventoryItemsEntity]),
+    TypeOrmModule.forFeature([InventoryEntity, InventoryItemsEntity, ArmorCraftingEntity, ArmorEntity]),
   ],
   controllers: [InventoriesController],
-  providers: [...commandHandlers, ...inventoryProviders],
+  providers: [...commandHandlers, ...inventoryProviders, ...armorProviders],
 })
 export class InventoriesModule {}

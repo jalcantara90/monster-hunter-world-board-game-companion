@@ -1,3 +1,4 @@
 export interface GetInventorieQuery {
-  name?: string;
+  armorId?: string;
+  weaponId?: string;
 }

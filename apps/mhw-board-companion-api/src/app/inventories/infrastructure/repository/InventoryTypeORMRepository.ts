@@ -15,6 +15,7 @@ import { GetInventorieQuery } from '../../domain/requests/GetInventorieQuery';
 import { AddMaterialToInventoryRequest } from '../../domain/requests/AddMaterialToInventoryRequest';
 import { AddArmorRequest } from '../../domain/requests/AddArmorRequest';
 import { AddWeaponRequest } from '../../domain/requests/AddWeaponRequest';
+import { UpdateInventoryMaterialRequest } from '../../domain/requests/UpdateInventoryMaterialRequest';
 
 @Injectable()
 export class InventoryTypeORMRepository implements InventoryRepository {
@@ -26,15 +27,31 @@ export class InventoryTypeORMRepository implements InventoryRepository {
     private inventoryMapper: InventoryMapper
   ) {}
 
+  updateInventoryItem(id: string, { quantity }: UpdateInventoryMaterialRequest): Promise<any> {
+    return this.inventoryItemRepository.update(id, { quantity });
+  }
+
+  async findAllMaterials(inventoryId: string) {
+    const materials = await this.inventoryItemRepository
+      .createQueryBuilder('inventory_items')
+      .leftJoinAndSelect('inventory_items.material', 'material')
+      .leftJoinAndSelect('inventory_items.armor', 'armor')
+      .leftJoinAndSelect('inventory_items.weapon', 'weapon')
+      .where('inventory_items.inventoryId = :inventoryId', { inventoryId })
+      .getMany();
+
+    return materials;
+  }
+
   async AddArmor(inventoryId: string, request: AddArmorRequest): Promise<void> {
     const armor = this.inventoryItemRepository.create({
       inventoryId,
-      armors: request.armorId
+      armor: request.armorId,
     });
 
     const storedArmor = await this.inventoryItemRepository
       .createQueryBuilder('inventory_items')
-      .leftJoinAndSelect('inventory_items.armors', 'armor')
+      .leftJoinAndSelect('inventory_items.armor', 'armor')
       .where('armor.id = :armorId', { armorId: request.armorId })
       .andWhere('inventory_items.inventoryId = :inventoryId', { inventoryId })
       .getOne();
@@ -44,15 +61,18 @@ export class InventoryTypeORMRepository implements InventoryRepository {
     }
   }
 
-  async AddWeapon(inventoryId: string, request: AddWeaponRequest): Promise<void> {
+  async AddWeapon(
+    inventoryId: string,
+    request: AddWeaponRequest
+  ): Promise<void> {
     const armor = this.inventoryItemRepository.create({
       inventoryId,
-      weapons: request.weaponId
+      weapon: request.weaponId,
     });
 
     const storedWeapon = await this.inventoryItemRepository
       .createQueryBuilder('inventory_items')
-      .leftJoinAndSelect('inventory_items.weapons', 'weapon')
+      .leftJoinAndSelect('inventory_items.weapon', 'weapon')
       .where('weapon.id = :weaponId', { weaponId: request.weaponId })
       .andWhere('inventory_items.inventoryId = :inventoryId', { inventoryId })
       .getOne();
@@ -68,23 +88,23 @@ export class InventoryTypeORMRepository implements InventoryRepository {
   ): Promise<void> {
     let storedMaterial = await this.inventoryItemRepository
       .createQueryBuilder('inventory_items')
-      .leftJoinAndSelect('inventory_items.materials', 'material')
+      .leftJoinAndSelect('inventory_items.material', 'material')
       .where('material.id = :materialId', { materialId: request.materialId })
       .andWhere('inventory_items.inventoryId = :inventoryId', { inventoryId })
       .getOne();
 
     if (storedMaterial) {
       await this.inventoryItemRepository.update(storedMaterial.id, {
-        quantity: storedMaterial.quantity + request.quantity
+        quantity: storedMaterial.quantity + request.quantity,
       });
     } else {
       storedMaterial = this.inventoryItemRepository.create({
         inventoryId: inventoryId,
-        materials: request.materialId,
+        material: request.materialId,
         quantity: request.quantity,
       });
       await this.inventoryItemRepository.save(storedMaterial);
-    };
+    }
   }
 
   async find(id: string): Promise<InventorieResponse> {

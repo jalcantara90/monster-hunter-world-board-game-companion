@@ -5,6 +5,7 @@ import { InventorieResponse } from '../responses/InventorieResponse';
 import { AddMaterialToInventoryRequest } from '../requests/AddMaterialToInventoryRequest';
 import { AddArmorRequest } from '../requests/AddArmorRequest';
 import { AddWeaponRequest } from '../requests/AddWeaponRequest';
+import { UpdateInventoryMaterialRequest } from '../requests/UpdateInventoryMaterialRequest';
 
 export interface InventoryRepository {
   find(id: string): Promise<InventorieResponse>;
@@ -14,6 +15,10 @@ export interface InventoryRepository {
     id: string,
     inventory: UpdateInventorieRequest
   ): Promise<InventorieResponse>;
+  updateInventoryItem(
+    id: string,
+    inventory: UpdateInventoryMaterialRequest
+  ): Promise<any>;
   AddMaterial(
     inventoryId: string,
     request: AddMaterialToInventoryRequest
@@ -27,6 +32,7 @@ export interface InventoryRepository {
     request: AddWeaponRequest
   ): Promise<void>;
   delete(id: string): Promise<void>;
+  findAllMaterials(inventoryId: string): Promise<any[]>;
 }
 
 export const INVENTORY_REPOSITORY = 'INVENTORY_REPOSITORY';

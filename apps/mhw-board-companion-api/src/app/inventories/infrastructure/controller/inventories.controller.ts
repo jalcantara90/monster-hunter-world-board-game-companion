@@ -23,6 +23,7 @@ import { GetInventorieQuery } from '../../domain/requests/GetInventorieQuery';
 import { GetInventorieListCommand } from '../../application/GetInventorieList/GetInventorieList.command';
 import { AddMaterialToInventoryRequest } from '../../domain/requests/AddMaterialToInventoryRequest';
 import { AddMaterialCommand } from '../../application/AddMaterial/AddMaterial.command';
+import { CraftArmorCommand } from '../../application/CraftArmor/CraftArmor.command';
 
 @Controller('inventories')
 export class InventoriesController {
@@ -43,12 +44,17 @@ export class InventoriesController {
     @Body() request: AddMaterialToInventoryRequest
   ) {
     return this.commandBus.execute(
-      new AddMaterialCommand(
-        inventoryId,
-        request.materialId,
-        request.quantity
-      )
+      new AddMaterialCommand(inventoryId, request.materialId, request.quantity)
     );
+  }
+
+  @Post(':id/armors/:armorId/craft')
+  @HttpCode(HttpStatus.CREATED)
+  craftingArmor(
+    @Param('id', ParseUUIDPipe) inventoryId: string,
+    @Param('armorId', ParseUUIDPipe) armorId: string
+  ) {
+    return this.commandBus.execute(new CraftArmorCommand(inventoryId, armorId));
   }
 
   @Get()
