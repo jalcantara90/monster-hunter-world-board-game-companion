@@ -22,7 +22,9 @@ import { DeleteCampaignCommand } from '../../application/DeleteCampaign/DeleteCa
 import { AddCampaignHuntersCommand } from '../../application/AddCampaignsHunters/AddCampaignsHunters.command';
 
 import { GetCampaignHuntersCommand } from '../../../hunters/application/GetCampaignHunters/GetCampaignHunters.command';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Campaigns')
 @Controller('campaigns')
 export class CampaignsController {
   constructor(private readonly commandBus: CommandBus) {}

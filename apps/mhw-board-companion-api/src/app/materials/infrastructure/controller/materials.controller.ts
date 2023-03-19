@@ -21,7 +21,9 @@ import { UpdateMaterialCommand } from '../../application/UpdateMaterial/UpdateMa
 import { DeleteMaterialCommand } from '../../application/DeleteMaterial/DeleteMaterial.command';
 import { GetMaterialsQuery } from '../../domain/requests/GetMaterialsQuery';
 import { GetMaterialListCommand } from '../../application/GetMaterialList/GetMaterialList.command';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Materials')
 @Controller('materials')
 export class MaterialsController {
   constructor(private readonly commandBus: CommandBus) {}

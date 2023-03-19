@@ -21,7 +21,9 @@ import { UpdateMonsterCommand } from '../../application/UpdateMonster/UpdateMons
 import { DeleteMonsterCommand } from '../../application/DeleteMonster/DeleteMonster.command';
 import { GetMaterialsQuery } from '../../../materials/domain/requests/GetMaterialsQuery';
 import { GetMonsterListCommand } from '../../application/GetMonsterList/GetMonsterList.command';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Monsters')
 @Controller('monsters')
 export class MonstersController {
   constructor(private readonly commandBus: CommandBus) {}

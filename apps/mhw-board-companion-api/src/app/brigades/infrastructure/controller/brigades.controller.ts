@@ -20,7 +20,9 @@ import { UpdateBrigadeByIdCommand } from '../../application/UpdateBrigadeById/Up
 import { DeleteBrigadeByIdCommand } from '../../application/DeleteBrigadeById/DeleteBrigadeById.command';
 
 import { GetCampaignListByBrigadeIdCommand } from '../../../campaigns/application/GetCampaignListByBrigadeId/GetCampaignListByBrigadeId.command';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Brigades')
 @Controller('brigades')
 export class BrigadesController {
   constructor(private readonly commandBus: CommandBus) {}

@@ -24,7 +24,9 @@ import { GetArmorListCommand } from '../../application/GetArmorList/GetArmorList
 import { AddCraftingMaterialsRequest } from '../../domain/requests/AddCraftingMaterialsRequest';
 import { AddCraftingMaterialsCommand } from '../../application/AddCraftingMaterials/AddCraftingMaterials.command';
 import { GetCraftingMaterialsCommand } from '../../application/GetCraftingMaterials/GetCraftingMaterials.command';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Armors')
 @Controller('armors')
 export class ArmorsController {
   constructor(private readonly commandBus: CommandBus) {}

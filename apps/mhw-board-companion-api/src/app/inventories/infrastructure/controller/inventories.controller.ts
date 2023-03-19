@@ -24,7 +24,9 @@ import { GetInventorieListCommand } from '../../application/GetInventorieList/Ge
 import { AddMaterialToInventoryRequest } from '../../domain/requests/AddMaterialToInventoryRequest';
 import { AddMaterialCommand } from '../../application/AddMaterial/AddMaterial.command';
 import { CraftArmorCommand } from '../../application/CraftArmor/CraftArmor.command';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Inventories')
 @Controller('inventories')
 export class InventoriesController {
   constructor(private readonly commandBus: CommandBus) {}

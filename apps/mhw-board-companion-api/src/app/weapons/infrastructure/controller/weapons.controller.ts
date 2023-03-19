@@ -21,7 +21,9 @@ import { UpdateWeaponCommand } from '../../application/UpdateWeapon/UpdateWeapon
 import { DeleteWeaponCommand } from '../../application/DeleteWeapon/DeleteWeapon.command';
 import { GetWeaponQuery } from '../../domain/requests/GetWeaponQuery';
 import { GetWeaponListCommand } from '../../application/GetWeaponList/GetWeaponList.command';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Weapons')
 @Controller('weapons')
 export class WeaponsController {
   constructor(private readonly commandBus: CommandBus) {}

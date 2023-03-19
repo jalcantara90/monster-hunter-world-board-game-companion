@@ -11,6 +11,7 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateHunterCommand } from '../../application/CreateHunter/CreateHunter.command';
 import { DeleteHunterByIdCommand } from '../../application/DeleteHunter/DeleteHunterById.command';
 import { GetHunterByIdCommand } from '../../application/GetHunter/GetHunterById.command';
@@ -18,6 +19,7 @@ import { UpdateHunterCommand } from '../../application/UpdateHunter/UpdateHunter
 import { CreateHunterRequest } from '../../domain/requests/CreateHunterRequest';
 import { UpdateHunterRequest } from '../../domain/requests/UpdateHunterRequest';
 
+@ApiTags('Hunters')
 @Controller('hunters')
 export class HuntersController {
   constructor(private readonly commandBus: CommandBus) {}
