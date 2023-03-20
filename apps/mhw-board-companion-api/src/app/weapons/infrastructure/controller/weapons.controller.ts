@@ -22,6 +22,9 @@ import { DeleteWeaponCommand } from '../../application/DeleteWeapon/DeleteWeapon
 import { GetWeaponQuery } from '../../domain/requests/GetWeaponQuery';
 import { GetWeaponListCommand } from '../../application/GetWeaponList/GetWeaponList.command';
 import { ApiTags } from '@nestjs/swagger';
+import { GetWeaponCraftingMaterialsCommand } from '../../application/GetCraftingMaterials/GetCraftingMaterials.command';
+import { AddWeaponCraftingMaterialsRequest } from '../../domain/requests/AddWeaponCraftingMaterialsRequest';
+import { AddWeaponCraftingMaterialsCommand } from '../../application/AddCraftingMaterials/AddCraftingMaterials.command';
 
 @ApiTags('Weapons')
 @Controller('weapons')
@@ -43,6 +46,32 @@ export class WeaponsController {
         request.damageThree,
         request.damageFour,
         request.damageFive
+      )
+    );
+  }
+
+  @Get(':weaponId/crafting-materials')
+  @HttpCode(HttpStatus.CREATED)
+  GetCraftingMaterials(
+    @Param('weaponId', ParseUUIDPipe) weaponId: string
+  ) {
+    return this.commandBus.execute(
+      new GetWeaponCraftingMaterialsCommand(
+        weaponId
+      )
+    );
+  }
+
+  @Post(':weaponId/crafting-materials')
+  @HttpCode(HttpStatus.CREATED)
+  AddCraftingMaterials(
+    @Param('weaponId', ParseUUIDPipe) weaponId: string,
+    @Body() request: AddWeaponCraftingMaterialsRequest
+  ) {
+    return this.commandBus.execute(
+      new AddWeaponCraftingMaterialsCommand(
+        weaponId,
+        request.craftingMaterialList
       )
     );
   }

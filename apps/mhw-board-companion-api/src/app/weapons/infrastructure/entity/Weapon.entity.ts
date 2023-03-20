@@ -1,5 +1,6 @@
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { BaseEntity } from '../../../database/entities/Base.entity';
+import { MaterialEntity } from '../../../materials/infrastructure/entity/Material.entity';
 import { MonsterEntity } from '../../../monsters/infrastructure/entity/Monster.entity';
 import { CraftingBranch } from '../../domain/enum/CraftingBranch';
 import { WeaponType } from '../../domain/enum/WeaponType';
@@ -36,4 +37,20 @@ export class WeaponEntity extends BaseEntity {
 
   @Column({ type: 'int' })
   damageFive: number;
+
+  @ManyToOne(() => WeaponEntity, (weapon) => weapon.id)
+  previusWeapon: string;
+}
+
+@Entity({ name: 'weapon_crafting' })
+export class WeaponCraftingEntity extends BaseEntity {
+  @Column({ type: 'uuid' })
+  weaponId: string;
+
+  @ManyToOne(() => MaterialEntity, (material) => material.id)
+  @JoinColumn({ name: 'materialId' })
+  materialId: string;
+
+  @Column({ type: 'int', default: 1 })
+  quantity: number;
 }
