@@ -14,7 +14,7 @@ export class CreateArmorRequest {
   @IsInt()
   defense: number;
 
-  @ApiProperty()
+  @ApiProperty({ enum: Element })
   @IsEnum(Element)
   @IsOptional()
   elementalDefenseType: Element;
@@ -24,11 +24,11 @@ export class CreateArmorRequest {
   @IsOptional()
   elementalDefense: number;
 
-  @ApiProperty()
+  @ApiProperty({ enum: ArmorPiece })
   @IsEnum(ArmorPiece)
   armorPiece: ArmorPiece;
 
-  @ApiProperty()
+  @ApiProperty({ enum: CraftingBranch })
   @IsEnum(CraftingBranch)
   branch: CraftingBranch;
 

@@ -8,6 +8,7 @@ export class UpdateWeaponCommand {
     public readonly branch?: CraftingBranch,
     public readonly weaponType?: WeaponType,
     public readonly monster?: string,
+    public readonly previousWeapon?: string,
     public readonly defense?: number,
     public readonly damageOne?: number,
     public readonly damageTwo?: number,

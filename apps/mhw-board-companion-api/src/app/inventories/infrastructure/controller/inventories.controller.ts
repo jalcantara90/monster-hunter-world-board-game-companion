@@ -25,6 +25,7 @@ import { AddMaterialToInventoryRequest } from '../../domain/requests/AddMaterial
 import { AddMaterialCommand } from '../../application/AddMaterial/AddMaterial.command';
 import { CraftArmorCommand } from '../../application/CraftArmor/CraftArmor.command';
 import { ApiTags } from '@nestjs/swagger';
+import { CraftWeaponCommand } from '../../application/CraftWeapon/CraftWeapon.command';
 
 @ApiTags('Inventories')
 @Controller('inventories')
@@ -57,6 +58,17 @@ export class InventoriesController {
     @Param('armorId', ParseUUIDPipe) armorId: string
   ) {
     return this.commandBus.execute(new CraftArmorCommand(inventoryId, armorId));
+  }
+
+  @Post(':id/weapons/:weaponId/craft')
+  @HttpCode(HttpStatus.CREATED)
+  craftingWeapon(
+    @Param('id', ParseUUIDPipe) inventoryId: string,
+    @Param('weaponId', ParseUUIDPipe) weaponId: string
+  ) {
+    return this.commandBus.execute(
+      new CraftWeaponCommand(inventoryId, weaponId)
+    );
   }
 
   @Get()

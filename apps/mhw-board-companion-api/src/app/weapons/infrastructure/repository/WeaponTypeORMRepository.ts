@@ -19,9 +19,12 @@ export class WeaponTypeORMRepository implements WeaponRepository {
   ) {}
 
   async find(id: string): Promise<WeaponResponse> {
-    const weaponEntity = await this.weaponRepository.findOneBy({
-      id,
-      isActive: true,
+    const weaponEntity = await this.weaponRepository.findOne({
+      where: {
+        id,
+        isActive: true
+      },
+      relations: ['previousWeapon']
     });
 
     if (!weaponEntity) {

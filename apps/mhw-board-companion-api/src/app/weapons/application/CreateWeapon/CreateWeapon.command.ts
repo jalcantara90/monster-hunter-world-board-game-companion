@@ -7,6 +7,7 @@ export class CreateWeaponCommand {
     public readonly branch: CraftingBranch,
     public readonly weaponType: WeaponType,
     public readonly monster: string,
+    public readonly previousWeapon: string = null,
     public readonly defense: number = 0,
     public readonly damageOne: number = 0,
     public readonly damageTwo: number = 0,

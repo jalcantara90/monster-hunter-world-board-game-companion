@@ -16,7 +16,13 @@ import { GetInventorieListHandler } from './application/GetInventorieList/GetInv
 import { AddMaterialHandler } from './application/AddMaterial/AddMaterial.handler';
 import { CraftArmorHandler } from './application/CraftArmor/CraftArmor.handler';
 import { armorProviders } from '../armors/armors.providers';
-import { ArmorCraftingEntity, ArmorEntity } from '../armors/infrastructure/entity/Armor.entity';
+import {
+  ArmorCraftingEntity,
+  ArmorEntity,
+} from '../armors/infrastructure/entity/Armor.entity';
+import { CraftWeaponHandler } from './application/CraftWeapon/CraftWeapon.handler';
+import { WeaponCraftingEntity, WeaponEntity } from '../weapons/infrastructure/entity/Weapon.entity';
+import { weaponProviders } from '../weapons/weapons.providers';
 
 const commandHandlers = [
   CreateInventoryeHandler,
@@ -25,15 +31,28 @@ const commandHandlers = [
   DeleteInventorieHandler,
   GetInventorieListHandler,
   AddMaterialHandler,
-  CraftArmorHandler
+  CraftArmorHandler,
+  CraftWeaponHandler,
 ];
 
 @Module({
   imports: [
     CqrsModule,
-    TypeOrmModule.forFeature([InventoryEntity, InventoryItemsEntity, ArmorCraftingEntity, ArmorEntity]),
+    TypeOrmModule.forFeature([
+      InventoryEntity,
+      InventoryItemsEntity,
+      ArmorCraftingEntity,
+      ArmorEntity,
+      WeaponCraftingEntity,
+      WeaponEntity
+    ]),
   ],
   controllers: [InventoriesController],
-  providers: [...commandHandlers, ...inventoryProviders, ...armorProviders],
+  providers: [
+    ...commandHandlers,
+    ...inventoryProviders,
+    ...armorProviders,
+    ...weaponProviders,
+  ],
 })
 export class InventoriesModule {}

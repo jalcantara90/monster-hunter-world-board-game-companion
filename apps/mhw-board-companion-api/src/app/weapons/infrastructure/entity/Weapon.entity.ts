@@ -39,7 +39,8 @@ export class WeaponEntity extends BaseEntity {
   damageFive: number;
 
   @ManyToOne(() => WeaponEntity, (weapon) => weapon.id)
-  previusWeapon: string;
+  @JoinColumn()
+  previousWeapon: string;
 }
 
 @Entity({ name: 'weapon_crafting' })

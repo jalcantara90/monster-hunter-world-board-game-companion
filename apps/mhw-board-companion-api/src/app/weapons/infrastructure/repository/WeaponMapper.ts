@@ -10,6 +10,7 @@ export class WeaponMapper {
       weapon.name,
       weapon.branch,
       weapon.weaponType,
+      weapon.previousWeapon,
       weapon.defense,
       weapon.damageOne,
       weapon.damageTwo,

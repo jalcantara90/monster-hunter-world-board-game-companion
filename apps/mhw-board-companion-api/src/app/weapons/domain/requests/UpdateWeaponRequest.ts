@@ -1,4 +1,4 @@
-import { IsEnum, IsInt, IsOptional, IsString, MinLength } from 'class-validator';
+import { IsEnum, IsInt, IsOptional, IsString, IsUUID, MinLength } from 'class-validator';
 import { CraftingBranch } from '../enum/CraftingBranch';
 import { WeaponType } from '../enum/WeaponType';
 
@@ -43,4 +43,8 @@ export class UpdateWeaponRequest {
   @IsInt()
   @IsOptional()
   damageFive: number;
+
+  @IsUUID()
+  @IsOptional()
+  previousWeaponId: string;
 }

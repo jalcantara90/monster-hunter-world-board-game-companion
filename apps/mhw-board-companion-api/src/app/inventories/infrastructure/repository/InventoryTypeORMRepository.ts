@@ -27,7 +27,7 @@ export class InventoryTypeORMRepository implements InventoryRepository {
     private inventoryMapper: InventoryMapper
   ) {}
 
-  updateInventoryItem(id: string, { quantity }: UpdateInventoryMaterialRequest): Promise<any> {
+  updateInventoryItem(id: string, { quantity }: UpdateInventoryMaterialRequest) {
     return this.inventoryItemRepository.update(id, { quantity });
   }
 
