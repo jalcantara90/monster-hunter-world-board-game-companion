@@ -1,4 +1,7 @@
 version: '3.3'
+networks:
+  mhwboardgame:
+    driver: bridge
 
 services:
   postgres:
@@ -11,14 +14,37 @@ services:
       - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mhwboardgame
 
   pgadmin:
+    depends_on:
+      - postgres
     image: dpage/pgadmin4
     environment:
      - PGADMIN_DEFAULT_EMAIL=root@admin.com
      - PGADMIN_DEFAULT_PASSWORD=123456
     ports:
       - "5050:80"
+    networks:
+      - mhwboardgame
+
+  mhw-api:
+    depends_on:
+      - postgres
+    image: mhw-api
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DATABASE=mhw-board-companion
+      - PORT=3099
+      - MODE=DEV
+    ports:
+      - "3099:3099"
+    networks:
+      - mhwboardgame
 
 volumes:
   postgres_data: {}
