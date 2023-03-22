@@ -54,3 +54,21 @@ note: the easy way is start comment in docker-compose.yml the block of mhw-api t
   - In your vscode you can go into debug section and click on play button or just press F5 to start the API in debug mode.
 
 > We have documentation via swagger and we can access from http://localhost:3099/docs
+
+
+## Running webapp
+1. We must install the dependencies
+
+  - In project root run
+  ```bash
+    npm install
+  ```
+    or
+  ```bash
+    yarn
+  ```
+2. Launch the webapp running:
+
+```bash
+  npx nx serve webapp
+```
