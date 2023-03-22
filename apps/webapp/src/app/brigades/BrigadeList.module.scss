@@ -1,6 +1,5 @@
-// @use "/libs/design-system/src/lib/settings/colors";
-@use "../../../libs/design-system/src/lib/settings/colors.scss";
+@use 'settings/colors';
 
 .BrigadeText {
-  color: colors.$text-primary;
+  color: colors.$brand;
 }
