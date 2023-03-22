@@ -63,7 +63,7 @@ note: the easy way is start comment in docker-compose.yml the block of mhw-api t
   ```bash
     npm install
   ```
-    or
+  or
   ```bash
     yarn
   ```
