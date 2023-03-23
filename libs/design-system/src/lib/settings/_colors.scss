@@ -4,6 +4,7 @@ $_primary-gray: #787676;
 $_primary-grayLight: #b1b1b1;
 $_primary-grayLighter: #efefef;
 $_primary-white: #fff;
+$_primary-black: #000000;
 $_secondary-violet: #7026f4;
 $_secondary-yellow: #fef878;
 $_secondary-pink: #e0a4bf;
@@ -19,7 +20,7 @@ $cta-primary-hover: $_hover-green;
 $cta-secondary: $_primary-blue;
 $cta-secondary-hover: $_hover-blue;
 
-$bg-primary: $_primary-green;
+$bg-primary: $_primary-blue;
 $bg-darkTheme: $_primary-blue;
 $bg-selection: $_secondary-yellow;
 $bg: $_primary-grayLighter;
@@ -33,6 +34,8 @@ $product-alt1: $_primary-green;
 $product-alt2: $_secondary-violet;
 $product-alt3: $_secondary-yellow;
 $product-alt4: $_secondary-pink;
+
+$black: $_primary-black;
 
 $white: $_primary-white;
 $white-hover: rgb(255 255 255 / 70%);

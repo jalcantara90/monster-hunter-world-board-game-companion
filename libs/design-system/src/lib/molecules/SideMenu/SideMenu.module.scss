@@ -1,0 +1,20 @@
+@use '../../settings/spacing';
+@use '../../tools/typography' as mixins;
+@use '../../settings/typography';
+
+.sideMenu__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.topBar {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  padding: spacing.$xs;
+  justify-items: center;
+
+  &__title {
+    @include mixins.h100-regular;
+    font-family: typography.$font-family;
+  }
+}
