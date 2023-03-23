@@ -1,0 +1,5 @@
+@use 'settings/spacing';
+
+.layout {
+  padding: spacing.$xs;
+}

@@ -1,0 +1,36 @@
+@use '../../settings/colors';
+@use '../../settings/border';
+
+.burgerButton {
+  display: flex;
+  flex-direction: column;
+  width: 3rem;
+  border: 0;
+  background: transparent;
+  gap: .5rem;
+  transition: transform .3s;
+
+  &__line {
+    background: colors.$black;
+    height: 3px;
+    width: 100%;
+    border-radius: border.$radius-default;
+    transition: all .3s;
+    transform-origin: left;
+  }
+
+  &--active {
+    .burgerButton__line:first-child {
+      transform: rotate(38deg);
+    }
+
+    .burgerButton__line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .burgerButton__line:last-child {
+      transform: rotate(-37deg);
+    }
+  }
+
+}
