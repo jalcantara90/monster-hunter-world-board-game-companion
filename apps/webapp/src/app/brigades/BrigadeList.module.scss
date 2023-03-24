@@ -1,5 +1,8 @@
 @use 'settings/colors';
+@use 'settings/spacing';
 
-.BrigadeText {
-  color: colors.$brand;
+.brigadeList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: spacing.$xs;
 }

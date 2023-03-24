@@ -17,6 +17,11 @@ export class BrigadeTypeORMRepository implements BrigadeRepository {
     private brigadeMapper: BrigadeMapper
   ) {}
 
+  async findAll(): Promise<BrigadeResponse[]> {
+    const brigadeEntityList = await this.brigadeRepository.find();
+    return this.brigadeMapper.fromEntities(brigadeEntityList);
+  }
+
   async find(id: string): Promise<BrigadeResponse> {
     const brigadeEntity = await this.brigadeRepository.findOneBy({ id, isActive: true });
 

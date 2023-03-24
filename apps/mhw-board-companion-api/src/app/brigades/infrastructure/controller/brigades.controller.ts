@@ -21,6 +21,7 @@ import { DeleteBrigadeByIdCommand } from '../../application/DeleteBrigadeById/De
 
 import { GetCampaignListByBrigadeIdCommand } from '../../../campaigns/application/GetCampaignListByBrigadeId/GetCampaignListByBrigadeId.command';
 import { ApiTags } from '@nestjs/swagger';
+import { GetAllBrigadesCommad } from '../../application/GetAllBrigades/GetAllBrigades.commnad';
 
 @ApiTags('Brigades')
 @Controller('brigades')
@@ -33,6 +34,12 @@ export class BrigadesController {
     return this.commandBus.execute(new CreateBrigadeCommand(request.name));
   }
 
+  @Get()
+  @HttpCode(HttpStatus.OK)
+  findAll() {
+    return this.commandBus.execute(new GetAllBrigadesCommad());
+  }
+
   @Get(':id')
   @HttpCode(HttpStatus.OK)
   findOne(@Param('id', ParseUUIDPipe) id: string) {
@@ -42,7 +49,9 @@ export class BrigadesController {
   @Get(':brigadeId/campaigns')
   @HttpCode(HttpStatus.OK)
   findAllCampaigns(@Param('brigadeId', ParseUUIDPipe) brigadeId: string) {
-    return this.commandBus.execute(new GetCampaignListByBrigadeIdCommand(brigadeId));
+    return this.commandBus.execute(
+      new GetCampaignListByBrigadeIdCommand(brigadeId)
+    );
   }
 
   @Patch(':id')

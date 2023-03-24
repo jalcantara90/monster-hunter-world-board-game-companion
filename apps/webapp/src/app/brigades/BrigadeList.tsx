@@ -1,11 +1,24 @@
-import { Button } from '@mhwboard-companion/design-system';
+import { BrigadeCard } from '@mhwboard-companion/design-system';
+import { useBrigadeList } from './application/useBrigadeList';
 
 import styles from './BrigadeList.module.scss';
 
 export function BrigadeList() {
+  const { brigadeList, isLoading } = useBrigadeList();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div className={styles.BrigadeText}>
-      BRIGADE LIST <Button>Button</Button>
-    </div>
+    <section className={styles.brigadeList}>
+      {brigadeList?.map((brigade) => (
+        <BrigadeCard
+          key={brigade.id}
+          name={brigade.name}
+          image="assets/mhw-logo.jpeg"
+        />
+      ))}
+    </section>
   );
 }

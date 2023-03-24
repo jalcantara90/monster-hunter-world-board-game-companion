@@ -3,6 +3,7 @@ import { UpdateBrigadeRequest } from "../requests/UpdateBrigadeRequest";
 import { BrigadeResponse } from "../responses/BrigadeResponse";
 
 export interface BrigadeRepository {
+  findAll(): Promise<BrigadeResponse[]>;
   find(id: string): Promise<BrigadeResponse>;
   create(brigade: CreateBrigadeRequest): Promise<BrigadeResponse>;
   update(id: string, brigade: UpdateBrigadeRequest): Promise<BrigadeResponse>;
