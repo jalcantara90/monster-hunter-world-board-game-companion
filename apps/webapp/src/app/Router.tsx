@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ArmorList } from './armors/ArmorList';
-import { BrigadeList } from './brigades/BrigadeList';
+import { BrigadeFactory } from './brigades/BrigadeFactory';
 import { CampaignList } from './campaigns/CampaignList';
 import { Layout } from './core/Layout';
 import { HunterList } from './hunters/HunterList';
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <BrigadeList />,
+        element: BrigadeFactory.create(),
       },
       {
         path: '/campaigns',

@@ -9,12 +9,14 @@ import { CreateBrigadeHandler } from './application/CreateBrigade/CreateBrigade.
 import { GetBrigadeByIdHandler } from './application/GetBrigadeById/GetBrigadeById.handler';
 import { DeleteBrigadeByIdHandler } from './application/DeleteBrigadeById/DeleteBrigadeById.handler';
 import { UpdateBrigadeByIdHandler } from './application/UpdateBrigadeById/UpdateBrigadeById.handler';
+import { GetAllBrigadesHandler } from './application/GetAllBrigades/GetAllBrigades.handler';
 
 const commandHandlers = [
   CreateBrigadeHandler,
   GetBrigadeByIdHandler,
   UpdateBrigadeByIdHandler,
   DeleteBrigadeByIdHandler,
+  GetAllBrigadesHandler
 ];
 
 @Module({

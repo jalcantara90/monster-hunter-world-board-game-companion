@@ -15,6 +15,8 @@ async function bootstrap() {
   app.setGlobalPrefix(globalPrefix);
   app.useGlobalPipes(new ValidationPipe());
 
+  app.enableCors();
+
   const config = new DocumentBuilder()
     .setTitle('MHW companion API')
     .setDescription('API for Monster Hunter World board game')

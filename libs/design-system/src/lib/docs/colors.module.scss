@@ -1,14 +1,14 @@
-@use "../settings/colors";
+@use '../settings/colors';
 
 /* stylelint-disable */
 :export {
   brand: colors.$brand;
 
-  productAlt1:  colors.$product-alt1;
+  productAlt1: colors.$product-alt1;
   productAlt2: colors.$product-alt2;
   productAlt3: colors.$product-alt3;
   productAlt4: colors.$product-alt4;
-  
+
   bgPrimary: colors.$bg-primary;
   bgDarkTheme: colors.$bg-darkTheme;
   bgSelection: colors.$bg-selection;
@@ -40,4 +40,5 @@
 
   white: colors.$white;
   whiteHover: colors.$white-hover;
+  black: colors.$black;
 }

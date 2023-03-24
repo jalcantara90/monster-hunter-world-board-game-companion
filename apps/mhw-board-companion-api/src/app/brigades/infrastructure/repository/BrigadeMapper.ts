@@ -7,4 +7,8 @@ export class BrigadeMapper {
   fromEntity(brigade: BrigadeEntity): BrigadeResponse {
     return new BrigadeResponse(brigade.id, brigade.name);
   }
+
+  fromEntities(brigadeList: BrigadeEntity[]) {
+    return brigadeList.map((brigade) => this.fromEntity(brigade));
+  }
 }
