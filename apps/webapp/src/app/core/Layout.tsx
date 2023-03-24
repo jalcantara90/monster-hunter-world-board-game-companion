@@ -1,11 +1,7 @@
-import { ReactNode } from 'react';
 import { SideMenu } from '@mhwboard-companion/design-system';
 
 import styles from './Layout.module.scss';
-
-type LayoutProps = {
-  children: ReactNode | ReactNode[];
-};
+import { Outlet } from 'react-router-dom';
 
 const routes = [
   {
@@ -18,7 +14,7 @@ const routes = [
   },
   {
     name: 'Brigades',
-    route: '/brigades',
+    route: '/',
   },
   {
     name: 'Armors',
@@ -38,11 +34,12 @@ const routes = [
   },
 ];
 
-export function Layout({ children }: LayoutProps) {
-  console.log(styles.layout);
+export function Layout() {
   return (
     <SideMenu items={routes}>
-      <main className={styles.layout}>{children}</main>
+      <main className={styles.layout}>
+        <Outlet />
+      </main>
     </SideMenu>
   );
 }
