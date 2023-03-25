@@ -42,4 +42,10 @@ export class CampaignHttpRepository implements CampaignRepository {
 
     await response.json();
   }
+
+  async findAllHunters(campaignId: string): Promise<any[]> {
+    const response = await fetch(`${this.baseUrl}/${campaignId}/hunters`);
+
+    return await response.json();
+  }
 }

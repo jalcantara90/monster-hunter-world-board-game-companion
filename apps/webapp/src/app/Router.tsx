@@ -1,9 +1,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ArmorList } from './armors/ArmorList';
-import { BrigadeDetail } from './brigades/BrigadeDetail';
 import { BrigadeDetailFactory } from './brigades/BrigadeDetail/BrigadeDetailFactory';
 import { BrigadeFactory } from './brigades/BrigadeFactory';
-import { CampaignList } from './campaigns/CampaignList';
+import { CampaignDetailFactory } from './campaigns/CampaignDetailFactory';
 import { Layout } from './core/Layout';
 import { HunterList } from './hunters/HunterList';
 import { InventoryList } from './inventory/InventoryList';
@@ -24,8 +23,8 @@ const router = createBrowserRouter([
         element: BrigadeDetailFactory.create()
       },
       {
-        path: '/campaigns',
-        element: <CampaignList />,
+        path: '/campaigns/:campaignId',
+        element: CampaignDetailFactory.create(),
       },
       {
         path: '/hunters',
