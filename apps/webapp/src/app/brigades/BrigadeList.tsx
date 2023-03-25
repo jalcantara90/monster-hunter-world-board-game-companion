@@ -1,13 +1,18 @@
-import { BrigadeCard, BrigadeCardSkeletonList, Button, SectionTitle } from '@mhwboard-companion/design-system';
+import { BrigadeCard, BrigadeCardSkeletonList, Button, ListContainer, SectionTitle } from '@mhwboard-companion/design-system';
 import { useBrigadeList } from './application/useBrigadeList';
 
 import styles from './BrigadeList.module.scss';
+import { BrigadeRepository } from './domain/BrigadeRepository';
 
-export function BrigadeList() {
-  const { brigadeList, isLoading } = useBrigadeList();
+type BrigadeListProps = {
+  brigadeRepository: BrigadeRepository;
+}
+
+export function BrigadeList({ brigadeRepository }: BrigadeListProps) {
+  const { brigadeList, isLoading } = useBrigadeList(brigadeRepository);
 
   return (
-    <div className={styles.brigadeList__container}>
+    <ListContainer>
       <SectionTitle title="Brigades"/>
       <section className={styles.brigadeList__actions}>
         <Button>Create Brigade</Button>
@@ -26,6 +31,6 @@ export function BrigadeList() {
           ))
         }
       </section>
-    </div>
+    </ListContainer>
   );
 }

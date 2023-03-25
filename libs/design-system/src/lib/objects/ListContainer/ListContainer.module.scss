@@ -1,0 +1,7 @@
+@use '../../settings/spacing';
+
+.list__container {
+  display: flex;
+  flex-direction: column;
+  gap: spacing.$xs;
+}

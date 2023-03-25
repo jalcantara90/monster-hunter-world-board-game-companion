@@ -5,16 +5,18 @@
 
 .btn {
   display: flex;
-
-  background: url(../../assets/icon_corn_white_top_d.svg) no-repeat 2% 10%,
-    url(../../assets/icon_corn_white_bottom_d.svg) no-repeat 98% 90%;
-
-  background-color: #070605;
+  background-color: colors.$cta-primary;
   border: 1px solid #565353;
-  padding: spacing.$tiny spacing.$md;
+  padding: spacing.$tiny spacing.$sm;
   gap: spacing.$tiny;
   color: colors.$white;
   background-size: spacing.$tiny;
   font: typography.$b300-bold;
   align-items: center;
+  border-radius: border.$radius-default;
+  transition: border .4s;
+
+  &:hover {
+    border: 1px solid colors.$cta-primary-hover;
+  }
 }

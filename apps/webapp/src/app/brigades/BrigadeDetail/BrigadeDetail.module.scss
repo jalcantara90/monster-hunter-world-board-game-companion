@@ -2,8 +2,12 @@
 @use 'settings/spacing';
 
 .campaignList {
-  margin-top: spacing.$xs;
   display: grid;
   grid-template-columns: 1fr;
   gap: spacing.$xs;
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
 }

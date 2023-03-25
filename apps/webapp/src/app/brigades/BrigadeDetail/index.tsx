@@ -1,16 +1,33 @@
 import { useParams } from 'react-router-dom';
-import { BrigadeCard, BrigadeCardSkeletonList, SectionTitle } from '@mhwboard-companion/design-system';
+import {
+  BrigadeCard,
+  BrigadeCardSkeletonList,
+  Button,
+  ListContainer,
+  SectionTitle,
+} from '@mhwboard-companion/design-system';
 import { useBrigadeDetails } from '../application/useBrigadeDetails';
 
 import styles from './BrigadeDetail.module.scss';
+import { BrigadeRepository } from '../domain/BrigadeRepository';
 
-export function BrigadeDetail() {
+type BrigadeDetailProps = {
+  brigadeRepository: BrigadeRepository;
+};
+
+export function BrigadeDetail({ brigadeRepository }: BrigadeDetailProps) {
   const { brigadeId } = useParams();
-  const { campaignList, isLoading } = useBrigadeDetails(brigadeId);
+  const { campaignList, isLoading } = useBrigadeDetails(
+    brigadeRepository,
+    brigadeId
+  );
 
   return (
-    <>
+    <ListContainer>
       <SectionTitle title="Campaigns" />
+      <section className={styles.campaignList__actions}>
+        <Button>Create campaign</Button>
+      </section>
       <section className={styles.campaignList}>
         {isLoading ? (
           <BrigadeCardSkeletonList quantity={5} />
@@ -25,6 +42,6 @@ export function BrigadeDetail() {
           ))
         )}
       </section>
-    </>
+    </ListContainer>
   );
 }
