@@ -2,13 +2,16 @@ import { useSideMenuContext } from '../../molecules/SideMenu';
 import { classNames } from '../../shared/classNames';
 import styles from './BurgerButton.module.scss';
 
-
-export function BurgerButton() {
+type BurgerButtonProps = {
+  className?: string;
+}
+export function BurgerButton({ className }: BurgerButtonProps) {
   const { active, toggleActive } = useSideMenuContext();
 
   const burgerButtonClassName = classNames(
     styles['burgerButton'],
-    active ? styles['burgerButton--active'] : ''
+    active ? styles['burgerButton--active'] : '',
+    className
   );
 
   return (

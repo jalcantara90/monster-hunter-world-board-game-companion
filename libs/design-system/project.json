@@ -12,6 +12,7 @@
         "lintFilePatterns": ["libs/design-system/**/*.{ts,tsx,js,jsx}"]
       }
     },
+
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
@@ -31,7 +32,8 @@
       "options": {
         "port": 4400,
         "configDir": "libs/design-system/.storybook",
-        "uiFramework": "@storybook/react"
+        "uiFramework": "@storybook/react",
+        "staticDir": ["libs/design-system/src/lib/assets"]
       },
       "configurations": {
         "ci": {

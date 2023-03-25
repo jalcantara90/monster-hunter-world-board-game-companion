@@ -1,0 +1,13 @@
+@use '../../settings/spacing';
+
+.header {
+  background-image: url(../../assets/bg_blown.jpg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: spacing.$xxs;
+
+  &__image {
+    width: 100px;
+  }
+}

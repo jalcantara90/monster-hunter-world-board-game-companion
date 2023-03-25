@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
 import { BurgerButton } from '../../atoms/BurgerButton';
+import { Header } from '../../atoms/Header';
 import { LeftMenu } from '../../atoms/LeftMenu';
 
 import styles from './SideMenu.module.scss';
@@ -18,8 +19,8 @@ export function SideMenu({ items, children }: SideMenuProps) {
   return (
     <SideMenuContextProvider>
       <div className={styles.topBar}>
-        <BurgerButton />
-        <h1 className={styles.topBar__title}>MHWB Companion</h1>
+        <Header />
+        <BurgerButton className={styles.floatingButton} />
       </div>
 
       <section className={styles.content}>

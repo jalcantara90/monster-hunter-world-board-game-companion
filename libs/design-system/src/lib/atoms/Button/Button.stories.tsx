@@ -10,22 +10,5 @@ const Template: Story<ButtonProps> = (args) => (
   <Button {...args}>Suscribirse</Button>
 );
 
-export const Primary = Template.bind({});
-Primary.args = {
-  mode: 'primary',
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-  mode: 'secondary',
-};
-
-export const Tertiary = Template.bind({});
-Tertiary.args = {
-  mode: 'tertiary',
-};
-
-export const Inverted = Template.bind({});
-Inverted.args = {
-  mode: 'inverted',
-};
+export const button = Template.bind({});
+button.args = {};

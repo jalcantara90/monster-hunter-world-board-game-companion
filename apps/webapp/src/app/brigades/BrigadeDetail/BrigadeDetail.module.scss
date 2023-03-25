@@ -1,0 +1,13 @@
+@use 'settings/colors';
+@use 'settings/spacing';
+
+.campaignList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: spacing.$xs;
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

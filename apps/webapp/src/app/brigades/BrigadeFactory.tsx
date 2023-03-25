@@ -1,12 +1,10 @@
 import { BrigadeList } from './BrigadeList';
-import { BrigadeContextProvider } from './BrigadeContextProvider';
+import { BrigadeHttpRepository } from './infrastructure/BrigadeHttpRepository';
 
 export class BrigadeFactory {
   static create() {
-    return (
-      <BrigadeContextProvider>
-        <BrigadeList />
-      </BrigadeContextProvider>
-    );
+    const repository = new BrigadeHttpRepository();
+
+    return <BrigadeList brigadeRepository={repository} />;
   }
 }

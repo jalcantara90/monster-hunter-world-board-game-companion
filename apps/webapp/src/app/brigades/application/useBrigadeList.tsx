@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useBrigadeContext } from '../BrigadeContextProvider';
 import { Brigade } from '../domain/Brigade';
+import { BrigadeRepository } from '../domain/BrigadeRepository';
 
-export function useBrigadeList() {
-  const { brigadeRepository } = useBrigadeContext();
+export function useBrigadeList(brigadeRepository: BrigadeRepository) {
   const [brigadeList, setBrigadeList] = useState<Brigade[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 

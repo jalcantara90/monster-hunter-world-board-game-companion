@@ -4,7 +4,7 @@
 @use '../../tools/typography' as mixins;
 
 .leftMenu {
-  background-color: colors.$bg-primary;
+  background-color: colors.$bg;
   color: colors.$white;
   padding: spacing.$md;
   border-top-right-radius: border.$radius-xl;
