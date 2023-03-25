@@ -3,26 +3,56 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import styles from './BrigadeCard.module.scss';
 
 export type BrigadeCardProps = {
-  image: string;
   name: string;
+  index: number;
+  route: string;
 };
 
-export function BrigadeCard({ name, image }: BrigadeCardProps) {
+function formatIndex(index: number) {
+  return ('0' + (index + 1)).slice(-2);
+}
+
+export function BrigadeCard({ name, index, route }: BrigadeCardProps) {
+  return (
+    <a href={route}>
+      <article className={styles.brigadeCard}>
+        {formatIndex(index)}
+        <div className={styles.brigadeCard__name}>{name}</div>
+      </article>
+    </a>
+  );
+}
+
+export type BrigadeCardSkeletonProps = {
+  index: number;
+};
+
+export function BrigadeCardSkeleton({ index = 1 }: BrigadeCardSkeletonProps) {
   return (
     <article className={styles.brigadeCard}>
-      <img className={styles.brigadeCard__image} src={image} alt="" />
-      {name}
+      {formatIndex(index)}
+      <Skeleton
+        baseColor="#565353"
+        highlightColor="#fff"
+        height={'1rem'}
+        width={'100px'}
+      />
     </article>
   );
 }
 
-export function BrigadeCardSkeleton() {
+type BrigadeCardSkeletonListProps = {
+  quantity: number;
+};
+
+export function BrigadeCardSkeletonList({
+  quantity,
+}: BrigadeCardSkeletonListProps) {
   return (
-    <SkeletonTheme baseColor="#1A2233" highlightColor="#535966">
-      <article className={styles.brigadeCard}>
-        <Skeleton baseColor="#3CFF64" highlightColor="#D1FFDA" width={'100px'} height={'100px'}/>
-        <Skeleton baseColor="#3CFF64" highlightColor="#D1FFDA" height={'1.5rem'} />
-      </article>
-    </SkeletonTheme>
+    <>
+      {[...(new Array(quantity) as [])].map((_, i) => (
+        <BrigadeCardSkeleton key={i} index={i} />
+      ))}
+    </>
   );
 }

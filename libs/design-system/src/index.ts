@@ -1,6 +1,7 @@
 // Atoms
 export { Button } from './lib/atoms/Button';
-export { BrigadeCard } from './lib/atoms/BrigadeCard';
+export { BrigadeCard, BrigadeCardSkeletonList } from './lib/atoms/BrigadeCard';
+export { SectionTitle } from './lib/atoms/SectionTitle';
 
 // Molecules
 export { SideMenu } from './lib/molecules/SideMenu';

@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext } from 'react';
+import { Campaign } from '../campaigns/domain/Campaign';
 import { Brigade } from './domain/Brigade';
 import { BrigadeRepository } from './domain/BrigadeRepository';
 import { BrigadeHttpRepository } from './infrastructure/BrigadeHttpRepository';
@@ -13,7 +14,7 @@ class BrigadeRepositoryStub implements BrigadeRepository {
       'You mast to wrap this component with BrigadeContextProvider'
     );
   }
-  find(): Promise<Brigade[]> {
+  find(): Promise<Brigade> {
     throw new Error(
       'You mast to wrap this component with BrigadeContextProvider'
     );
@@ -29,6 +30,11 @@ class BrigadeRepositoryStub implements BrigadeRepository {
     );
   }
   delete(): Promise<void> {
+    throw new Error(
+      'You mast to wrap this component with BrigadeContextProvider'
+    );
+  }
+  findAllCampaigns(): Promise<Campaign[]> {
     throw new Error(
       'You mast to wrap this component with BrigadeContextProvider'
     );

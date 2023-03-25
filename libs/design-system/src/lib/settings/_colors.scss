@@ -6,12 +6,16 @@ $_primary-grayLighter: #efefef;
 $_primary-white: #fff;
 $_primary-black: #000000;
 $_secondary-violet: #7026f4;
-$_secondary-yellow: #fef878;
+
 $_secondary-pink: #e0a4bf;
 $_hover-green: rgb(60 255 100 / 70%);
 $_hover-blue: rgb(26 34 51 / 75%);
 $_hover-white: rgb(255 255 255 / 70%);
 $_error: #f83d32;
+
+$_primary-brown: #b99e90;
+$_secondary-brown: #27201d;
+$_secondary-yellow: #cfee1d;
 
 $brand: $_primary-green;
 
@@ -20,10 +24,10 @@ $cta-primary-hover: $_hover-green;
 $cta-secondary: $_primary-blue;
 $cta-secondary-hover: $_hover-blue;
 
-$bg-primary: $_primary-blue;
+$bg-primary: $_primary-brown;
 $bg-darkTheme: $_primary-blue;
 $bg-selection: $_secondary-yellow;
-$bg: $_primary-grayLighter;
+$bg: $_secondary-brown;
 
 $text-primary: $_primary-blue;
 $text-secondary: $_primary-gray;

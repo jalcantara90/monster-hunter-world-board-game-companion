@@ -3,6 +3,9 @@
 @use 'generic/fonts';
 @use 'generic/reset';
 
+@use 'settings/colors';
+
 body {
   margin: 0;
+  background-color: colors.$bg-primary;
 }

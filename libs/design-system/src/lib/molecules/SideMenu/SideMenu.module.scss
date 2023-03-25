@@ -8,13 +8,11 @@
 }
 
 .topBar {
-  display: grid;
-  grid-template-columns: 3rem 1fr;
-  padding: spacing.$xs;
-  justify-items: center;
+  position: relative;
+}
 
-  &__title {
-    @include mixins.h100-regular;
-    font-family: typography.$font-family;
-  }
+.floatingButton {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
 }

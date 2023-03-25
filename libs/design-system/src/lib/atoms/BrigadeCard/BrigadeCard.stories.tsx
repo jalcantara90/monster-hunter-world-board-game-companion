@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react';
-import { BrigadeCard, BrigadeCardProps, BrigadeCardSkeleton } from './index';
+import { BrigadeCard, BrigadeCardProps, BrigadeCardSkeleton, BrigadeCardSkeletonProps } from './index';
 
 export default {
   title: 'Atoms/BrigadeCard',
@@ -7,7 +7,7 @@ export default {
 } as Meta;
 
 const Template: Story<BrigadeCardProps> = (args) => (
-  <div style={{ width: '300px' }}>
+  <div style={{ width: '160px' }}>
     <BrigadeCard {...args} />
   </div>
 );
@@ -15,16 +15,18 @@ const Template: Story<BrigadeCardProps> = (args) => (
 export const brigadeCard = Template.bind({});
 brigadeCard.args = {
   name: 'CancelaPlanes',
-  image:
-    'https://img.game8.co/3259862/fa21c24398efb6eb457c23789bef5b6d.jpeg/thumb',
+  index: 1,
+  route: ''
 };
 
 
-const TemplateSkeleton: Story = () => (
-  <div style={{ width: '300px' }}>
-    <BrigadeCardSkeleton />
+const TemplateSkeleton: Story<BrigadeCardSkeletonProps> = (args) => (
+  <div style={{ width: '160px' }}>
+    <BrigadeCardSkeleton {...args} />
   </div>
 );
 
-export const brigadeCardSkeleton = TemplateSkeleton.bind({});
+export const brigadeCardSkeleton = TemplateSkeleton.bind({
+  index: 6
+});
 

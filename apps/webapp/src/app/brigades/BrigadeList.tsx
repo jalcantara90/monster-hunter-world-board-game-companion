@@ -1,4 +1,4 @@
-import { BrigadeCard } from '@mhwboard-companion/design-system';
+import { BrigadeCard, BrigadeCardSkeletonList, Button, SectionTitle } from '@mhwboard-companion/design-system';
 import { useBrigadeList } from './application/useBrigadeList';
 
 import styles from './BrigadeList.module.scss';
@@ -6,19 +6,26 @@ import styles from './BrigadeList.module.scss';
 export function BrigadeList() {
   const { brigadeList, isLoading } = useBrigadeList();
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   return (
-    <section className={styles.brigadeList}>
-      {brigadeList?.map((brigade) => (
-        <BrigadeCard
-          key={brigade.id}
-          name={brigade.name}
-          image="assets/mhw-logo.jpeg"
-        />
-      ))}
-    </section>
+    <div className={styles.brigadeList__container}>
+      <SectionTitle title="Brigades"/>
+      <section className={styles.brigadeList__actions}>
+        <Button>Create Brigade</Button>
+      </section>
+      <section className={styles.brigadeList}>
+        {
+          isLoading ?
+          <BrigadeCardSkeletonList quantity={5} /> :
+          brigadeList?.map((brigade, index) => (
+            <BrigadeCard
+              route={`brigades/${brigade.id}`}
+              index={index}
+              key={brigade.id}
+              name={brigade.name}
+            />
+          ))
+        }
+      </section>
+    </div>
   );
 }

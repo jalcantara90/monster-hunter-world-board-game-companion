@@ -1,5 +1,6 @@
 import { BrigadeRepository } from '../domain/BrigadeRepository';
 import { CreateBrigadeRequest, Brigade } from '../domain/Brigade';
+import { Campaign } from '../../campaigns/domain/Campaign';
 
 export class BrigadeHttpRepository implements BrigadeRepository {
   private readonly baseUrl = 'http://localhost:3099/api/brigades';
@@ -29,7 +30,7 @@ export class BrigadeHttpRepository implements BrigadeRepository {
     return await response.json();
   }
 
-  async find(brigadeId: string): Promise<Brigade[]> {
+  async find(brigadeId: string): Promise<Brigade> {
     const response = await fetch(`${this.baseUrl}/${brigadeId}`);
 
     return await response.json();
@@ -41,5 +42,11 @@ export class BrigadeHttpRepository implements BrigadeRepository {
     });
 
     await response.json();
+  }
+
+  async findAllCampaigns(brigadeId: string): Promise<Campaign[]> {
+    const response = await fetch(`${this.baseUrl}/${brigadeId}/campaigns`);
+
+    return await response.json();
   }
 }

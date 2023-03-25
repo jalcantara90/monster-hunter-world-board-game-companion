@@ -1,5 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ArmorList } from './armors/ArmorList';
+import { BrigadeDetail } from './brigades/BrigadeDetail';
+import { BrigadeDetailFactory } from './brigades/BrigadeDetail/BrigadeDetailFactory';
 import { BrigadeFactory } from './brigades/BrigadeFactory';
 import { CampaignList } from './campaigns/CampaignList';
 import { Layout } from './core/Layout';
@@ -16,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: BrigadeFactory.create(),
+      },
+      {
+        path: '/brigades/:brigadeId',
+        element: BrigadeDetailFactory.create()
       },
       {
         path: '/campaigns',
