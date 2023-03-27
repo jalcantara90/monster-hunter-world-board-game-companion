@@ -1,11 +1,10 @@
-import styles from './Arrow.module.scss';
+import styles from './Icon.module.scss';
 
 type ArrowIconProps = {
-  size?: 'xs' | 'sm' | 'lg'
-}
+  size?: 'xs' | 'sm' | 'lg';
+};
 
-
-export function ArrowIcon({ size = 'sm' } : ArrowIconProps) {
+export function ArrowIcon({ size = 'sm' }: ArrowIconProps) {
   return (
     <svg
       version="1.1"
@@ -16,7 +15,7 @@ export function ArrowIcon({ size = 'sm' } : ArrowIconProps) {
       y="0px"
       viewBox="0 0 57.1 42.8"
       xmlSpace="preserve"
-      className={styles[`arrow--${size}`]}
+      className={styles[`icon--${size}`]}
     >
       <g id="arrow_icon_1_">
         <polygon
