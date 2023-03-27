@@ -27,7 +27,10 @@ export class InventoryTypeORMRepository implements InventoryRepository {
     private inventoryMapper: InventoryMapper
   ) {}
 
-  updateInventoryItem(id: string, { quantity }: UpdateInventoryMaterialRequest) {
+  updateInventoryItem(
+    id: string,
+    { quantity }: UpdateInventoryMaterialRequest
+  ) {
     return this.inventoryItemRepository.update(id, { quantity });
   }
 
@@ -130,8 +133,10 @@ export class InventoryTypeORMRepository implements InventoryRepository {
   }
 
   async create(inventory: CreateInventoryRequest): Promise<InventorieResponse> {
-    const newInventory = this.inventoryRepository.create(inventory);
-    const inventoryEntity = await this.inventoryRepository.save(newInventory);
+    const inventoryEntity = await this.inventoryRepository.save({
+      hunter: inventory.hunterId,
+      campaign: inventory.campaignId,
+    });
 
     return this.inventoryMapper.fromEntity(inventoryEntity);
   }

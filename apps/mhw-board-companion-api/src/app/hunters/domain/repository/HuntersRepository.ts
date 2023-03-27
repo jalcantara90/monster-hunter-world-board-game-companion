@@ -12,4 +12,4 @@ export interface HunterRepository {
   delete(id: string): Promise<void>;
 }
 
-export const HUNTER_REPOSITORY = 'BRIGADE_REPOSITORY';
+export const HUNTER_REPOSITORY = 'HUNTER_REPOSITORY';

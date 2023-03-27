@@ -5,7 +5,7 @@ export function useCampaignDetail(
   campaignRepository: CampaignRepository,
   campaignId?: string
 ) {
-  const [hunterList, setCampaignList] = useState<any[]>([]);
+  const [hunterList, setCampaignList] = useState<unknown[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const findAllHunters = useCallback(

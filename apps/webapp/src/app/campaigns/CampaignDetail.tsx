@@ -13,6 +13,10 @@ export function CampaignDetail({ campaignRepository }: CampaignDetailProps) {
     campaignId
   );
 
+  if(isLoading) {
+    return <div>Loading...</div>
+  }
+
   console.log(hunterList);
 
   return <div>Campaign CampaignDetail</div>;

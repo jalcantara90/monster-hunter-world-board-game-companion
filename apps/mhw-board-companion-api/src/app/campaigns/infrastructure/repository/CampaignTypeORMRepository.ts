@@ -8,7 +8,6 @@ import { CampaignRepository } from '../../domain/repository/CampaignRepository';
 import { CampaignResponse } from '../../domain/responses/CampaignResponse';
 import { CreateCampaignRequest } from '../../domain/requests/CreateCampaignRequest';
 import { UpdateCampaignRequest } from '../../domain/requests/UpdateCampaignRequest';
-import { HunterEntity } from '../../../hunters/infrastructure/entity/Hunter.entity';
 
 @Injectable()
 export class CampaignTypeORMRepository implements CampaignRepository {
@@ -72,18 +71,5 @@ export class CampaignTypeORMRepository implements CampaignRepository {
     }
 
     await this.campaignRepository.update(id, { isActive: false });
-  }
-
-  async AddCampaignHunters(
-    campaignId: string,
-    hunters: HunterEntity[]
-  ): Promise<void> {
-    const campaignEntity = await this.campaignRepository.findOne({
-      where: { id: campaignId },
-      relations: { hunters: true },
-    });
-
-    hunters.forEach(hunter => campaignEntity.hunters.push(hunter));
-    await this.campaignRepository.save(campaignEntity);
   }
 }
