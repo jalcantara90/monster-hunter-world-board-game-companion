@@ -1,24 +1,21 @@
+import { UpdateResult } from 'typeorm';
 import { CreateInventoryRequest } from '../requests/CreateInventorieRequest';
-import { UpdateInventorieRequest } from '../requests/UpdateInventorieRequest';
 import { GetInventorieQuery } from '../requests/GetInventorieQuery';
 import { InventorieResponse } from '../responses/InventorieResponse';
 import { AddMaterialToInventoryRequest } from '../requests/AddMaterialToInventoryRequest';
 import { AddArmorRequest } from '../requests/AddArmorRequest';
 import { AddWeaponRequest } from '../requests/AddWeaponRequest';
 import { UpdateInventoryMaterialRequest } from '../requests/UpdateInventoryMaterialRequest';
+import { InventoryItemsEntity } from '../../infrastructure/entity/Inventory.entity';
 
 export interface InventoryRepository {
   find(id: string): Promise<InventorieResponse>;
   findAll(query?: Partial<GetInventorieQuery>): Promise<InventorieResponse[]>;
   create(inventory: CreateInventoryRequest): Promise<InventorieResponse>;
-  update(
-    id: string,
-    inventory: UpdateInventorieRequest
-  ): Promise<InventorieResponse>;
   updateInventoryItem(
     id: string,
     inventory: UpdateInventoryMaterialRequest
-  ): Promise<any>;
+  ): Promise<UpdateResult>;
   AddMaterial(
     inventoryId: string,
     request: AddMaterialToInventoryRequest
@@ -32,7 +29,7 @@ export interface InventoryRepository {
     request: AddWeaponRequest
   ): Promise<void>;
   delete(id: string): Promise<void>;
-  findAllMaterials(inventoryId: string): Promise<any[]>;
+  findAllMaterials(inventoryId: string): Promise<InventoryItemsEntity[]>;
 }
 
 export const INVENTORY_REPOSITORY = 'INVENTORY_REPOSITORY';

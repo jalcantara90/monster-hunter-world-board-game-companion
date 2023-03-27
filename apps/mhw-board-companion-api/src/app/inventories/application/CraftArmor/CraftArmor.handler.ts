@@ -4,6 +4,8 @@ import {
   ArmorCraftingRepository,
   ARMOR_CRAFTING_REPOSITORY,
 } from '../../../armors/domain/repository/ArmorCraftingRepository';
+import { ArmorEntity } from '../../../armors/infrastructure/entity/Armor.entity';
+import { MaterialEntity } from '../../../materials/infrastructure/entity/Material.entity';
 
 import {
   InventoryRepository,
@@ -30,12 +32,12 @@ export class CraftArmorHandler implements ICommandHandler<CraftArmorCommand> {
       inventoryId
     );
 
-    if (inventoryItems.find((item) => item.armor?.id === armorId)) {
+    if (inventoryItems.find((item) => (item.armor as ArmorEntity)?.id === armorId)) {
       throw new HttpException(ARMOR_ALREADY_CRAFTED, HttpStatus.CONFLICT);
     }
 
     const inventoryMaterials = inventoryItems.filter(
-      (item) => item.material && item.material.id
+      (item) => item.material && (item.material as MaterialEntity).id
     );
 
     const armorNeededMaterials = await this.armorCraftingRepository.find(
@@ -45,7 +47,7 @@ export class CraftArmorHandler implements ICommandHandler<CraftArmorCommand> {
     const inventoryMaterialListToSave = armorNeededMaterials.map(
       ({ material, quantity }) => {
         const inventoryMaterial = inventoryMaterials.find(
-          (inventory) => inventory.material.id === material.id
+          (inventory) => (inventory.material as MaterialEntity).id === material.id
         );
         if (!inventoryMaterial || inventoryMaterial.quantity < quantity) {
           throw new HttpException(NOT_ENOUGH_MATERIALS, HttpStatus.CONFLICT);

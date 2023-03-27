@@ -25,16 +25,16 @@ export class InventoryItemsEntity extends BaseEntity {
 
   @ManyToOne(() => MaterialEntity, (material) => material.id)
   @JoinColumn({ name: 'materialId' })
-  material: string;
+  material: string | MaterialEntity;
 
   @Column({ type: 'int', default: 1 })
   quantity: number;
 
   @ManyToOne(() => ArmorEntity, (armor) => armor.id)
   @JoinColumn({ name: 'armorId' })
-  armor: string;
+  armor: string | ArmorEntity;
 
   @ManyToOne(() => WeaponEntity, (weapon) => weapon.id)
   @JoinColumn({ name: 'weaponId' })
-  weapon: string;
+  weapon: string | WeaponEntity;
 }

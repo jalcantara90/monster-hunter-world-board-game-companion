@@ -10,7 +10,6 @@ import {
 import { InventoryRepository } from '../../domain/repository/InventoryRepository';
 import { InventorieResponse } from '../../domain/responses/InventorieResponse';
 import { CreateInventoryRequest } from '../../domain/requests/CreateInventorieRequest';
-import { UpdateInventorieRequest } from '../../domain/requests/UpdateInventorieRequest';
 import { GetInventorieQuery } from '../../domain/requests/GetInventorieQuery';
 import { AddMaterialToInventoryRequest } from '../../domain/requests/AddMaterialToInventoryRequest';
 import { AddArmorRequest } from '../../domain/requests/AddArmorRequest';
@@ -136,19 +135,6 @@ export class InventoryTypeORMRepository implements InventoryRepository {
     const inventoryEntity = await this.inventoryRepository.save({
       hunter: inventory.hunterId,
       campaign: inventory.campaignId,
-    });
-
-    return this.inventoryMapper.fromEntity(inventoryEntity);
-  }
-
-  async update(
-    id: string,
-    inventory: UpdateInventorieRequest
-  ): Promise<InventorieResponse> {
-    await this.inventoryRepository.update(id, { isActive: true });
-    const inventoryEntity = await this.inventoryRepository.findOneBy({
-      id,
-      isActive: true,
     });
 
     return this.inventoryMapper.fromEntity(inventoryEntity);

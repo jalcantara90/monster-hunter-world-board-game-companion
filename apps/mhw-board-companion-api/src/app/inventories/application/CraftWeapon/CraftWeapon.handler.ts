@@ -1,5 +1,6 @@
 import { HttpException, HttpStatus, Inject } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
+import { MaterialEntity } from '../../../materials/infrastructure/entity/Material.entity';
 import {
   WeaponCraftingRepository,
   WEAPON_CRAFTING_REPOSITORY,
@@ -9,11 +10,13 @@ import {
   WEAPON_REPOSITORY,
 } from '../../../weapons/domain/repository/WeaponRepository';
 import { WeaponResponse } from '../../../weapons/domain/responses/WeaponResponse';
+import { WeaponEntity } from '../../../weapons/infrastructure/entity/Weapon.entity';
 
 import {
   InventoryRepository,
   INVENTORY_REPOSITORY,
 } from '../../domain/repository/InventoryRepository';
+import { InventoryItemsEntity } from '../../infrastructure/entity/Inventory.entity';
 import { CraftWeaponCommand } from './CraftWeapon.command';
 
 const WEAPON_ALREADY_CRAFTED = 'This weapon is already crafted';
@@ -41,7 +44,7 @@ export class CraftWeaponHandler implements ICommandHandler<CraftWeaponCommand> {
     await this.checkAllCraftingRequirements(weaponId, inventoryItems);
 
     const inventoryMaterials = inventoryItems.filter(
-      (item) => item.material && item.material.id
+      (item) => item.material && (item.material as MaterialEntity).id
     );
 
     const weaponNeededMaterials = await this.weaponCraftingRepository.find(
@@ -51,7 +54,7 @@ export class CraftWeaponHandler implements ICommandHandler<CraftWeaponCommand> {
     const inventoryMaterialListToSave = weaponNeededMaterials.map(
       ({ material, quantity }) => {
         const inventoryMaterial = inventoryMaterials.find(
-          (inventory) => inventory.material.id === material.id
+          (inventory) => (inventory.material as MaterialEntity).id === material.id
         );
         if (!inventoryMaterial || inventoryMaterial.quantity < quantity) {
           throw new HttpException(NOT_ENOUGH_MATERIALS, HttpStatus.CONFLICT);
@@ -76,8 +79,8 @@ export class CraftWeaponHandler implements ICommandHandler<CraftWeaponCommand> {
     return armorCrafted;
   }
 
-  async checkAllCraftingRequirements(weaponId: string, inventoryItems: any[]) {
-    if (inventoryItems.find((item) => item.weapon?.id === weaponId)) {
+  async checkAllCraftingRequirements(weaponId: string, inventoryItems: InventoryItemsEntity[]) {
+    if (inventoryItems.find((item) => (item.weapon as WeaponEntity)?.id === weaponId)) {
       throw new HttpException(WEAPON_ALREADY_CRAFTED, HttpStatus.CONFLICT);
     }
 
@@ -87,7 +90,7 @@ export class CraftWeaponHandler implements ICommandHandler<CraftWeaponCommand> {
       .find(
         (item) =>
           weapon.previousWeapon &&
-          item.weapon.id === (weapon.previousWeapon as WeaponResponse).id
+          (item.weapon as WeaponEntity).id === (weapon.previousWeapon as WeaponResponse).id
       );
 
     if (weapon.previousWeapon && !previousWeaponCrafted) {

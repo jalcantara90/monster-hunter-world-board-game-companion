@@ -8,7 +8,9 @@ import { WeaponCraftingMaterialResponse } from '../../domain/responses/WeaponCra
 import { CreateCraftingMaterialRequest } from '../../domain/requests/CreateCraftingMaterialRequest';
 
 @Injectable()
-export class WeaponCraftingTypeORMRepository implements WeaponCraftingRepository {
+export class WeaponCraftingTypeORMRepository
+  implements WeaponCraftingRepository
+{
   constructor(
     @InjectRepository(WeaponCraftingEntity)
     private weaponCraftingRepository: Repository<WeaponCraftingEntity>,
@@ -18,9 +20,11 @@ export class WeaponCraftingTypeORMRepository implements WeaponCraftingRepository
   async find(weaponId: string): Promise<WeaponCraftingMaterialResponse[]> {
     const weaponCraftingEntities = await this.weaponCraftingRepository.find({
       where: { weaponId },
-      relations: ['materialId']
+      relations: ['materialId'],
     });
-    return this.weaponCraftingMaterialMapper.fromEntities(weaponCraftingEntities);
+    return this.weaponCraftingMaterialMapper.fromEntities(
+      weaponCraftingEntities
+    );
   }
 
   async create(
@@ -32,20 +36,10 @@ export class WeaponCraftingTypeORMRepository implements WeaponCraftingRepository
       quantity,
       materialId,
     });
-    const craftingMaterial = await this.weaponCraftingRepository.save(newCraftingMaterial);
+    const craftingMaterial = await this.weaponCraftingRepository.save(
+      newCraftingMaterial
+    );
 
     return this.weaponCraftingMaterialMapper.fromEntity(craftingMaterial);
-  }
-
-  async delete(id: string): Promise<void> {
-    // const armorEntity = await this.weaponCraftingRepository.findOneBy({
-    //   id,
-    // });
-
-    // if (!armorEntity) {
-    //   throw new NotFoundException(`Armor with id ${id} not exist`);
-    // }
-
-    // await this.armorCraftingRepository.update(id, { isActive: false });
   }
 }

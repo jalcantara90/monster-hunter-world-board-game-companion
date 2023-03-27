@@ -2,10 +2,7 @@ import {
   Column,
   Entity,
   JoinColumn,
-  JoinTable,
-  ManyToMany,
   ManyToOne,
-  OneToMany,
 } from 'typeorm';
 import { BrigadeEntity } from '../../../brigades/infrastructure/entity/Brigade.entity';
 import { BaseEntity } from '../../../database/entities/Base.entity';
