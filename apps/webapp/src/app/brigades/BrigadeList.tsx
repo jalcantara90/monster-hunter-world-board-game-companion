@@ -1,5 +1,3 @@
-import { useBrigadeList } from './hooks';
-
 import {
   BrigadeCard,
   BrigadeCardSkeletonList,
@@ -9,8 +7,10 @@ import {
   PlusIcon,
 } from '@mhwboard-companion/design-system';
 
-import styles from './BrigadeList.module.scss';
+import { useBrigadeList } from './hooks';
 import { IBrigadeRepository } from './BrigadeRepositoryService';
+
+import styles from './BrigadeList.module.scss';
 
 type BrigadeListProps = {
   brigadeRepository: IBrigadeRepository;
