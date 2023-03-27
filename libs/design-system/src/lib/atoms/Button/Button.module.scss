@@ -6,17 +6,19 @@
 .btn {
   display: flex;
   background-color: colors.$cta-primary;
-  border: 1px solid #565353;
+  border: 1px solid colors.$cta-primary-hover;
   padding: spacing.$tiny spacing.$sm;
   gap: spacing.$tiny;
-  color: colors.$white;
+  color: colors.$text-inverted;
   background-size: spacing.$tiny;
   font: typography.$b300-bold;
   align-items: center;
   border-radius: border.$radius-default;
-  transition: border .4s;
+  transition: border 0.4s;
 
   &:hover {
-    border: 1px solid colors.$cta-primary-hover;
+    border: 1px solid colors.$cta-primary;
+    background-color: colors.$cta-primary-hover;
+    color: colors.$text-primary;
   }
 }

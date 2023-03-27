@@ -1,0 +1,23 @@
+@use '../../settings/border';
+@use '../../settings/colors';
+@use '../../settings/spacing';
+@use '../../settings/typography';
+
+.floatingBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: border.$radius-full;
+  min-height: 4rem;
+  min-width: 4rem;
+  background-color: colors.$cta-primary-hover;
+  border: 2px solid colors.$cta-primary;
+  font: typography.$xl-h100-regular;
+  color: colors.$white;
+}
+
+.floatingBtn:hover {
+  background-color: colors.$cta-primary;
+  border: 2px solid colors.$cta-primary-hover;
+  color: colors.$black;
+}

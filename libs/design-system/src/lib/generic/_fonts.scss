@@ -37,3 +37,33 @@
     url("/assets/fonts/Moderat-Mono-Regular-Web/Moderat-Mono-Regular.woff2") format("woff2"),
     url("/assets/fonts/Moderat-Mono-Regular-Web/Moderat-Mono-Regular.woff") format("woff");
 }
+
+// NotoSansJP Font Face load
+
+@font-face {
+  font-weight: 400;
+  font-family: "NotoSansJP";
+  src:
+    url("/assets/fonts/NotoSansJP/NotoSansJP-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-weight: 500;
+  font-family: "NotoSansJP";
+  src:
+    url("/assets/fonts/NotoSansJP/NotoSansJP-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: "NotoSansJP";
+  src:
+    url("/assets/fonts/NotoSansJP/NotoSansJP-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-weight: 900;
+  font-family: "NotoSansJP";
+  src:
+    url("/assets/fonts/NotoSansJP/NotoSansJP-Black.otf") format("opentype");
+}

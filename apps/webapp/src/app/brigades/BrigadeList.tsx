@@ -1,11 +1,13 @@
+import { useBrigadeList } from './hooks';
+
 import {
   BrigadeCard,
   BrigadeCardSkeletonList,
-  Button,
   ListContainer,
   SectionTitle,
+  FloatingButton,
+  PlusIcon,
 } from '@mhwboard-companion/design-system';
-import { useBrigadeList } from './hooks';
 
 import styles from './BrigadeList.module.scss';
 import { IBrigadeRepository } from './BrigadeRepositoryService';
@@ -20,8 +22,10 @@ export function BrigadeList({ brigadeRepository }: BrigadeListProps) {
   return (
     <ListContainer>
       <SectionTitle title="Brigades" />
-      <section className={styles.brigadeList__actions}>
-        <Button>Create Brigade</Button>
+      <section className={styles.brigadeList__floating}>
+        <FloatingButton>
+          <PlusIcon />
+        </FloatingButton>
       </section>
       <section className={styles.brigadeList}>
         {isLoading ? (
