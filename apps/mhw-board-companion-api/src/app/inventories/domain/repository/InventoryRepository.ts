@@ -20,14 +20,8 @@ export interface InventoryRepository {
     inventoryId: string,
     request: AddMaterialToInventoryRequest
   ): Promise<void>;
-  AddArmor(
-    inventoryId: string,
-    request: AddArmorRequest
-  ): Promise<void>;
-  AddWeapon(
-    inventoryId: string,
-    request: AddWeaponRequest
-  ): Promise<void>;
+  AddArmor(inventoryId: string, request: AddArmorRequest): Promise<void>;
+  AddWeapon(inventoryId: string, request: AddWeaponRequest): Promise<void>;
   delete(id: string): Promise<void>;
   findAllMaterials(inventoryId: string): Promise<InventoryItemsEntity[]>;
 }

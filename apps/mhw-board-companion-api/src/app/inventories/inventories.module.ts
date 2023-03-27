@@ -20,7 +20,10 @@ import {
   ArmorEntity,
 } from '../armors/infrastructure/entity/Armor.entity';
 import { CraftWeaponHandler } from './application/CraftWeapon/CraftWeapon.handler';
-import { WeaponCraftingEntity, WeaponEntity } from '../weapons/infrastructure/entity/Weapon.entity';
+import {
+  WeaponCraftingEntity,
+  WeaponEntity,
+} from '../weapons/infrastructure/entity/Weapon.entity';
 import { weaponProviders } from '../weapons/weapons.providers';
 
 const commandHandlers = [
@@ -42,7 +45,7 @@ const commandHandlers = [
       ArmorCraftingEntity,
       ArmorEntity,
       WeaponCraftingEntity,
-      WeaponEntity
+      WeaponEntity,
     ]),
   ],
   controllers: [InventoriesController],

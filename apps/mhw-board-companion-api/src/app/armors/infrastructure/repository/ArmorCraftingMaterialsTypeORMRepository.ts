@@ -18,9 +18,11 @@ export class ArmorCraftingTypeORMRepository implements ArmorCraftingRepository {
   async find(armorId: string): Promise<CraftingMaterialResponse[]> {
     const armorCraftingEntities = await this.armorCraftingRepository.find({
       where: { armorId },
-      relations: ['materialId']
+      relations: ['materialId'],
     });
-    return this.armorCraftingMaterialsMapper.fromEntities(armorCraftingEntities);
+    return this.armorCraftingMaterialsMapper.fromEntities(
+      armorCraftingEntities
+    );
   }
 
   async create(
@@ -32,7 +34,9 @@ export class ArmorCraftingTypeORMRepository implements ArmorCraftingRepository {
       quantity,
       materialId,
     });
-    const craftingMaterial = await this.armorCraftingRepository.save(newCraftingMaterial);
+    const craftingMaterial = await this.armorCraftingRepository.save(
+      newCraftingMaterial
+    );
 
     return this.armorCraftingMaterialsMapper.fromEntity(craftingMaterial);
   }

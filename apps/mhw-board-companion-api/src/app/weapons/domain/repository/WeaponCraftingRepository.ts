@@ -1,5 +1,5 @@
-import { CreateCraftingMaterialRequest } from "../requests/CreateCraftingMaterialRequest";
-import { WeaponCraftingMaterialResponse } from "../responses/WeaponCraftingMaterialResponse";
+import { CreateCraftingMaterialRequest } from '../requests/CreateCraftingMaterialRequest';
+import { WeaponCraftingMaterialResponse } from '../responses/WeaponCraftingMaterialResponse';
 
 export interface WeaponCraftingRepository {
   find(armorId: string): Promise<WeaponCraftingMaterialResponse[]>;

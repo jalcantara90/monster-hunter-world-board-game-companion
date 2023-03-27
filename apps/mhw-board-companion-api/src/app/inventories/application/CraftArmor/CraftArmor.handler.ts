@@ -32,7 +32,9 @@ export class CraftArmorHandler implements ICommandHandler<CraftArmorCommand> {
       inventoryId
     );
 
-    if (inventoryItems.find((item) => (item.armor as ArmorEntity)?.id === armorId)) {
+    if (
+      inventoryItems.find((item) => (item.armor as ArmorEntity)?.id === armorId)
+    ) {
       throw new HttpException(ARMOR_ALREADY_CRAFTED, HttpStatus.CONFLICT);
     }
 
@@ -47,7 +49,8 @@ export class CraftArmorHandler implements ICommandHandler<CraftArmorCommand> {
     const inventoryMaterialListToSave = armorNeededMaterials.map(
       ({ material, quantity }) => {
         const inventoryMaterial = inventoryMaterials.find(
-          (inventory) => (inventory.material as MaterialEntity).id === material.id
+          (inventory) =>
+            (inventory.material as MaterialEntity).id === material.id
         );
         if (!inventoryMaterial || inventoryMaterial.quantity < quantity) {
           throw new HttpException(NOT_ENOUGH_MATERIALS, HttpStatus.CONFLICT);
