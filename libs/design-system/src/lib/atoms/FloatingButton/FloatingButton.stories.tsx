@@ -11,5 +11,4 @@ const Template: Story<FloatingButtonProps> = (args) => (
 );
 
 export const floatingButton = Template.bind({});
-floatingButton.args = {
-};
+floatingButton.args = {};
