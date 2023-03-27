@@ -53,14 +53,12 @@ export function LongSwordIcon({ size = 'sm' }: IconProps) {
           letterSpacing: 'normal',
           wordSpacing: 'normal',
           textTransform: 'none',
-          writingMode: 'lr-tb',
           direction: 'ltr',
           textOrientation: 'mixed',
           dominantBaseline: 'auto',
           baselineShift: 'baseline',
           textAnchor: 'start',
           whiteSpace: 'normal',
-          shapePadding: 0,
           clipRule: 'nonzero',
           display: 'inline',
           overflow: 'visible',
@@ -69,9 +67,6 @@ export function LongSwordIcon({ size = 'sm' }: IconProps) {
           isolation: 'auto',
           mixBlendMode: 'normal',
           colorInterpolation: 'sRGB',
-          colorInterpolationFilters: 'linearRGB',
-          solidColor: '#000',
-          solidOpacity: 1,
           vectorEffect: 'none',
           fill: '#444',
           fillOpacity: 1,
@@ -88,7 +83,6 @@ export function LongSwordIcon({ size = 'sm' }: IconProps) {
           imageRendering: 'auto',
           shapeRendering: 'auto',
           textRendering: 'auto',
-          enableBackground: 'accumulate',
         }}
         d="m56.723 8.873-3.397 4.246-3.224-2.416-1.204 1.594 8.002 6.002 1.204-1.602-3.178-2.38 3.353-4.19-1.556-1.254zm-9.627 5.824L45.9 16.3l8.002 6 1.196-1.602-8.002-6z"
         transform="scale(.26458)"

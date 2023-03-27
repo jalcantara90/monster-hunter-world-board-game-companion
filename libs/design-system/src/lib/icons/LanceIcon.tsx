@@ -73,14 +73,13 @@ export function LanceIcon({ size = 'sm' }: IconProps) {
           letterSpacing: 'normal',
           wordSpacing: 'normal',
           textTransform: 'none',
-          writingMode: 'lr-tb',
           direction: 'ltr',
           textOrientation: 'mixed',
           dominantBaseline: 'auto',
           baselineShift: 'baseline',
           textAnchor: 'start',
           whiteSpace: 'normal',
-          shapePadding: 0,
+
           clipRule: 'nonzero',
           display: 'inline',
           overflow: 'visible',
@@ -89,9 +88,7 @@ export function LanceIcon({ size = 'sm' }: IconProps) {
           isolation: 'auto',
           mixBlendMode: 'normal',
           colorInterpolation: 'sRGB',
-          colorInterpolationFilters: 'linearRGB',
-          solidColor: '#000',
-          solidOpacity: 1,
+
           vectorEffect: 'none',
           fill: '#444',
           fillOpacity: 1,
@@ -108,7 +105,6 @@ export function LanceIcon({ size = 'sm' }: IconProps) {
           imageRendering: 'auto',
           shapeRendering: 'auto',
           textRendering: 'auto',
-          enableBackground: 'accumulate',
         }}
         d="M10.848 283.506v10.848h.529v-10.848z"
         transform="translate(0 -280.067)"
@@ -198,14 +194,13 @@ export function LanceIcon({ size = 'sm' }: IconProps) {
           letterSpacing: 'normal',
           wordSpacing: 'normal',
           textTransform: 'none',
-          writingMode: 'lr-tb',
           direction: 'ltr',
           textOrientation: 'mixed',
           dominantBaseline: 'auto',
           baselineShift: 'baseline',
           textAnchor: 'start',
           whiteSpace: 'normal',
-          shapePadding: 0,
+
           clipRule: 'nonzero',
           display: 'inline',
           overflow: 'visible',
@@ -214,9 +209,7 @@ export function LanceIcon({ size = 'sm' }: IconProps) {
           isolation: 'auto',
           mixBlendMode: 'normal',
           colorInterpolation: 'sRGB',
-          colorInterpolationFilters: 'linearRGB',
-          solidColor: '#000',
-          solidOpacity: 1,
+
           vectorEffect: 'none',
           fill: '#444',
           fillOpacity: 1,
@@ -233,7 +226,6 @@ export function LanceIcon({ size = 'sm' }: IconProps) {
           imageRendering: 'auto',
           shapeRendering: 'auto',
           textRendering: 'auto',
-          enableBackground: 'accumulate',
         }}
         d="M9.525 283.771v9.524h.53v-9.524z"
         transform="translate(0 -280.067)"

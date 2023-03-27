@@ -73,14 +73,12 @@ export function LightBowgunIcon({ size = 'sm' }: IconProps) {
           letterSpacing: 'normal',
           wordSpacing: 'normal',
           textTransform: 'none',
-          writingMode: 'lr-tb',
           direction: 'ltr',
           textOrientation: 'mixed',
           dominantBaseline: 'auto',
           baselineShift: 'baseline',
           textAnchor: 'start',
           whiteSpace: 'normal',
-          shapePadding: 0,
           clipRule: 'nonzero',
           display: 'inline',
           overflow: 'visible',
@@ -89,9 +87,6 @@ export function LightBowgunIcon({ size = 'sm' }: IconProps) {
           isolation: 'auto',
           mixBlendMode: 'normal',
           colorInterpolation: 'sRGB',
-          colorInterpolationFilters: 'linearRGB',
-          solidColor: '#000',
-          solidOpacity: 1,
           vectorEffect: 'none',
           fill: '#444',
           fillOpacity: 1,
@@ -108,7 +103,6 @@ export function LightBowgunIcon({ size = 'sm' }: IconProps) {
           imageRendering: 'auto',
           shapeRendering: 'auto',
           textRendering: 'auto',
-          enableBackground: 'accumulate',
         }}
         d="M8.19 289.725a.133.133 0 0 0-.12.13v1.854c.001.072.06.13.131.131h.53a.132.132 0 0 0 .133-.13v-1.854a.132.132 0 0 0-.133-.131H8.19z"
         transform="translate(0 -280.067)"
