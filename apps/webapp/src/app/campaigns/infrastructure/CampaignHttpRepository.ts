@@ -1,4 +1,4 @@
-import {  CampaignRepository } from '../domain/CampaignRepository';
+import { CampaignRepository } from '../domain/CampaignRepository';
 import { CreateCampaignRequest, Campaign } from '../domain/Campaign';
 
 export class CampaignHttpRepository implements CampaignRepository {
@@ -41,5 +41,11 @@ export class CampaignHttpRepository implements CampaignRepository {
     });
 
     await response.json();
+  }
+
+  async findAllHunters(campaignId: string): Promise<unknown[]> {
+    const response = await fetch(`${this.baseUrl}/${campaignId}/hunters`);
+
+    return await response.json();
   }
 }

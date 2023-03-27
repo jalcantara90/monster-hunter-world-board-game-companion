@@ -11,18 +11,30 @@ import { UpdateHunterHandler } from './application/UpdateHunter/UpdateHunter.han
 import { GetHunterByIdHandler } from './application/GetHunter/GetHunterById.handler';
 import { DeleteHunterByIdHandler } from './application/DeleteHunter/DeleteHunterById.handler';
 import { GetCampaignHuntersHandler } from './application/GetCampaignHunters/GetCampaignHunters.handler';
+import { campaignProviders } from '../campaigns/campaigns.providers';
+import {
+  CampaignEntity,
+  CampaignHuntersEntity,
+} from '../campaigns/infrastructure/entity/Campaign.entity';
 
 const hunterHandlers = [
   CreateHunterHandler,
   UpdateHunterHandler,
   GetHunterByIdHandler,
   DeleteHunterByIdHandler,
-  GetCampaignHuntersHandler
+  GetCampaignHuntersHandler,
 ];
 
 @Module({
-  imports: [CqrsModule, TypeOrmModule.forFeature([HunterEntity])],
+  imports: [
+    CqrsModule,
+    TypeOrmModule.forFeature([
+      HunterEntity,
+      CampaignHuntersEntity,
+      CampaignEntity,
+    ]),
+  ],
   controllers: [HuntersController],
-  providers: [...hunterProviders, ...hunterHandlers],
+  providers: [...hunterProviders, ...hunterHandlers, ...campaignProviders],
 })
 export class HuntersModule {}

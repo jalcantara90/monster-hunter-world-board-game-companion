@@ -34,7 +34,7 @@ export function BrigadeDetail({ brigadeRepository }: BrigadeDetailProps) {
         ) : (
           campaignList?.map((campaign, index) => (
             <BrigadeCard
-              route={`brigades/${brigadeId}/campaign/${campaign.id}`}
+              route={`campaigns/${campaign.id}`}
               index={index}
               key={campaign.id}
               name={campaign.name}

@@ -18,34 +18,26 @@ export class ArmorCraftingTypeORMRepository implements ArmorCraftingRepository {
   async find(armorId: string): Promise<CraftingMaterialResponse[]> {
     const armorCraftingEntities = await this.armorCraftingRepository.find({
       where: { armorId },
-      relations: ['materialId']
+      relations: ['materialId'],
     });
-    return this.armorCraftingMaterialsMapper.fromEntities(armorCraftingEntities);
+    return this.armorCraftingMaterialsMapper.fromEntities(
+      armorCraftingEntities
+    );
   }
 
   async create(
     armorId: string,
     { quantity, materialId }: CreateCraftingMaterialRequest
-  ): Promise<any> {
+  ): Promise<CraftingMaterialResponse> {
     const newCraftingMaterial = this.armorCraftingRepository.create({
       armorId,
       quantity,
       materialId,
     });
-    const craftingMaterial = await this.armorCraftingRepository.save(newCraftingMaterial);
+    const craftingMaterial = await this.armorCraftingRepository.save(
+      newCraftingMaterial
+    );
 
-    return craftingMaterial;
-  }
-
-  async delete(id: string): Promise<void> {
-    // const armorEntity = await this.armorCraftingRepository.findOneBy({
-    //   id,
-    // });
-
-    // if (!armorEntity) {
-    //   throw new NotFoundException(`Armor with id ${id} not exist`);
-    // }
-
-    // await this.armorCraftingRepository.update(id, { isActive: false });
+    return this.armorCraftingMaterialsMapper.fromEntity(craftingMaterial);
   }
 }

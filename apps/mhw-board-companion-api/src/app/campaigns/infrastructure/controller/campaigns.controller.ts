@@ -56,7 +56,7 @@ export class CampaignsController {
     @Body() request: AddCampaignHuntersRequest
   ) {
     return this.commandBus.execute(
-      new AddCampaignHuntersCommand(campaignId, request.hunterIds)
+      new AddCampaignHuntersCommand(campaignId, request.huntersCampaign)
     );
   }
 

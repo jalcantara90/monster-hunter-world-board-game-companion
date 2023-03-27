@@ -8,8 +8,8 @@ export class InventoryMapper {
   fromEntity(inventory: InventoryEntity): InventorieResponse {
     return new InventorieResponse(
       inventory.id,
-      inventory.campaignId,
-      inventory.hunterId
+      inventory.campaign,
+      inventory.hunter
     );
   }
 

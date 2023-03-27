@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { ArmorEntity } from '../../../armors/infrastructure/entity/Armor.entity';
 import { CampaignEntity } from '../../../campaigns/infrastructure/entity/Campaign.entity';
 import { BaseEntity } from '../../../database/entities/Base.entity';
@@ -8,16 +8,13 @@ import { WeaponEntity } from '../../../weapons/infrastructure/entity/Weapon.enti
 
 @Entity({ name: 'inventories' })
 export class InventoryEntity extends BaseEntity {
-  @OneToOne(() => CampaignEntity, (campaign) => campaign.id)
-  @Column({ type: 'uuid' })
-  campaignId: string;
+  @ManyToOne(() => CampaignEntity, (campaign) => campaign.id)
+  @JoinColumn()
+  campaign: string;
 
-  @OneToOne(() => HunterEntity, (hunter) => hunter.id)
-  @Column({ type: 'uuid' })
-  hunterId: string;
-
-  @OneToOne(() => InventoryItemsEntity, (inventoryItem) => inventoryItem.id)
-  inventoryItemId: string;
+  @ManyToOne(() => HunterEntity, (hunter) => hunter.id)
+  @JoinColumn()
+  hunter: string;
 }
 
 @Entity({ name: 'inventory_items' })
@@ -28,16 +25,16 @@ export class InventoryItemsEntity extends BaseEntity {
 
   @ManyToOne(() => MaterialEntity, (material) => material.id)
   @JoinColumn({ name: 'materialId' })
-  material: string;
+  material: string | MaterialEntity;
 
   @Column({ type: 'int', default: 1 })
   quantity: number;
 
   @ManyToOne(() => ArmorEntity, (armor) => armor.id)
   @JoinColumn({ name: 'armorId' })
-  armor: string;
+  armor: string | ArmorEntity;
 
   @ManyToOne(() => WeaponEntity, (weapon) => weapon.id)
   @JoinColumn({ name: 'weaponId' })
-  weapon: string;
+  weapon: string | WeaponEntity;
 }

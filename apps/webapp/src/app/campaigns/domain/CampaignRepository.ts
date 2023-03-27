@@ -10,4 +10,5 @@ export interface CampaignRepository {
   create(request: CreateCampaignRequest): Promise<Campaign>;
   update(request: UpdateCampaignRequest): Promise<Campaign>;
   delete(campaignId: string): Promise<void>;
+  findAllHunters(campaignId: string): Promise<any[]>;
 }

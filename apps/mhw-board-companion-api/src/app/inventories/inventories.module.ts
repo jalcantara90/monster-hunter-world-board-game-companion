@@ -11,7 +11,6 @@ import { InventoriesController } from './infrastructure/controller/inventories.c
 import { CreateInventoryeHandler } from './application/CreateInventory/CreateInventory.handler';
 import { GetInventorieHandler } from './application/GetInventorie/GetInventorie.handler';
 import { DeleteInventorieHandler } from './application/DeleteInventorie/DeleteInventorie.handler';
-import { UpdateInventorieHandler } from './application/UpdateInventorie/UpdateInventorie.handler';
 import { GetInventorieListHandler } from './application/GetInventorieList/GetInventorieList.handler';
 import { AddMaterialHandler } from './application/AddMaterial/AddMaterial.handler';
 import { CraftArmorHandler } from './application/CraftArmor/CraftArmor.handler';
@@ -21,13 +20,15 @@ import {
   ArmorEntity,
 } from '../armors/infrastructure/entity/Armor.entity';
 import { CraftWeaponHandler } from './application/CraftWeapon/CraftWeapon.handler';
-import { WeaponCraftingEntity, WeaponEntity } from '../weapons/infrastructure/entity/Weapon.entity';
+import {
+  WeaponCraftingEntity,
+  WeaponEntity,
+} from '../weapons/infrastructure/entity/Weapon.entity';
 import { weaponProviders } from '../weapons/weapons.providers';
 
 const commandHandlers = [
   CreateInventoryeHandler,
   GetInventorieHandler,
-  UpdateInventorieHandler,
   DeleteInventorieHandler,
   GetInventorieListHandler,
   AddMaterialHandler,
@@ -44,7 +45,7 @@ const commandHandlers = [
       ArmorCraftingEntity,
       ArmorEntity,
       WeaponCraftingEntity,
-      WeaponEntity
+      WeaponEntity,
     ]),
   ],
   controllers: [InventoriesController],
