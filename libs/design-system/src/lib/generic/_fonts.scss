@@ -2,20 +2,19 @@
   font-weight: 400;
   font-family: Moderat;
   font-display: swap;
-  src:
-    url("/assets/fonts/Moderat-Regular-Web/Moderat-Regular.eot"),
-    url("/assets/fonts/Moderat-Regular-Web/Moderat-Regular.woff2") format("woff2"),
-    url("/assets/fonts/Moderat-Regular-Web/Moderat-Regular.woff") format("woff");
+  src: url('/assets/fonts/Moderat-Regular-Web/Moderat-Regular.eot'),
+    url('/assets/fonts/Moderat-Regular-Web/Moderat-Regular.woff2')
+      format('woff2'),
+    url('/assets/fonts/Moderat-Regular-Web/Moderat-Regular.woff') format('woff');
 }
 
 @font-face {
   font-weight: 700;
   font-family: Moderat;
   font-display: swap;
-  src:
-    url("/assets/fonts/Moderat-Bold-Web/Moderat-Bold.eot"),
-    url("/assets/fonts/Moderat-Bold-Web/Moderat-Bold.woff2") format("woff2"),
-    url("/assets/fonts/Moderat-Bold-Web/Moderat-Bold.woff") format("woff");
+  src: url('/assets/fonts/Moderat-Bold-Web/Moderat-Bold.eot'),
+    url('/assets/fonts/Moderat-Bold-Web/Moderat-Bold.woff2') format('woff2'),
+    url('/assets/fonts/Moderat-Bold-Web/Moderat-Bold.woff') format('woff');
 }
 
 @font-face {
@@ -23,47 +22,45 @@
   font-family: Moderat;
   font-display: swap;
   font-style: italic;
-  src:
-    url("/assets/fonts/Moderat-Regular-Italic-Web/Moderat-Regular-Italic.eot"),
-    url("/assets/fonts/Moderat-Regular-Italic-Web/Moderat-Regular-Italic.woff2") format("woff2"),
-    url("/assets/fonts/Moderat-Regular-Italic-Web/Moderat-Regular-Italic.woff") format("woff");
+  src: url('/assets/fonts/Moderat-Regular-Italic-Web/Moderat-Regular-Italic.eot'),
+    url('/assets/fonts/Moderat-Regular-Italic-Web/Moderat-Regular-Italic.woff2')
+      format('woff2'),
+    url('/assets/fonts/Moderat-Regular-Italic-Web/Moderat-Regular-Italic.woff')
+      format('woff');
 }
 
 @font-face {
   font-weight: 400;
-  font-family: "Moderat Mono";
-  src:
-    url("/assets/fonts/Moderat-Mono-Regular-Web/Moderat-Mono-Regular.eot"),
-    url("/assets/fonts/Moderat-Mono-Regular-Web/Moderat-Mono-Regular.woff2") format("woff2"),
-    url("/assets/fonts/Moderat-Mono-Regular-Web/Moderat-Mono-Regular.woff") format("woff");
+  font-family: 'Moderat Mono';
+  src: url('/assets/fonts/Moderat-Mono-Regular-Web/Moderat-Mono-Regular.eot'),
+    url('/assets/fonts/Moderat-Mono-Regular-Web/Moderat-Mono-Regular.woff2')
+      format('woff2'),
+    url('/assets/fonts/Moderat-Mono-Regular-Web/Moderat-Mono-Regular.woff')
+      format('woff');
 }
 
 // NotoSansJP Font Face load
 
 @font-face {
   font-weight: 400;
-  font-family: "NotoSansJP";
-  src:
-    url("/assets/fonts/NotoSansJP/NotoSansJP-Regular.otf") format("opentype");
+  font-family: 'NotoSansJP';
+  src: url('/assets/fonts/NotoSansJP/NotoSansJP-Regular.otf') format('opentype');
 }
 
 @font-face {
   font-weight: 500;
-  font-family: "NotoSansJP";
-  src:
-    url("/assets/fonts/NotoSansJP/NotoSansJP-Medium.otf") format("opentype");
+  font-family: 'NotoSansJP';
+  src: url('/assets/fonts/NotoSansJP/NotoSansJP-Medium.otf') format('opentype');
 }
 
 @font-face {
   font-weight: 700;
-  font-family: "NotoSansJP";
-  src:
-    url("/assets/fonts/NotoSansJP/NotoSansJP-Bold.otf") format("opentype");
+  font-family: 'NotoSansJP';
+  src: url('/assets/fonts/NotoSansJP/NotoSansJP-Bold.otf') format('opentype');
 }
 
 @font-face {
   font-weight: 900;
-  font-family: "NotoSansJP";
-  src:
-    url("/assets/fonts/NotoSansJP/NotoSansJP-Black.otf") format("opentype");
+  font-family: 'NotoSansJP';
+  src: url('/assets/fonts/NotoSansJP/NotoSansJP-Black.otf') format('opentype');
 }
