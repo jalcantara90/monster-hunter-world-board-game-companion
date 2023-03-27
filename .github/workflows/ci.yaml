@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: nrwl/nx-set-shas@v3
-      - run: npm ci
+      - run: npm i
 
       - run: npx nx format:check
       - run: npx nx affected -t lint --parallel=3 --exclude=webapp-e2e,mhw-board-companion-api-e2e
