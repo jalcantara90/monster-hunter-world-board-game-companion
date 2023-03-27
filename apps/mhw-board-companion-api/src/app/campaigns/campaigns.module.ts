@@ -3,7 +3,10 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { campaignProviders } from './campaigns.providers';
-import { CampaignEntity, CampaignHuntersEntity } from './infrastructure/entity/Campaign.entity';
+import {
+  CampaignEntity,
+  CampaignHuntersEntity,
+} from './infrastructure/entity/Campaign.entity';
 import { CampaignsController } from './infrastructure/controller/campaigns.controller';
 
 import { CreateCampaignHandler } from './application/CreateCampaign/CreateCampaign.handler';
@@ -27,12 +30,27 @@ const commandHandlers = [
   UpdateCampaignHandler,
   DeleteCampaignHandler,
   GetCampaignListByBrigadeIdHandler,
-  AddCampaigHuntersHandler
+  AddCampaigHuntersHandler,
 ];
 
 @Module({
-  imports: [CqrsModule, TypeOrmModule.forFeature([CampaignEntity, BrigadeEntity, HunterEntity, CampaignHuntersEntity, InventoryEntity, InventoryItemsEntity])],
+  imports: [
+    CqrsModule,
+    TypeOrmModule.forFeature([
+      CampaignEntity,
+      BrigadeEntity,
+      HunterEntity,
+      CampaignHuntersEntity,
+      InventoryEntity,
+      InventoryItemsEntity,
+    ]),
+  ],
   controllers: [CampaignsController],
-  providers: [...commandHandlers, ...campaignProviders, ...hunterProviders, ...inventoryProviders],
+  providers: [
+    ...commandHandlers,
+    ...campaignProviders,
+    ...hunterProviders,
+    ...inventoryProviders,
+  ],
 })
 export class CampaignsModule {}

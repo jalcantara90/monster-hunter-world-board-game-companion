@@ -1,4 +1,4 @@
-import { HuntersCampaign } from "../../domain/requests/AddCampaignHunters";
+import { HuntersCampaign } from '../../domain/requests/AddCampaignHunters';
 
 export class AddCampaignHuntersCommand {
   constructor(

@@ -14,8 +14,8 @@ export const campaignProviders: Provider[] = [
   },
   {
     provide: CAMPAIGN_HUNTERS_REPOSITORY,
-    useClass: CampaignHuntersTypeORMRepository
+    useClass: CampaignHuntersTypeORMRepository,
   },
   CampaignMapper,
-  CampaignHuntersMapper
+  CampaignHuntersMapper,
 ];

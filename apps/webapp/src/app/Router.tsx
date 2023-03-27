@@ -20,7 +20,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/brigades/:brigadeId',
-        element: BrigadeDetailFactory.create()
+        element: BrigadeDetailFactory.create(),
       },
       {
         path: '/campaigns/:campaignId',

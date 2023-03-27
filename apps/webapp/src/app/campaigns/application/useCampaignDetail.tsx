@@ -28,6 +28,6 @@ export function useCampaignDetail(
 
   return {
     hunterList,
-    isLoading
+    isLoading,
   };
 }

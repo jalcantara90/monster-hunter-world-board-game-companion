@@ -1,4 +1,4 @@
-import {  CampaignRepository } from '../domain/CampaignRepository';
+import { CampaignRepository } from '../domain/CampaignRepository';
 import { CreateCampaignRequest, Campaign } from '../domain/Campaign';
 
 export class CampaignHttpRepository implements CampaignRepository {

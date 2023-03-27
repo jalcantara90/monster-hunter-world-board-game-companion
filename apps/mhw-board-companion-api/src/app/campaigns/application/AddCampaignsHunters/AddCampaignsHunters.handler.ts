@@ -9,7 +9,6 @@ import {
   CAMPAIGN_HUNTERS_REPOSITORY,
 } from '../../domain/repository/CampaignHuntersRepository';
 
-
 import { AddCampaignHuntersCommand } from './AddCampaignsHunters.command';
 
 const MAX_CAMPAIGN_HUNTERS = 4;

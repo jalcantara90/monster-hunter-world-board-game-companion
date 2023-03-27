@@ -5,7 +5,13 @@ import { HunterEntity } from '../../infrastructure/entity/Hunter.entity';
 
 export interface HunterRepository {
   find(id: string): Promise<HunterResponse>;
-  findAll({ hunterIds, isApiResponse }: { hunterIds?: string[], isApiResponse?: boolean }): Promise<HunterResponse[] | HunterEntity[]>;
+  findAll({
+    hunterIds,
+    isApiResponse,
+  }: {
+    hunterIds?: string[];
+    isApiResponse?: boolean;
+  }): Promise<HunterResponse[] | HunterEntity[]>;
   findCampaignHunters(campaignId: string): Promise<HunterResponse[]>;
   create(hunter: CreateHunterRequest): Promise<HunterResponse>;
   update(id: string, hunter: UpdateHunterRequest): Promise<HunterResponse>;
