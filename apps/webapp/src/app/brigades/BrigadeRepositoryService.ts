@@ -1,8 +1,16 @@
-import { BrigadeRepository } from '../domain/BrigadeRepository';
-import { CreateBrigadeRequest, Brigade } from '../domain/Brigade';
-import { Campaign } from '../../campaigns/domain/Campaign';
+import { Campaign } from '../campaigns/types';
+import { Brigade, CreateBrigadeRequest, UpdateBrigadeRequest } from './types';
 
-export class BrigadeHttpRepository implements BrigadeRepository {
+export interface IBrigadeRepository {
+  findAll(): Promise<Brigade[]>;
+  find(brigadeId: string): Promise<Brigade>;
+  create(request: CreateBrigadeRequest): Promise<Brigade>;
+  update(request: UpdateBrigadeRequest): Promise<Brigade>;
+  delete(brigadeId: string): Promise<void>;
+  findAllCampaigns(brigadeId: string): Promise<Campaign[]>;
+}
+
+export class BrigadRepositoryService implements IBrigadeRepository {
   private readonly baseUrl = 'http://localhost:3099/api/brigades';
 
   async create(request: CreateBrigadeRequest): Promise<Brigade> {

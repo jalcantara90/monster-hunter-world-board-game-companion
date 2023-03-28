@@ -1,14 +1,14 @@
 import { useParams } from 'react-router-dom';
-import { useCampaignDetail } from './application/useCampaignDetail';
-import { CampaignRepository } from './domain/CampaignRepository';
+import { ICampaignRepository } from './CampaignRepositoryService';
+import { useCampaignDetail } from './hooks';
 
 type CampaignDetailProps = {
-  campaignRepository: CampaignRepository;
+  campaignRepository: ICampaignRepository;
 };
 
 export function CampaignDetail({ campaignRepository }: CampaignDetailProps) {
   const { campaignId } = useParams();
-  const { isLoading, hunterList } = useCampaignDetail(
+  const { isLoading } = useCampaignDetail(
     campaignRepository,
     campaignId
   );
@@ -16,8 +16,6 @@ export function CampaignDetail({ campaignRepository }: CampaignDetailProps) {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-
-  console.log(hunterList);
 
   return <div>Campaign CampaignDetail</div>;
 }

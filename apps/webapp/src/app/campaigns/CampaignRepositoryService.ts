@@ -1,7 +1,20 @@
-import { CampaignRepository } from '../domain/CampaignRepository';
-import { CreateCampaignRequest, Campaign } from '../domain/Campaign';
+import {
+  Campaign,
+  CampaignHunters,
+  CreateCampaignRequest,
+  UpdateCampaignRequest,
+} from './types';
 
-export class CampaignHttpRepository implements CampaignRepository {
+export interface ICampaignRepository {
+  findAll(): Promise<Campaign[]>;
+  find(campaignId: string): Promise<Campaign[]>;
+  create(request: CreateCampaignRequest): Promise<Campaign>;
+  update(request: UpdateCampaignRequest): Promise<Campaign>;
+  delete(campaignId: string): Promise<void>;
+  findAllHunters(campaignId: string): Promise<CampaignHunters[]>;
+}
+
+export class CampaignRepositoryService implements ICampaignRepository {
   private readonly baseUrl = 'http://localhost:3099/api/campaigns';
 
   async create(request: CreateCampaignRequest): Promise<Campaign> {
@@ -43,7 +56,7 @@ export class CampaignHttpRepository implements CampaignRepository {
     await response.json();
   }
 
-  async findAllHunters(campaignId: string): Promise<unknown[]> {
+  async findAllHunters(campaignId: string): Promise<CampaignHunters[]> {
     const response = await fetch(`${this.baseUrl}/${campaignId}/hunters`);
 
     return await response.json();

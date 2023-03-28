@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
-import { CampaignRepository } from '../domain/CampaignRepository';
+import { ICampaignRepository } from './CampaignRepositoryService';
 
 export function useCampaignDetail(
-  campaignRepository: CampaignRepository,
+  campaignRepository: ICampaignRepository,
   campaignId?: string
 ) {
   const [hunterList, setCampaignList] = useState<unknown[]>([]);

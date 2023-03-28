@@ -1,9 +1,9 @@
 import { BrigadeDetail } from './index';
-import { BrigadeHttpRepository } from '../infrastructure/BrigadeHttpRepository';
+import { BrigadRepositoryService } from '../BrigadeRepositoryService';
 
 export class BrigadeDetailFactory {
   static create() {
-    const repository = new BrigadeHttpRepository();
+    const repository = new BrigadRepositoryService();
 
     return <BrigadeDetail brigadeRepository={repository} />;
   }

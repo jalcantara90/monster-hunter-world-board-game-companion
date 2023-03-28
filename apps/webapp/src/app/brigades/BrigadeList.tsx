@@ -1,26 +1,32 @@
-import { BrigadeCard, BrigadeCardSkeletonList, Button, ListContainer, SectionTitle } from '@mhwboard-companion/design-system';
-import { useBrigadeList } from './application/useBrigadeList';
+import {
+  BrigadeCard,
+  BrigadeCardSkeletonList,
+  Button,
+  ListContainer,
+  SectionTitle,
+} from '@mhwboard-companion/design-system';
+import { useBrigadeList } from './hooks';
 
 import styles from './BrigadeList.module.scss';
-import { BrigadeRepository } from './domain/BrigadeRepository';
+import { IBrigadeRepository } from './BrigadeRepositoryService';
 
 type BrigadeListProps = {
-  brigadeRepository: BrigadeRepository;
-}
+  brigadeRepository: IBrigadeRepository;
+};
 
 export function BrigadeList({ brigadeRepository }: BrigadeListProps) {
   const { brigadeList, isLoading } = useBrigadeList(brigadeRepository);
 
   return (
     <ListContainer>
-      <SectionTitle title="Brigades"/>
+      <SectionTitle title="Brigades" />
       <section className={styles.brigadeList__actions}>
         <Button>Create Brigade</Button>
       </section>
       <section className={styles.brigadeList}>
-        {
-          isLoading ?
-          <BrigadeCardSkeletonList quantity={5} /> :
+        {isLoading ? (
+          <BrigadeCardSkeletonList quantity={5} />
+        ) : (
           brigadeList?.map((brigade, index) => (
             <BrigadeCard
               route={`brigades/${brigade.id}`}
@@ -29,7 +35,7 @@ export function BrigadeList({ brigadeRepository }: BrigadeListProps) {
               name={brigade.name}
             />
           ))
-        }
+        )}
       </section>
     </ListContainer>
   );

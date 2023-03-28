@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Campaign } from '../../campaigns/domain/Campaign';
-import { BrigadeRepository } from '../domain/BrigadeRepository';
+import { Campaign } from '../../campaigns/types';
+import { IBrigadeRepository } from '../BrigadeRepositoryService';
 
 export function useBrigadeDetails(
-  brigadeRepository: BrigadeRepository,
+  brigadeRepository: IBrigadeRepository,
   brigadeId?: string
 ) {
   const [campaignList, setCampaignList] = useState<Campaign[]>([]);
