@@ -14,10 +14,9 @@
   border: 2px solid colors.$cta-primary;
   font: typography.$xl-h100-regular;
   color: colors.$white;
-}
-
-.floatingBtn:hover {
-  background-color: colors.$cta-primary;
-  border: 2px solid colors.$cta-primary-hover;
-  color: colors.$black;
+  &:hover {
+    background-color: colors.$cta-primary;
+    border: 2px solid colors.$cta-primary-hover;
+    color: colors.$black;
+  }
 }
