@@ -12,9 +12,13 @@
     gap: spacing.$xs;
   }
 
-  &__actions {
-    display: flex;
-    justify-content: flex-end;
+  &__floating {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    svg {
+      max-width: 2rem;
+    }
   }
 
   &__floating {

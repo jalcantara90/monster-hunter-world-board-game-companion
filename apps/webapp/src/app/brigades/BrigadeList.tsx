@@ -1,19 +1,19 @@
 import {
   BrigadeCard,
   BrigadeCardSkeletonList,
-  Button,
   ListContainer,
   SectionTitle,
   FloatingButton,
   PlusIcon,
 } from '@mhwboard-companion/design-system';
-import { useBrigadeList } from './application/useBrigadeList';
+
+import { useBrigadeList } from './hooks';
+import { IBrigadeRepository } from './BrigadeRepositoryService';
 
 import styles from './BrigadeList.module.scss';
-import { BrigadeRepository } from './domain/BrigadeRepository';
 
 type BrigadeListProps = {
-  brigadeRepository: BrigadeRepository;
+  brigadeRepository: IBrigadeRepository;
 };
 
 export function BrigadeList({ brigadeRepository }: BrigadeListProps) {
