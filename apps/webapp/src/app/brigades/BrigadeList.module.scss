@@ -20,4 +20,13 @@
       max-width: 2rem;
     }
   }
+
+  &__floating {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    svg {
+      max-width: 2rem;
+    }
+  }
 }
