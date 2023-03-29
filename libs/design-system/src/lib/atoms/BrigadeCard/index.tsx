@@ -1,4 +1,4 @@
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import Skeleton from 'react-loading-skeleton';
 
 import styles from './BrigadeCard.module.scss';
 
@@ -9,7 +9,7 @@ export type BrigadeCardProps = {
 };
 
 function formatIndex(index: number) {
-  return ('0' + (index + 1)).slice(-2);
+  return `0${index + 1}`.slice(-2);
 }
 
 export function BrigadeCard({ name, index, route }: BrigadeCardProps) {

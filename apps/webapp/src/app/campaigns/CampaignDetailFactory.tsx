@@ -1,9 +1,9 @@
 import { CampaignDetail } from './CampaignDetail';
-import { CampaignHttpRepository } from './infrastructure/CampaignHttpRepository';
+import { CampaignRepositoryService } from './CampaignRepositoryService';
 
 export class CampaignDetailFactory {
   static create() {
-    const repository = new CampaignHttpRepository();
+    const repository = new CampaignRepositoryService();
 
     return <CampaignDetail campaignRepository={repository} />;
   }

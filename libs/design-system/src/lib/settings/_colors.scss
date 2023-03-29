@@ -5,7 +5,9 @@ $_primary-grayLight: #b1b1b1;
 $_primary-grayLighter: #efefef;
 $_primary-white: #fff;
 $_primary-black: #000000;
+$_primary-yellow: #cfee1d;
 $_secondary-violet: #7026f4;
+$_transparent: #00000000;
 
 $_secondary-pink: #e0a4bf;
 $_hover-green: rgb(60 255 100 / 70%);
@@ -15,29 +17,29 @@ $_error: #f83d32;
 
 $_primary-brown: #211f1e;
 $_secondary-brown: #27201d;
-$_secondary-yellow: #cfee1d;
 
 $brand: $_primary-green;
 
-$cta-primary: rgb(0 0 0 / 0%);
-$cta-primary-hover: $_secondary-yellow;
+$cta-primary: $_primary-yellow;
+$cta-primary-hover: $_transparent;
 $cta-secondary: $_primary-blue;
 $cta-secondary-hover: $_hover-blue;
 
 $bg-primary: $_primary-brown;
 $bg-secondary: $_primary-gray;
 $bg-darkTheme: $_primary-blue;
-$bg-selection: $_secondary-yellow;
+$bg-selection: $_primary-yellow;
 $bg: $_secondary-brown;
 
-$text-primary: $_primary-blue;
+$text-primary: $_primary-white;
 $text-secondary: $_primary-gray;
 $text-secondary-darkTheme: $_primary-grayLight;
 $text-tertiary: $_secondary-violet;
+$text-inverted: $_primary-black;
 
 $product-alt1: $_primary-green;
 $product-alt2: $_secondary-violet;
-$product-alt3: $_secondary-yellow;
+$product-alt3: $_primary-yellow;
 $product-alt4: $_secondary-pink;
 
 $black: $_primary-black;

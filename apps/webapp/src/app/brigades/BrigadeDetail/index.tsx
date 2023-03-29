@@ -6,13 +6,13 @@ import {
   ListContainer,
   SectionTitle,
 } from '@mhwboard-companion/design-system';
-import { useBrigadeDetails } from '../application/useBrigadeDetails';
+import { useBrigadeDetails } from './hooks';
 
 import styles from './BrigadeDetail.module.scss';
-import { BrigadeRepository } from '../domain/BrigadeRepository';
+import { IBrigadeRepository } from '../BrigadeRepositoryService';
 
 type BrigadeDetailProps = {
-  brigadeRepository: BrigadeRepository;
+  brigadeRepository: IBrigadeRepository;
 };
 
 export function BrigadeDetail({ brigadeRepository }: BrigadeDetailProps) {

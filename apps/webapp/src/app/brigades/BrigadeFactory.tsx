@@ -1,9 +1,9 @@
 import { BrigadeList } from './BrigadeList';
-import { BrigadeHttpRepository } from './infrastructure/BrigadeHttpRepository';
+import { BrigadRepositoryService } from './BrigadeRepositoryService';
 
 export class BrigadeFactory {
   static create() {
-    const repository = new BrigadeHttpRepository();
+    const repository = new BrigadRepositoryService();
 
     return <BrigadeList brigadeRepository={repository} />;
   }

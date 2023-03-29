@@ -14,5 +14,34 @@
       "files": ["*.js", "*.jsx"],
       "rules": {}
     }
-  ]
+  ],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "simple-import-sort",
+    "import",
+    "unused-imports",
+    "folders"
+  ],
+  "rules": {
+    "curly": "error",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "no-console": ["error", { "allow": ["error"] }],
+    "no-var": "error",
+    "object-shorthand": "error",
+    "prefer-const": "error",
+    "prefer-template": "error",
+    "no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ]
+  }
 }
