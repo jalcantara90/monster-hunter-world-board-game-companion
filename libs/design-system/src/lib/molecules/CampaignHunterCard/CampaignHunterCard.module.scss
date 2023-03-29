@@ -11,7 +11,7 @@
   gap: spacing.$xs;
   border-radius: border.$radius-default;
   font: typography.$b300-regular;
-  transition: transform .3s ease-in;
+  transition: transform 0.3s ease-in;
   cursor: pointer;
 
   &:hover {
