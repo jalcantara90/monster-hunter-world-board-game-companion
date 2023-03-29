@@ -1,0 +1,58 @@
+@use '../../settings/spacing';
+@use '../../settings/colors';
+@use '../../settings/border';
+@use '../../settings/typography';
+
+.campaignHunterCard {
+  padding: spacing.$xs;
+  background-color: colors.$bg-primary;
+  color: colors.$white;
+  display: flex;
+  gap: spacing.$xs;
+  border-radius: border.$radius-default;
+  font: typography.$b300-regular;
+  transition: transform 0.3s ease-in;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &__info {
+    display: flex;
+    justify-content: flex-start;
+    gap: spacing.$tiny;
+    flex-direction: column;
+  }
+
+  &__weapon {
+    border-radius: border.$radius-default;
+    padding: spacing.$tiny;
+    background-color: colors.$bg-secondary;
+    display: flex;
+  }
+
+  &__arrow {
+    margin-left: auto;
+    display: flex;
+  }
+}
+
+.hunterInfo {
+  display: flex;
+  justify-content: flex-start;
+  gap: spacing.$tiny;
+  flex-direction: column;
+
+  &__palico {
+    display: flex;
+    align-items: center;
+    gap: spacing.$tiny;
+  }
+
+  &__label {
+    color: colors.$text-secondary;
+    font: typography.$b200-regular;
+    margin-right: spacing.$tiny;
+  }
+}
