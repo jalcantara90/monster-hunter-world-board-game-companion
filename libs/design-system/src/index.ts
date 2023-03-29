@@ -8,6 +8,10 @@ export { ArmorIcon } from './lib/atoms/ArmorIcon';
 
 // Molecules
 export { SideMenu } from './lib/molecules/SideMenu';
+export {
+  CampaignHunterCard,
+  CampaignHunterCardSkeleton,
+} from './lib/molecules/CampaignHunterCard';
 
 // Objects
 export { ListContainer } from './lib/objects/ListContainer';

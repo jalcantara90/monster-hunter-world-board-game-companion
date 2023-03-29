@@ -10,6 +10,7 @@ $_secondary-violet: #7026f4;
 $_transparent: #00000000;
 
 $_secondary-pink: #e0a4bf;
+$_secondary-grey: #2a2a2a;
 $_hover-green: rgb(60 255 100 / 70%);
 $_hover-blue: rgb(26 34 51 / 75%);
 $_hover-white: rgb(255 255 255 / 70%);
@@ -25,11 +26,11 @@ $cta-primary-hover: $_transparent;
 $cta-secondary: $_primary-blue;
 $cta-secondary-hover: $_hover-blue;
 
-$bg-primary: $_primary-brown;
+$bg: $_primary-brown;
 $bg-secondary: $_primary-gray;
 $bg-darkTheme: $_primary-blue;
 $bg-selection: $_primary-yellow;
-$bg: $_secondary-brown;
+$bg-primary: $_secondary-grey;
 
 $text-primary: $_primary-white;
 $text-secondary: $_primary-gray;
