@@ -7,8 +7,6 @@ import {
   ListContainer
 } from '@mhwboard-companion/design-system';
 
-import styles from './CampaignDetail.module.scss';
-
 type CampaignDetailProps = {
   campaignRepository: ICampaignRepository;
 };
