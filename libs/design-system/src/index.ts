@@ -5,6 +5,8 @@ export { BrigadeCard, BrigadeCardSkeletonList } from './lib/atoms/BrigadeCard';
 export { SectionTitle } from './lib/atoms/SectionTitle';
 export { WeaponIcon } from './lib/atoms/WeaponIcon';
 export { ArmorIcon } from './lib/atoms/ArmorIcon';
+export { Input } from './lib/atoms/forms/Input';
+export { Select } from './lib/atoms/forms/Select';
 
 // Molecules
 export { SideMenu } from './lib/molecules/SideMenu';
