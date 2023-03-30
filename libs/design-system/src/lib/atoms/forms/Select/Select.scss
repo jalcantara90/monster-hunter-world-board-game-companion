@@ -1,0 +1,59 @@
+@use '../../../settings/colors';
+@use '../../../settings/typography';
+@use '../../../settings/spacing';
+
+// padding: spacing.$tiny;
+.select {
+  &__control {
+    background-color: colors.$bg-primary !important;
+    border-radius: 0 !important;
+    font: typography.$b200-regular;
+    padding: 3px;
+
+    &:focus,
+    &--is-focused {
+      border: 1px solid colors.$input-active !important;
+      box-shadow: none !important;
+
+      .select__dropdown-indicator {
+        color: colors.$input-active;
+      }
+    }
+  }
+
+  &__single-value {
+    color: colors.$text-primary;
+  }
+
+  &__input-container,
+  &__single-value {
+    color: colors.$text-primary !important;
+  }
+
+  &__menu-list {
+    background-color: colors.$bg-primary;
+    color: colors.$text-primary !important;
+    font: typography.$b200-regular;
+  }
+
+  &__indicator-separator {
+    display: none;
+  }
+
+  &__option {
+    &:hover,
+    &--is-selected,
+    &--is-focused {
+      background-color: colors.$input-active !important;
+      color: colors.$text-inverted !important;
+    }
+  }
+}
+
+.select-container {
+  display: flex;
+  flex-direction: column;
+  gap: spacing.$tiny;
+  color: colors.$text-primary;
+  font: typography.$b200-bold;
+}
