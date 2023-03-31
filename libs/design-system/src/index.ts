@@ -17,6 +17,12 @@ export {
 
 // Objects
 export { ListContainer } from './lib/objects/ListContainer';
+export {
+  useModal,
+  ModalContextProvider,
+  useModalManager,
+} from './lib/objects/Modal/ModalContext';
+export { Modal } from './lib/objects/Modal';
 
 // Icons
 export { PalicoIcon } from './lib/icons/PalicoIcon';

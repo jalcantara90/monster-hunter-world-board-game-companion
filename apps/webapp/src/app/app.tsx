@@ -1,7 +1,12 @@
+import { ModalContextProvider } from '@mhwboard-companion/design-system';
 import { Router } from './Router';
 
 export function App() {
-  return <Router />;
+  return (
+    <ModalContextProvider>
+      <Router />
+    </ModalContextProvider>
+  );
 }
 
 export default App;

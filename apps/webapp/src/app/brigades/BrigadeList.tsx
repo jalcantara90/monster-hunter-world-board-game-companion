@@ -5,6 +5,11 @@ import {
   SectionTitle,
   FloatingButton,
   PlusIcon,
+  useModal,
+  useModalManager,
+  Modal,
+  Input,
+  Button,
 } from '@mhwboard-companion/design-system';
 
 import { useBrigadeList } from './hooks';
@@ -19,11 +24,22 @@ type BrigadeListProps = {
 export function BrigadeList({ brigadeRepository }: BrigadeListProps) {
   const { brigadeList, isLoading } = useBrigadeList(brigadeRepository);
 
+  const { showModal } = useModal();
+
+  const showCreateBrigadeModal = async () => {
+    try {
+      const res = await showModal(<BrigadeModal />);
+      return res;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <ListContainer>
       <SectionTitle title="Brigades" />
       <section className={styles.brigadeList__floating}>
-        <FloatingButton>
+        <FloatingButton onClick={showCreateBrigadeModal}>
           <PlusIcon />
         </FloatingButton>
       </section>
@@ -42,5 +58,31 @@ export function BrigadeList({ brigadeRepository }: BrigadeListProps) {
         )}
       </section>
     </ListContainer>
+  );
+}
+
+function BrigadeModal() {
+  const { confirmModal, cancelModal } = useModalManager();
+
+  return (
+    <Modal>
+      <Modal.Header title="Create Brigade" />
+      <Modal.Content>
+        <Input label="Brigade name" />
+      </Modal.Content>
+      <Modal.Footer>
+        <Button
+          variant="inverted"
+          onClick={() =>
+            cancelModal({ message: '', value: { confirmed: false } })
+          }
+        >
+          Cancel
+        </Button>
+        <Button onClick={() => confirmModal({ confirmed: true })}>
+          Create
+        </Button>
+      </Modal.Footer>
+    </Modal>
   );
 }

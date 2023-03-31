@@ -1,12 +1,22 @@
+import { ButtonHTMLAttributes } from 'react';
+import { classNames } from '../../shared/classNames';
 import styles from './Button.module.scss';
 
-export interface ButtonProps {
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: string;
-}
+  variant?: 'primary' | 'secondary' | 'inverted';
+};
 
-export function Button({ children }: ButtonProps) {
+export function Button({
+  children,
+  variant = 'primary',
+  ...props
+}: ButtonProps) {
   return (
-    <button className={styles.btn}>
+    <button
+      className={classNames(styles.btn, styles[`btn--${variant}`])}
+      {...props}
+    >
       {children}
     </button>
   );

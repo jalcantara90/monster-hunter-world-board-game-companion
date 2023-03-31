@@ -6,10 +6,16 @@ import styles from './Input.module.scss';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   label: string;
-  error: string;
+  error?: string;
 };
 
-export function Input({ name, className, label, error, ...props }: InputProps) {
+export function Input({
+  name,
+  className,
+  label,
+  error = '',
+  ...props
+}: InputProps) {
   return (
     <FormControl error={error}>
       <div className={styles.inputContainer}>

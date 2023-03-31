@@ -1,0 +1,52 @@
+@use '../../settings/colors';
+@use '../../settings/spacing';
+@use '../../settings/typography';
+@use '../../tools/typography' as mixins;
+
+.modal {
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 90vh;
+  width: 100%;
+  flex-direction: column;
+  background-color: colors.$bg-primary;
+  color: colors.$text-primary;
+  border: none;
+  padding: 0;
+  margin: 0;
+  transition: transform 0.4s modalEnter;
+  justify-content: flex-start;
+
+  &__header {
+    @include mixins.h100-regular();
+    padding: spacing.$xs;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__content {
+    font: typography.$b200-regular;
+    padding: spacing.$xs;
+  }
+
+  &__footer {
+    margin-top: auto;
+    padding: spacing.$xs;
+    display: flex;
+    justify-content: flex-end;
+    gap: spacing.$xs;
+  }
+}
+
+@keyframes modalEnter {
+  from {
+    transform: translateY(-100vh);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
