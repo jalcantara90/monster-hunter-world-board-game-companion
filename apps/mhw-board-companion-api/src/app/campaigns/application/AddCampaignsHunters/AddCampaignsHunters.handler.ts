@@ -30,7 +30,7 @@ export class AddCampaigHuntersHandler
     );
 
     if (
-      campaignHunters.length + command.huntersCampaign.length >=
+      campaignHunters.length + command.huntersCampaign.length >
       MAX_CAMPAIGN_HUNTERS
     ) {
       throw new Error('Campaign not allow more hunters');
