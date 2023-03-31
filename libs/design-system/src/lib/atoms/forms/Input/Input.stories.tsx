@@ -11,5 +11,6 @@ const Template: Story<InputProps> = (args) => <Input {...args} />;
 export const input = Template.bind({});
 input.args = {
   placeholder: 'Write hunter name',
-  label: 'Hunter name'
+  label: 'Hunter name',
+  error: ''
 };

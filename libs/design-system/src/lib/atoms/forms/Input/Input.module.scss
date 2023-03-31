@@ -11,6 +11,10 @@
   transition: border 0.3s;
   font: typography.$b200-regular;
 
+  &--error {
+    border: 1px solid colors.$state-error;
+  }
+
   &:focus {
     caret-color: colors.$input-active;
     border: 1px solid colors.$input-active;

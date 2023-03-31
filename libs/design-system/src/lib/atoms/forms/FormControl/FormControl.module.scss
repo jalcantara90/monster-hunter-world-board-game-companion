@@ -1,0 +1,12 @@
+@use '../../../settings/colors';
+@use '../../../settings/typography';
+@use '../../../settings/spacing';
+
+.formControl {
+  &__error {
+    color: colors.$state-error;
+    font: typography.$b200-regular;
+    margin: spacing.$tiny 0;
+    min-height: 1.25rem;
+  }
+}

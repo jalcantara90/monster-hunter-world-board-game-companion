@@ -2,7 +2,6 @@
 @use '../../../settings/typography';
 @use '../../../settings/spacing';
 
-// padding: spacing.$tiny;
 .select {
   &__control {
     background-color: colors.$bg-primary !important;
@@ -18,6 +17,12 @@
       .select__dropdown-indicator {
         color: colors.$input-active;
       }
+    }
+  }
+
+  &--error {
+    .select__control {
+      border: 1px solid colors.$state-error !important;
     }
   }
 
