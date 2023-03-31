@@ -27,12 +27,13 @@ export function BrigadeList({ brigadeRepository }: BrigadeListProps) {
   const { showModal } = useModal();
 
   const showCreateBrigadeModal = async () => {
-    try {
-      const res = await showModal(<BrigadeModal />);
-      return res;
-    } catch (error) {
-      console.error(error);
+    const { result, isCanceled } = await showModal(<BrigadeModal />);
+
+    if (isCanceled) {
+      console.error(result);
     }
+
+    return result;
   };
 
   return (

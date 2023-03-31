@@ -34,16 +34,19 @@ type CancelReason<T = unknown> = {
 };
 
 interface ModalContextProps {
-  showModal<T>(component: JSX.Element): Promise<T>;
+  showModal<T>(component: JSX.Element): Promise<ModalResult<T>>;
   confirmModal<T>(value: T): void;
   cancelModal(value: CancelReason): void;
 }
 
+type ModalResult<T> = {
+  isCanceled: boolean;
+  result: T;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 interface PromiseInfo<T = any> {
   resolve: (value: T | PromiseLike<boolean>) => void;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  reject: (reason?: any) => void;
 }
 
 export function ModalContextProvider({ children }: ModalContextProviderProps) {
@@ -52,20 +55,20 @@ export function ModalContextProvider({ children }: ModalContextProviderProps) {
 
   function showModal<T>(component: JSX.Element) {
     setModal(component);
-    return new Promise<T>((resolve, reject) => {
-      setPromiseInfo({ resolve, reject });
+    return new Promise<ModalResult<T>>((resolve) => {
+      setPromiseInfo({ resolve });
     });
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const confirmModal = (value: any) => {
-    promiseInfo?.resolve(value);
+  const confirmModal = (result: any) => {
+    promiseInfo?.resolve({ result, isCanceled: false });
     setModal(undefined);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const cancelModal = (reason: any) => {
-    promiseInfo?.reject(reason);
+  const cancelModal = (result: any) => {
+    promiseInfo?.resolve({ result, isCanceled: true });
     setModal(undefined);
   };
 

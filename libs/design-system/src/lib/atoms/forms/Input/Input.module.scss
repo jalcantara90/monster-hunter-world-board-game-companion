@@ -19,6 +19,10 @@
     caret-color: colors.$input-active;
     border: 1px solid colors.$input-active;
   }
+
+  &:focus-visible {
+    outline: none;
+  }
 }
 
 .inputContainer {
