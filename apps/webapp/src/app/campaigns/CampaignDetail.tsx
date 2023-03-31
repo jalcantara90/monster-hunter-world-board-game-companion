@@ -1,6 +1,11 @@
 import { useParams } from 'react-router-dom';
 import { ICampaignRepository } from './CampaignRepositoryService';
 import { useCampaignDetail } from './hooks';
+import {
+  CampaignHunterCard,
+  CampaignHunterCardSkeleton,
+  ListContainer
+} from '@mhwboard-companion/design-system';
 
 type CampaignDetailProps = {
   campaignRepository: ICampaignRepository;
@@ -8,14 +13,31 @@ type CampaignDetailProps = {
 
 export function CampaignDetail({ campaignRepository }: CampaignDetailProps) {
   const { campaignId } = useParams();
-  const { isLoading } = useCampaignDetail(
+  const { isLoading, hunterList } = useCampaignDetail(
     campaignRepository,
     campaignId
   );
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <>
+        <CampaignHunterCardSkeleton />
+        <CampaignHunterCardSkeleton />
+        <CampaignHunterCardSkeleton />
+        <CampaignHunterCardSkeleton />
+      </>
+    );
   }
 
-  return <div>Campaign CampaignDetail</div>;
+  return (
+    <ListContainer>
+      {hunterList.map((campaignHunters) => (
+        <CampaignHunterCard
+          name={campaignHunters.hunter.name}
+          palicoName={campaignHunters.hunter.palicoName}
+          weaponType={campaignHunters.weaponType}
+        />
+      ))}
+    </ListContainer>
+  );
 }
