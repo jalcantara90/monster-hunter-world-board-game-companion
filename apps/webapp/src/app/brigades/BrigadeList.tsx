@@ -6,34 +6,42 @@ import {
   FloatingButton,
   PlusIcon,
   useModal,
-  useModalManager,
-  Modal,
-  Input,
-  Button,
+  FullPageLoader,
 } from '@mhwboard-companion/design-system';
 
 import { useBrigadeList } from './hooks';
 import { IBrigadeRepository } from './BrigadeRepositoryService';
 
 import styles from './BrigadeList.module.scss';
+import { BrigadeForm, BrigadeModal } from './BrigadeModal';
+import { useNavigate } from 'react-router-dom';
 
 type BrigadeListProps = {
   brigadeRepository: IBrigadeRepository;
 };
 
 export function BrigadeList({ brigadeRepository }: BrigadeListProps) {
-  const { brigadeList, isLoading } = useBrigadeList(brigadeRepository);
+  const navigate = useNavigate();
+  const { brigadeList, isLoading, createBrigade, isCreating } =
+    useBrigadeList(brigadeRepository);
 
   const { showModal } = useModal();
 
   const showCreateBrigadeModal = async () => {
-    const { result, isCanceled } = await showModal(<BrigadeModal />);
+    const { result, isCanceled } = await showModal<BrigadeForm>(
+      <BrigadeModal />
+    );
 
     if (isCanceled) {
-      console.error(result);
+      return;
     }
 
-    return result;
+    try {
+      const brigade = await createBrigade(result);
+      navigate(`brigades/${brigade.id}`);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -58,32 +66,7 @@ export function BrigadeList({ brigadeRepository }: BrigadeListProps) {
           ))
         )}
       </section>
+      {isCreating && <FullPageLoader />}
     </ListContainer>
-  );
-}
-
-function BrigadeModal() {
-  const { confirmModal, cancelModal } = useModalManager();
-
-  return (
-    <Modal>
-      <Modal.Header title="Create Brigade" />
-      <Modal.Content>
-        <Input label="Brigade name" />
-      </Modal.Content>
-      <Modal.Footer>
-        <Button
-          variant="inverted"
-          onClick={() =>
-            cancelModal({ message: '', value: { confirmed: false } })
-          }
-        >
-          Cancel
-        </Button>
-        <Button onClick={() => confirmModal({ confirmed: true })}>
-          Create
-        </Button>
-      </Modal.Footer>
-    </Modal>
   );
 }

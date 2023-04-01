@@ -12,7 +12,7 @@ function confirmModalStub<T>(_value: T) {
   );
 }
 
-function cancelModalStub<T>(_value: CancelReason<T>) {
+function cancelModalStub() {
   throw new Error(
     'cancelModal is not define be sure that you have wrapped with ModalContextProvider'
   );
@@ -28,15 +28,10 @@ export type ModalContextProviderProps = {
   children: ReactNode | ReactNode[];
 };
 
-type CancelReason<T = unknown> = {
-  message: string;
-  value: T;
-};
-
 interface ModalContextProps {
   showModal<T>(component: JSX.Element): Promise<ModalResult<T>>;
   confirmModal<T>(value: T): void;
-  cancelModal(value: CancelReason): void;
+  cancelModal(): void;
 }
 
 type ModalResult<T> = {
@@ -66,9 +61,8 @@ export function ModalContextProvider({ children }: ModalContextProviderProps) {
     setModal(undefined);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const cancelModal = (result: any) => {
-    promiseInfo?.resolve({ result, isCanceled: true });
+  const cancelModal = () => {
+    promiseInfo?.resolve({ isCanceled: true });
     setModal(undefined);
   };
 
