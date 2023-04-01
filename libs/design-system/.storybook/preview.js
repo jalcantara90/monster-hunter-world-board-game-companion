@@ -2,7 +2,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import mhwTheme from './mhwTheme';
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -11,5 +11,8 @@ export const parameters = {
   },
   docs: {
     theme: mhwTheme,
+  },
+  viewport: {
+    defaultViewport: 'mobile1',
   },
 };
