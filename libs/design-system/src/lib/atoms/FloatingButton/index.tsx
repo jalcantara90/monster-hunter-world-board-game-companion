@@ -1,10 +1,14 @@
-import { ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import styles from './FloatingButton.module.scss';
 
-export interface FloatingButtonProps {
+export type FloatingButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode | ReactNode[];
-}
+};
 
-export function FloatingButton({ children }: FloatingButtonProps) {
-  return <button className={styles.floatingBtn}>{children}</button>;
+export function FloatingButton({ children, ...props }: FloatingButtonProps) {
+  return (
+    <button className={styles.floatingBtn} {...props}>
+      {children}
+    </button>
+  );
 }

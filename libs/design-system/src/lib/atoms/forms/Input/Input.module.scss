@@ -1,0 +1,34 @@
+@use '../../../settings/colors';
+@use '../../../settings/spacing';
+@use '../../../settings/typography';
+
+.input {
+  padding: spacing.$xxs;
+  background-color: colors.$bg-primary;
+  border: 1px solid colors.$input-border;
+  color: colors.$text-primary;
+  outline: none;
+  transition: border 0.3s;
+  font: typography.$b200-regular;
+
+  &--error {
+    border: 1px solid colors.$state-error;
+  }
+
+  &:focus {
+    caret-color: colors.$input-active;
+    border: 1px solid colors.$input-active;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: spacing.$tiny;
+  color: colors.$text-primary;
+  font: typography.$b200-bold;
+}

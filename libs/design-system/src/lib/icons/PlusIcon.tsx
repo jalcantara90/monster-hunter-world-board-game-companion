@@ -1,7 +1,7 @@
 export function PlusIcon() {
   return (
     <svg
-      enable-background="new 0 0 50 50"
+      enableBackground="new 0 0 50 50"
       height="50px"
       id="Layer_1"
       version="1.1"
@@ -15,8 +15,8 @@ export function PlusIcon() {
       <line
         fill="none"
         stroke="currentColor"
-        stroke-miterlimit="10"
-        stroke-width="4"
+        strokeMiterlimit="10"
+        strokeWidth="4"
         x1="9"
         x2="41"
         y1="25"
@@ -25,8 +25,8 @@ export function PlusIcon() {
       <line
         fill="none"
         stroke="currentColor"
-        stroke-miterlimit="10"
-        stroke-width="4"
+        strokeMiterlimit="10"
+        strokeWidth="4"
         x1="25"
         x2="25"
         y1="9"

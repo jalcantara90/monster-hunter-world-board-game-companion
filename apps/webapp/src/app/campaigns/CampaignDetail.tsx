@@ -4,7 +4,7 @@ import { useCampaignDetail } from './hooks';
 import {
   CampaignHunterCard,
   CampaignHunterCardSkeleton,
-  ListContainer
+  ListContainer,
 } from '@mhwboard-companion/design-system';
 
 type CampaignDetailProps = {
@@ -33,6 +33,7 @@ export function CampaignDetail({ campaignRepository }: CampaignDetailProps) {
     <ListContainer>
       {hunterList.map((campaignHunters) => (
         <CampaignHunterCard
+          key={campaignHunters.id}
           name={campaignHunters.hunter.name}
           palicoName={campaignHunters.hunter.palicoName}
           weaponType={campaignHunters.weaponType}

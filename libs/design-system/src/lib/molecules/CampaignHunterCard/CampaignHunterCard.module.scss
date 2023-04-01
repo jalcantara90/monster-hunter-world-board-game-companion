@@ -9,7 +9,6 @@
   color: colors.$white;
   display: flex;
   gap: spacing.$xs;
-  border-radius: border.$radius-default;
   font: typography.$b300-regular;
   transition: transform 0.3s ease-in;
   cursor: pointer;
@@ -26,7 +25,6 @@
   }
 
   &__weapon {
-    border-radius: border.$radius-default;
     padding: spacing.$tiny;
     background-color: colors.$bg-secondary;
     display: flex;
