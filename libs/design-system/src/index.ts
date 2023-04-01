@@ -25,6 +25,8 @@ export {
   useModalManager,
 } from './lib/objects/Modal/ModalContext';
 export { Modal } from './lib/objects/Modal';
+export { ToastContainer } from './lib/objects/Toast/ToastContainer';
+export { useToast } from './lib/objects/Toast/useToast';
 
 // Icons
 export { PalicoIcon } from './lib/icons/PalicoIcon';

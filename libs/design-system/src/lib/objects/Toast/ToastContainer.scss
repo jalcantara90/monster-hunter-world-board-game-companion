@@ -1,0 +1,6 @@
+@use '../../settings/colors';
+
+:root {
+  --toastify-color-success: #{colors.$state-success};
+  --toastify-color-progress-success: #{colors.$state-success};
+}

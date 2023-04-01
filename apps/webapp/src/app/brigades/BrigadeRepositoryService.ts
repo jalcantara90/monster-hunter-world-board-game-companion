@@ -17,7 +17,7 @@ export class BrigadRepositoryService implements IBrigadeRepository {
     const response = await fetch(this.baseUrl, {
       method: 'POST',
       headers: {
-        'Content-type': 'application.json',
+        'Content-type': 'application/json',
       },
       body: JSON.stringify(request),
     });

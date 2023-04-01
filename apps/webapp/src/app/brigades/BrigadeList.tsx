@@ -7,6 +7,7 @@ import {
   PlusIcon,
   useModal,
   FullPageLoader,
+  useToast,
 } from '@mhwboard-companion/design-system';
 
 import { useBrigadeList } from './hooks';
@@ -24,6 +25,7 @@ export function BrigadeList({ brigadeRepository }: BrigadeListProps) {
   const navigate = useNavigate();
   const { brigadeList, isLoading, createBrigade, isCreating } =
     useBrigadeList(brigadeRepository);
+  const notify = useToast();
 
   const { showModal } = useModal();
 
@@ -37,7 +39,11 @@ export function BrigadeList({ brigadeRepository }: BrigadeListProps) {
     }
 
     try {
-      const brigade = await createBrigade(result);
+      const brigade = await notify.promise(createBrigade(result), {
+        pending: 'Creating brigade',
+        success: 'Brigade created',
+        error: 'Error when creating brigade',
+      });
       navigate(`brigades/${brigade.id}`);
     } catch (error) {
       console.error(error);
