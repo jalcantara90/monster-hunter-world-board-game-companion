@@ -7,8 +7,10 @@ export default {
 } as Meta;
 
 const Template: Story<FloatingButtonProps> = (args) => (
-  <FloatingButton {...args}>+</FloatingButton>
+  <FloatingButton {...args} />
 );
 
 export const floatingButton = Template.bind({});
-floatingButton.args = {};
+floatingButton.args = {
+  children: '+',
+};

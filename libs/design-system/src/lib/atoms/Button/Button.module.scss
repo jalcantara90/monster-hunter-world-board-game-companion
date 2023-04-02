@@ -26,6 +26,10 @@
     color: colors.$text-primary;
   }
 
+  &:disabled {
+    background-color: colors.$state-disabled;
+  }
+
   &:hover {
     border: 1px solid colors.$cta-primary;
     background-color: colors.$cta-primary-hover;

@@ -16,8 +16,16 @@ export class BrigadRepositoryService implements IBrigadeRepository {
   async create(request: CreateBrigadeRequest): Promise<Brigade> {
     const response = await fetch(this.baseUrl, {
       method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
       body: JSON.stringify(request),
     });
+
+    if (!response.ok) {
+      const error = await response.text();
+      throw new Error(error);
+    }
 
     return await response.json();
   }
@@ -26,6 +34,9 @@ export class BrigadRepositoryService implements IBrigadeRepository {
     const { id, ...body } = request;
     const response = await fetch(`${this.baseUrl}/${id}`, {
       method: 'PATCH',
+      headers: {
+        'Content-type': 'application.json',
+      },
       body: JSON.stringify(body),
     });
 
