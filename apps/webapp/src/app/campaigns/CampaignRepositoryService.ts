@@ -1,4 +1,5 @@
 import {
+  AddHunterCampaignRequest,
   Campaign,
   CampaignHunters,
   CreateCampaignRequest,
@@ -7,11 +8,12 @@ import {
 
 export interface ICampaignRepository {
   findAll(): Promise<Campaign[]>;
-  find(campaignId: string): Promise<Campaign[]>;
+  find(campaignId: string): Promise<Campaign>;
   create(request: CreateCampaignRequest): Promise<Campaign>;
   update(request: UpdateCampaignRequest): Promise<Campaign>;
   delete(campaignId: string): Promise<void>;
   findAllHunters(campaignId: string): Promise<CampaignHunters[]>;
+  AddHunters(request: AddHunterCampaignRequest): Promise<void>;
 }
 
 export class CampaignRepositoryService implements ICampaignRepository {
@@ -20,16 +22,22 @@ export class CampaignRepositoryService implements ICampaignRepository {
   async create(request: CreateCampaignRequest): Promise<Campaign> {
     const response = await fetch(this.baseUrl, {
       method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
       body: JSON.stringify(request),
     });
 
     return await response.json();
   }
 
-  async update(request: Campaign): Promise<Campaign> {
+  async update(request: UpdateCampaignRequest): Promise<Campaign> {
     const { id, ...body } = request;
     const response = await fetch(`${this.baseUrl}/${id}`, {
       method: 'PATCH',
+      headers: {
+        'Content-type': 'application/json',
+      },
       body: JSON.stringify(body),
     });
 
@@ -42,7 +50,7 @@ export class CampaignRepositoryService implements ICampaignRepository {
     return await response.json();
   }
 
-  async find(campaignId: string): Promise<Campaign[]> {
+  async find(campaignId: string): Promise<Campaign> {
     const response = await fetch(`${this.baseUrl}/${campaignId}`);
 
     return await response.json();
@@ -60,5 +68,16 @@ export class CampaignRepositoryService implements ICampaignRepository {
     const response = await fetch(`${this.baseUrl}/${campaignId}/hunters`);
 
     return await response.json();
+  }
+
+  async AddHunters(request: AddHunterCampaignRequest): Promise<void> {
+    const { campaignId, huntersCampaign } = request;
+    await fetch(`${this.baseUrl}/${campaignId}/hunters`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({ huntersCampaign }),
+    });
   }
 }

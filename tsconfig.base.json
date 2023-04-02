@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@mhwboard-companion/common-api": ["libs/common-api/src/index.ts"],
       "@mhwboard-companion/design-system": ["libs/design-system/src/index.ts"]
     }
   },

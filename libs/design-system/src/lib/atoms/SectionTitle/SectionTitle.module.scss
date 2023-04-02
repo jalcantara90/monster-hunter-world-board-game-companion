@@ -1,23 +1,9 @@
 @use '../../settings/colors';
+@use '../../tools/typography' as mixins;
 
 .sectionTitle {
-  background-image: url(../../assets/h2_img_left_top.png),
-    url(../../assets/h2_img_right_top.png),
-    url(../../assets/h2_img_left_bottom.png),
-    url(../../assets/h2_img_right_bottom.png),
-    url(../../assets/h2_line_top.png),
-    url(../../assets/h2_line_bottm.png);
-  background-position: left top, right top, left bottom, right bottom,
-    center top, center bottom;
-  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x,
-    repeat-x;
-  background-size: 36px 16px, 36px 16px, 6px 6px, 6px 6px, 1px 4px, 1px 4px;
-  background-color: #140c0b;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0.25rem;
-  text-align: center;
-  padding: 10px 30px 8px;
+  @include mixins.h200-regular();
+  text-align: left;
   box-sizing: border-box;
   color: colors.$white;
 }

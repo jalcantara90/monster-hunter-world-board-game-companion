@@ -1,3 +1,5 @@
+import { WeaponType } from '@mhwboard-companion/common-api';
+
 export type Campaign = {
   id: string;
   name: string;
@@ -9,7 +11,7 @@ export type UpdateCampaignRequest = Campaign;
 
 export type CampaignHunters = {
   id: string;
-  weaponType: number;
+  weaponType: WeaponType;
   hunter: Hunter;
 };
 
@@ -17,4 +19,14 @@ export type Hunter = {
   id: string;
   name: string;
   palicoName: string;
+};
+
+export type HunterCampaignRequest = {
+  hunterId: string;
+  weaponType: WeaponType;
+};
+
+export type AddHunterCampaignRequest = {
+  campaignId: string;
+  huntersCampaign: HunterCampaignRequest[];
 };

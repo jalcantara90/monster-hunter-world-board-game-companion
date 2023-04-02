@@ -79,7 +79,8 @@ export class HunterTypeORMRepository implements HunterRepository {
     hunterIds?: string[];
     isApiResponse?: boolean;
   }): Promise<HunterResponse[] | HunterEntity[]> {
-    const hunterEntities = await this.hunterRepository.findBy({ id: In(hunterIds) });
+    const query = hunterIds ? { id: In(hunterIds) } : {};
+    const hunterEntities = await this.hunterRepository.findBy(query);
 
     if (!isApiResponse) {
       return hunterEntities;

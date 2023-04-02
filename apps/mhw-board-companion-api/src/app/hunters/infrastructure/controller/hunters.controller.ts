@@ -15,6 +15,7 @@ import { ApiTags } from '@nestjs/swagger';
 import { CreateHunterCommand } from '../../application/CreateHunter/CreateHunter.command';
 import { DeleteHunterByIdCommand } from '../../application/DeleteHunter/DeleteHunterById.command';
 import { GetHunterByIdCommand } from '../../application/GetHunter/GetHunterById.command';
+import { GetHunterListCommand } from '../../application/GetHunterList/GetHunterList.command';
 import { UpdateHunterCommand } from '../../application/UpdateHunter/UpdateHunter.command';
 import { CreateHunterRequest } from '../../domain/requests/CreateHunterRequest';
 import { UpdateHunterRequest } from '../../domain/requests/UpdateHunterRequest';
@@ -27,6 +28,11 @@ export class HuntersController {
   @Post()
   create(@Body() request: CreateHunterRequest) {
     return this.commandBus.execute(new CreateHunterCommand(request));
+  }
+
+  @Get()
+  findAll() {
+    return this.commandBus.execute(new GetHunterListCommand());
   }
 
   @Get(':id')
