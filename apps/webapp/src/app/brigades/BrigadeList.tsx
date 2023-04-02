@@ -42,7 +42,11 @@ export function BrigadeList({ brigadeRepository }: BrigadeListProps) {
       const brigade = await notify.promise(createBrigade(result), {
         pending: 'Creating brigade',
         success: 'Brigade created',
-        error: 'Error when creating brigade',
+        error: {
+          render({ data }) {
+            return <div>{(data as { message: string }).message}</div>;
+          },
+        },
       });
       navigate(`brigades/${brigade.id}`);
     } catch (error) {
