@@ -2,13 +2,14 @@
 export { Button } from './lib/atoms/Button';
 export { FloatingButton } from './lib/atoms/FloatingButton';
 export { BrigadeCard, BrigadeCardSkeletonList } from './lib/atoms/BrigadeCard';
-export { SectionTitle } from './lib/atoms/SectionTitle';
+export { SectionTitle, SectionTitleSkeleton } from './lib/atoms/SectionTitle';
 export { WeaponIcon } from './lib/atoms/WeaponIcon';
 export { ArmorIcon } from './lib/atoms/ArmorIcon';
 export { FullPageLoader } from './lib/atoms/FullPageLoader';
 export { Input } from './lib/atoms/forms/Input';
 export { Select } from './lib/atoms/forms/Select';
 export { Form } from './lib/atoms/forms/Form';
+export { AddHunterButton } from './lib/atoms/AddHunterButton';
 
 // Molecules
 export { SideMenu } from './lib/molecules/SideMenu';

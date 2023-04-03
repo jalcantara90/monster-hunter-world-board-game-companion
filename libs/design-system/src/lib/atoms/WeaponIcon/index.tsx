@@ -1,3 +1,5 @@
+import { WeaponType } from '@mhwboard-companion/common-api';
+
 import { BowIcon } from '../../icons/BowIcon';
 import { DualBladeIcon } from '../../icons/DualBladeIcon';
 import { GreatSwordIcon } from '../../icons/GreatSwordIcon';
@@ -13,23 +15,6 @@ import { HammerIcon } from '../../icons/HammerIcon';
 import { HuntingHornIcon } from '../../icons/HuntingHornIcon';
 import { ChargeBladeIcon } from '../../icons/ChargeBladeIcon';
 import { IconProps } from '../../icons/types';
-
-export enum WeaponType {
-  GREAT_SWORD,
-  SWORD_AND_SHIELD,
-  DOUBLE_BLADES,
-  CHARGE_BLADE,
-  LANCE,
-  GUNLANCE,
-  INSECT_GLAIVE,
-  HAMMER,
-  HUNTING_HORN,
-  LONG_SWORD,
-  SWITCH_AXE,
-  BOW,
-  LIGHT_BOWGUN,
-  HEAVY_BOWGUN,
-}
 
 const weaponIconDictionary = {
   [WeaponType.GREAT_SWORD]: GreatSwordIcon,

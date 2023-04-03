@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react';
-import { SectionTitle, SectionTitleProps } from './index';
+import { SectionTitle, SectionTitleProps, SectionTitleSkeleton } from './index';
 
 export default {
   title: 'Atoms/SectionTitle',
@@ -10,5 +10,9 @@ const Template: Story<SectionTitleProps> = (args) => <SectionTitle {...args} />;
 
 export const sectionTitle = Template.bind({});
 sectionTitle.args = {
-  title: 'Armors'
+  title: 'Armors',
 };
+
+const TemplateSkeleton: Story = () => <SectionTitleSkeleton />;
+
+export const sectionTitleSkeleton = TemplateSkeleton.bind({});

@@ -1,0 +1,18 @@
+@use '../../settings/spacing';
+@use '../../settings/colors';
+@use '../../settings/typography';
+
+.addHunterButton {
+  display: flex;
+  padding: spacing.$md;
+  color: colors.$text-secondary;
+  gap: spacing.$xs;
+  background-color: colors.$bg-primary;
+  border: 1px dashed colors.$input-border;
+  align-items: center;
+  font: typography.$b300-bold;
+
+  svg {
+    width: 2rem;
+  }
+}

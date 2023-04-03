@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Campaign } from '../../campaigns/types';
+
 import { IBrigadeRepository } from '../BrigadeRepositoryService';
+import { Campaign, CreateCampaignRequest } from '../../campaigns/types';
+import { ICampaignRepository } from '../../campaigns/CampaignRepositoryService';
 
 export function useBrigadeDetails(
   brigadeRepository: IBrigadeRepository,
@@ -30,5 +32,15 @@ export function useBrigadeDetails(
   return {
     campaignList,
     isLoading,
+  };
+}
+
+export function useCampaignCreate(campaignRepository: ICampaignRepository) {
+  const createCampaign = (request: CreateCampaignRequest) => {
+    return campaignRepository.create(request);
+  };
+
+  return {
+    createCampaign
   };
 }

@@ -1,13 +1,9 @@
+import { ArmorPiece } from '@mhwboard-companion/common-api';
+
 import { IconProps } from '../../icons/types';
 import { HelmetIcon } from '../../icons/HelmetIcon';
 import { GreavesIcon } from '../../icons/GreavesIcon';
 import { ChestPlateIcon } from '../../icons/ChestPlateIcon';
-
-export enum ArmorPiece {
-  HEAD,
-  CHEST,
-  GREAVES,
-}
 
 export type ArmorIconProps = IconProps & {
   armorPiece: ArmorPiece;

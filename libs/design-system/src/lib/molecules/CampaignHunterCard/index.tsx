@@ -1,6 +1,8 @@
 import Skeleton from 'react-loading-skeleton';
-import { WeaponIcon, WeaponType } from '../../atoms/WeaponIcon';
+import { WeaponType } from '@mhwboard-companion/common-api';
+
 import { ArrowIcon } from '../../icons/ArrowIcon';
+import { WeaponIcon } from '../../atoms/WeaponIcon';
 
 import styles from './CampaignHunterCard.module.scss';
 
