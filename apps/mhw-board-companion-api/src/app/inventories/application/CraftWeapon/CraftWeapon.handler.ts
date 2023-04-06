@@ -85,7 +85,7 @@ export class CraftWeaponHandler implements ICommandHandler<CraftWeaponCommand> {
   ) {
     if (
       inventoryItems.find(
-        (item) => (item.weapon as WeaponEntity)?.id === weaponId
+        (item) => item.weapon && (item.weapon as WeaponEntity)?.id === weaponId
       )
     ) {
       throw new HttpException(WEAPON_ALREADY_CRAFTED, HttpStatus.CONFLICT);

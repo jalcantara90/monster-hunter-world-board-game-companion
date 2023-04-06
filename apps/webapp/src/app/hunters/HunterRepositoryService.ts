@@ -43,17 +43,17 @@ export class HunterRepositoryService implements IHunterRepository {
   async findAll(): Promise<Hunter[]> {
     const response = await fetch(this.baseUrl);
 
+    return response.json();
+  }
+
+  async find(hunterId: string): Promise<Hunter> {
+    const response = await fetch(`${this.baseUrl}/${hunterId}`);
+
     return await response.json();
   }
 
-  async find(campaignId: string): Promise<Hunter> {
-    const response = await fetch(`${this.baseUrl}/${campaignId}`);
-
-    return await response.json();
-  }
-
-  async delete(campaignId: string) {
-    const response = await fetch(`${this.baseUrl}/${campaignId}`, {
+  async delete(hunterId: string) {
+    const response = await fetch(`${this.baseUrl}/${hunterId}`, {
       method: 'DELETE',
     });
 

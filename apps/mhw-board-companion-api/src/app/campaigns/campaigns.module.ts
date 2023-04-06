@@ -23,6 +23,19 @@ import { HunterEntity } from '../hunters/infrastructure/entity/Hunter.entity';
 import { InventoryEntity } from '../database/entities/Inventory.entity';
 import { inventoryProviders } from '../inventories/inventories.providers';
 import { InventoryItemsEntity } from '../inventories/infrastructure/entity/Inventory.entity';
+import { GetCampaignListByBrigadeIdCommandHandler } from './application/GetCampaignHunterInventory/GetCampaignHunterInventory.handler';
+import { materialProviders } from '../materials/materials.providers';
+import { armorProviders } from '../armors/armors.providers';
+import { weaponProviders } from '../weapons/weapons.providers';
+import { MaterialEntity } from '../materials/infrastructure/entity/Material.entity';
+import {
+  ArmorCraftingEntity,
+  ArmorEntity,
+} from '../armors/infrastructure/entity/Armor.entity';
+import {
+  WeaponCraftingEntity,
+  WeaponEntity,
+} from '../weapons/infrastructure/entity/Weapon.entity';
 
 const commandHandlers = [
   CreateCampaignHandler,
@@ -31,6 +44,7 @@ const commandHandlers = [
   DeleteCampaignHandler,
   GetCampaignListByBrigadeIdHandler,
   AddCampaigHuntersHandler,
+  GetCampaignListByBrigadeIdCommandHandler,
 ];
 
 @Module({
@@ -43,6 +57,11 @@ const commandHandlers = [
       CampaignHuntersEntity,
       InventoryEntity,
       InventoryItemsEntity,
+      MaterialEntity,
+      ArmorEntity,
+      WeaponEntity,
+      WeaponCraftingEntity,
+      ArmorCraftingEntity,
     ]),
   ],
   controllers: [CampaignsController],
@@ -51,6 +70,9 @@ const commandHandlers = [
     ...campaignProviders,
     ...hunterProviders,
     ...inventoryProviders,
+    ...materialProviders,
+    ...armorProviders,
+    ...weaponProviders,
   ],
 })
 export class CampaignsModule {}
