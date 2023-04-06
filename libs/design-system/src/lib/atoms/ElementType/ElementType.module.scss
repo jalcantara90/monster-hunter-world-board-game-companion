@@ -1,0 +1,30 @@
+@use '../../settings/spacing';
+@use '../../settings/colors';
+@use '../../settings/typography';
+
+.elementType {
+  padding: spacing.$tiny spacing.$xs;
+  font: typography.$b200-bold;
+  text-transform: capitalize;
+  color: colors.$text-primary;
+
+  &--fire {
+    background-color: colors.$element-fire;
+  }
+  &--water {
+    background-color: colors.$element-water;
+  }
+  &--dragon {
+    background-color: colors.$element-dragon;
+  }
+  &--electric {
+    background-color: colors.$element-electric;
+  }
+  &--ice {
+    background-color: colors.$element-ice;
+  }
+  &--non-elemental {
+    color: colors.$black;
+    background-color: colors.$state-disabled-bg;
+  }
+}

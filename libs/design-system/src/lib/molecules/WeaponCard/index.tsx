@@ -2,6 +2,7 @@ import { WeaponType } from '@mhwboard-companion/common-api';
 import { Button } from '../../atoms/Button';
 import { WeaponIcon } from '../../atoms/WeaponIcon';
 import { DefenseIcon } from '../../icons/DefenseIcon';
+import { RequiredMaterials } from '../../atoms/RequiredMaterials';
 import styles from './WeaponCard.module.scss';
 
 type WeaponMaterial = {
@@ -63,27 +64,42 @@ export function WeaponCard({
         <ul className={styles.damageList}>
           {Boolean(damageOne) && (
             <li className={styles.damageList__item}>
-              1 <span className={styles.weaponCard__secondaryText}>x{damageOne}</span>
+              1
+              <span className={styles.weaponCard__secondaryText}>
+                x{damageOne}
+              </span>
             </li>
           )}
           {Boolean(damageTwo) && (
             <li className={styles.damageList__item}>
-              2 <span className={styles.weaponCard__secondaryText}>x{damageTwo}</span>
+              2
+              <span className={styles.weaponCard__secondaryText}>
+                x{damageTwo}
+              </span>
             </li>
           )}
           {Boolean(damageThree) && (
             <li className={styles.damageList__item}>
-              3 <span className={styles.weaponCard__secondaryText}>x{damageThree}</span>
+              3
+              <span className={styles.weaponCard__secondaryText}>
+                x{damageThree}
+              </span>
             </li>
           )}
           {Boolean(damageFour) && (
             <li className={styles.damageList__item}>
-              4 <span className={styles.weaponCard__secondaryText}>x{damageFour}</span>
+              4
+              <span className={styles.weaponCard__secondaryText}>
+                x{damageFour}
+              </span>
             </li>
           )}
           {Boolean(damageFive) && (
             <li className={styles.damageList__item}>
-              5 <span className={styles.weaponCard__secondaryText}>x{damageFive}</span>
+              5
+              <span className={styles.weaponCard__secondaryText}>
+                x{damageFive}
+              </span>
             </li>
           )}
         </ul>
@@ -96,20 +112,16 @@ export function WeaponCard({
       </div>
       {Boolean(materials.length) && (
         <div className={styles.weaponCard__requirements}>
-          <div className={styles.weaponCard__secondaryText}>Craft requirement:</div>
+          <div className={styles.weaponCard__secondaryText}>
+            Craft requirement:
+          </div>
+          <RequiredMaterials materials={materials} />
 
-          <ul className={styles.requirementList}>
-            {materials.map((material) => (
-              <li key={material.id} className={styles.requirementList__item}>
-                {material.name}{' '}
-                <span className={styles.weaponCard__secondaryText}>-</span>{' '}
-                {material.quantity}
-              </li>
-            ))}
-          </ul>
           {previousWeapon && (
             <div className={styles.previousWeapon}>
-              <span className={styles.weaponCard__secondaryText}>Previous weapon:</span>{' '}
+              <span className={styles.weaponCard__secondaryText}>
+                Previous weapon:
+              </span>
               {previousWeapon.name}
             </div>
           )}
