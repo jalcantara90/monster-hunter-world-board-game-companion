@@ -1,0 +1,40 @@
+@use '../../settings/colors';
+@use '../../settings/typography';
+@use '../../settings/spacing';
+
+.armorPiece {
+  display: flex;
+  color: colors.$text-primary;
+  flex-direction: column;
+  gap: spacing.$tiny;
+  padding: spacing.$xs;
+  background-color: colors.$bg-primary;
+  font: typography.$b300-regular;
+
+  &__info {
+    display: flex;
+    gap: spacing.$tiny;
+    align-items: center;
+  }
+
+  &__defense {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__secondaryText {
+    color: colors.$text-secondary;
+    font: typography.$b300-regular;
+  }
+
+  &__craftAction {
+    margin-left: auto;
+  }
+}
+
+.defenseGroup {
+  display: flex;
+  gap: spacing.$xs;
+  align-items: center;
+  font: typography.$b500-regular;
+}

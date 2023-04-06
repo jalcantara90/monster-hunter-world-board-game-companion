@@ -8,6 +8,8 @@ $_primary-black: #000000;
 $_primary-yellow: #cfee1d;
 $_secondary-violet: #7026f4;
 $_transparent: #00000000;
+$_primary-blue: #2196f3;
+$_secondary-blue: #9ac1e0;
 
 $_secondary-pink: #e0a4bf;
 $_secondary-grey: #2a2a2a;
@@ -20,6 +22,12 @@ $_primary-brown: #211f1e;
 $_secondary-brown: #27201d;
 
 $brand: $_primary-green;
+
+$element-fire: $_error;
+$element-water: $_primary-blue;
+$element-ice: $_secondary-blue;
+$element-dragon: $_secondary-violet;
+$element-electric: $_primary-yellow;
 
 $cta-primary: $_primary-yellow;
 $cta-primary-hover: $_transparent;
