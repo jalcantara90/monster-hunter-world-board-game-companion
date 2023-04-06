@@ -3,18 +3,17 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
   ParseUUIDPipe,
   HttpCode,
   HttpStatus,
   Query,
+  Patch,
 } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
 
 import { CreateInventoryRequest } from '../../domain/requests/CreateInventorieRequest';
-import { UpdateInventorieRequest } from '../../domain/requests/UpdateInventorieRequest';
 import { CreateInventoryCommand } from '../../application/CreateInventory/CreateInventory.command';
 import { GetInventorieCommand } from '../../application/GetInventorie/GetInventorie.command';
 import { DeleteInventorieCommand } from '../../application/DeleteInventorie/DeleteInventorie.command';
@@ -25,6 +24,8 @@ import { AddMaterialCommand } from '../../application/AddMaterial/AddMaterial.co
 import { CraftArmorCommand } from '../../application/CraftArmor/CraftArmor.command';
 import { ApiTags } from '@nestjs/swagger';
 import { CraftWeaponCommand } from '../../application/CraftWeapon/CraftWeapon.command';
+import { UpdateInventoryMaterialRequest } from '../../domain/requests/UpdateInventoryMaterialRequest';
+import { UpdateInventoryItemCommand } from '../../application/UpdateInventoryItem/UpdateInventoryItem.command';
 
 @ApiTags('Inventories')
 @Controller('inventories')
@@ -67,6 +68,16 @@ export class InventoriesController {
   ) {
     return this.commandBus.execute(
       new CraftWeaponCommand(inventoryId, weaponId)
+    );
+  }
+
+  @Patch('material/:inventoryMaterialId')
+  updateInventoryItem(
+    @Param('inventoryMaterialId', ParseUUIDPipe) inventoryMaterialId: string,
+    @Body() request: UpdateInventoryMaterialRequest
+  ) {
+    return this.commandBus.execute(
+      new UpdateInventoryItemCommand(inventoryMaterialId, request.quantity)
     );
   }
 
