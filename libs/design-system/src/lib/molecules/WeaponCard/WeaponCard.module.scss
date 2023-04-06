@@ -1,0 +1,67 @@
+@use '../../settings/colors';
+@use '../../settings/typography';
+@use '../../settings/spacing';
+
+.weaponCard {
+  display: flex;
+  color: colors.$text-primary;
+  flex-direction: column;
+  gap: spacing.$tiny;
+  padding: spacing.$xs;
+  background-color: colors.$bg-primary;
+  position: relative;
+  overflow: hidden;
+
+  &__requirements,
+  &__info {
+    display: flex;
+    gap: spacing.$tiny;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__secondaryText {
+    color: colors.$text-secondary;
+    font: typography.$b300-regular;
+  }
+}
+
+.info__header {
+  font: typography.$b300-regular;
+  display: flex;
+  align-items: center;
+  gap: spacing.$xs;
+}
+
+.damageList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+
+  font: typography.$b500-regular;
+}
+
+.defense {
+  font: typography.$b500-regular;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: spacing.$xs;
+}
+
+.requirementList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  font: typography.$b300-regular;
+}
+
+.previousWeapon {
+  font: typography.$b300-regular;
+}
