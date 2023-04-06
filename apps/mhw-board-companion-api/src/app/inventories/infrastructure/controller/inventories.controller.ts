@@ -3,7 +3,6 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
   ParseUUIDPipe,
@@ -14,7 +13,6 @@ import {
 import { CommandBus } from '@nestjs/cqrs';
 
 import { CreateInventoryRequest } from '../../domain/requests/CreateInventorieRequest';
-import { UpdateInventorieRequest } from '../../domain/requests/UpdateInventorieRequest';
 import { CreateInventoryCommand } from '../../application/CreateInventory/CreateInventory.command';
 import { GetInventorieCommand } from '../../application/GetInventorie/GetInventorie.command';
 import { DeleteInventorieCommand } from '../../application/DeleteInventorie/DeleteInventorie.command';
