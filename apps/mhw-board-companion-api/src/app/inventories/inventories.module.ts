@@ -20,6 +20,7 @@ import {
   ArmorEntity,
 } from '../armors/infrastructure/entity/Armor.entity';
 import { CraftWeaponHandler } from './application/CraftWeapon/CraftWeapon.handler';
+import { UpdateInventoryItemHandler } from './application/UpdateInventoryItem/UpdateInventoryItemHandler';
 import {
   WeaponCraftingEntity,
   WeaponEntity,
@@ -34,6 +35,7 @@ const commandHandlers = [
   AddMaterialHandler,
   CraftArmorHandler,
   CraftWeaponHandler,
+  UpdateInventoryItemHandler,
 ];
 
 @Module({
