@@ -53,16 +53,20 @@ export class GetCampaignListByBrigadeIdCommandHandler
         .filter(
           (item) => item.material && (item.material as MaterialEntity).isCommon
         )
-        .map((item) =>
-          this.materialMapper.fromEntity(item.material as MaterialEntity)
-        ),
+        .map((item) => ({
+          ...this.materialMapper.fromEntity(item.material as MaterialEntity),
+          id: item.id,
+          quantity: item.quantity,
+        })),
       otherMaterials: inventoryMaterials
         .filter(
           (item) => item.material && !(item.material as MaterialEntity).isCommon
         )
-        .map((item) =>
-          this.materialMapper.fromEntity(item.material as MaterialEntity)
-        ),
+        .map((item) => ({
+          ...this.materialMapper.fromEntity(item.material as MaterialEntity),
+          quantity: item.quantity,
+          id: item.id,
+        })),
       weapons: inventoryMaterials
         .filter((item) => item.weapon)
         .map((item) =>

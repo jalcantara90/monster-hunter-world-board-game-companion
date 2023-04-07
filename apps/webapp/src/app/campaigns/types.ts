@@ -1,4 +1,9 @@
-import { WeaponType } from '@mhwboard-companion/common-api';
+import {
+  WeaponType,
+  ArmorPiece,
+  Elemental,
+} from '@mhwboard-companion/common-api';
+import { Material } from '../materials/types';
 
 export type Campaign = {
   id: string;
@@ -29,4 +34,46 @@ export type HunterCampaignRequest = {
 export type AddHunterCampaignRequest = {
   campaignId: string;
   huntersCampaign: HunterCampaignRequest[];
+};
+
+export enum CraftingBranch {
+  STARTING,
+  BONE,
+  ORE,
+  MONSTER,
+}
+
+export type Armor = {
+  id: string;
+  name: string;
+  defense: number;
+  armorPiece: ArmorPiece;
+  branch: CraftingBranch;
+  elementalDefenseType: Elemental;
+  elementalDefense: number;
+};
+
+export type Weapon = {
+  id: string;
+  name: string;
+  branch: CraftingBranch;
+  weaponType: WeaponType;
+  previousWeapon?: Weapon;
+  defense: number;
+  damageOne: number;
+  damageTwo: number;
+  damageThree: number;
+  damageFour: number;
+  damageFive: number;
+};
+
+export type InventoryMaterial = Material & { quantity: number };
+
+export type InventoryHunter = {
+  inventoryId: string;
+  weaponType: WeaponType;
+  commonMaterials: InventoryMaterial[];
+  otherMaterials: InventoryMaterial[];
+  weapons: Weapon[];
+  armors: Armor[];
 };

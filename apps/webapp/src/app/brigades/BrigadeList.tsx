@@ -30,11 +30,11 @@ export function BrigadeList({ brigadeRepository }: BrigadeListProps) {
   const { showModal } = useModal();
 
   const showCreateBrigadeModal = async () => {
-    const { result, isCanceled } = await showModal<BrigadeForm>(
+    const { result, isCancelled } = await showModal<BrigadeForm>(
       <BrigadeModal />
     );
 
-    if (isCanceled) {
+    if (isCancelled) {
       return;
     }
 

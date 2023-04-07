@@ -17,6 +17,9 @@ export {
   CampaignHunterCard,
   CampaignHunterCardSkeleton,
 } from './lib/molecules/CampaignHunterCard';
+export { ArmorPieceCard } from './lib/molecules/ArmorPieceCard';
+export { WeaponCard } from './lib/molecules/WeaponCard';
+export { InventoryItem } from './lib/molecules/InventoryItem';
 
 // Objects
 export { ListContainer } from './lib/objects/ListContainer';

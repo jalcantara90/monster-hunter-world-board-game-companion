@@ -39,9 +39,8 @@ export function CampaignDetail({ campaignRepository }: CampaignDetailProps) {
       return;
     }
 
-    const { result, isCanceled } = await showModal<AddCampaignHunterForm>(
-      <AddCampaignHunterModal />
-    );
+    const { result, isCancelled: isCanceled } =
+      await showModal<AddCampaignHunterForm>(<AddCampaignHunterModal />);
 
     if (isCanceled) {
       return;

@@ -39,11 +39,11 @@ export function BrigadeDetail({
   const { showModal } = useModal();
 
   const showCreateCampaignModal = async () => {
-    const { result, isCanceled } = await showModal<CampaignForm>(
+    const { result, isCancelled } = await showModal<CampaignForm>(
       <CampaignModal />
     );
 
-    if (isCanceled) {
+    if (isCancelled) {
       return;
     }
 

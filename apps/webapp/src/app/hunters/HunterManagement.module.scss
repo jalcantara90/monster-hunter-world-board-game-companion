@@ -1,0 +1,13 @@
+@use 'settings/spacing';
+
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hunterManagement {
+  display: flex;
+  flex-direction: column;
+  gap: spacing.$sm;
+}

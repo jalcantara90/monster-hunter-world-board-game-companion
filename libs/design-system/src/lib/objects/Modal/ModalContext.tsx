@@ -35,7 +35,7 @@ interface ModalContextProps {
 }
 
 type ModalResult<T> = {
-  isCanceled: boolean;
+  isCancelled: boolean;
   result: T;
 };
 
