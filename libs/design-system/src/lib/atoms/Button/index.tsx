@@ -10,11 +10,12 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 export function Button({
   children,
   variant = 'primary',
+  className,
   ...props
 }: ButtonProps) {
   return (
     <button
-      className={classNames(styles.btn, styles[`btn--${variant}`])}
+      className={classNames(styles.btn, styles[`btn--${variant}`], className)}
       {...props}
     >
       {children}

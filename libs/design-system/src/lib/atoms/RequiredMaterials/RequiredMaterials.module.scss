@@ -1,0 +1,17 @@
+@use '../../settings/colors';
+@use '../../settings/typography';
+
+.requirementList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font: typography.$b300-regular;
+
+  &__secondaryText {
+    color: colors.$text-secondary;
+    font: typography.$b300-regular;
+  }
+}
