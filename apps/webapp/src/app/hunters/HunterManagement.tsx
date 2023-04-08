@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import {
   useHunterManagement,
   useHunterInventory,
@@ -21,15 +21,17 @@ import {
   InventoryItemForm,
   InventoryItemModal,
 } from '../inventory/InventoryItemModal';
+import { useInventoryContext } from '../inventory/InvventoryContext';
 
 export function HunterManagement() {
   const { campaignId, hunterId } = useParams();
 
+  const { inventory } = useInventoryContext();
   const { hunter } = useHunterManagement({
     hunterId: hunterId as string,
   });
 
-  const { inventory, loadInventory } = useHunterInventory({
+  const { loadInventory } = useHunterInventory({
     campaignId: campaignId as string,
     hunterId: hunterId as string,
   });
@@ -57,7 +59,12 @@ export function HunterManagement() {
         materialList={inventory.otherMaterials}
         updateInventory={updateInventory}
       />
-      <h4>Armor pieces</h4>
+      <div className={styles.titleContainer}>
+        <h4>Armors: </h4>
+        <Link to="armors">
+          <Button> Add Armors </Button>
+        </Link>
+      </div>
       {inventory.armors.map((armor) => {
         return (
           <ArmorPieceCard
@@ -71,7 +78,12 @@ export function HunterManagement() {
           />
         );
       })}
-      <h4>Weapons</h4>
+      <div className={styles.titleContainer}>
+        <h4>Weapons: </h4>
+        <Link to="weapons">
+          <Button> Add Weapons </Button>
+        </Link>
+      </div>
       {inventory.weapons.map((weapon) => {
         return (
           <WeaponCard

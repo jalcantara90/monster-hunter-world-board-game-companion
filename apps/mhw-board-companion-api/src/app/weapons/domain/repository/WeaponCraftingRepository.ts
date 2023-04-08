@@ -7,6 +7,7 @@ export interface WeaponCraftingRepository {
     armorId: string,
     craftingMaterial: CreateCraftingMaterialRequest
   ): Promise<WeaponCraftingMaterialResponse>;
+  findAll(): Promise<WeaponCraftingMaterialResponse[]>
 }
 
 export const WEAPON_CRAFTING_REPOSITORY = 'WEAPON_CRAFTING_REPOSITORY';

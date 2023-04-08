@@ -7,6 +7,7 @@ import styles from './Input.module.scss';
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   label: string;
   error?: string;
+  hideError?: boolean;
 };
 
 export function Input({
@@ -14,10 +15,11 @@ export function Input({
   className,
   label,
   error = '',
+  hideError = false,
   ...props
 }: InputProps) {
   return (
-    <FormControl error={error}>
+    <FormControl error={error} hideError={hideError}>
       <div className={styles.inputContainer}>
         <label className={styles.input__label} htmlFor={`id-${name}`}>
           {label}

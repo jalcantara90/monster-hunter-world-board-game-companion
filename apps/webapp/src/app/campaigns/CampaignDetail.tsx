@@ -76,7 +76,6 @@ export function CampaignDetail({ campaignRepository }: CampaignDetailProps) {
         <SectionTitle title={(campaign as Campaign)?.name} />
       )}
       <HunterList
-        campaignId={campaignId as string}
         hunterList={hunterList}
         isLoading={isLoading}
         addHunter={addHunter}
@@ -88,7 +87,6 @@ export function CampaignDetail({ campaignRepository }: CampaignDetailProps) {
 interface HunterListProps {
   isLoading: boolean;
   hunterList: CampaignHunters[];
-  campaignId: string;
   addHunter: () => void;
 }
 
@@ -96,7 +94,6 @@ function HunterList({
   isLoading,
   hunterList,
   addHunter,
-  campaignId,
 }: HunterListProps) {
   if (isLoading) {
     return (

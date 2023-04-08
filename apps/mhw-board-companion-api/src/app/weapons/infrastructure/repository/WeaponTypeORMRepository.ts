@@ -37,7 +37,7 @@ export class WeaponTypeORMRepository implements WeaponRepository {
   async findAll(query?: Partial<GetWeaponQuery>): Promise<WeaponResponse[]> {
     const weaponEntities = await this.weaponRepository.find({
       where: {...query, isActive: true },
-      relations: ['monster'],
+      relations: ['monster', 'previousWeapon'],
     });
     return this.weaponMapper.fromEntities(weaponEntities);
   }
