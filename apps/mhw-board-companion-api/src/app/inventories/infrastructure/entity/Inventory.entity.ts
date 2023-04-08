@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, Unique } from 'typeorm';
 import { ArmorEntity } from '../../../armors/infrastructure/entity/Armor.entity';
 import { CampaignEntity } from '../../../campaigns/infrastructure/entity/Campaign.entity';
 import { BaseEntity } from '../../../database/entities/Base.entity';
@@ -18,6 +18,9 @@ export class InventoryEntity extends BaseEntity {
 }
 
 @Entity({ name: 'inventory_items' })
+@Unique(['inventoryId', 'material'])
+@Unique(['inventoryId', 'armor'])
+@Unique(['inventoryId', 'weapon'])
 export class InventoryItemsEntity extends BaseEntity {
   @ManyToOne(() => InventoryEntity, (inventory) => inventory.id)
   @JoinColumn({ name: 'inventoryId' })

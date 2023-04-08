@@ -121,7 +121,7 @@ const InventoryItemList = ({
         pending: 'Adding material',
       });
 
-      setTimeout(() => updateInventory(), 500);
+      updateInventory();
     } catch (error) {
       console.error(error);
     }
