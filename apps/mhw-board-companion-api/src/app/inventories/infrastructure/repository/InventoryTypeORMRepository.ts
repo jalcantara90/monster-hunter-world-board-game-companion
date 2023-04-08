@@ -102,25 +102,13 @@ export class InventoryTypeORMRepository implements InventoryRepository {
     inventoryId: string,
     request: AddMaterialToInventoryRequest
   ): Promise<any> {
-    let storedMaterial = await this.inventoryItemRepository
-      .createQueryBuilder('inventory_items')
-      .leftJoinAndSelect('inventory_items.material', 'material')
-      .where('material.id = :materialId', { materialId: request.materialId })
-      .andWhere('inventory_items.inventoryId = :inventoryId', { inventoryId })
-      .getOne();
+    const material = this.inventoryItemRepository.create({
+      inventoryId: inventoryId,
+      material: request.materialId,
+      quantity: request.quantity,
+    });
 
-    if (storedMaterial) {
-      await this.inventoryItemRepository.update(storedMaterial.id, {
-        quantity: storedMaterial.quantity + request.quantity,
-      });
-    } else {
-      storedMaterial = this.inventoryItemRepository.create({
-        inventoryId: inventoryId,
-        material: request.materialId,
-        quantity: request.quantity,
-      });
-      return await this.inventoryItemRepository.save(storedMaterial);
-    }
+    return await this.inventoryItemRepository.insert(material);
   }
 
   async find(id: string): Promise<InventorieResponse> {

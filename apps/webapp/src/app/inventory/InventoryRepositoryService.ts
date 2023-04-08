@@ -29,7 +29,7 @@ export class InventoryRepositoryService implements IInventoryRepositoryService {
     inventoryId: string,
     materialId: string
   ): Promise<void> {
-    fetch(`${this.baseUrl}/${inventoryId}/materials`, {
+    const response = await fetch(`${this.baseUrl}/${inventoryId}/materials`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -39,5 +39,9 @@ export class InventoryRepositoryService implements IInventoryRepositoryService {
         quantity: 1,
       }),
     });
+
+    if (!response.ok) {
+      throw await response.json();
+    }
   }
 }
