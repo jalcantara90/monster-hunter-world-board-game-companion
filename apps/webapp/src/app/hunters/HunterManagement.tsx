@@ -13,6 +13,7 @@ import {
   Button,
   useModal,
   useToast,
+  Input,
 } from '@mhwboard-companion/design-system';
 import { InventoryMaterial } from '../campaigns/types';
 
@@ -22,8 +23,12 @@ import {
   InventoryItemModal,
 } from '../inventory/InventoryItemModal';
 import { useInventoryContext } from '../inventory/InvventoryContext';
+import { useMemo, useState } from 'react';
+import { useDebounce } from '@mhwboard-companion/utils';
 
 export function HunterManagement() {
+  const [search, setSearch] = useState('');
+  const debouncedSearch = useDebounce(search);
   const { campaignId, hunterId } = useParams();
 
   const { inventory } = useInventoryContext();
@@ -36,6 +41,22 @@ export function HunterManagement() {
     hunterId: hunterId as string,
   });
 
+  const [commonMaterials, otherMaterials] = useMemo(() => {
+    if (!debouncedSearch) {
+      return [inventory.commonMaterials, inventory.otherMaterials];
+    }
+
+    const filterMaterialPredicate = (material: InventoryMaterial) =>
+      material.name
+        .toLocaleLowerCase()
+        .includes(debouncedSearch.toLocaleLowerCase());
+
+    return [
+      inventory.commonMaterials.filter(filterMaterialPredicate),
+      inventory.otherMaterials.filter(filterMaterialPredicate),
+    ];
+  }, [debouncedSearch, inventory.commonMaterials, inventory.otherMaterials]);
+
   if (!hunter?.name) {
     return <div>Loading...</div>;
   }
@@ -47,16 +68,23 @@ export function HunterManagement() {
   return (
     <section className={styles.hunterManagement}>
       <SectionTitle title={hunter?.name} />
+
+      <Input
+        label="Filter materials by name:"
+        value={search}
+        onChange={(ev) => setSearch(ev.target.value)}
+        hideError
+      />
       <InventoryItemList
         inventoryId={inventory.inventoryId}
         title="Common Materials"
-        materialList={inventory.commonMaterials}
+        materialList={commonMaterials}
         updateInventory={updateInventory}
       />
       <InventoryItemList
         inventoryId={inventory.inventoryId}
         title="Other Materials"
-        materialList={inventory.otherMaterials}
+        materialList={otherMaterials}
         updateInventory={updateInventory}
       />
       <div className={styles.titleContainer}>
