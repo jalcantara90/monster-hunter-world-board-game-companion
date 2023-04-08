@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { ICampaignRepository } from './CampaignRepositoryService';
 import { useCampaignDetail } from './hooks';
 import {
@@ -39,9 +39,8 @@ export function CampaignDetail({ campaignRepository }: CampaignDetailProps) {
       return;
     }
 
-    const { result, isCanceled } = await showModal<AddCampaignHunterForm>(
-      <AddCampaignHunterModal />
-    );
+    const { result, isCancelled: isCanceled } =
+      await showModal<AddCampaignHunterForm>(<AddCampaignHunterModal />);
 
     if (isCanceled) {
       return;
@@ -77,6 +76,7 @@ export function CampaignDetail({ campaignRepository }: CampaignDetailProps) {
         <SectionTitle title={(campaign as Campaign)?.name} />
       )}
       <HunterList
+        campaignId={campaignId as string}
         hunterList={hunterList}
         isLoading={isLoading}
         addHunter={addHunter}
@@ -85,13 +85,19 @@ export function CampaignDetail({ campaignRepository }: CampaignDetailProps) {
   );
 }
 
-type HunterListProps = {
+interface HunterListProps {
   isLoading: boolean;
   hunterList: CampaignHunters[];
+  campaignId: string;
   addHunter: () => void;
-};
+}
 
-function HunterList({ isLoading, hunterList, addHunter }: HunterListProps) {
+function HunterList({
+  isLoading,
+  hunterList,
+  addHunter,
+  campaignId,
+}: HunterListProps) {
   if (isLoading) {
     return (
       <>
@@ -106,12 +112,16 @@ function HunterList({ isLoading, hunterList, addHunter }: HunterListProps) {
   return (
     <>
       {hunterList.map((campaignHunters) => (
-        <CampaignHunterCard
+        <Link
           key={campaignHunters.id}
-          name={campaignHunters.hunter.name}
-          palicoName={campaignHunters.hunter.palicoName}
-          weaponType={campaignHunters.weaponType}
-        />
+          to={`hunters/${campaignHunters.hunter.id}`}
+        >
+          <CampaignHunterCard
+            name={campaignHunters.hunter.name}
+            palicoName={campaignHunters.hunter.palicoName}
+            weaponType={campaignHunters.weaponType}
+          />
+        </Link>
       ))}
       {hunterList.length < 4 && (
         <AddHunterButton onClick={addHunter}>

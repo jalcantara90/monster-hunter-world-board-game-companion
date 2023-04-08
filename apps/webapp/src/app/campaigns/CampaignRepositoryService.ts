@@ -3,6 +3,7 @@ import {
   Campaign,
   CampaignHunters,
   CreateCampaignRequest,
+  InventoryHunter,
   UpdateCampaignRequest,
 } from './types';
 
@@ -14,6 +15,7 @@ export interface ICampaignRepository {
   delete(campaignId: string): Promise<void>;
   findAllHunters(campaignId: string): Promise<CampaignHunters[]>;
   AddHunters(request: AddHunterCampaignRequest): Promise<void>;
+  findHunterInventory(campaignId: string, hunterId: string): Promise<InventoryHunter>;
 }
 
 export class CampaignRepositoryService implements ICampaignRepository {
@@ -79,5 +81,11 @@ export class CampaignRepositoryService implements ICampaignRepository {
       },
       body: JSON.stringify({ huntersCampaign }),
     });
+  }
+
+  async findHunterInventory(campaignId: string, hunterId: string): Promise<InventoryHunter> {
+    const response = await fetch(`${this.baseUrl}/${campaignId}/hunters/${hunterId}/inventories`);
+
+    return response.json();
   }
 }

@@ -23,7 +23,7 @@ export class WeaponResponse {
     monster: string | MonsterEntity
   ) {
 
-    if (typeof previousWeapon === 'object') {
+    if (previousWeapon && typeof previousWeapon === 'object') {
       this.previousWeapon = new WeaponResponse(
         previousWeapon.id,
         previousWeapon.name,

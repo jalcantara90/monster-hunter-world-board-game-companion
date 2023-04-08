@@ -8,6 +8,10 @@ export interface CampaignHuntersRepository {
     weaponType: WeaponType
   ): Promise<void>;
   getAllHunters(campaignId: string): Promise<CampaignHuntersResponse[]>;
+  getCampaignHunter(
+    campaignId: string,
+    hunterId: string
+  ): Promise<CampaignHuntersResponse>;
 }
 
 export const CAMPAIGN_HUNTERS_REPOSITORY = 'CAMPAIGN_HUNTERS_REPOSITORY';

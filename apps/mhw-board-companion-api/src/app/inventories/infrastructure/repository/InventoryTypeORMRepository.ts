@@ -15,6 +15,7 @@ import { AddMaterialToInventoryRequest } from '../../domain/requests/AddMaterial
 import { AddArmorRequest } from '../../domain/requests/AddArmorRequest';
 import { AddWeaponRequest } from '../../domain/requests/AddWeaponRequest';
 import { UpdateInventoryMaterialRequest } from '../../domain/requests/UpdateInventoryMaterialRequest';
+import { GetInventoryByCampaignHunterRequest } from '../../domain/requests/GetInventoryByCampaignHunterRequest';
 
 @Injectable()
 export class InventoryTypeORMRepository implements InventoryRepository {
@@ -25,6 +26,19 @@ export class InventoryTypeORMRepository implements InventoryRepository {
     private inventoryItemRepository: Repository<InventoryItemsEntity>,
     private inventoryMapper: InventoryMapper
   ) {}
+
+  async findByCampaignAndHunterId({
+    campaignId,
+    hunterId,
+  }: GetInventoryByCampaignHunterRequest): Promise<InventorieResponse> {
+    const result = await this.inventoryRepository
+      .createQueryBuilder('inventories')
+      .where('inventories.campaign = :campaignId', { campaignId })
+      .andWhere('inventories.hunter = :hunterId', { hunterId })
+      .getOne();
+
+    return this.inventoryMapper.fromEntity(result);
+  }
 
   updateInventoryItem(
     id: string,
@@ -87,7 +101,7 @@ export class InventoryTypeORMRepository implements InventoryRepository {
   async AddMaterial(
     inventoryId: string,
     request: AddMaterialToInventoryRequest
-  ): Promise<void> {
+  ): Promise<any> {
     let storedMaterial = await this.inventoryItemRepository
       .createQueryBuilder('inventory_items')
       .leftJoinAndSelect('inventory_items.material', 'material')
@@ -105,7 +119,7 @@ export class InventoryTypeORMRepository implements InventoryRepository {
         material: request.materialId,
         quantity: request.quantity,
       });
-      await this.inventoryItemRepository.save(storedMaterial);
+      return await this.inventoryItemRepository.save(storedMaterial);
     }
   }
 

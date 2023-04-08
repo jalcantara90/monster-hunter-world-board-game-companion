@@ -281,14 +281,12 @@ export function DefenseIcon({ size = 'sm' }: IconProps) {
           letterSpacing: 'normal',
           wordSpacing: 'normal',
           textTransform: 'none',
-          writingMode: 'lr-tb',
           direction: 'ltr',
           textOrientation: 'mixed',
           dominantBaseline: 'auto',
           baselineShift: 'baseline',
           textAnchor: 'start',
           whiteSpace: 'normal',
-          shapePadding: 0,
           clipRule: 'nonzero',
           display: 'inline',
           overflow: 'visible',
@@ -297,9 +295,6 @@ export function DefenseIcon({ size = 'sm' }: IconProps) {
           isolation: 'auto',
           mixBlendMode: 'normal',
           colorInterpolation: 'sRGB',
-          colorInterpolationFilters: 'linearRGB',
-          solidColor: '#000',
-          solidOpacity: 1,
           vectorEffect: 'none',
           fill: '#000',
           fillOpacity: 1,
@@ -316,7 +311,6 @@ export function DefenseIcon({ size = 'sm' }: IconProps) {
           imageRendering: 'auto',
           shapeRendering: 'auto',
           textRendering: 'auto',
-          enableBackground: 'accumulate',
         }}
         d="M24.87 14.91a1 1 0 0 0-.57 1.8l5.352 4.15a1 1 0 0 0 .614.214h3.484a1 1 0 0 0 .613-.213l5.36-4.15a1 1 0 0 0-.606-1.8 1 1 0 0 0-.62.222l-5.087 3.941H32.05a1 1 0 0 0-.041 0h-1.395l-5.086-3.943a1 1 0 0 0-.658-.22z"
         transform="scale(.26458)"

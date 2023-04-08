@@ -4,7 +4,7 @@ import { BrigadeDetailFactory } from './brigades/BrigadeDetail/BrigadeDetailFact
 import { BrigadeFactory } from './brigades/BrigadeFactory';
 import { CampaignDetailFactory } from './campaigns/CampaignDetailFactory';
 import { Layout } from './core/Layout';
-import { HunterList } from './hunters/HunterList';
+import { HunterManagement } from './hunters/HunterManagement';
 import { InventoryList } from './inventory/InventoryList';
 import { MaterialList } from './materials/MaterialList';
 import { WeaponList } from './weapons/WeaponList';
@@ -27,8 +27,8 @@ const router = createBrowserRouter([
         element: CampaignDetailFactory.create(),
       },
       {
-        path: '/hunters',
-        element: <HunterList />,
+        path: '/campaigns/:campaignId/hunters/:hunterId',
+        element: <HunterManagement />,
       },
       {
         path: '/inventory',

@@ -7,9 +7,13 @@ import { AddArmorRequest } from '../requests/AddArmorRequest';
 import { AddWeaponRequest } from '../requests/AddWeaponRequest';
 import { UpdateInventoryMaterialRequest } from '../requests/UpdateInventoryMaterialRequest';
 import { InventoryItemsEntity } from '../../infrastructure/entity/Inventory.entity';
+import { GetInventoryByCampaignHunterRequest } from '../requests/GetInventoryByCampaignHunterRequest';
 
 export interface InventoryRepository {
   find(id: string): Promise<InventorieResponse>;
+  findByCampaignAndHunterId(
+    query: GetInventoryByCampaignHunterRequest
+  ): Promise<InventorieResponse>;
   findAll(query?: Partial<GetInventorieQuery>): Promise<InventorieResponse[]>;
   create(inventory: CreateInventoryRequest): Promise<InventorieResponse>;
   updateInventoryItem(

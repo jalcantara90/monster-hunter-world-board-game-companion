@@ -28,7 +28,7 @@ export type WeaponCardProps = {
   damageThree?: number;
   damageFour?: number;
   damageFive?: number;
-  craftWeapon: (weaponId: string) => void;
+  craftWeapon?: (weaponId: string) => void;
 };
 
 export function WeaponCard({
