@@ -14,6 +14,7 @@ import {
   useModal,
   useToast,
   Input,
+  Collapsable,
 } from '@mhwboard-companion/design-system';
 import { InventoryMaterial } from '../campaigns/types';
 
@@ -87,46 +88,58 @@ export function HunterManagement() {
         materialList={otherMaterials}
         updateInventory={updateInventory}
       />
-      <div className={styles.titleContainer}>
-        <h4>Armors: </h4>
-        <Link to="armors">
-          <Button> Add Armors </Button>
-        </Link>
-      </div>
-      {inventory.armors.map((armor) => {
-        return (
-          <ArmorPieceCard
-            key={armor.id}
-            id={armor.id}
-            name={armor.name}
-            defense={armor.defense}
-            elementalDefense={armor.elementalDefense}
-            elementalDefenseType={armor.elementalDefenseType}
-            armorPiece={armor.armorPiece}
-          />
-        );
-      })}
-      <div className={styles.titleContainer}>
-        <h4>Weapons: </h4>
-        <Link to="weapons">
-          <Button> Add Weapons </Button>
-        </Link>
-      </div>
-      {inventory.weapons.map((weapon) => {
-        return (
-          <WeaponCard
-            key={weapon.id}
-            id={weapon.id}
-            name={weapon.name}
-            damageOne={weapon.damageOne}
-            damageTwo={weapon.damageTwo}
-            damageThree={weapon.damageThree}
-            damageFour={weapon.damageFour}
-            damageFive={weapon.damageFive}
-            weaponType={weapon.weaponType}
-          />
-        );
-      })}
+      <Collapsable>
+        <Collapsable.Header>
+          <div className={styles.titleContainer}>
+            <h5>Weapons: </h5>
+            <Link to="weapons">
+              <Button> Add Weapons </Button>
+            </Link>
+          </div>
+        </Collapsable.Header>
+        <Collapsable.Content>
+          {inventory.weapons.map((weapon) => {
+            return (
+              <WeaponCard
+                key={weapon.id}
+                id={weapon.id}
+                name={weapon.name}
+                damageOne={weapon.damageOne}
+                damageTwo={weapon.damageTwo}
+                damageThree={weapon.damageThree}
+                damageFour={weapon.damageFour}
+                damageFive={weapon.damageFive}
+                weaponType={weapon.weaponType}
+              />
+            );
+          })}
+        </Collapsable.Content>
+      </Collapsable>
+      <Collapsable>
+        <Collapsable.Header>
+          <div className={styles.titleContainer}>
+            <h5>Armors: </h5>
+            <Link to="armors">
+              <Button> Add Armors </Button>
+            </Link>
+          </div>
+        </Collapsable.Header>
+        <Collapsable.Content>
+          {inventory.armors.map((armor) => {
+            return (
+              <ArmorPieceCard
+                key={armor.id}
+                id={armor.id}
+                name={armor.name}
+                defense={armor.defense}
+                elementalDefense={armor.elementalDefense}
+                elementalDefenseType={armor.elementalDefenseType}
+                armorPiece={armor.armorPiece}
+              />
+            );
+          })}
+        </Collapsable.Content>
+      </Collapsable>
     </section>
   );
 }
@@ -169,21 +182,27 @@ const InventoryItemList = ({
 
   return (
     <ListContainer>
-      <div className={styles.titleContainer}>
-        <h4>{title}</h4>
-        <Button onClick={showMaterialModalForm}> Add Material </Button>
-      </div>
-      {materialList.map((material) => {
-        return (
-          <InventoryItem
-            key={material.id}
-            id={material.id}
-            name={material.name}
-            quantity={material.quantity}
-            update={(id, quantity) => updateInventoryItem(id, quantity)}
-          />
-        );
-      })}
+      <Collapsable>
+        <Collapsable.Header>
+          <div className={styles.titleContainer}>
+            <h5>{title}</h5>
+            <Button onClick={showMaterialModalForm}> Add Material </Button>
+          </div>
+        </Collapsable.Header>
+        <Collapsable.Content>
+          {materialList.map((material) => {
+            return (
+              <InventoryItem
+                key={material.id}
+                id={material.id}
+                name={material.name}
+                quantity={material.quantity}
+                update={(id, quantity) => updateInventoryItem(id, quantity)}
+              />
+            );
+          })}
+        </Collapsable.Content>
+      </Collapsable>
     </ListContainer>
   );
 };

@@ -1,0 +1,28 @@
+@use '../../settings/spacing';
+@use '../../settings/colors';
+@use '../../settings/typography';
+
+.collapsable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: spacing.$sm;
+
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+
+  &__action {
+    padding: spacing.$tiny;
+    background-color: transparent;
+    border: none;
+    color: colors.$text-primary;
+    font: typography.$b200-regular;
+    transition: transform 0.2s;
+
+    &--not-collapsed {
+      transform: rotate(90deg);
+    }
+  }
+}

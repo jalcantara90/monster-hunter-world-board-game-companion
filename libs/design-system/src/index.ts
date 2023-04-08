@@ -31,6 +31,7 @@ export {
 export { Modal } from './lib/objects/Modal';
 export { ToastContainer } from './lib/objects/Toast/ToastContainer';
 export { useToast } from './lib/objects/Toast/useToast';
+export { Collapsable } from './lib/objects/Collapsable';
 
 // Icons
 export { PalicoIcon } from './lib/icons/PalicoIcon';
