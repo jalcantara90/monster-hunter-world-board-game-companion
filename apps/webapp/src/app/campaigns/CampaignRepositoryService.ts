@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment';
 import {
   AddHunterCampaignRequest,
   Campaign,
@@ -19,7 +20,7 @@ export interface ICampaignRepository {
 }
 
 export class CampaignRepositoryService implements ICampaignRepository {
-  private readonly baseUrl = 'http://localhost:3099/api/campaigns';
+  private readonly baseUrl = `${environment.baseUrl}/campaigns`;
 
   async create(request: CreateCampaignRequest): Promise<Campaign> {
     const response = await fetch(this.baseUrl, {

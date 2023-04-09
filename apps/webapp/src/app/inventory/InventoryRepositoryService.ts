@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment';
 import { UpdateInventoryItemRequest } from './types';
 
 interface IInventoryRepositoryService {
@@ -11,7 +12,7 @@ interface IInventoryRepositoryService {
 }
 
 export class InventoryRepositoryService implements IInventoryRepositoryService {
-  private readonly baseUrl = 'http://localhost:3099/api/inventories';
+  private readonly baseUrl = `${environment.baseUrl}/inventories`;
 
   async updateInventoryItem(
     inventoryMaterialId: string,
@@ -65,7 +66,7 @@ export class InventoryRepositoryService implements IInventoryRepositoryService {
 
   async craftArmor(inventoryId: string, armorId: string): Promise<void> {
     const response = await fetch(
-      `${this.baseUrl}/${inventoryId}/armor/${armorId}/craft`,
+      `${this.baseUrl}/${inventoryId}/armors/${armorId}/craft`,
       {
         method: 'POST',
         headers: {
@@ -75,7 +76,8 @@ export class InventoryRepositoryService implements IInventoryRepositoryService {
     );
 
     if (!response.ok) {
-      throw await response.text();
+      const json = await response.json();
+      throw json.message;
     }
   }
 }

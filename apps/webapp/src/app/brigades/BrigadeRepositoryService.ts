@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment';
 import { Campaign } from '../campaigns/types';
 import { Brigade, CreateBrigadeRequest, UpdateBrigadeRequest } from './types';
 
@@ -11,7 +12,7 @@ export interface IBrigadeRepository {
 }
 
 export class BrigadRepositoryService implements IBrigadeRepository {
-  private readonly baseUrl = 'http://localhost:3099/api/brigades';
+  private readonly baseUrl = `${environment.baseUrl}/brigades`;
 
   async create(request: CreateBrigadeRequest): Promise<Brigade> {
     const response = await fetch(this.baseUrl, {
