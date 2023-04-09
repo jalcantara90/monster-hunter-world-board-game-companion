@@ -35,11 +35,11 @@ const router = createBrowserRouter([
         element: <InventoryList />,
       },
       {
-        path: '/armors',
+        path: '/campaigns/:campaignId/hunters/:hunterId/armors',
         element: <ArmorList />,
       },
       {
-        path: '/weapons',
+        path: '/campaigns/:campaignId/hunters/:hunterId/weapons',
         element: <WeaponList />,
       },
       {

@@ -27,6 +27,16 @@ export class WeaponCraftingTypeORMRepository
     );
   }
 
+  async findAll(): Promise<WeaponCraftingMaterialResponse[]> {
+    const weaponCraftingEntities = await this.weaponCraftingRepository.find({
+      relations: ['materialId']
+    });
+
+    return this.weaponCraftingMaterialMapper.fromEntities(
+      weaponCraftingEntities
+    );
+  }
+
   async create(
     weaponId: string,
     { quantity, materialId }: CreateCraftingMaterialRequest

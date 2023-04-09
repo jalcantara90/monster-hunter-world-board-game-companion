@@ -1,10 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { HunterRepositoryService } from './HunterRepositoryService';
 import { Hunter } from './types';
-import { InventoryHunter } from '../campaigns/types';
-import { WeaponType } from '@mhwboard-companion/common-api';
-import { CampaignRepositoryService } from '../campaigns/CampaignRepositoryService';
 import { InventoryRepositoryService } from '../inventory/InventoryRepositoryService';
+import { useInventoryContext } from '../inventory/InvventoryContext';
 
 type UseHunterManagementProps = {
   hunterId: string;
@@ -37,7 +35,6 @@ export function useHunterManagement({ hunterId }: UseHunterManagementProps) {
   };
 }
 
-const campaignRepository = new CampaignRepositoryService();
 const inventoryRepository = new InventoryRepositoryService();
 
 type UseHunterInventoryProps = { campaignId: string; hunterId: string };
@@ -46,38 +43,22 @@ export function useHunterInventory({
   campaignId,
   hunterId,
 }: UseHunterInventoryProps) {
-  const [inventory, setInventory] = useState<InventoryHunter>({
-    inventoryId: '',
-    weaponType: WeaponType.GREAT_SWORD,
-    armors: [],
-    commonMaterials: [],
-    otherMaterials: [],
-    weapons: [],
-  });
-
-  const loadInventory = useCallback(
-    async (campaignId: string, hunterId: string) => {
-      const response = await campaignRepository.findHunterInventory(
-        campaignId,
-        hunterId
-      );
-      setInventory(response);
-    },
-    []
-  );
+  const { loadInventory } = useInventoryContext();
 
   useEffect(() => {
     loadInventory(campaignId, hunterId);
   }, [campaignId, hunterId, loadInventory]);
 
   return {
-    inventory,
     loadInventory,
   };
 }
 
 export function useHunterInventoryItem() {
-  const updateInventoryItem = async (inventoryItemId: string, quantity: number) => {
+  const updateInventoryItem = async (
+    inventoryItemId: string,
+    quantity: number
+  ) => {
     return await inventoryRepository.updateInventoryItem(inventoryItemId, {
       quantity,
     });

@@ -2,6 +2,7 @@ import {
   WeaponType,
   ArmorPiece,
   Elemental,
+  CraftingBranch,
 } from '@mhwboard-companion/common-api';
 import { Material } from '../materials/types';
 
@@ -35,13 +36,6 @@ export type AddHunterCampaignRequest = {
   campaignId: string;
   huntersCampaign: HunterCampaignRequest[];
 };
-
-export enum CraftingBranch {
-  STARTING,
-  BONE,
-  ORE,
-  MONSTER,
-}
 
 export type Armor = {
   id: string;

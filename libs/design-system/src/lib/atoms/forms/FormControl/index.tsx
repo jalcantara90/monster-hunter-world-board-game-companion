@@ -1,17 +1,22 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 import styles from './FormControl.module.scss';
 
 export type FormControlProps = {
   error: string;
   children: ReactNode | ReactNode[];
-}
+  hideError?: boolean;
+};
 
-export function FormControl({ error, children }: FormControlProps) {
+export function FormControl({
+  error,
+  children,
+  hideError = false,
+}: FormControlProps) {
   return (
     <>
       {children}
-      <p className={styles.formControl__error}>{error}</p>
+      {!hideError && <p className={styles.formControl__error}>{error}</p>}
     </>
   );
 }

@@ -5,8 +5,9 @@ interface IInventoryRepositoryService {
     inventoryMaterialId: string,
     request: UpdateInventoryItemRequest
   ): Promise<void>;
-
   addInventoryMaterial(inventoryId: string, materialId: string): Promise<void>;
+  craftWeapon(inventoryId: string, weaponId: string): Promise<void>;
+  craftArmor(inventoryId: string, armorId: string): Promise<void>;
 }
 
 export class InventoryRepositoryService implements IInventoryRepositoryService {
@@ -42,6 +43,39 @@ export class InventoryRepositoryService implements IInventoryRepositoryService {
 
     if (!response.ok) {
       throw await response.json();
+    }
+  }
+
+  async craftWeapon(inventoryId: string, weaponId: string): Promise<void> {
+    const response = await fetch(
+      `${this.baseUrl}/${inventoryId}/weapons/${weaponId}/craft`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+      }
+    );
+
+    if (!response.ok) {
+      const json = await response.json();
+      throw json.message;
+    }
+  }
+
+  async craftArmor(inventoryId: string, armorId: string): Promise<void> {
+    const response = await fetch(
+      `${this.baseUrl}/${inventoryId}/armor/${armorId}/craft`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw await response.text();
     }
   }
 }

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import {
   useHunterManagement,
   useHunterInventory,
@@ -13,6 +13,8 @@ import {
   Button,
   useModal,
   useToast,
+  Input,
+  Collapsable,
 } from '@mhwboard-companion/design-system';
 import { InventoryMaterial } from '../campaigns/types';
 
@@ -21,18 +23,40 @@ import {
   InventoryItemForm,
   InventoryItemModal,
 } from '../inventory/InventoryItemModal';
+import { useInventoryContext } from '../inventory/InvventoryContext';
+import { useMemo, useState } from 'react';
+import { useDebounce } from '@mhwboard-companion/utils';
 
 export function HunterManagement() {
+  const [search, setSearch] = useState('');
+  const debouncedSearch = useDebounce(search);
   const { campaignId, hunterId } = useParams();
 
+  const { inventory } = useInventoryContext();
   const { hunter } = useHunterManagement({
     hunterId: hunterId as string,
   });
 
-  const { inventory, loadInventory } = useHunterInventory({
+  const { loadInventory } = useHunterInventory({
     campaignId: campaignId as string,
     hunterId: hunterId as string,
   });
+
+  const [commonMaterials, otherMaterials] = useMemo(() => {
+    if (!debouncedSearch) {
+      return [inventory.commonMaterials, inventory.otherMaterials];
+    }
+
+    const filterMaterialPredicate = (material: InventoryMaterial) =>
+      material.name
+        .toLocaleLowerCase()
+        .includes(debouncedSearch.toLocaleLowerCase());
+
+    return [
+      inventory.commonMaterials.filter(filterMaterialPredicate),
+      inventory.otherMaterials.filter(filterMaterialPredicate),
+    ];
+  }, [debouncedSearch, inventory.commonMaterials, inventory.otherMaterials]);
 
   if (!hunter?.name) {
     return <div>Loading...</div>;
@@ -45,48 +69,77 @@ export function HunterManagement() {
   return (
     <section className={styles.hunterManagement}>
       <SectionTitle title={hunter?.name} />
+
+      <Input
+        label="Filter materials by name:"
+        value={search}
+        onChange={(ev) => setSearch(ev.target.value)}
+        hideError
+      />
       <InventoryItemList
         inventoryId={inventory.inventoryId}
         title="Common Materials"
-        materialList={inventory.commonMaterials}
+        materialList={commonMaterials}
         updateInventory={updateInventory}
       />
       <InventoryItemList
         inventoryId={inventory.inventoryId}
         title="Other Materials"
-        materialList={inventory.otherMaterials}
+        materialList={otherMaterials}
         updateInventory={updateInventory}
       />
-      <h4>Armor pieces</h4>
-      {inventory.armors.map((armor) => {
-        return (
-          <ArmorPieceCard
-            key={armor.id}
-            id={armor.id}
-            name={armor.name}
-            defense={armor.defense}
-            elementalDefense={armor.elementalDefense}
-            elementalDefenseType={armor.elementalDefenseType}
-            armorPiece={armor.armorPiece}
-          />
-        );
-      })}
-      <h4>Weapons</h4>
-      {inventory.weapons.map((weapon) => {
-        return (
-          <WeaponCard
-            key={weapon.id}
-            id={weapon.id}
-            name={weapon.name}
-            damageOne={weapon.damageOne}
-            damageTwo={weapon.damageTwo}
-            damageThree={weapon.damageThree}
-            damageFour={weapon.damageFour}
-            damageFive={weapon.damageFive}
-            weaponType={weapon.weaponType}
-          />
-        );
-      })}
+      <Collapsable>
+        <Collapsable.Header>
+          <div className={styles.titleContainer}>
+            <h5>Weapons: </h5>
+            <Link to="weapons">
+              <Button> Add Weapons </Button>
+            </Link>
+          </div>
+        </Collapsable.Header>
+        <Collapsable.Content>
+          {inventory.weapons.map((weapon) => {
+            return (
+              <WeaponCard
+                key={weapon.id}
+                id={weapon.id}
+                name={weapon.name}
+                damageOne={weapon.damageOne}
+                damageTwo={weapon.damageTwo}
+                damageThree={weapon.damageThree}
+                damageFour={weapon.damageFour}
+                damageFive={weapon.damageFive}
+                weaponType={weapon.weaponType}
+              />
+            );
+          })}
+        </Collapsable.Content>
+      </Collapsable>
+      <Collapsable>
+        <Collapsable.Header>
+          <div className={styles.titleContainer}>
+            <h5>Armors: </h5>
+            <Link to="armors">
+              <Button> Add Armors </Button>
+            </Link>
+          </div>
+        </Collapsable.Header>
+        <Collapsable.Content>
+          {inventory.armors.map((armor) => {
+            return (
+              <ArmorPieceCard
+                key={armor.id}
+                id={armor.id}
+                name={armor.name}
+                defense={armor.defense}
+                elementalDefense={armor.elementalDefense}
+                elementalDefenseType={armor.elementalDefenseType}
+                armorPiece={armor.armorPiece}
+              />
+            );
+          })}
+        </Collapsable.Content>
+      </Collapsable>
     </section>
   );
 }
@@ -129,21 +182,27 @@ const InventoryItemList = ({
 
   return (
     <ListContainer>
-      <div className={styles.titleContainer}>
-        <h4>{title}</h4>
-        <Button onClick={showMaterialModalForm}> Add Material </Button>
-      </div>
-      {materialList.map((material) => {
-        return (
-          <InventoryItem
-            key={material.id}
-            id={material.id}
-            name={material.name}
-            quantity={material.quantity}
-            update={(id, quantity) => updateInventoryItem(id, quantity)}
-          />
-        );
-      })}
+      <Collapsable>
+        <Collapsable.Header>
+          <div className={styles.titleContainer}>
+            <h5>{title}</h5>
+            <Button onClick={showMaterialModalForm}> Add Material </Button>
+          </div>
+        </Collapsable.Header>
+        <Collapsable.Content>
+          {materialList.map((material) => {
+            return (
+              <InventoryItem
+                key={material.id}
+                id={material.id}
+                name={material.name}
+                quantity={material.quantity}
+                update={(id, quantity) => updateInventoryItem(id, quantity)}
+              />
+            );
+          })}
+        </Collapsable.Content>
+      </Collapsable>
     </ListContainer>
   );
 };

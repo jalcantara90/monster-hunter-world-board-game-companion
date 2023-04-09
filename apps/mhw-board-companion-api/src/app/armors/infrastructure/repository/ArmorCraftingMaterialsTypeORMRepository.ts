@@ -25,6 +25,16 @@ export class ArmorCraftingTypeORMRepository implements ArmorCraftingRepository {
     );
   }
 
+  async findAll(): Promise<CraftingMaterialResponse[]> {
+    const weaponCraftingEntities = await this.armorCraftingRepository.find({
+      relations: ['materialId']
+    });
+
+    return this.armorCraftingMaterialsMapper.fromEntities(
+      weaponCraftingEntities
+    );
+  }
+
   async create(
     armorId: string,
     { quantity, materialId }: CreateCraftingMaterialRequest
