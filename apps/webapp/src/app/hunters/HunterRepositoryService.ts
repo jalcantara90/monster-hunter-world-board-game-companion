@@ -1,8 +1,5 @@
-import {
-  Hunter,
-  CreateHunterRequest,
-  UpdateHunterRequest
-} from './types';
+import { environment } from '../../environments/environment';
+import { Hunter, CreateHunterRequest, UpdateHunterRequest } from './types';
 
 export interface IHunterRepository {
   findAll(): Promise<Hunter[]>;
@@ -13,7 +10,7 @@ export interface IHunterRepository {
 }
 
 export class HunterRepositoryService implements IHunterRepository {
-  private readonly baseUrl = 'http://localhost:3099/api/hunters';
+  private readonly baseUrl = `${environment.baseUrl}/hunters`;
 
   async create(request: CreateHunterRequest): Promise<Hunter> {
     const response = await fetch(this.baseUrl, {

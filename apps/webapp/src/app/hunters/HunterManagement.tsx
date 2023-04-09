@@ -98,21 +98,23 @@ export function HunterManagement() {
           </div>
         </Collapsable.Header>
         <Collapsable.Content>
-          {inventory.weapons.map((weapon) => {
-            return (
-              <WeaponCard
-                key={weapon.id}
-                id={weapon.id}
-                name={weapon.name}
-                damageOne={weapon.damageOne}
-                damageTwo={weapon.damageTwo}
-                damageThree={weapon.damageThree}
-                damageFour={weapon.damageFour}
-                damageFive={weapon.damageFive}
-                weaponType={weapon.weaponType}
-              />
-            );
-          })}
+          <ListContainer>
+            {inventory.weapons.map((weapon) => {
+              return (
+                <WeaponCard
+                  key={weapon.id}
+                  id={weapon.id}
+                  name={weapon.name}
+                  damageOne={weapon.damageOne}
+                  damageTwo={weapon.damageTwo}
+                  damageThree={weapon.damageThree}
+                  damageFour={weapon.damageFour}
+                  damageFive={weapon.damageFive}
+                  weaponType={weapon.weaponType}
+                />
+              );
+            })}
+          </ListContainer>
         </Collapsable.Content>
       </Collapsable>
       <Collapsable>
@@ -125,19 +127,21 @@ export function HunterManagement() {
           </div>
         </Collapsable.Header>
         <Collapsable.Content>
-          {inventory.armors.map((armor) => {
-            return (
-              <ArmorPieceCard
-                key={armor.id}
-                id={armor.id}
-                name={armor.name}
-                defense={armor.defense}
-                elementalDefense={armor.elementalDefense}
-                elementalDefenseType={armor.elementalDefenseType}
-                armorPiece={armor.armorPiece}
-              />
-            );
-          })}
+          <ListContainer>
+            {inventory.armors.map((armor) => {
+              return (
+                <ArmorPieceCard
+                  key={armor.id}
+                  id={armor.id}
+                  name={armor.name}
+                  defense={armor.defense}
+                  elementalDefense={armor.elementalDefense}
+                  elementalDefenseType={armor.elementalDefenseType}
+                  armorPiece={armor.armorPiece}
+                />
+              );
+            })}
+          </ListContainer>
         </Collapsable.Content>
       </Collapsable>
     </section>
@@ -181,15 +185,15 @@ const InventoryItemList = ({
   };
 
   return (
-    <ListContainer>
-      <Collapsable>
-        <Collapsable.Header>
-          <div className={styles.titleContainer}>
-            <h5>{title}</h5>
-            <Button onClick={showMaterialModalForm}> Add Material </Button>
-          </div>
-        </Collapsable.Header>
-        <Collapsable.Content>
+    <Collapsable>
+      <Collapsable.Header>
+        <div className={styles.titleContainer}>
+          <h5>{title}</h5>
+          <Button onClick={showMaterialModalForm}> Add Material </Button>
+        </div>
+      </Collapsable.Header>
+      <Collapsable.Content>
+        <ListContainer>
           {materialList.map((material) => {
             return (
               <InventoryItem
@@ -201,8 +205,8 @@ const InventoryItemList = ({
               />
             );
           })}
-        </Collapsable.Content>
-      </Collapsable>
-    </ListContainer>
+        </ListContainer>
+      </Collapsable.Content>
+    </Collapsable>
   );
 };
