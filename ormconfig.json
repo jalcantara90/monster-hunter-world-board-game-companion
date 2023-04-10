@@ -1,0 +1,10 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "root",
+  "password": "123456",
+  "database": "mhw-board-companion",
+  "entities": ["apps/mhw-board-companion-api/src/**/*.entity{.ts,.js}"],
+  "seeds": ["apps/mhw-board-companion-api/src/seeds/**/*{.ts,.js}"]
+}

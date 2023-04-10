@@ -3,7 +3,19 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev:api": "nx serve mhw-board-companion-api"
+    "dev:api": "nx serve mhw-board-companion-api",
+    "typeorm": "node ./node_modules/typeorm/cli.js",
+    "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
+    "seed:run": "ts-node -T ./node_modules/typeorm-seeding/dist/cli.js seed",
+    "typeorm:seed": "cd apps/mhw-board-companion-api && typeorm-seeding",
+    "migrations:generate": "cd apps/mhw-board-companion-api && yarn typeorm migration:generate -- -n",
+    "migrations:run": "yarn typeorm -- migration:run",
+    "migrations:show": "yarn typeorm -- migration:show",
+    "migrations:drop": "yarn typeorm -- migration:drop",
+    "migrations:revert": "yarn typeorm -- migration:revert",
+    "typeorm-build-config": "cd apps/mhw-board-companion-api && tsc ./src/typeorm.config.ts --outdir ../../dist/api",
+    "typeorm-generate-migrations": "typeorm-ts-node-esm migration:generate migrations -- -d apps/mhw-board-companion-api/src/ormconfig.ts migration:generate test",
+    "typeorm-run-migrations": "npm run typeorm-build-config && typeorm -d dist/typeorm.config.js migration:run"
   },
   "private": true,
   "dependencies": {
@@ -35,7 +47,9 @@
     "style-loader": "^3.3.2",
     "tslib": "^2.3.0",
     "typeorm": "^0.3.12",
+    "typeorm-seeding": "^1.6.1",
     "typescript": "^4.9.5",
+    "uuid": "^9.0.0",
     "zod": "^3.21.4"
   },
   "devDependencies": {
@@ -71,6 +85,7 @@
     "@types/node": "18.14.2",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "@vitejs/plugin-react": "^3.0.0",
@@ -101,7 +116,7 @@
     "react-test-renderer": "18.2.0",
     "sass": "^1.59.3",
     "ts-jest": "^29.0.5",
-    "ts-node": "10.9.1",
+    "ts-node": "^10.9.1",
     "url-loader": "^4.1.1",
     "vite": "^4.0.1",
     "vite-plugin-eslint": "^1.8.1",
