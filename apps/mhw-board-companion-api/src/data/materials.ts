@@ -63,6 +63,7 @@ export const azureRathalosMedulla = { id: uuid(), name: 'Azure Rathalos Medulla'
 // Barroth
 export const barrothClaw = { id: uuid(), name: 'Barroth Claw', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
 export const barrothRidge = { id: uuid(), name: 'Barroth Ridge', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
+export const barrothTail = { id: uuid(), name: 'Barroth Tail', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
 export const barrothShell = { id: uuid(), name: 'Barroth Shell', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
 export const barrothCarapace = { id: uuid(), name: 'Barroth Carapace', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
 
@@ -112,11 +113,11 @@ export const jyuratodusFang = { id: uuid(), name: 'Jyuratodus Fang', isCommon: f
 export const gajauScale = { id: uuid(), name: 'Gajau Scale', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
 
 // Pukei-Pukei
-export const pukeyPukeyWing = { id: uuid(), name: 'Pukei-Pukei Wing', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
-export const pukeyPukeyScale = { id: uuid(), name: 'Pukei-Pukei Scale', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
-export const pukeyPukeyQuill = { id: uuid(), name: 'Pukei-Pukei Quill', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
-export const pukeyPukeyCarapace = { id: uuid(), name: 'Pukei-Pukei Carapace', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
-export const pukeyPukeyTail = { id: uuid(), name: 'Pukei-Pukei Tail', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
+export const pukeiPukeiWing = { id: uuid(), name: 'Pukei-Pukei Wing', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
+export const pukeiPukeiScale = { id: uuid(), name: 'Pukei-Pukei Scale', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
+export const pukeiPukeiQuill = { id: uuid(), name: 'Pukei-Pukei Quill', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
+export const pukeiPukeiCarapace = { id: uuid(), name: 'Pukei-Pukei Carapace', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
+export const pukeiPukeiTail = { id: uuid(), name: 'Pukei-Pukei Tail', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
 
 // Great Jagras
 export const greatJagrasScale = { id: uuid(), name: 'Great Jagras Scale', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
@@ -126,13 +127,13 @@ export const greatJagrasClaw = { id: uuid(), name: 'Great Jagras Claw', isCommon
 export const sharpClaw = { id: uuid(), name: 'Sharp Claw', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
 export const piercingClaw = { id: uuid(), name: 'Piercing Claw', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
 
-
 // Poison monsters
 export const poisonSac = { id: uuid(), name: 'Poison Sac', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
 export const toxicSac = { id: uuid(), name: 'Toxic Sac', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
 
 // Water monsters
 export const aquaSac = { id: uuid(), name: 'Aqua Sac', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
+export const torrentSac = { id: uuid(), name: 'Torrent Sac', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
 export const fertileMud = { id: uuid(), name: 'Fertile mud', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
 
 // Electrict monsters
@@ -157,11 +158,12 @@ export const machaliteOre = { id: uuid(), name: 'Machalite Ore', isCommon: true,
 export const dragoniteOre = { id: uuid(), name: 'Draonite Ore', isCommon: true, rarity: 0, type: MaterialType.ORE };
 export const fuciumOre = { id: uuid(), name: 'Fucium Ore', isCommon: true, rarity: 0, type: MaterialType.ORE };
 export const dragonveinCrystal = { id: uuid(), name: 'Dragonvein Crystal', isCommon: true, rarity: 0, type: MaterialType.ORE };
+export const lightCrystal = { id: uuid(), name: 'Light Crystal', isCommon: false, rarity: 0, type: MaterialType.ORE };
 
 // Monster part's
 export const wingdrakeHide = { id: uuid(), name: 'Wingdrake Hide', isCommon: true, rarity: 0, type: MaterialType.MONSTER_PART };
 export const kestodonCarapace = { id: uuid(), name: 'Kestodon Carapace', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
-
+export const warmPelt = { id: uuid(), name: 'Warm Pelt', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
 
 // Bone's
 export const monsterBoneLarge = { id: uuid(), name: 'Monster Bone Large', isCommon: true, rarity: 0, type: MaterialType.BONE };
