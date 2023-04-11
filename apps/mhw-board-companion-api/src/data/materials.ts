@@ -95,6 +95,7 @@ export const anjanathPelt = { id: uuid(), name: 'Anjanath Pelt', isCommon: false
 export const anjanathNosebone = { id: uuid(), name: 'Anjanath Nosebone', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
 export const anjanathTail = { id: uuid(), name: 'Anjanath Tail', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
 export const anjanathFang = { id: uuid(), name: 'Anjanath Fang', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
+export const anjanathPlate = { id: uuid(), name: 'Anjanath Plate', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
 
 // Kulu-Ya-Ku
 export const kuluYakuPlume = { id: uuid(), name: 'Kulu-Ya-Ku Plume', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
@@ -159,6 +160,8 @@ export const dragonveinCrystal = { id: uuid(), name: 'Dragonvein Crystal', isCom
 
 // Monster part's
 export const wingdrakeHide = { id: uuid(), name: 'Wingdrake Hide', isCommon: true, rarity: 0, type: MaterialType.MONSTER_PART };
+export const kestodonCarapace = { id: uuid(), name: 'Kestodon Carapace', isCommon: false, rarity: 0, type: MaterialType.MONSTER_PART };
+
 
 // Bone's
 export const monsterBoneLarge = { id: uuid(), name: 'Monster Bone Large', isCommon: true, rarity: 0, type: MaterialType.BONE };
@@ -169,3 +172,4 @@ export const boulderBone = { id: uuid(), name: 'Boulder bone', isCommon: true, r
 export const monsterHardBone = { id: uuid(), name: 'Monster Hardbone', isCommon: true, rarity: 0, type: MaterialType.BONE };
 export const ancientBone = { id: uuid(), name: 'Ancient Bone', isCommon: true, rarity: 0, type: MaterialType.BONE };
 export const qualityBone = { id: uuid(), name: 'Quality Bone', isCommon: true, rarity: 0, type: MaterialType.BONE };
+export const monsterBonePlus = { id: uuid(), name: 'Monster Bone +', isCommon: false, rarity: 0, type: MaterialType.BONE };

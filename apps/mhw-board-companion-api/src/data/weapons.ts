@@ -15,9 +15,161 @@ import {
   teostra,
   tobiKadachi,
 } from './monsters';
+import {
+  anjanathFang,
+  anjanathNosebone,
+  anjanathPelt,
+  anjanathPlate,
+  anjanathScale,
+  aquaSac,
+  barrothCarapace,
+  barrothClaw,
+  barrothRidge,
+  barrothShell,
+  blosMedulla,
+  boulderBone,
+  carbaliteOre,
+  daoraCarapace,
+  daoraClaw,
+  daoraGem,
+  daoraHorn,
+  daoraTail,
+  daoraWebbing,
+  diablosCarapace,
+  diablosFang,
+  diablosRidge,
+  diablosShell,
+  dragoniteOre,
+  dragonveinCrystal,
+  earthrystal,
+  firecellStone,
+  flameSac,
+  fuciumOre,
+  gajauScale,
+  greatJagrasClaw,
+  greatJagrasHide,
+  greatJagrasMane,
+  greatJagrasScale,
+  infernoSac,
+  jyuratodusCarapace,
+  jyuratodusFin,
+  jyuratodusScale,
+  jyuratodusShell,
+  kestodonCarapace,
+  kuluYakuBeak,
+  kuluYakuHide,
+  kuluYakuPlume,
+  kuluYakuScale,
+  machaliteOre,
+  majesticHorn,
+  monsterBoneLarge,
+  monsterBoneMedium,
+  monsterBonePlus,
+  monsterBoneSmall,
+  monsterHardBone,
+  monsterKeenbone,
+  nergiganteCarapace,
+  nergiganteGem,
+  nergiganteHorn,
+  nergiganteRegrowthPlate,
+  nergiganteTail,
+  nergiganteTalon,
+  piercingClaw,
+  poisonSac,
+  pukeyPukeyQuill,
+  pukeyPukeyScale,
+  pukeyPukeyTail,
+  pukeyPukeyWing,
+  qualityBone,
+  rathalosCarapace,
+  rathalosMarrow,
+  rathalosMedulla,
+  rathalosScale,
+  rathalosWebing,
+  rathalosWing,
+  sharpClaw,
+  teostraCarapace,
+  teostraClaw,
+  teostraGem,
+  teostraHorn,
+  teostraMane,
+  teostraPowder,
+  tobiKadachiClaw,
+  tobiKadachiPelt,
+  tobiKadachiScale,
+  toxicSac,
+  twistedHorn,
+} from './materials';
+
+type WeaponSeedData = {
+  id: string;
+  name: string;
+  weaponType: WeaponType;
+  branch: CraftingBranch;
+  defense: number;
+  damageOne: number;
+  damageTwo: number;
+  damageThree: number;
+  damageFour: number;
+  damageFive: number;
+  monster?: string;
+  previousWeapon?: string;
+  materials?: Array<{ materialId: string; quantity: number }>;
+};
+
+const kuluYakuMaterialsFirst = [
+  { materialId: kuluYakuBeak.id, quantity: 1 },
+  { materialId: kuluYakuHide.id, quantity: 2 },
+  { materialId: kuluYakuScale.id, quantity: 4 },
+  { materialId: earthrystal.id, quantity: 3 },
+];
+
+const kuluYakuMaterialsSecond = [
+  { materialId: kuluYakuBeak.id, quantity: 2 },
+  { materialId: kuluYakuPlume.id, quantity: 3 },
+  { materialId: kuluYakuHide.id, quantity: 3 },
+  { materialId: boulderBone.id, quantity: 4 },
+];
+
+const teostraMaterialsFirst = [
+  { materialId: teostraClaw.id, quantity: 1 },
+  { materialId: teostraMane.id, quantity: 1 },
+  { materialId: teostraCarapace.id, quantity: 2 },
+  { materialId: teostraPowder.id, quantity: 1 },
+];
+
+const teostraMaterialsSecond = [
+  { materialId: teostraHorn.id, quantity: 3 },
+  { materialId: teostraClaw.id, quantity: 2 },
+  { materialId: teostraGem.id, quantity: 1 },
+];
+const nergiganteMaterialsFirst = [
+  { materialId: nergiganteTalon.id, quantity: 1 },
+  { materialId: nergiganteRegrowthPlate.id, quantity: 1 },
+  { materialId: nergiganteTail.id, quantity: 2 },
+  { materialId: nergiganteCarapace.id, quantity: 2 },
+];
+
+const nergiganteMaterialsSecond = [
+  { materialId: nergiganteTalon.id, quantity: 3 },
+  { materialId: nergiganteGem.id, quantity: 2 },
+  { materialId: nergiganteHorn.id, quantity: 4 },
+];
+const daoraMaterialsFirst = [
+  { materialId: daoraClaw.id, quantity: 1 },
+  { materialId: daoraWebbing.id, quantity: 2 },
+  { materialId: daoraCarapace.id, quantity: 1 },
+  { materialId: daoraTail.id, quantity: 2 },
+];
+
+const daoraMaterialsSecond = [
+  { materialId: daoraHorn.id, quantity: 4 },
+  { materialId: daoraClaw.id, quantity: 4 },
+  { materialId: daoraGem.id, quantity: 1 },
+];
 
 // SWORD AND SHIELD
-export const huntersKnife = {
+export const huntersKnife: WeaponSeedData = {
   id: uuid(),
   name: "Hunter's Knife",
   weaponType: WeaponType.SWORD_AND_SHIELD,
@@ -30,7 +182,7 @@ export const huntersKnife = {
   damageFive: 0,
 };
 
-export const steelKnife = {
+export const steelKnife: WeaponSeedData = {
   id: uuid(),
   name: 'Steel Knife',
   weaponType: WeaponType.SWORD_AND_SHIELD,
@@ -44,7 +196,7 @@ export const steelKnife = {
   previousWeapon: huntersKnife.id,
 };
 
-export const chromeSlicer = {
+export const chromeSlicer: WeaponSeedData = {
   id: uuid(),
   name: 'Chrome Slicer',
   weaponType: WeaponType.SWORD_AND_SHIELD,
@@ -58,7 +210,7 @@ export const chromeSlicer = {
   previousWeapon: steelKnife.id,
 };
 
-export const boneKukri = {
+export const boneKukri: WeaponSeedData = {
   id: uuid(),
   name: 'Bone Kukri',
   weaponType: WeaponType.SWORD_AND_SHIELD,
@@ -70,7 +222,7 @@ export const boneKukri = {
   damageFour: 0,
   damageFive: 0,
 };
-export const chiefKukri = {
+export const chiefKukri: WeaponSeedData = {
   id: uuid(),
   name: 'Chief Kukri',
   weaponType: WeaponType.SWORD_AND_SHIELD,
@@ -83,7 +235,7 @@ export const chiefKukri = {
   damageFive: 0,
   previousWeapon: boneKukri.id,
 };
-export const grandBarong = {
+export const grandBarong: WeaponSeedData = {
   id: uuid(),
   name: 'Grand Barong',
   weaponType: WeaponType.SWORD_AND_SHIELD,
@@ -97,7 +249,7 @@ export const grandBarong = {
   previousWeapon: chiefKukri.id,
 };
 
-export const bloomingKnife = {
+export const bloomingKnife: WeaponSeedData = {
   id: uuid(),
   name: 'Blooming knife',
   weaponType: WeaponType.SWORD_AND_SHIELD,
@@ -111,7 +263,7 @@ export const bloomingKnife = {
   previousWeapon: huntersKnife.id,
   monster: pukeiPukei.id,
 };
-export const daturaBlossom = {
+export const daturaBlossom: WeaponSeedData = {
   id: uuid(),
   name: 'Blooming knife',
   weaponType: WeaponType.SWORD_AND_SHIELD,
@@ -125,7 +277,7 @@ export const daturaBlossom = {
   previousWeapon: bloomingKnife.id,
   monster: pukeiPukei.id,
 };
-export const carapaceEdge = {
+export const carapaceEdge: WeaponSeedData = {
   id: uuid(),
   name: 'Chief Kukri',
   weaponType: WeaponType.SWORD_AND_SHIELD,
@@ -139,7 +291,7 @@ export const carapaceEdge = {
   previousWeapon: boneKukri.id,
   monster: barroth.id,
 };
-export const barrothClub = {
+export const barrothClub: WeaponSeedData = {
   id: uuid(),
   name: 'Chief Kukri',
   weaponType: WeaponType.SWORD_AND_SHIELD,
@@ -154,7 +306,7 @@ export const barrothClub = {
   monster: barroth.id,
 };
 
-export const jagrasEdge = {
+export const jagrasEdge: WeaponSeedData = {
   id: uuid(),
   name: 'Jagras Edge',
   weaponType: WeaponType.SWORD_AND_SHIELD,
@@ -168,7 +320,7 @@ export const jagrasEdge = {
   previousWeapon: boneKukri.id,
   monster: greatJagrass.id,
 };
-export const jagrasGarotte = {
+export const jagrasGarotte: WeaponSeedData = {
   id: uuid(),
   name: 'Jagras Garotte',
   weaponType: WeaponType.SWORD_AND_SHIELD,
@@ -182,7 +334,7 @@ export const jagrasGarotte = {
   previousWeapon: jagrasEdge.id,
   monster: greatJagrass.id,
 };
-export const flameKnife = {
+export const flameKnife: WeaponSeedData = {
   id: uuid(),
   name: 'Flame knife',
   weaponType: WeaponType.SWORD_AND_SHIELD,
@@ -196,7 +348,7 @@ export const flameKnife = {
   previousWeapon: huntersKnife.id,
   monster: rathalos.id,
 };
-export const heatEdge = {
+export const heatEdge: WeaponSeedData = {
   id: uuid(),
   name: 'Heat Edge',
   weaponType: WeaponType.SWORD_AND_SHIELD,
@@ -210,7 +362,7 @@ export const heatEdge = {
   previousWeapon: flameKnife.id,
   monster: rathalos.id,
 };
-export const nergalJack = {
+export const nergalJack: WeaponSeedData = {
   id: uuid(),
   name: 'Nergal Jack',
   weaponType: WeaponType.SWORD_AND_SHIELD,
@@ -222,9 +374,10 @@ export const nergalJack = {
   damageFour: 3,
   damageFive: 0,
   previousWeapon: huntersKnife.id,
+  materials: nergiganteMaterialsFirst,
   monster: nergigante.id,
 };
-export const eradicationVanguard = {
+export const eradicationVanguard: WeaponSeedData = {
   id: uuid(),
   name: 'Eradication Vanguard',
   weaponType: WeaponType.SWORD_AND_SHIELD,
@@ -236,9 +389,10 @@ export const eradicationVanguard = {
   damageFour: 3,
   damageFive: 1,
   previousWeapon: nergalJack.id,
+  materials: nergiganteMaterialsSecond,
   monster: nergigante.id,
 };
-export const teostrasSpada = {
+export const teostrasSpada: WeaponSeedData = {
   id: uuid(),
   name: "Teostra's Spada",
   weaponType: WeaponType.SWORD_AND_SHIELD,
@@ -250,9 +404,10 @@ export const teostrasSpada = {
   damageFour: 4,
   damageFive: 0,
   previousWeapon: huntersKnife.id,
+  materials: teostraMaterialsFirst,
   monster: teostra.id,
 };
-export const teostrasEmblem = {
+export const teostrasEmblem: WeaponSeedData = {
   id: uuid(),
   name: "Teostra's Emblem",
   weaponType: WeaponType.SWORD_AND_SHIELD,
@@ -264,11 +419,12 @@ export const teostrasEmblem = {
   damageFour: 3,
   damageFive: 1,
   previousWeapon: teostrasSpada.id,
+  materials: teostraMaterialsSecond,
   monster: teostra.id,
 };
 
 // Double Blade
-export const matchedSlicers = {
+export const matchedSlicers: WeaponSeedData = {
   id: uuid(),
   name: 'Matched Slicers',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -280,7 +436,7 @@ export const matchedSlicers = {
   damageFour: 0,
   damageFive: 0,
 };
-export const dualSlicers = {
+export const dualSlicers: WeaponSeedData = {
   id: uuid(),
   name: 'Dual Slicers',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -293,7 +449,7 @@ export const dualSlicers = {
   damageFive: 0,
   previousWeapon: matchedSlicers.id,
 };
-export const chromeSlicers = {
+export const chromeSlicers: WeaponSeedData = {
   id: uuid(),
   name: 'Chrome Slicers',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -306,7 +462,7 @@ export const chromeSlicers = {
   damageFive: 0,
   previousWeapon: dualSlicers.id,
 };
-export const boneHatchets = {
+export const boneHatchets: WeaponSeedData = {
   id: uuid(),
   name: 'Bone Hatchets',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -318,7 +474,7 @@ export const boneHatchets = {
   damageFour: 0,
   damageFive: 0,
 };
-export const WildHatchets = {
+export const WildHatchets: WeaponSeedData = {
   id: uuid(),
   name: 'Wild Hatchets',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -331,7 +487,7 @@ export const WildHatchets = {
   damageFive: 0,
   previousWeapon: boneHatchets.id,
 };
-export const StrongHatchets = {
+export const StrongHatchets: WeaponSeedData = {
   id: uuid(),
   name: 'Strong Hatchets',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -344,7 +500,7 @@ export const StrongHatchets = {
   damageFive: 0,
   previousWeapon: WildHatchets.id,
 };
-export const PulsarHatchets = {
+export const PulsarHatchets: WeaponSeedData = {
   id: uuid(),
   name: 'Pulsar Hatchets',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -358,7 +514,7 @@ export const PulsarHatchets = {
   previousWeapon: boneHatchets.id,
   monster: tobiKadachi.id,
 };
-export const KadachiHatchets = {
+export const KadachiHatchets: WeaponSeedData = {
   id: uuid(),
   name: 'Kadachi Hatchets',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -372,7 +528,7 @@ export const KadachiHatchets = {
   previousWeapon: PulsarHatchets.id,
   monster: tobiKadachi.id,
 };
-export const blazingHatchets = {
+export const blazingHatchets: WeaponSeedData = {
   id: uuid(),
   name: 'Blazing Hatchets',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -386,7 +542,7 @@ export const blazingHatchets = {
   previousWeapon: boneHatchets.id,
   monster: anjanath.id,
 };
-export const AnjaHatchets = {
+export const AnjaHatchets: WeaponSeedData = {
   id: uuid(),
   name: 'Anja Hatchets',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -400,7 +556,7 @@ export const AnjaHatchets = {
   previousWeapon: blazingHatchets.id,
   monster: anjanath.id,
 };
-export const diablosHatchets = {
+export const diablosHatchets: WeaponSeedData = {
   id: uuid(),
   name: 'Diablos Hatchets',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -414,7 +570,7 @@ export const diablosHatchets = {
   previousWeapon: boneHatchets.id,
   monster: diablos.id,
 };
-export const diablosClubs = {
+export const diablosClubs: WeaponSeedData = {
   id: uuid(),
   name: 'Diablos Clubs',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -428,7 +584,7 @@ export const diablosClubs = {
   previousWeapon: diablosHatchets.id,
   monster: diablos.id,
 };
-export const madnessPangas = {
+export const madnessPangas: WeaponSeedData = {
   id: uuid(),
   name: 'Madness Pangas',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -442,7 +598,7 @@ export const madnessPangas = {
   previousWeapon: boneHatchets.id,
   monster: jyuratodus.id,
 };
-export const jyuraHatchets = {
+export const jyuraHatchets: WeaponSeedData = {
   id: uuid(),
   name: 'Jyura Hatchets',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -456,7 +612,7 @@ export const jyuraHatchets = {
   previousWeapon: madnessPangas.id,
   monster: jyuratodus.id,
 };
-export const twinNails = {
+export const twinNails: WeaponSeedData = {
   id: uuid(),
   name: 'Twin Nails',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -468,9 +624,10 @@ export const twinNails = {
   damageFour: 4,
   damageFive: 0,
   previousWeapon: matchedSlicers.id,
+  materials: teostraMaterialsFirst,
   monster: teostra.id,
 };
-export const fireAndIce = {
+export const fireAndIce: WeaponSeedData = {
   id: uuid(),
   name: 'Fire and Ice',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -482,9 +639,10 @@ export const fireAndIce = {
   damageFour: 3,
   damageFive: 0,
   previousWeapon: twinNails.id,
+  materials: teostraMaterialsSecond,
   monster: teostra.id,
 };
-export const nergalGouge = {
+export const nergalGouge: WeaponSeedData = {
   id: uuid(),
   name: 'Nergal Gouge',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -496,9 +654,10 @@ export const nergalGouge = {
   damageFour: 1,
   damageFive: 0,
   previousWeapon: matchedSlicers.id,
+  materials: nergiganteMaterialsFirst,
   monster: nergigante.id,
 };
-export const decimationClaws = {
+export const decimationClaws: WeaponSeedData = {
   id: uuid(),
   name: 'Decimation Claws',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -510,9 +669,10 @@ export const decimationClaws = {
   damageFour: 2,
   damageFive: 0,
   previousWeapon: nergalGouge.id,
+  materials: nergiganteMaterialsSecond,
   monster: nergigante.id,
 };
-export const rendingBeaks = {
+export const rendingBeaks: WeaponSeedData = {
   id: uuid(),
   name: 'Rending Beaks',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -524,9 +684,10 @@ export const rendingBeaks = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: matchedSlicers.id,
+  materials: kuluYakuMaterialsFirst,
   monster: kuluYaKu.id,
 };
-export const arcanaria = {
+export const arcanaria: WeaponSeedData = {
   id: uuid(),
   name: 'Arcanaria',
   weaponType: WeaponType.DOUBLE_BLADES,
@@ -538,11 +699,12 @@ export const arcanaria = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: rendingBeaks.id,
+  materials: kuluYakuMaterialsSecond,
   monster: kuluYaKu.id,
 };
 
 // Hunting Horn
-export const metalBagpipe = {
+export const metalBagpipe: WeaponSeedData = {
   id: uuid(),
   name: 'Metal bagpipe',
   weaponType: WeaponType.HUNTING_HORN,
@@ -554,7 +716,7 @@ export const metalBagpipe = {
   damageFour: 0,
   damageFive: 0,
 };
-export const greatBagpipe = {
+export const greatBagpipe: WeaponSeedData = {
   id: uuid(),
   name: 'Great bagpipe',
   weaponType: WeaponType.HUNTING_HORN,
@@ -567,7 +729,7 @@ export const greatBagpipe = {
   damageFive: 0,
   previousWeapon: metalBagpipe.id,
 };
-export const fortissimo = {
+export const fortissimo: WeaponSeedData = {
   id: uuid(),
   name: 'Fortissimo',
   weaponType: WeaponType.HUNTING_HORN,
@@ -580,7 +742,7 @@ export const fortissimo = {
   damageFive: 0,
   previousWeapon: greatBagpipe.id,
 };
-export const boneHorn = {
+export const boneHorn: WeaponSeedData = {
   id: uuid(),
   name: 'Bone Horn',
   weaponType: WeaponType.HUNTING_HORN,
@@ -592,7 +754,7 @@ export const boneHorn = {
   damageFour: 0,
   damageFive: 0,
 };
-export const hardboneHorn = {
+export const hardboneHorn: WeaponSeedData = {
   id: uuid(),
   name: 'Hard Bone Horn',
   weaponType: WeaponType.HUNTING_HORN,
@@ -605,7 +767,7 @@ export const hardboneHorn = {
   damageFive: 0,
   previousWeapon: boneHorn.id,
 };
-export const heavyboneHorn = {
+export const heavyboneHorn: WeaponSeedData = {
   id: uuid(),
   name: 'Heavy Bone Horn',
   weaponType: WeaponType.HUNTING_HORN,
@@ -618,7 +780,7 @@ export const heavyboneHorn = {
   damageFive: 0,
   previousWeapon: hardboneHorn.id,
 };
-export const thunderGaida = {
+export const thunderGaida: WeaponSeedData = {
   id: uuid(),
   name: 'Thunder Gaida',
   weaponType: WeaponType.HUNTING_HORN,
@@ -632,7 +794,7 @@ export const thunderGaida = {
   previousWeapon: boneHorn.id,
   monster: tobiKadachi.id,
 };
-export const lightningDrum = {
+export const lightningDrum: WeaponSeedData = {
   id: uuid(),
   name: 'Lightning Drum',
   weaponType: WeaponType.HUNTING_HORN,
@@ -646,7 +808,7 @@ export const lightningDrum = {
   previousWeapon: thunderGaida.id,
   monster: tobiKadachi.id,
 };
-export const blazingHorn = {
+export const blazingHorn: WeaponSeedData = {
   id: uuid(),
   name: 'Blazing Horn',
   weaponType: WeaponType.HUNTING_HORN,
@@ -660,7 +822,7 @@ export const blazingHorn = {
   previousWeapon: metalBagpipe.id,
   monster: anjanath.id,
 };
-export const anjaBarone = {
+export const anjaBarone: WeaponSeedData = {
   id: uuid(),
   name: 'Anja Barone',
   weaponType: WeaponType.HUNTING_HORN,
@@ -674,7 +836,7 @@ export const anjaBarone = {
   previousWeapon: blazingHorn.id,
   monster: anjanath.id,
 };
-export const bloomingHorn = {
+export const bloomingHorn: WeaponSeedData = {
   id: uuid(),
   name: 'Blooming Horn',
   weaponType: WeaponType.HUNTING_HORN,
@@ -688,7 +850,7 @@ export const bloomingHorn = {
   previousWeapon: boneHorn.id,
   monster: pukeiPukei.id,
 };
-export const daturaHorn = {
+export const daturaHorn: WeaponSeedData = {
   id: uuid(),
   name: 'Datura Horn',
   weaponType: WeaponType.HUNTING_HORN,
@@ -702,7 +864,7 @@ export const daturaHorn = {
   previousWeapon: boneHorn.id,
   monster: pukeiPukei.id,
 };
-export const aquaBagpipe = {
+export const aquaBagpipe: WeaponSeedData = {
   id: uuid(),
   name: 'Aqua Bagpipe',
   weaponType: WeaponType.HUNTING_HORN,
@@ -716,7 +878,7 @@ export const aquaBagpipe = {
   previousWeapon: boneHorn.id,
   monster: pukeiPukei.id,
 };
-export const waterTamtam = {
+export const waterTamtam: WeaponSeedData = {
   id: uuid(),
   name: 'Water Tamtam',
   weaponType: WeaponType.HUNTING_HORN,
@@ -730,7 +892,7 @@ export const waterTamtam = {
   previousWeapon: aquaBagpipe.id,
   monster: pukeiPukei.id,
 };
-export const nergalGroove = {
+export const nergalGroove: WeaponSeedData = {
   id: uuid(),
   name: 'Nergal Groove',
   weaponType: WeaponType.HUNTING_HORN,
@@ -742,9 +904,10 @@ export const nergalGroove = {
   damageFour: 1,
   damageFive: 0,
   previousWeapon: metalBagpipe.id,
+  materials: nergiganteMaterialsFirst,
   monster: nergigante.id,
 };
-export const desolationsOverture = {
+export const desolationsOverture: WeaponSeedData = {
   id: uuid(),
   name: "Desolation's Overture",
   weaponType: WeaponType.HUNTING_HORN,
@@ -756,9 +919,10 @@ export const desolationsOverture = {
   damageFour: 2,
   damageFive: 0,
   previousWeapon: nergalGroove.id,
+  materials: nergiganteMaterialsSecond,
   monster: nergigante.id,
 };
-export const teostrasTiple = {
+export const teostrasTiple: WeaponSeedData = {
   id: uuid(),
   name: "Teostra's Tiple",
   weaponType: WeaponType.HUNTING_HORN,
@@ -770,9 +934,10 @@ export const teostrasTiple = {
   damageFour: 1,
   damageFive: 0,
   previousWeapon: metalBagpipe.id,
+  materials: teostraMaterialsFirst,
   monster: teostra.id,
 };
-export const teostrasOrphee = {
+export const teostrasOrphee: WeaponSeedData = {
   id: uuid(),
   name: "Teostra's Orphée",
   weaponType: WeaponType.HUNTING_HORN,
@@ -784,9 +949,10 @@ export const teostrasOrphee = {
   damageFour: 3,
   damageFive: 0,
   previousWeapon: teostrasTiple.id,
+  materials: teostraMaterialsSecond,
   monster: teostra.id,
 };
-export const kuluDuda = {
+export const kuluDuda: WeaponSeedData = {
   id: uuid(),
   name: 'Kulu Duda',
   weaponType: WeaponType.HUNTING_HORN,
@@ -798,9 +964,10 @@ export const kuluDuda = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: metalBagpipe.id,
+  materials: kuluYakuMaterialsFirst,
   monster: kuluYaKu.id,
 };
-export const dancingDuval = {
+export const dancingDuval: WeaponSeedData = {
   id: uuid(),
   name: 'Dancing Duval',
   weaponType: WeaponType.HUNTING_HORN,
@@ -812,11 +979,12 @@ export const dancingDuval = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: kuluDuda.id,
+  materials: kuluYakuMaterialsSecond,
   monster: kuluYaKu.id,
 };
 
 // Gunlance
-export const ironGunlance = {
+export const ironGunlance: WeaponSeedData = {
   id: uuid(),
   name: 'Iron Gunlance',
   weaponType: WeaponType.GUNLANCE,
@@ -828,7 +996,7 @@ export const ironGunlance = {
   damageFour: 0,
   damageFive: 0,
 };
-export const steelGunlance = {
+export const steelGunlance: WeaponSeedData = {
   id: uuid(),
   name: 'Steel Gunlance',
   weaponType: WeaponType.GUNLANCE,
@@ -841,7 +1009,7 @@ export const steelGunlance = {
   damageFive: 0,
   previousWeapon: ironGunlance.id,
 };
-export const chromeGunlance = {
+export const chromeGunlance: WeaponSeedData = {
   id: uuid(),
   name: 'Chrome Gunlance',
   weaponType: WeaponType.GUNLANCE,
@@ -854,7 +1022,7 @@ export const chromeGunlance = {
   damageFive: 0,
   previousWeapon: steelGunlance.id,
 };
-export const boneGunlance = {
+export const boneGunlance: WeaponSeedData = {
   id: uuid(),
   name: 'Bone Gunlance',
   weaponType: WeaponType.GUNLANCE,
@@ -866,7 +1034,7 @@ export const boneGunlance = {
   damageFour: 0,
   damageFive: 0,
 };
-export const boneCannon = {
+export const boneCannon: WeaponSeedData = {
   id: uuid(),
   name: 'Bone Cannon',
   weaponType: WeaponType.GUNLANCE,
@@ -879,7 +1047,7 @@ export const boneCannon = {
   damageFive: 0,
   previousWeapon: boneGunlance.id,
 };
-export const greatBoneGunlance = {
+export const greatBoneGunlance: WeaponSeedData = {
   id: uuid(),
   name: 'Great Bone Gunlance',
   weaponType: WeaponType.GUNLANCE,
@@ -892,7 +1060,7 @@ export const greatBoneGunlance = {
   damageFive: 0,
   previousWeapon: boneGunlance.id,
 };
-export const jagrasGunlance = {
+export const jagrasGunlance: WeaponSeedData = {
   id: uuid(),
   name: 'Jagras Gunlance',
   weaponType: WeaponType.GUNLANCE,
@@ -906,7 +1074,7 @@ export const jagrasGunlance = {
   previousWeapon: boneGunlance.id,
   monster: greatJagrass.id,
 };
-export const gluttonGunlance = {
+export const gluttonGunlance: WeaponSeedData = {
   id: uuid(),
   name: 'Glutton Gunlance',
   weaponType: WeaponType.GUNLANCE,
@@ -920,7 +1088,7 @@ export const gluttonGunlance = {
   previousWeapon: jagrasGunlance.id,
   monster: greatJagrass.id,
 };
-export const rathGunlance = {
+export const rathGunlance: WeaponSeedData = {
   id: uuid(),
   name: 'Rath Gunlance',
   weaponType: WeaponType.GUNLANCE,
@@ -934,7 +1102,7 @@ export const rathGunlance = {
   previousWeapon: boneGunlance.id,
   monster: rathalos.id,
 };
-export const redRook = {
+export const redRook: WeaponSeedData = {
   id: uuid(),
   name: 'Red Rook',
   weaponType: WeaponType.GUNLANCE,
@@ -948,7 +1116,7 @@ export const redRook = {
   previousWeapon: rathGunlance.id,
   monster: rathalos.id,
 };
-export const carapaceCannon = {
+export const carapaceCannon: WeaponSeedData = {
   id: uuid(),
   name: 'Carapace Cannon',
   weaponType: WeaponType.GUNLANCE,
@@ -962,7 +1130,7 @@ export const carapaceCannon = {
   previousWeapon: boneGunlance.id,
   monster: barroth.id,
 };
-export const barrothBlaster = {
+export const barrothBlaster: WeaponSeedData = {
   id: uuid(),
   name: 'Barroth Blaster',
   weaponType: WeaponType.GUNLANCE,
@@ -976,7 +1144,7 @@ export const barrothBlaster = {
   previousWeapon: carapaceCannon.id,
   monster: barroth.id,
 };
-export const madnessGunlance = {
+export const madnessGunlance: WeaponSeedData = {
   id: uuid(),
   name: 'Madness Gunlance',
   weaponType: WeaponType.GUNLANCE,
@@ -990,7 +1158,7 @@ export const madnessGunlance = {
   previousWeapon: boneGunlance.id,
   monster: jyuratodus.id,
 };
-export const jyuraBuster = {
+export const jyuraBuster: WeaponSeedData = {
   id: uuid(),
   name: 'Jyura Buster',
   weaponType: WeaponType.GUNLANCE,
@@ -1004,7 +1172,7 @@ export const jyuraBuster = {
   previousWeapon: madnessGunlance.id,
   monster: jyuratodus.id,
 };
-export const nergalRam = {
+export const nergalRam: WeaponSeedData = {
   id: uuid(),
   name: 'Nergal Ram',
   weaponType: WeaponType.GUNLANCE,
@@ -1016,9 +1184,10 @@ export const nergalRam = {
   damageFour: 2,
   damageFive: 0,
   previousWeapon: ironGunlance.id,
+  materials: nergiganteMaterialsFirst,
   monster: nergigante.id,
 };
-export const eradicationFlame = {
+export const eradicationFlame: WeaponSeedData = {
   id: uuid(),
   name: 'Eradication Flame',
   weaponType: WeaponType.GUNLANCE,
@@ -1030,9 +1199,10 @@ export const eradicationFlame = {
   damageFour: 3,
   damageFive: 0,
   previousWeapon: nergalRam.id,
+  materials: nergiganteMaterialsSecond,
   monster: nergigante.id,
 };
-export const icesteelGunlance = {
+export const icesteelGunlance: WeaponSeedData = {
   id: uuid(),
   name: 'Icesteel Gunlance',
   weaponType: WeaponType.GUNLANCE,
@@ -1046,7 +1216,7 @@ export const icesteelGunlance = {
   previousWeapon: ironGunlance.id,
   monster: daora.id,
 };
-export const daorasBrigia = {
+export const daorasBrigia: WeaponSeedData = {
   id: uuid(),
   name: "Daora's Brigia",
   weaponType: WeaponType.GUNLANCE,
@@ -1059,4 +1229,2916 @@ export const daorasBrigia = {
   damageFive: 0,
   previousWeapon: icesteelGunlance.id,
   monster: daora.id,
+};
+
+// Heavy Bowgun
+export const ironAssault: WeaponSeedData = {
+  id: uuid(),
+  name: 'Iron Assault',
+  weaponType: WeaponType.HEAVY_BOWGUN,
+  branch: CraftingBranch.STARTING,
+  defense: 0,
+  damageOne: 8,
+  damageTwo: 4,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+};
+export const steelAssault: WeaponSeedData = {
+  id: uuid(),
+  name: 'Steel Assault',
+  weaponType: WeaponType.HEAVY_BOWGUN,
+  branch: CraftingBranch.ORE,
+  defense: 0,
+  damageOne: 7,
+  damageTwo: 4,
+  damageThree: 1,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: ironAssault.id,
+};
+export const chromeAssault: WeaponSeedData = {
+  id: uuid(),
+  name: 'Chrome Assault',
+  weaponType: WeaponType.HEAVY_BOWGUN,
+  branch: CraftingBranch.ORE,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 4,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: steelAssault.id,
+};
+export const boneShooter: WeaponSeedData = {
+  id: uuid(),
+  name: 'Bone Shooter',
+  weaponType: WeaponType.HEAVY_BOWGUN,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 4,
+  damageThree: 1,
+  damageFour: 0,
+  damageFive: 0,
+};
+export const heavyShooter: WeaponSeedData = {
+  id: uuid(),
+  name: 'Heavy Shooter',
+  weaponType: WeaponType.HEAVY_BOWGUN,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 5,
+  damageThree: 1,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneShooter.id,
+};
+export const powerShooter: WeaponSeedData = {
+  id: uuid(),
+  name: 'Power Shooter',
+  weaponType: WeaponType.HEAVY_BOWGUN,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 4,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: heavyShooter.id,
+};
+export const jagrasAssault: WeaponSeedData = {
+  id: uuid(),
+  name: 'Jagras Assault',
+  weaponType: WeaponType.HEAVY_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 4,
+  damageThree: 4,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: ironAssault.id,
+  monster: greatJagrass.id,
+};
+export const jagrasCannon: WeaponSeedData = {
+  id: uuid(),
+  name: 'Jagras Cannon',
+  weaponType: WeaponType.HEAVY_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 6,
+  damageTwo: 1,
+  damageThree: 5,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: jagrasAssault.id,
+  monster: greatJagrass.id,
+};
+export const pulsarShooter: WeaponSeedData = {
+  id: uuid(),
+  name: 'Pulsar Shooter',
+  weaponType: WeaponType.HEAVY_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 2,
+  damageThree: 3,
+  damageFour: 4,
+  damageFive: 0,
+  previousWeapon: boneShooter.id,
+  monster: tobiKadachi.id,
+};
+export const kadachiLion: WeaponSeedData = {
+  id: uuid(),
+  name: 'Kadachi Lion',
+  weaponType: WeaponType.HEAVY_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 3,
+  damageThree: 3,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: pulsarShooter.id,
+  monster: tobiKadachi.id,
+};
+export const bloomingShooter: WeaponSeedData = {
+  id: uuid(),
+  name: 'Blooming Shooter',
+  weaponType: WeaponType.HEAVY_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 3,
+  damageTwo: 3,
+  damageThree: 4,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneShooter.id,
+  monster: pukeiPukei.id,
+};
+export const daturaShooter: WeaponSeedData = {
+  id: uuid(),
+  name: 'Datura Shooter',
+  weaponType: WeaponType.HEAVY_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 3,
+  damageTwo: 3,
+  damageThree: 4,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: bloomingShooter.id,
+  monster: pukeiPukei.id,
+};
+export const diablosShooter: WeaponSeedData = {
+  id: uuid(),
+  name: 'Diablos Shooter',
+  weaponType: WeaponType.HEAVY_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 3,
+  damageTwo: 4,
+  damageThree: 3,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: boneShooter.id,
+  monster: diablos.id,
+};
+export const dualThreat: WeaponSeedData = {
+  id: uuid(),
+  name: 'Dual Threat',
+  weaponType: WeaponType.HEAVY_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 2,
+  damageTwo: 6,
+  damageThree: 3,
+  damageFour: 3,
+  damageFive: 0,
+  previousWeapon: diablosShooter.id,
+  monster: diablos.id,
+};
+export const nergalRoar: WeaponSeedData = {
+  id: uuid(),
+  name: 'Nergal Roar',
+  weaponType: WeaponType.HEAVY_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 0,
+  damageTwo: 6,
+  damageThree: 3,
+  damageFour: 4,
+  damageFive: 0,
+  previousWeapon: ironAssault.id,
+  materials: nergiganteMaterialsFirst,
+  monster: nergigante.id,
+};
+export const destructionsFusillade: WeaponSeedData = {
+  id: uuid(),
+  name: "Destruction's Fusillade",
+  weaponType: WeaponType.HEAVY_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 0,
+  damageTwo: 6,
+  damageThree: 5,
+  damageFour: 2,
+  damageFive: 1,
+  previousWeapon: nergalRoar.id,
+  materials: nergiganteMaterialsSecond,
+  monster: nergigante.id,
+};
+export const teostrasArtillery: WeaponSeedData = {
+  id: uuid(),
+  name: "Teostra's Artillery",
+  weaponType: WeaponType.HEAVY_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 0,
+  damageTwo: 8,
+  damageThree: 4,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: ironAssault.id,
+  materials: teostraMaterialsFirst,
+  monster: teostra.id,
+};
+export const teostrasFlames: WeaponSeedData = {
+  id: uuid(),
+  name: "Teostra's Flames",
+  weaponType: WeaponType.HEAVY_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 0,
+  damageTwo: 10,
+  damageThree: 3,
+  damageFour: 2,
+  damageFive: 1,
+  previousWeapon: teostrasArtillery.id,
+  materials: teostraMaterialsSecond,
+  monster: teostra.id,
+};
+// Charge Blade
+export const protoCommissionAxe: WeaponSeedData = {
+  id: uuid(),
+  name: 'Proto Comission Axe',
+  weaponType: WeaponType.CHARGE_BLADE,
+  branch: CraftingBranch.STARTING,
+  defense: 0,
+  damageOne: 8,
+  damageTwo: 4,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+};
+export const eliteCommissionAxe: WeaponSeedData = {
+  id: uuid(),
+  name: 'Elite Comission Axe',
+  weaponType: WeaponType.CHARGE_BLADE,
+  branch: CraftingBranch.ORE,
+  defense: 0,
+  damageOne: 8,
+  damageTwo: 3,
+  damageThree: 1,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: protoCommissionAxe.id,
+};
+export const chromeGuardian: WeaponSeedData = {
+  id: uuid(),
+  name: 'Chrome Guardian',
+  weaponType: WeaponType.CHARGE_BLADE,
+  branch: CraftingBranch.ORE,
+  defense: 1,
+  damageOne: 5,
+  damageTwo: 4,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: eliteCommissionAxe.id,
+};
+export const boneStrongarm: WeaponSeedData = {
+  id: uuid(),
+  name: 'Bone Strongarm',
+  weaponType: WeaponType.CHARGE_BLADE,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 5,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+};
+export const hardBoneStrongarm: WeaponSeedData = {
+  id: uuid(),
+  name: 'Hard Bone Strongarm',
+  weaponType: WeaponType.CHARGE_BLADE,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 5,
+  damageThree: 1,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneStrongarm.id,
+};
+export const mightyStrongarm: WeaponSeedData = {
+  id: uuid(),
+  name: 'Myghty Strongarm',
+  weaponType: WeaponType.CHARGE_BLADE,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 3,
+  damageTwo: 4,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: hardBoneStrongarm.id,
+};
+export const jagrasStrongarm: WeaponSeedData = {
+  id: uuid(),
+  name: 'Jagras Strongarm',
+  weaponType: WeaponType.CHARGE_BLADE,
+  branch: CraftingBranch.MONSTER,
+  defense: 1,
+  damageOne: 3,
+  damageTwo: 3,
+  damageThree: 4,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneStrongarm.id,
+  monster: greatJagrass.id,
+};
+export const jagrasEscudo: WeaponSeedData = {
+  id: uuid(),
+  name: 'Jagras Scudo',
+  weaponType: WeaponType.CHARGE_BLADE,
+  branch: CraftingBranch.MONSTER,
+  defense: 1,
+  damageOne: 2,
+  damageTwo: 3,
+  damageThree: 5,
+  damageFour: 4,
+  damageFive: 0,
+  previousWeapon: jagrasStrongarm.id,
+  monster: greatJagrass.id,
+};
+export const pulsarStrongarm: WeaponSeedData = {
+  id: uuid(),
+  name: 'Pulsar Strongarm',
+  weaponType: WeaponType.CHARGE_BLADE,
+  branch: CraftingBranch.MONSTER,
+  defense: 1,
+  damageOne: 2,
+  damageTwo: 5,
+  damageThree: 2,
+  damageFour: 1,
+  damageFive: 0,
+  previousWeapon: boneStrongarm.id,
+  monster: tobiKadachi.id,
+};
+export const kadachiKaina: WeaponSeedData = {
+  id: uuid(),
+  name: 'Kadachi Kaina',
+  weaponType: WeaponType.CHARGE_BLADE,
+  branch: CraftingBranch.MONSTER,
+  defense: 1,
+  damageOne: 1,
+  damageTwo: 6,
+  damageThree: 3,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: pulsarStrongarm.id,
+  monster: tobiKadachi.id,
+};
+export const mudslideBlade: WeaponSeedData = {
+  id: uuid(),
+  name: 'Mudslide Blade',
+  weaponType: WeaponType.CHARGE_BLADE,
+  branch: CraftingBranch.MONSTER,
+  defense: 1,
+  damageOne: 3,
+  damageTwo: 4,
+  damageThree: 5,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: protoCommissionAxe.id,
+  monster: jyuratodus.id,
+};
+export const jyuraDepth: WeaponSeedData = {
+  id: uuid(),
+  name: 'Jyura Depth',
+  weaponType: WeaponType.CHARGE_BLADE,
+  branch: CraftingBranch.MONSTER,
+  defense: 1,
+  damageOne: 1,
+  damageTwo: 6,
+  damageThree: 5,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: mudslideBlade.id,
+  monster: jyuratodus.id,
+};
+export const diablosWall: WeaponSeedData = {
+  id: uuid(),
+  name: 'Diablos Wall',
+  weaponType: WeaponType.CHARGE_BLADE,
+  branch: CraftingBranch.MONSTER,
+  defense: 1,
+  damageOne: 1,
+  damageTwo: 7,
+  damageThree: 1,
+  damageFour: 1,
+  damageFive: 0,
+  previousWeapon: boneStrongarm.id,
+  monster: diablos.id,
+};
+export const diablosTyrannis: WeaponSeedData = {
+  id: uuid(),
+  name: 'Diablos Tyrannis',
+  weaponType: WeaponType.CHARGE_BLADE,
+  branch: CraftingBranch.MONSTER,
+  defense: 1,
+  damageOne: 2,
+  damageTwo: 5,
+  damageThree: 2,
+  damageFour: 3,
+  damageFive: 0,
+  previousWeapon: diablosWall.id,
+  monster: diablos.id,
+};
+export const daorasCasca: WeaponSeedData = {
+  id: uuid(),
+  name: "Daora's Casca",
+  weaponType: WeaponType.CHARGE_BLADE,
+  branch: CraftingBranch.MONSTER,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 8,
+  damageThree: 2,
+  damageFour: 3,
+  damageFive: 1,
+  previousWeapon: protoCommissionAxe.id,
+  monster: daora.id,
+};
+export const daorasThwartoise: WeaponSeedData = {
+  id: uuid(),
+  name: "Daora's Thwartoise",
+  weaponType: WeaponType.CHARGE_BLADE,
+  branch: CraftingBranch.MONSTER,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 8,
+  damageThree: 2,
+  damageFour: 4,
+  damageFive: 2,
+  previousWeapon: daorasCasca.id,
+  monster: daora.id,
+};
+export const nergalLacerator: WeaponSeedData = {
+  id: uuid(),
+  name: 'Nergal Lacerator',
+  weaponType: WeaponType.CHARGE_BLADE,
+  branch: CraftingBranch.MONSTER,
+  defense: 1,
+  damageOne: 2,
+  damageTwo: 5,
+  damageThree: 2,
+  damageFour: 2,
+  damageFive: 1,
+  previousWeapon: protoCommissionAxe.id,
+  materials: nergiganteMaterialsFirst,
+  monster: nergigante.id,
+};
+export const devastationsThorns: WeaponSeedData = {
+  id: uuid(),
+  name: "Devastation's Thorns",
+  weaponType: WeaponType.CHARGE_BLADE,
+  branch: CraftingBranch.MONSTER,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 7,
+  damageThree: 2,
+  damageFour: 3,
+  damageFive: 2,
+  previousWeapon: nergalLacerator.id,
+  materials: nergiganteMaterialsSecond,
+  monster: nergigante.id,
+};
+// Switch Axe
+export const protoIronAxe: WeaponSeedData = {
+  id: uuid(),
+  name: 'Proto Iron Axe',
+  weaponType: WeaponType.SWITCH_AXE,
+  branch: CraftingBranch.STARTING,
+  defense: 0,
+  damageOne: 11,
+  damageTwo: 1,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+};
+export const improvedSteelAxe: WeaponSeedData = {
+  id: uuid(),
+  name: 'Improved Steel Axe',
+  weaponType: WeaponType.SWITCH_AXE,
+  branch: CraftingBranch.ORE,
+  defense: 0,
+  damageOne: 10,
+  damageTwo: 0,
+  damageThree: 3,
+  damageFour: 1,
+  damageFive: 0,
+  previousWeapon: protoIronAxe.id,
+};
+export const perfectedAlloyAxe: WeaponSeedData = {
+  id: uuid(),
+  name: 'Perfected Alloy Axe',
+  weaponType: WeaponType.SWITCH_AXE,
+  branch: CraftingBranch.ORE,
+  defense: 0,
+  damageOne: 8,
+  damageTwo: 0,
+  damageThree: 1,
+  damageFour: 3,
+  damageFive: 0,
+  previousWeapon: improvedSteelAxe.id,
+};
+export const boneAxe: WeaponSeedData = {
+  id: uuid(),
+  name: 'Bone Axe',
+  weaponType: WeaponType.SWITCH_AXE,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 8,
+  damageTwo: 2,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+};
+export const boneSmasher: WeaponSeedData = {
+  id: uuid(),
+  name: 'Bone Smasher',
+  weaponType: WeaponType.SWITCH_AXE,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 7,
+  damageTwo: 3,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneAxe.id,
+};
+export const powerSmasher: WeaponSeedData = {
+  id: uuid(),
+  name: 'Power Smasher',
+  weaponType: WeaponType.SWITCH_AXE,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 4,
+  damageThree: 1,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneSmasher.id,
+};
+export const flammembeil: WeaponSeedData = {
+  id: uuid(),
+  name: 'Flammembeil',
+  weaponType: WeaponType.SWITCH_AXE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 3,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneAxe.id,
+  monster: anjanath.id,
+};
+export const gnashingFlammembeil: WeaponSeedData = {
+  id: uuid(),
+  name: 'Gnashing Flammembeil',
+  weaponType: WeaponType.SWITCH_AXE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 6,
+  damageTwo: 0,
+  damageThree: 3,
+  damageFour: 3,
+  damageFive: 0,
+  previousWeapon: flammembeil.id,
+  monster: anjanath.id,
+};
+export const rathalosAxe: WeaponSeedData = {
+  id: uuid(),
+  name: 'Rathalos Axe',
+  weaponType: WeaponType.SWITCH_AXE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 6,
+  damageTwo: 4,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: protoIronAxe.id,
+  monster: rathalos.id,
+};
+export const rathbringerAxe: WeaponSeedData = {
+  id: uuid(),
+  name: 'Rathbringer Axe',
+  weaponType: WeaponType.SWITCH_AXE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 7,
+  damageTwo: 3,
+  damageThree: 4,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: rathalosAxe.id,
+  monster: rathalos.id,
+};
+export const carapaceAxe: WeaponSeedData = {
+  id: uuid(),
+  name: 'Carapace Axe',
+  weaponType: WeaponType.SWITCH_AXE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 6,
+  damageTwo: 2,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneAxe.id,
+  monster: barroth.id,
+};
+export const barrothGrinder: WeaponSeedData = {
+  id: uuid(),
+  name: 'Barroth Grinder',
+  weaponType: WeaponType.SWITCH_AXE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 6,
+  damageTwo: 0,
+  damageThree: 4,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: carapaceAxe.id,
+  monster: barroth.id,
+};
+export const diablosAxe: WeaponSeedData = {
+  id: uuid(),
+  name: 'Diablos Axe',
+  weaponType: WeaponType.SWITCH_AXE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 7,
+  damageTwo: 2,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneAxe.id,
+  monster: diablos.id,
+};
+export const axeSemperTyrannis: WeaponSeedData = {
+  id: uuid(),
+  name: 'Axe Semper Tyrannis',
+  weaponType: WeaponType.SWITCH_AXE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 8,
+  damageTwo: 0,
+  damageThree: 0,
+  damageFour: 6,
+  damageFive: 0,
+  previousWeapon: diablosAxe.id,
+  monster: diablos.id,
+};
+export const teostrasArx: WeaponSeedData = {
+  id: uuid(),
+  name: "Teostra's Arx",
+  weaponType: WeaponType.SWITCH_AXE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 6,
+  damageTwo: 0,
+  damageThree: 2,
+  damageFour: 5,
+  damageFive: 1,
+  previousWeapon: protoIronAxe.id,
+  materials: teostraMaterialsFirst,
+  monster: teostra.id,
+};
+export const teostrasCastle: WeaponSeedData = {
+  id: uuid(),
+  name: "Teostra's Castle",
+  weaponType: WeaponType.SWITCH_AXE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 8,
+  damageTwo: 0,
+  damageThree: 0,
+  damageFour: 6,
+  damageFive: 2,
+  previousWeapon: teostrasArx.id,
+  materials: teostraMaterialsSecond,
+  monster: teostra.id,
+};
+export const nergalGash: WeaponSeedData = {
+  id: uuid(),
+  name: 'Nergal Gash',
+  weaponType: WeaponType.SWITCH_AXE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 0,
+  damageThree: 4,
+  damageFour: 2,
+  damageFive: 1,
+  previousWeapon: protoIronAxe.id,
+  materials: nergiganteMaterialsFirst,
+  monster: nergigante.id,
+};
+export const dyingLight: WeaponSeedData = {
+  id: uuid(),
+  name: 'Dying Light',
+  weaponType: WeaponType.SWITCH_AXE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 7,
+  damageTwo: 0,
+  damageThree: 1,
+  damageFour: 3,
+  damageFive: 3,
+  previousWeapon: nergalGash.id,
+  materials: nergiganteMaterialsSecond,
+  monster: nergigante.id,
+};
+// Lance
+export const ironLance: WeaponSeedData = {
+  id: uuid(),
+  name: 'Iron Lance',
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.STARTING,
+  defense: 1,
+  damageOne: 8,
+  damageTwo: 4,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+};
+export const steelLance: WeaponSeedData = {
+  id: uuid(),
+  name: 'Steel Lance',
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.ORE,
+  defense: 1,
+  damageOne: 6,
+  damageTwo: 6,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: ironLance.id,
+};
+export const chromeLance: WeaponSeedData = {
+  id: uuid(),
+  name: 'Chrome Lance',
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.ORE,
+  defense: 1,
+  damageOne: 4,
+  damageTwo: 6,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: steelLance.id,
+};
+export const boneLance: WeaponSeedData = {
+  id: uuid(),
+  name: 'Bone Lance',
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 6,
+  damageTwo: 4,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+};
+export const hardBoneLance: WeaponSeedData = {
+  id: uuid(),
+  name: 'Hard Bone Lance',
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 4,
+  damageTwo: 6,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneLance.id,
+};
+export const heavyBoneLance: WeaponSeedData = {
+  id: uuid(),
+  name: 'Heavy Bone Lance',
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 3,
+  damageTwo: 5,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: hardBoneLance.id,
+};
+export const carapaceLance: WeaponSeedData = {
+  id: uuid(),
+  name: 'Carapace Lance',
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 2,
+  damageTwo: 5,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneLance.id,
+  monster: barroth.id,
+};
+export const barrothStinger: WeaponSeedData = {
+  id: uuid(),
+  name: 'Barroth Stinger',
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 9,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: carapaceLance.id,
+  monster: barroth.id,
+};
+export const aquaHorn: WeaponSeedData = {
+  id: uuid(),
+  name: 'Aqua Horn',
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 2,
+  damageTwo: 4,
+  damageThree: 4,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneLance.id,
+  monster: jyuratodus.id,
+};
+export const waterSpike: WeaponSeedData = {
+  id: uuid(),
+  name: 'Water Spike',
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 6,
+  damageThree: 6,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: aquaHorn.id,
+  monster: jyuratodus.id,
+};
+export const thunderLance: WeaponSeedData = {
+  id: uuid(),
+  name: 'Thunder Lance',
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 3,
+  damageTwo: 6,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneLance.id,
+  monster: tobiKadachi.id,
+};
+export const lightningSpire: WeaponSeedData = {
+  id: uuid(),
+  name: 'Lightning Spire',
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 2,
+  damageTwo: 7,
+  damageThree: 5,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: thunderLance.id,
+  monster: tobiKadachi.id,
+};
+export const flameLance: WeaponSeedData = {
+  id: uuid(),
+  name: 'Flame Lance',
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 4,
+  damageTwo: 4,
+  damageThree: 4,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: ironLance.id,
+  monster: rathalos.id,
+};
+export const redTail: WeaponSeedData = {
+  id: uuid(),
+  name: 'Red Tail',
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 7,
+  damageThree: 7,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: flameLance.id,
+  monster: rathalos.id,
+};
+export const iceSteelSpear: WeaponSeedData = {
+  id: uuid(),
+  name: 'Ice Steel Spear',
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 6,
+  damageThree: 5,
+  damageFour: 3,
+  damageFive: 0,
+  previousWeapon: ironLance.id,
+  materials: daoraMaterialsFirst,
+  monster: daora.id,
+};
+export const daorasFang: WeaponSeedData = {
+  id: uuid(),
+  name: "Daora's Fang",
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 5,
+  damageThree: 8,
+  damageFour: 2,
+  damageFive: 1,
+  previousWeapon: iceSteelSpear.id,
+  materials: daoraMaterialsSecond,
+  monster: daora.id,
+};
+export const nergalImpaler: WeaponSeedData = {
+  id: uuid(),
+  name: 'Nergal Impaler',
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 5,
+  damageThree: 4,
+  damageFour: 3,
+  damageFive: 0,
+  previousWeapon: ironLance.id,
+  materials: nergiganteMaterialsFirst,
+  monster: nergigante.id,
+};
+export const perditionsHand: WeaponSeedData = {
+  id: uuid(),
+  name: "Perdition's Hand",
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 6,
+  damageThree: 4,
+  damageFour: 2,
+  damageFive: 2,
+  previousWeapon: nergalImpaler.id,
+  materials: nergiganteMaterialsSecond,
+  monster: nergigante.id,
+};
+export const kuluLance: WeaponSeedData = {
+  id: uuid(),
+  name: 'Kulu Lance',
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 6,
+  damageTwo: 0,
+  damageThree: 2,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: ironLance.id,
+  materials: kuluYakuMaterialsFirst,
+  monster: kuluYaKu.id,
+};
+export const kuluHasta: WeaponSeedData = {
+  id: uuid(),
+  name: 'Kulu Hasta',
+  weaponType: WeaponType.LANCE,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 6,
+  damageTwo: 0,
+  damageThree: 4,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: kuluLance.id,
+  materials: kuluYakuMaterialsSecond,
+  monster: kuluYaKu.id,
+};
+// Bow
+export const ironBow: WeaponSeedData = {
+  id: uuid(),
+  name: 'Iron Bow',
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.STARTING,
+  defense: 0,
+  damageOne: 8,
+  damageTwo: 4,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+};
+export const steelBow: WeaponSeedData = {
+  id: uuid(),
+  name: 'Steel Bow',
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.ORE,
+  defense: 0,
+  damageOne: 6,
+  damageTwo: 6,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: ironBow.id,
+};
+export const alloyBow: WeaponSeedData = {
+  id: uuid(),
+  name: 'Alloy Bow',
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.ORE,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 6,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: steelBow.id,
+};
+export const huntersBow: WeaponSeedData = {
+  id: uuid(),
+  name: "Hunter's Bow",
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 6,
+  damageTwo: 4,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+};
+export const huntersStoutbow: WeaponSeedData = {
+  id: uuid(),
+  name: "Hunter's Stoutbow",
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 6,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: huntersBow.id,
+};
+export const huntersProudbow: WeaponSeedData = {
+  id: uuid(),
+  name: "Hunter's Proudbow",
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 3,
+  damageTwo: 5,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: huntersStoutbow.id,
+};
+export const bloomingArch: WeaponSeedData = {
+  id: uuid(),
+  name: 'Blooming Arch',
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 1,
+  damageTwo: 7,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: huntersBow.id,
+  monster: pukeiPukei.id,
+};
+export const daturaString: WeaponSeedData = {
+  id: uuid(),
+  name: 'Datura String',
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 1,
+  damageTwo: 7,
+  damageThree: 4,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: bloomingArch.id,
+  monster: pukeiPukei.id,
+};
+export const diablosBow: WeaponSeedData = {
+  id: uuid(),
+  name: 'Diablos Bow',
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 4,
+  damageThree: 4,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: huntersBow.id,
+  monster: diablos.id,
+};
+export const diablosCoilbender: WeaponSeedData = {
+  id: uuid(),
+  name: 'Diablos Coilbender',
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 2,
+  damageTwo: 7,
+  damageThree: 5,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: diablosBow.id,
+  monster: diablos.id,
+};
+export const pulsarBow: WeaponSeedData = {
+  id: uuid(),
+  name: 'Pulsar Bow',
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 2,
+  damageTwo: 5,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: huntersBow.id,
+  monster: tobiKadachi.id,
+};
+export const flyingKadachiStrikebow: WeaponSeedData = {
+  id: uuid(),
+  name: 'Flying Kadachi Strikebow',
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 0,
+  damageTwo: 9,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: pulsarBow.id,
+  monster: tobiKadachi.id,
+};
+export const blazingBow: WeaponSeedData = {
+  id: uuid(),
+  name: 'Blazing Bow',
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 2,
+  damageTwo: 6,
+  damageThree: 4,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: huntersBow.id,
+  monster: anjanath.id,
+};
+export const anjaArch: WeaponSeedData = {
+  id: uuid(),
+  name: 'Anja Arch',
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 0,
+  damageTwo: 6,
+  damageThree: 8,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: huntersBow.id,
+  monster: anjanath.id,
+};
+export const kuluArrow: WeaponSeedData = {
+  id: uuid(),
+  name: 'Kulu Arrow',
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 3,
+  damageTwo: 7,
+  damageThree: 4,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: ironBow.id,
+  materials: kuluYakuMaterialsFirst,
+  monster: kuluYaKu.id,
+};
+export const archersDance: WeaponSeedData = {
+  id: uuid(),
+  name: "Archer's Dance",
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 2,
+  damageTwo: 5,
+  damageThree: 9,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: kuluArrow.id,
+  materials: kuluYakuMaterialsSecond,
+  monster: kuluYaKu.id,
+};
+export const nergalWhisper: WeaponSeedData = {
+  id: uuid(),
+  name: 'Nergal Whisper',
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 0,
+  damageTwo: 3,
+  damageThree: 7,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: ironBow.id,
+  materials: nergiganteMaterialsFirst,
+  monster: nergigante.id,
+};
+export const doomsShaft: WeaponSeedData = {
+  id: uuid(),
+  name: "Doom's Shaft",
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 0,
+  damageTwo: 5,
+  damageThree: 6,
+  damageFour: 3,
+  damageFive: 0,
+  previousWeapon: nergalWhisper.id,
+  materials: nergiganteMaterialsSecond,
+  monster: nergigante.id,
+};
+export const icesteelBow: WeaponSeedData = {
+  id: uuid(),
+  name: 'Icesteel Bow',
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 0,
+  damageTwo: 4,
+  damageThree: 8,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: ironBow.id,
+  materials: daoraMaterialsFirst,
+  monster: daora.id,
+};
+export const daorasSagittari: WeaponSeedData = {
+  id: uuid(),
+  name: "Daora's Sagittari",
+  weaponType: WeaponType.BOW,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 0,
+  damageTwo: 5,
+  damageThree: 7,
+  damageFour: 4,
+  damageFive: 0,
+  previousWeapon: icesteelBow.id,
+  materials: daoraMaterialsSecond,
+  monster: daora.id,
+};
+// Great Sword
+export const busterSword: WeaponSeedData = {
+  id: uuid(),
+  name: 'Buster Sword',
+  weaponType: WeaponType.GREAT_SWORD,
+  branch: CraftingBranch.STARTING,
+  defense: 0,
+  damageOne: 7,
+  damageTwo: 4,
+  damageThree: 1,
+  damageFour: 0,
+  damageFive: 0,
+};
+export const busterBlade: WeaponSeedData = {
+  id: uuid(),
+  name: 'Buster Blade',
+  weaponType: WeaponType.GREAT_SWORD,
+  branch: CraftingBranch.ORE,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 6,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: busterSword.id,
+};
+export const chromeRazor: WeaponSeedData = {
+  id: uuid(),
+  name: 'Chrome Razor',
+  weaponType: WeaponType.GREAT_SWORD,
+  branch: CraftingBranch.ORE,
+  defense: 0,
+  damageOne: 2,
+  damageTwo: 6,
+  damageThree: 4,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: busterBlade.id,
+};
+export const boneBlade: WeaponSeedData = {
+  id: uuid(),
+  name: 'Bone Blade',
+  weaponType: WeaponType.GREAT_SWORD,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 3,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+};
+export const boneSlasher: WeaponSeedData = {
+  id: uuid(),
+  name: 'Bone Slasher',
+  weaponType: WeaponType.GREAT_SWORD,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 2,
+  damageTwo: 5,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneBlade.id,
+};
+export const giantJawblade: WeaponSeedData = {
+  id: uuid(),
+  name: 'Giant Jawblade',
+  weaponType: WeaponType.GREAT_SWORD,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 2,
+  damageTwo: 4,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneSlasher.id,
+};
+export const bloomingBlade: WeaponSeedData = {
+  id: uuid(),
+  name: 'Bloomin Blade',
+  weaponType: WeaponType.GREAT_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 6,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: busterSword.id,
+  monster: pukeiPukei.id,
+};
+export const daturaBlaze: WeaponSeedData = {
+  id: uuid(),
+  name: 'Datura Blaze',
+  weaponType: WeaponType.GREAT_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 1,
+  damageOne: 3,
+  damageTwo: 6,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: bloomingBlade.id,
+  monster: pukeiPukei.id,
+};
+export const carapaceBuster: WeaponSeedData = {
+  id: uuid(),
+  name: 'Carapace Buster',
+  weaponType: WeaponType.GREAT_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 4,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneBlade.id,
+  monster: barroth.id,
+};
+export const barrothShredder: WeaponSeedData = {
+  id: uuid(),
+  name: 'Barroth Shredder',
+  weaponType: WeaponType.GREAT_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 6,
+  damageTwo: 4,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: carapaceBuster.id,
+  monster: barroth.id,
+};
+export const jagrasBlade: WeaponSeedData = {
+  id: uuid(),
+  name: 'Jagras Blade',
+  weaponType: WeaponType.GREAT_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 6,
+  damageTwo: 5,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: busterSword.id,
+  monster: greatJagrass.id,
+};
+export const jagrasHacker: WeaponSeedData = {
+  id: uuid(),
+  name: 'Jagras Hacker',
+  weaponType: WeaponType.GREAT_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 3,
+  damageTwo: 9,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: jagrasBlade.id,
+  monster: greatJagrass.id,
+};
+export const flameBlade: WeaponSeedData = {
+  id: uuid(),
+  name: 'Flame Blade',
+  weaponType: WeaponType.GREAT_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 5,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: busterSword.id,
+  monster: rathalos.id,
+};
+export const redWing: WeaponSeedData = {
+  id: uuid(),
+  name: 'Red Wing',
+  weaponType: WeaponType.GREAT_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 1,
+  damageOne: 2,
+  damageTwo: 6,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: flameBlade.id,
+  monster: rathalos.id,
+};
+export const icesteelEdge: WeaponSeedData = {
+  id: uuid(),
+  name: 'Icesteel Edge',
+  weaponType: WeaponType.GREAT_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 4,
+  damageThree: 4,
+  damageFour: 5,
+  damageFive: 1,
+  previousWeapon: busterSword.id,
+  materials: daoraMaterialsFirst,
+  monster: daora.id,
+};
+export const daorasDecimator: WeaponSeedData = {
+  id: uuid(),
+  name: "Daora's Decimator",
+  weaponType: WeaponType.GREAT_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 5,
+  damageThree: 6,
+  damageFour: 3,
+  damageFive: 2,
+  previousWeapon: icesteelEdge.id,
+  materials: daoraMaterialsSecond,
+  monster: daora.id,
+};
+export const nergalJudicator: WeaponSeedData = {
+  id: uuid(),
+  name: 'Nergal Judicator',
+  weaponType: WeaponType.GREAT_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 3,
+  damageThree: 5,
+  damageFour: 3,
+  damageFive: 1,
+  previousWeapon: busterSword.id,
+  materials: nergiganteMaterialsFirst,
+  monster: nergigante.id,
+};
+export const purgationsAtrocity: WeaponSeedData = {
+  id: uuid(),
+  name: "Purgation's Atrocity",
+  weaponType: WeaponType.GREAT_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 3,
+  damageThree: 4,
+  damageFour: 3,
+  damageFive: 4,
+  previousWeapon: nergalJudicator.id,
+  materials: nergiganteMaterialsSecond,
+  monster: nergigante.id,
+};
+// Hammer
+export const ironHammer: WeaponSeedData = {
+  id: uuid(),
+  name: 'Iron Hammer',
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.STARTING,
+  defense: 0,
+  damageOne: 10,
+  damageTwo: 1,
+  damageThree: 0,
+  damageFour: 1,
+  damageFive: 0,
+};
+export const ironDemon: WeaponSeedData = {
+  id: uuid(),
+  name: 'Iron Demon',
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.ORE,
+  defense: 0,
+  damageOne: 8,
+  damageTwo: 2,
+  damageThree: 0,
+  damageFour: 4,
+  damageFive: 0,
+  previousWeapon: ironHammer.id,
+  materials: [
+    { materialId: dragoniteOre.id, quantity: 2 },
+    { materialId: machaliteOre.id, quantity: 5 },
+    { materialId: monsterBoneMedium.id, quantity: 2 },
+  ],
+};
+export const ironArchDemon: WeaponSeedData = {
+  id: uuid(),
+  name: 'Iron Arch Demon',
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.ORE,
+  defense: 0,
+  damageOne: 6,
+  damageTwo: 3,
+  damageThree: 0,
+  damageFour: 3,
+  damageFive: 0,
+  previousWeapon: ironDemon.id,
+  materials: [
+    { materialId: fuciumOre.id, quantity: 8 },
+    { materialId: carbaliteOre.id, quantity: 5 },
+    { materialId: dragoniteOre.id, quantity: 10 },
+    { materialId: dragonveinCrystal.id, quantity: 3 },
+  ],
+};
+export const boneBludgeon: WeaponSeedData = {
+  id: uuid(),
+  name: 'Bone Bludgeon',
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 7,
+  damageTwo: 2,
+  damageThree: 0,
+  damageFour: 1,
+  damageFive: 0,
+  materials: [{ materialId: monsterBoneSmall.id, quantity: 1 }],
+};
+export const fossilBludgeon: WeaponSeedData = {
+  id: uuid(),
+  name: 'Fossil Bludgeon',
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 0,
+  damageThree: 0,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: boneBludgeon.id,
+  materials: [
+    { materialId: monsterBoneLarge.id, quantity: 1 },
+    { materialId: monsterBoneMedium.id, quantity: 5 },
+    { materialId: boulderBone.id, quantity: 2 },
+  ],
+};
+export const grandRock: WeaponSeedData = {
+  id: uuid(),
+  name: 'Grand Rock',
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 3,
+  damageThree: 0,
+  damageFour: 3,
+  damageFive: 0,
+  previousWeapon: fossilBludgeon.id,
+  materials: [
+    { materialId: monsterHardBone.id, quantity: 4 },
+    { materialId: monsterKeenbone.id, quantity: 6 },
+    { materialId: qualityBone.id, quantity: 10 },
+  ],
+};
+export const blazingHammer: WeaponSeedData = {
+  id: uuid(),
+  name: 'Blazing Hammer',
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 0,
+  damageTwo: 8,
+  damageThree: 0,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: boneBludgeon.id,
+  materials: [
+    { materialId: anjanathFang.id, quantity: 2 },
+    { materialId: anjanathScale.id, quantity: 3 },
+    { materialId: flameSac.id, quantity: 1 },
+  ],
+  monster: anjanath.id,
+};
+export const anjaStriker: WeaponSeedData = {
+  id: uuid(),
+  name: 'Anja Striker',
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 9,
+  damageThree: 0,
+  damageFour: 3,
+  damageFive: 0,
+  previousWeapon: blazingHammer.id,
+  materials: [
+    { materialId: anjanathFang.id, quantity: 4 },
+    { materialId: anjanathScale.id, quantity: 3 },
+    { materialId: infernoSac.id, quantity: 3 },
+    { materialId: anjanathPlate.id, quantity: 1 },
+  ],
+  monster: anjanath.id,
+};
+export const carapaceSledge: WeaponSeedData = {
+  id: uuid(),
+  name: 'Carapace Sledge',
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 2,
+  damageThree: 0,
+  damageFour: 4,
+  damageFive: 0,
+  previousWeapon: boneBludgeon.id,
+  materials: [
+    { materialId: barrothClaw.id, quantity: 1 },
+    { materialId: barrothShell.id, quantity: 2 },
+    { materialId: barrothRidge.id, quantity: 2 },
+  ],
+  monster: barroth.id,
+};
+export const barrothBreaker: WeaponSeedData = {
+  id: uuid(),
+  name: 'Barroth Breaker',
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 2,
+  damageTwo: 5,
+  damageThree: 0,
+  damageFour: 5,
+  damageFive: 0,
+  previousWeapon: carapaceSledge.id,
+  materials: [
+    { materialId: barrothClaw.id, quantity: 2 },
+    { materialId: barrothCarapace.id, quantity: 3 },
+    { materialId: kestodonCarapace.id, quantity: 5 },
+    { materialId: barrothRidge.id, quantity: 2 },
+  ],
+  monster: barroth.id,
+};
+export const bloomingHammer: WeaponSeedData = {
+  id: uuid(),
+  name: 'Blooming Hammer',
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 1,
+  damageTwo: 8,
+  damageThree: 0,
+  damageFour: 3,
+  damageFive: 0,
+  previousWeapon: ironHammer.id,
+  materials: [
+    { materialId: pukeyPukeyQuill.id, quantity: 2 },
+    { materialId: pukeyPukeyScale.id, quantity: 3 },
+    { materialId: poisonSac.id, quantity: 1 },
+  ],
+  monster: pukeiPukei.id,
+};
+export const buonFiore: WeaponSeedData = {
+  id: uuid(),
+  name: 'Buon Fiore',
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 1,
+  damageTwo: 9,
+  damageThree: 0,
+  damageFour: 4,
+  damageFive: 0,
+  previousWeapon: bloomingHammer.id,
+  materials: [
+    { materialId: pukeyPukeyWing.id, quantity: 2 },
+    { materialId: pukeyPukeyScale.id, quantity: 3 },
+    { materialId: toxicSac.id, quantity: 2 },
+    { materialId: qualityBone.id, quantity: 3 },
+  ],
+  monster: pukeiPukei.id,
+};
+export const diablosSledge: WeaponSeedData = {
+  id: uuid(),
+  name: 'Diablos Sledge',
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 3,
+  damageThree: 0,
+  damageFour: 5,
+  damageFive: 0,
+  previousWeapon: boneBludgeon.id,
+  materials: [
+    { materialId: twistedHorn.id, quantity: 1 },
+    { materialId: diablosFang.id, quantity: 2 },
+    { materialId: diablosShell.id, quantity: 4 },
+    { materialId: monsterBonePlus.id, quantity: 3 },
+  ],
+  monster: diablos.id,
+};
+export const diablosShatterer: WeaponSeedData = {
+  id: uuid(),
+  name: 'Diablos Shatterer',
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 3,
+  damageTwo: 5,
+  damageThree: 0,
+  damageFour: 6,
+  damageFive: 0,
+  previousWeapon: boneBludgeon.id,
+  materials: [
+    { materialId: majesticHorn.id, quantity: 3 },
+    { materialId: diablosCarapace.id, quantity: 6 },
+    { materialId: diablosRidge.id, quantity: 5 },
+    { materialId: blosMedulla.id, quantity: 1 },
+  ],
+  monster: diablos.id,
+};
+export const kuluBeak: WeaponSeedData = {
+  id: uuid(),
+  name: 'Kulu Beak',
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 2,
+  damageThree: 5,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneBludgeon.id,
+  materials: kuluYakuMaterialsFirst,
+  monster: kuluYaKu.id,
+};
+export const crushingBeak: WeaponSeedData = {
+  id: uuid(),
+  name: 'Crushing Beak',
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 3,
+  damageThree: 6,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: kuluBeak.id,
+  materials: kuluYakuMaterialsSecond,
+  monster: kuluYaKu.id,
+};
+export const nergalCrusher: WeaponSeedData = {
+  id: uuid(),
+  name: 'Nergal Crusher',
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 7,
+  damageThree: 0,
+  damageFour: 3,
+  damageFive: 2,
+  previousWeapon: ironHammer.id,
+  materials: nergiganteMaterialsFirst,
+  monster: nergigante.id,
+};
+export const obliteratorsFootfall: WeaponSeedData = {
+  id: uuid(),
+  name: "Obliteration's Footfall",
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 8,
+  damageThree: 0,
+  damageFour: 4,
+  damageFive: 3,
+  previousWeapon: nergalCrusher.id,
+  materials: nergiganteMaterialsSecond,
+  monster: nergigante.id,
+};
+export const icesteelHammer: WeaponSeedData = {
+  id: uuid(),
+  name: 'Icesteel Hammer',
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 10,
+  damageThree: 0,
+  damageFour: 2,
+  damageFive: 2,
+  previousWeapon: ironHammer.id,
+  materials: daoraMaterialsFirst,
+  monster: daora.id,
+};
+export const daorasColossus: WeaponSeedData = {
+  id: uuid(),
+  name: "Daora's Colossus",
+  weaponType: WeaponType.HAMMER,
+  branch: CraftingBranch.BONE,
+  defense: 1,
+  damageOne: 0,
+  damageTwo: 11,
+  damageThree: 0,
+  damageFour: 2,
+  damageFive: 3,
+  previousWeapon: icesteelHammer.id,
+  materials: daoraMaterialsSecond,
+  monster: daora.id,
+};
+//Insect Glaive
+export const ironBlade: WeaponSeedData = {
+  id: uuid(),
+  name: 'Iron Blade',
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.STARTING,
+  defense: 0,
+  damageOne: 10,
+  damageTwo: 2,
+  damageThree: 0,
+  damageFour: 1,
+  damageFive: 0,
+};
+export const steelBlade: WeaponSeedData = {
+  id: uuid(),
+  name: 'Steel Blade',
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.ORE,
+  defense: 0,
+  damageOne: 8,
+  damageTwo: 3,
+  damageThree: 1,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: ironBlade.id,
+  materials: [
+    { materialId: dragoniteOre.id, quantity: 1 },
+    { materialId: machaliteOre.id, quantity: 1 },
+    { materialId: monsterBoneMedium.id, quantity: 1 },
+  ],
+};
+export const chromeBlade: WeaponSeedData = {
+  id: uuid(),
+  name: 'Crome Blade',
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.ORE,
+  defense: 0,
+  damageOne: 6,
+  damageTwo: 4,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: steelBlade.id,
+  materials: [
+    { materialId: fuciumOre.id, quantity: 2 },
+    { materialId: carbaliteOre.id, quantity: 2 },
+    { materialId: dragoniteOre.id, quantity: 3 },
+    { materialId: dragonveinCrystal.id, quantity: 2 },
+  ],
+};
+export const boneRod: WeaponSeedData = {
+  id: uuid(),
+  name: 'Bone Rod',
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 4,
+  damageThree: 1,
+  damageFour: 0,
+  damageFive: 0,
+  materials: [{ materialId: monsterBoneSmall.id, quantity: 1 }],
+};
+export const hardBoneRod: WeaponSeedData = {
+  id: uuid(),
+  name: 'Hard Bone Rod',
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 0,
+  damageThree: 0,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: boneRod.id,
+  materials: [
+    { materialId: monsterBoneLarge.id, quantity: 1 },
+    { materialId: monsterBoneMedium.id, quantity: 1 },
+    { materialId: boulderBone.id, quantity: 1 },
+  ],
+};
+export const aerialMagnus: WeaponSeedData = {
+  id: uuid(),
+  name: 'Aerial Magnus',
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 3,
+  damageTwo: 4,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: hardBoneRod.id,
+  materials: [
+    { materialId: monsterHardBone.id, quantity: 2 },
+    { materialId: monsterKeenbone.id, quantity: 2 },
+    { materialId: qualityBone.id, quantity: 3 },
+  ],
+};
+export const bloomingGlaive: WeaponSeedData = {
+  id: uuid(),
+  name: 'Aerial Magnus',
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 3,
+  damageTwo: 5,
+  damageThree: 4,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: ironBlade.id,
+  materials: [
+    { materialId: pukeyPukeyQuill.id, quantity: 2 },
+    { materialId: pukeyPukeyScale.id, quantity: 2 },
+    { materialId: poisonSac.id, quantity: 1 },
+    { materialId: pukeyPukeyTail.id, quantity: 1 },
+  ],
+  monster: pukeiPukei.id,
+};
+export const daturaBlade: WeaponSeedData = {
+  id: uuid(),
+  name: 'Datura Blade',
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 3,
+  damageTwo: 4,
+  damageThree: 7,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: bloomingGlaive.id,
+  materials: [
+    { materialId: pukeyPukeyWing.id, quantity: 2 },
+    { materialId: pukeyPukeyScale.id, quantity: 2 },
+    { materialId: toxicSac.id, quantity: 2 },
+    { materialId: qualityBone.id, quantity: 3 },
+  ],
+  monster: pukeiPukei.id,
+};
+export const diablosRod: WeaponSeedData = {
+  id: uuid(),
+  name: 'Aerial Magnus',
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 2,
+  damageTwo: 6,
+  damageThree: 4,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneRod.id,
+  materials: [
+    { materialId: twistedHorn.id, quantity: 1 },
+    { materialId: diablosFang.id, quantity: 2 },
+    { materialId: diablosShell.id, quantity: 4 },
+    { materialId: monsterBoneLarge.id, quantity: 3 },
+  ],
+  monster: diablos.id,
+};
+export const tyrannisGlaive: WeaponSeedData = {
+  id: uuid(),
+  name: 'Tyrannis Glaive',
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 3,
+  damageTwo: 4,
+  damageThree: 7,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: diablosRod.id,
+  materials: [
+    { materialId: majesticHorn.id, quantity: 2 },
+    { materialId: diablosCarapace.id, quantity: 2 },
+    { materialId: diablosRidge.id, quantity: 2 },
+    { materialId: blosMedulla.id, quantity: 1 },
+  ],
+  monster: diablos.id,
+};
+export const flammenkafer: WeaponSeedData = {
+  id: uuid(),
+  name: 'Flammenkafer',
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 2,
+  damageTwo: 7,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneRod.id,
+  materials: [
+    { materialId: anjanathFang.id, quantity: 2 },
+    { materialId: anjanathScale.id, quantity: 1 },
+    { materialId: anjanathPelt.id, quantity: 2 },
+    { materialId: flameSac.id, quantity: 1 },
+  ],
+  monster: anjanath.id,
+};
+export const gnashingFlammenkafer: WeaponSeedData = {
+  id: uuid(),
+  name: 'Gnashing Flammenkafer',
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 2,
+  damageThree: 7,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: flammenkafer.id,
+  materials: [
+    { materialId: anjanathPelt.id, quantity: 4 },
+    { materialId: anjanathNosebone.id, quantity: 4 },
+    { materialId: firecellStone.id, quantity: 2 },
+  ],
+  monster: anjanath.id,
+};
+export const flameGlaive: WeaponSeedData = {
+  id: uuid(),
+  name: 'Flame Glaive',
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 2,
+  damageThree: 5,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: ironBlade.id,
+  materials: [
+    { materialId: rathalosScale.id, quantity: 1 },
+    { materialId: rathalosWebing.id, quantity: 2 },
+    { materialId: infernoSac.id, quantity: 1 },
+    { materialId: rathalosMarrow.id, quantity: 2 },
+  ],
+  monster: anjanath.id,
+};
+export const rathmaul: WeaponSeedData = {
+  id: uuid(),
+  name: 'Rathmaul',
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 3,
+  damageThree: 7,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: flameGlaive.id,
+  materials: [
+    { materialId: rathalosScale.id, quantity: 2 },
+    { materialId: rathalosCarapace.id, quantity: 1 },
+    { materialId: rathalosWing.id, quantity: 1 },
+    { materialId: rathalosMedulla.id, quantity: 1 },
+  ],
+  monster: anjanath.id,
+};
+export const kuluBlade: WeaponSeedData = {
+  id: uuid(),
+  name: 'Kulu Blade',
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 5,
+  damageThree: 5,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: ironBlade.id,
+  materials: kuluYakuMaterialsFirst,
+  monster: kuluYaKu.id,
+};
+export const yaKuWrath: WeaponSeedData = {
+  id: uuid(),
+  name: 'Ya-Ku Wrath',
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 3,
+  damageThree: 8,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: kuluBlade.id,
+  materials: kuluYakuMaterialsSecond,
+  monster: kuluYaKu.id,
+};
+export const nergalReaper: WeaponSeedData = {
+  id: uuid(),
+  name: 'Nergal Reaper',
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 2,
+  damageTwo: 4,
+  damageThree: 3,
+  damageFour: 1,
+  damageFive: 0,
+  previousWeapon: ironBlade.id,
+  materials: nergiganteMaterialsFirst,
+  monster: nergigante.id,
+};
+export const catastrophesLight: WeaponSeedData = {
+  id: uuid(),
+  name: "Catastrophe's Light",
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 0,
+  damageTwo: 6,
+  damageThree: 5,
+  damageFour: 3,
+  damageFive: 0,
+  previousWeapon: nergalReaper.id,
+  materials: nergiganteMaterialsSecond,
+  monster: nergigante.id,
+};
+export const daorasEntom: WeaponSeedData = {
+  id: uuid(),
+  name: "Daora's Entom",
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 7,
+  damageTwo: 7,
+  damageThree: 3,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: ironBlade.id,
+  materials: daoraMaterialsFirst,
+  monster: daora.id,
+};
+export const daorasTethidine: WeaponSeedData = {
+  id: uuid(),
+  name: "Daora's Tethidine",
+  weaponType: WeaponType.INSECT_GLAIVE,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 0,
+  damageTwo: 8,
+  damageThree: 4,
+  damageFour: 4,
+  damageFive: 0,
+  previousWeapon: daorasEntom.id,
+  materials: daoraMaterialsSecond,
+  monster: daora.id,
+};
+// Light Bowgun
+export const chainBlitz: WeaponSeedData = {
+  id: uuid(),
+  name: 'Chain Blitz',
+  weaponType: WeaponType.LIGHT_BOWGUN,
+  branch: CraftingBranch.STARTING,
+  defense: 0,
+  damageOne: 10,
+  damageTwo: 2,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+};
+export const highChainBlitz: WeaponSeedData = {
+  id: uuid(),
+  name: 'High Chain Blitz',
+  weaponType: WeaponType.LIGHT_BOWGUN,
+  branch: CraftingBranch.ORE,
+  defense: 0,
+  damageOne: 6,
+  damageTwo: 6,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: chainBlitz.id,
+  materials: [
+    { materialId: dragoniteOre.id, quantity: 2 },
+    { materialId: machaliteOre.id, quantity: 5 },
+    { materialId: monsterBoneMedium.id, quantity: 2 },
+  ],
+};
+export const crossBlitz: WeaponSeedData = {
+  id: uuid(),
+  name: 'Cross Blitz',
+  weaponType: WeaponType.LIGHT_BOWGUN,
+  branch: CraftingBranch.ORE,
+  defense: 0,
+  damageOne: 6,
+  damageTwo: 4,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: highChainBlitz.id,
+  materials: [
+    { materialId: fuciumOre.id, quantity: 8 },
+    { materialId: carbaliteOre.id, quantity: 5 },
+    { materialId: dragoniteOre.id, quantity: 10 },
+    { materialId: dragonveinCrystal.id, quantity: 3 },
+  ],
+};
+export const huntersRifle: WeaponSeedData = {
+  id: uuid(),
+  name: "Hunter's Rifle",
+  weaponType: WeaponType.LIGHT_BOWGUN,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 6,
+  damageTwo: 4,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+  materials: [{ materialId: monsterBoneSmall.id, quantity: 1 }],
+};
+export const powerRifle: WeaponSeedData = {
+  id: uuid(),
+  name: 'Power Rifle',
+  weaponType: WeaponType.LIGHT_BOWGUN,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 3,
+  damageTwo: 5,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: huntersRifle.id,
+  materials: [
+    { materialId: monsterBoneLarge.id, quantity: 1 },
+    { materialId: monsterBoneMedium.id, quantity: 5 },
+    { materialId: boulderBone.id, quantity: 2 },
+  ],
+};
+export const sniperShot: WeaponSeedData = {
+  id: uuid(),
+  name: 'Sniper Shot',
+  weaponType: WeaponType.LIGHT_BOWGUN,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 3,
+  damageTwo: 4,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: powerRifle.id,
+  materials: [
+    { materialId: monsterHardBone.id, quantity: 4 },
+    { materialId: monsterKeenbone.id, quantity: 6 },
+    { materialId: qualityBone.id, quantity: 10 },
+  ],
+};
+export const carapaceRifle: WeaponSeedData = {
+  id: uuid(),
+  name: 'Carapace Rifle',
+  weaponType: WeaponType.LIGHT_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 3,
+  damageTwo: 2,
+  damageThree: 5,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: huntersRifle.id,
+  materials: [
+    { materialId: barrothClaw.id, quantity: 1 },
+    { materialId: barrothShell.id, quantity: 3 },
+    { materialId: barrothRidge.id, quantity: 2 },
+  ],
+  monster: barroth.id,
+};
+export const barrothShot: WeaponSeedData = {
+  id: uuid(),
+  name: 'Barroth Shot',
+  weaponType: WeaponType.LIGHT_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 0,
+  damageTwo: 9,
+  damageThree: 2,
+  damageFour: 1,
+  damageFive: 0,
+  previousWeapon: carapaceRifle.id,
+  materials: [
+    { materialId: barrothClaw.id, quantity: 2 },
+    { materialId: barrothCarapace.id, quantity: 3 },
+    { materialId: barrothRidge.id, quantity: 2 },
+    { materialId: kestodonCarapace.id, quantity: 5 },
+  ],
+  monster: barroth.id,
+};
+export const madnessRifle: WeaponSeedData = {
+  id: uuid(),
+  name: 'Madness Rifle',
+  weaponType: WeaponType.LIGHT_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 3,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: huntersRifle.id,
+  materials: [
+    { materialId: jyuratodusFin.id, quantity: 1 },
+    { materialId: jyuratodusShell.id, quantity: 2 },
+    { materialId: jyuratodusScale.id, quantity: 3 },
+    { materialId: aquaSac.id, quantity: 1 },
+  ],
+  monster: jyuratodus.id,
+};
+export const jyuraBullet: WeaponSeedData = {
+  id: uuid(),
+  name: 'Jyura Bullet',
+  weaponType: WeaponType.LIGHT_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 3,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: madnessRifle.id,
+  materials: [
+    { materialId: jyuratodusFin.id, quantity: 2 },
+    { materialId: jyuratodusCarapace.id, quantity: 3 },
+    { materialId: jyuratodusScale.id, quantity: 3 },
+    { materialId: gajauScale.id, quantity: 5 },
+  ],
+  monster: jyuratodus.id,
+};
+export const jagrasBlitz: WeaponSeedData = {
+  id: uuid(),
+  name: 'Jagras Blitz',
+  weaponType: WeaponType.LIGHT_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 3,
+  damageTwo: 7,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: chainBlitz.id,
+  materials: [
+    { materialId: greatJagrasClaw.id, quantity: 1 },
+    { materialId: greatJagrasHide.id, quantity: 1 },
+    { materialId: greatJagrasScale.id, quantity: 3 },
+    { materialId: sharpClaw.id, quantity: 1 },
+  ],
+  monster: greatJagrass.id,
+};
+export const jagrasFire: WeaponSeedData = {
+  id: uuid(),
+  name: 'Jagras Fire',
+  weaponType: WeaponType.LIGHT_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 8,
+  damageThree: 4,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: jagrasBlitz.id,
+  materials: [
+    { materialId: greatJagrasMane.id, quantity: 6 },
+    { materialId: greatJagrasClaw.id, quantity: 4 },
+    { materialId: greatJagrasScale.id, quantity: 6 },
+    { materialId: piercingClaw.id, quantity: 5 },
+  ],
+  monster: greatJagrass.id,
+};
+export const flameBlitz: WeaponSeedData = {
+  id: uuid(),
+  name: 'Flame Blitz',
+  weaponType: WeaponType.LIGHT_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 3,
+  damageTwo: 5,
+  damageThree: 4,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: chainBlitz.id,
+  materials: [
+    { materialId: rathalosScale.id, quantity: 1 },
+    { materialId: rathalosWebing.id, quantity: 2 },
+    { materialId: flameSac.id, quantity: 2 },
+    { materialId: rathalosMarrow.id, quantity: 1 },
+  ],
+  monster: rathalos.id,
+};
+export const rathBuster: WeaponSeedData = {
+  id: uuid(),
+  name: 'Rath Buster',
+  weaponType: WeaponType.LIGHT_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 4,
+  damageThree: 4,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: flameBlitz.id,
+  materials: [
+    { materialId: rathalosScale.id, quantity: 6 },
+    { materialId: rathalosWebing.id, quantity: 4 },
+    { materialId: rathalosWing.id, quantity: 2 },
+    { materialId: rathalosMedulla.id, quantity: 1 },
+  ],
+  monster: rathalos.id,
+};
+export const icesteelWasp: WeaponSeedData = {
+  id: uuid(),
+  name: 'Icesteel Wasp',
+  weaponType: WeaponType.LIGHT_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 1,
+  damageTwo: 9,
+  damageThree: 2,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: chainBlitz.id,
+  materials: daoraMaterialsFirst,
+  monster: daora.id,
+};
+export const daorasHornet: WeaponSeedData = {
+  id: uuid(),
+  name: "Daora's Hornet",
+  weaponType: WeaponType.LIGHT_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 2,
+  damageTwo: 9,
+  damageThree: 3,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: icesteelWasp.id,
+  materials: daoraMaterialsSecond,
+  monster: daora.id,
+};
+export const nergalSpitter: WeaponSeedData = {
+  id: uuid(),
+  name: 'Nergal Spitter',
+  weaponType: WeaponType.LIGHT_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 1,
+  damageTwo: 7,
+  damageThree: 2,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: chainBlitz.id,
+  materials: nergiganteMaterialsFirst,
+  monster: nergigante.id,
+};
+export const cataclysmsTrigger: WeaponSeedData = {
+  id: uuid(),
+  name: "Cataclysm's Trigger",
+  weaponType: WeaponType.LIGHT_BOWGUN,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 0,
+  damageTwo: 2,
+  damageThree: 7,
+  damageFour: 5,
+  damageFive: 0,
+  previousWeapon: nergalSpitter.id,
+  materials: nergiganteMaterialsSecond,
+  monster: nergigante.id,
+};
+// Long Sword
+export const ironKatana: WeaponSeedData = {
+  id: uuid(),
+  name: 'Iron Katana',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.STARTING,
+  defense: 0,
+  damageOne: 9,
+  damageTwo: 3,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+};
+export const ironGrace: WeaponSeedData = {
+  id: uuid(),
+  name: 'Iron Grace',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.ORE,
+  defense: 0,
+  damageOne: 7,
+  damageTwo: 5,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: ironKatana.id,
+  materials: [
+    { materialId: dragoniteOre.id, quantity: 2 },
+    { materialId: machaliteOre.id, quantity: 5 },
+    { materialId: monsterBoneMedium.id, quantity: 2 },
+  ],
+};
+export const ironGospel: WeaponSeedData = {
+  id: uuid(),
+  name: 'Iron Gospel',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.ORE,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 5,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: ironGrace.id,
+  materials: [
+    { materialId: fuciumOre.id, quantity: 8 },
+    { materialId: carbaliteOre.id, quantity: 5 },
+    { materialId: dragoniteOre.id, quantity: 10 },
+    { materialId: dragonveinCrystal.id, quantity: 3 },
+  ],
+};
+export const boneShotel: WeaponSeedData = {
+  id: uuid(),
+  name: 'Bone Shotel',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 6,
+  damageTwo: 4,
+  damageThree: 0,
+  damageFour: 0,
+  damageFive: 0,
+  materials: [{ materialId: monsterBoneSmall.id, quantity: 1 }],
+};
+export const hardBoneShotel: WeaponSeedData = {
+  id: uuid(),
+  name: 'Hard Bone Shotel',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 4,
+  damageTwo: 5,
+  damageThree: 1,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneShotel.id,
+  materials: [
+    { materialId: monsterBoneLarge.id, quantity: 1 },
+    { materialId: monsterBoneMedium.id, quantity: 5 },
+    { materialId: boulderBone.id, quantity: 2 },
+  ],
+};
+export const boneReaper: WeaponSeedData = {
+  id: uuid(),
+  name: 'Bone Reaper',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.BONE,
+  defense: 0,
+  damageOne: 3,
+  damageTwo: 5,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: hardBoneShotel.id,
+  materials: [
+    { materialId: monsterHardBone.id, quantity: 4 },
+    { materialId: monsterKeenbone.id, quantity: 6 },
+    { materialId: qualityBone.id, quantity: 10 },
+  ],
+};
+export const jyuraShotel: WeaponSeedData = {
+  id: uuid(),
+  name: 'Jyura Shotel',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 2,
+  damageTwo: 6,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneShotel.id,
+  materials: [
+    { materialId: jyuratodusFin.id, quantity: 1 },
+    { materialId: jyuratodusScale.id, quantity: 2 },
+    { materialId: jyuratodusScale.id, quantity: 3 },
+    { materialId: aquaSac.id, quantity: 1 },
+  ],
+  monster: jyuratodus.id,
+};
+export const dipterus: WeaponSeedData = {
+  id: uuid(),
+  name: 'Dipterus',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 2,
+  damageTwo: 7,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: jyuraShotel.id,
+  materials: [
+    { materialId: jyuratodusFin.id, quantity: 2 },
+    { materialId: jyuratodusCarapace.id, quantity: 2 },
+    { materialId: jyuratodusScale.id, quantity: 3 },
+    { materialId: gajauScale.id, quantity: 5 },
+  ],
+  monster: jyuratodus.id,
+};
+export const pulsarShotel: WeaponSeedData = {
+  id: uuid(),
+  name: 'Pulsar Shotel',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 1,
+  damageTwo: 7,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneShotel.id,
+  materials: [
+    { materialId: tobiKadachiClaw.id, quantity: 1 },
+    { materialId: tobiKadachiPelt.id, quantity: 3 },
+    { materialId: tobiKadachiScale.id, quantity: 2 },
+  ],
+  monster: tobiKadachi.id,
+};
+export const kadachiFang: WeaponSeedData = {
+  id: uuid(),
+  name: 'Kadachi Fang',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 1,
+  damageTwo: 8,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: pulsarShotel.id,
+  materials: [
+    { materialId: tobiKadachiClaw.id, quantity: 3 },
+    { materialId: tobiKadachiScale.id, quantity: 4 },
+    { materialId: tobiKadachiPelt.id, quantity: 3 },
+    { materialId: dragonveinCrystal.id, quantity: 3 },
+  ],
+  monster: tobiKadachi.id,
+};
+export const blazingShotel: WeaponSeedData = {
+  id: uuid(),
+  name: 'Blazing Shotel',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 1,
+  damageTwo: 9,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: boneShotel.id,
+  materials: [
+    { materialId: anjanathFang.id, quantity: 2 },
+    { materialId: anjanathScale.id, quantity: 3 },
+    { materialId: flameSac.id, quantity: 1 },
+  ],
+  monster: anjanath.id,
+};
+export const anjaScimitar: WeaponSeedData = {
+  id: uuid(),
+  name: 'Anja Scimitar',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 1,
+  damageTwo: 9,
+  damageThree: 4,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: blazingShotel.id,
+  materials: [
+    { materialId: anjanathFang.id, quantity: 4 },
+    { materialId: anjanathScale.id, quantity: 5 },
+    { materialId: anjanathPlate.id, quantity: 1 },
+    { materialId: infernoSac.id, quantity: 1 },
+  ],
+  monster: anjanath.id,
+};
+export const wyvernBladeFall: WeaponSeedData = {
+  id: uuid(),
+  name: 'Wyvern Blade "Fall"',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 2,
+  damageTwo: 8,
+  damageThree: 2,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: ironKatana.id,
+  materials: [
+    { materialId: rathalosScale.id, quantity: 1 },
+    { materialId: rathalosWebing.id, quantity: 2 },
+    { materialId: flameSac.id, quantity: 1 },
+    { materialId: rathalosMarrow.id, quantity: 1 },
+  ],
+  monster: rathalos.id,
+};
+export const wyvernBladeBlood: WeaponSeedData = {
+  id: uuid(),
+  name: 'Wyvern Blade "Blood"',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 2,
+  damageTwo: 8,
+  damageThree: 4,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: wyvernBladeFall.id,
+  materials: [
+    { materialId: rathalosScale.id, quantity: 6 },
+    { materialId: rathalosCarapace.id, quantity: 4 },
+    { materialId: rathalosWing.id, quantity: 2 },
+    { materialId: rathalosMedulla.id, quantity: 1 },
+  ],
+  monster: rathalos.id,
+};
+export const firstDance: WeaponSeedData = {
+  id: uuid(),
+  name: 'First Dance',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 6,
+  damageTwo: 3,
+  damageThree: 5,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: ironKatana.id,
+  materials: kuluYakuMaterialsFirst,
+  monster: kuluYaKu.id,
+};
+export const lastDance: WeaponSeedData = {
+  id: uuid(),
+  name: 'Last Dance',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 5,
+  damageTwo: 7,
+  damageThree: 4,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: firstDance.id,
+  materials: kuluYakuMaterialsSecond,
+  monster: kuluYaKu.id,
+};
+export const nergalReaver: WeaponSeedData = {
+  id: uuid(),
+  name: 'Nergal Reaver',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 0,
+  damageTwo: 7,
+  damageThree: 3,
+  damageFour: 2,
+  damageFive: 0,
+  previousWeapon: ironKatana.id,
+  materials: nergiganteMaterialsFirst,
+  monster: nergigante.id,
+};
+export const exterminationsEdge: WeaponSeedData = {
+  id: uuid(),
+  name: "Extermination's Edge",
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 7,
+  damageTwo: 4,
+  damageThree: 3,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: nergalReaver.id,
+  materials: nergiganteMaterialsSecond,
+  monster: nergigante.id,
+};
+export const imperialSaber: WeaponSeedData = {
+  id: uuid(),
+  name: 'Imperial Saber',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 0,
+  damageTwo: 9,
+  damageThree: 5,
+  damageFour: 0,
+  damageFive: 0,
+  previousWeapon: ironKatana.id,
+  materials: teostraMaterialsFirst,
+  monster: teostra.id,
+};
+export const imperialShimmer: WeaponSeedData = {
+  id: uuid(),
+  name: 'Imperial Shimmer',
+  weaponType: WeaponType.LONG_SWORD,
+  branch: CraftingBranch.MONSTER,
+  defense: 0,
+  damageOne: 0,
+  damageTwo: 9,
+  damageThree: 6,
+  damageFour: 1,
+  damageFive: 0,
+  previousWeapon: imperialSaber.id,
+  materials: teostraMaterialsSecond,
+  monster: teostra.id,
 };

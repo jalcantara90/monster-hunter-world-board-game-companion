@@ -19,8 +19,20 @@ import {
   tobiKadachi,
 } from './monsters';
 
+type ArmorSeedData = {
+  id: string;
+  name: string;
+  defense: number;
+  elementalDefenseType: Element;
+  elementalDefense: number,
+  branch: CraftingBranch;
+  armorPiece: ArmorPiece;
+  monster?: string;
+  materials?: Array<{ materialId: string; quantity: number }>;
+}
+
 // Alloy
-export const alloyHelm = {
+export const alloyHelm: ArmorSeedData = {
   id: uuid(),
   name: 'Alloy Helm',
   defense: 1,
@@ -29,7 +41,7 @@ export const alloyHelm = {
   branch: CraftingBranch.ORE,
   armorPiece: ArmorPiece.HEAD,
 };
-export const alloyMail = {
+export const alloyMail: ArmorSeedData = {
   id: uuid(),
   name: 'Alloy Mail',
   defense: 1,
@@ -38,7 +50,7 @@ export const alloyMail = {
   branch: CraftingBranch.ORE,
   armorPiece: ArmorPiece.CHEST,
 };
-export const alloyGreaves = {
+export const alloyGreaves: ArmorSeedData = {
   id: uuid(),
   name: 'Alloy Graves',
   defense: 0,
@@ -49,7 +61,7 @@ export const alloyGreaves = {
 };
 
 // Bone
-export const boneHelm = {
+export const boneHelm: ArmorSeedData = {
   id: uuid(),
   name: 'Bone Helm',
   defense: 1,
@@ -58,7 +70,7 @@ export const boneHelm = {
   branch: CraftingBranch.BONE,
   armorPiece: ArmorPiece.HEAD,
 };
-export const boneMall = {
+export const boneMall: ArmorSeedData = {
   id: uuid(),
   name: 'Bone Mall',
   defense: 0,
@@ -67,7 +79,7 @@ export const boneMall = {
   branch: CraftingBranch.ORE,
   armorPiece: ArmorPiece.CHEST,
 };
-export const boneGreaves = {
+export const boneGreaves: ArmorSeedData = {
   id: uuid(),
   name: 'Bone Greaves',
   defense: 1,
@@ -78,7 +90,7 @@ export const boneGreaves = {
 };
 
 // Barroth
-export const barrothHelm = {
+export const barrothHelm: ArmorSeedData = {
   id: uuid(),
   name: 'Barroth Helm',
   defense: 1,
@@ -88,7 +100,7 @@ export const barrothHelm = {
   armorPiece: ArmorPiece.HEAD,
   monster: barroth.id,
 };
-export const barrothMall = {
+export const barrothMall: ArmorSeedData = {
   id: uuid(),
   name: 'Barroth Mall',
   defense: 1,
@@ -98,7 +110,7 @@ export const barrothMall = {
   armorPiece: ArmorPiece.CHEST,
   monster: barroth.id,
 };
-export const barrothGreaves = {
+export const barrothGreaves: ArmorSeedData = {
   id: uuid(),
   name: 'Barroth Greaves',
   defense: 1,
@@ -110,7 +122,7 @@ export const barrothGreaves = {
 };
 
 // Pukei Pukei
-export const pukeyHood = {
+export const pukeyHood: ArmorSeedData = {
   id: uuid(),
   name: 'Pukei Hood',
   defense: 1,
@@ -120,7 +132,7 @@ export const pukeyHood = {
   armorPiece: ArmorPiece.HEAD,
   monster: pukeiPukei.id,
 };
-export const pukeiMall = {
+export const pukeiMall: ArmorSeedData = {
   id: uuid(),
   name: 'Pukei Mall',
   defense: 1,
@@ -130,7 +142,7 @@ export const pukeiMall = {
   armorPiece: ArmorPiece.CHEST,
   monster: pukeiPukei.id,
 };
-export const pukeiGreaves = {
+export const pukeiGreaves: ArmorSeedData = {
   id: uuid(),
   name: 'Pukei Greaves',
   defense: 1,
@@ -142,7 +154,7 @@ export const pukeiGreaves = {
 };
 
 // Jyuratodus
-export const jyuraHelm = {
+export const jyuraHelm: ArmorSeedData = {
   id: uuid(),
   name: 'Jyura Hood',
   defense: 1,
@@ -152,7 +164,7 @@ export const jyuraHelm = {
   armorPiece: ArmorPiece.HEAD,
   monster: jyuratodus.id,
 };
-export const jyuraMall = {
+export const jyuraMall: ArmorSeedData = {
   id: uuid(),
   name: 'Jyura Mall',
   defense: 1,
@@ -162,7 +174,7 @@ export const jyuraMall = {
   armorPiece: ArmorPiece.CHEST,
   monster: jyuratodus.id,
 };
-export const jyuraGreaves = {
+export const jyuraGreaves: ArmorSeedData = {
   id: uuid(),
   name: 'Jyura Greaves',
   defense: 1,
@@ -174,7 +186,7 @@ export const jyuraGreaves = {
 };
 
 // Diablos
-export const diablosHelm = {
+export const diablosHelm: ArmorSeedData = {
   id: uuid(),
   name: 'Diablos Hood',
   defense: 1,
@@ -184,7 +196,7 @@ export const diablosHelm = {
   armorPiece: ArmorPiece.HEAD,
   monster: diablos.id,
 };
-export const diablosMall = {
+export const diablosMall: ArmorSeedData = {
   id: uuid(),
   name: 'Diablos Mall',
   defense: 1,
@@ -194,7 +206,7 @@ export const diablosMall = {
   armorPiece: ArmorPiece.CHEST,
   monster: diablos.id,
 };
-export const diablosGreaves = {
+export const diablosGreaves: ArmorSeedData = {
   id: uuid(),
   name: 'Diablos Greaves',
   defense: 2,
@@ -206,7 +218,7 @@ export const diablosGreaves = {
 };
 
 // Black Diablos
-export const blackDiablosHelm = {
+export const blackDiablosHelm: ArmorSeedData = {
   id: uuid(),
   name: 'Black Diablos Hood',
   defense: 1,
@@ -216,7 +228,7 @@ export const blackDiablosHelm = {
   armorPiece: ArmorPiece.HEAD,
   monster: blackDiablos.id,
 };
-export const blackDiablosMall = {
+export const blackDiablosMall: ArmorSeedData = {
   id: uuid(),
   name: 'Black Diablos Mall',
   defense: 1,
@@ -226,7 +238,7 @@ export const blackDiablosMall = {
   armorPiece: ArmorPiece.CHEST,
   monster: blackDiablos.id,
 };
-export const blackDiablosGreaves = {
+export const blackDiablosGreaves: ArmorSeedData = {
   id: uuid(),
   name: 'Black Diablos Greaves',
   defense: 2,
@@ -238,7 +250,7 @@ export const blackDiablosGreaves = {
 };
 
 // Jagrass
-export const jagrassHelm = {
+export const jagrassHelm: ArmorSeedData = {
   id: uuid(),
   name: 'Jagras Hood',
   defense: 1,
@@ -248,7 +260,7 @@ export const jagrassHelm = {
   armorPiece: ArmorPiece.HEAD,
   monster: greatJagrass.id,
 };
-export const jagrassMall = {
+export const jagrassMall: ArmorSeedData = {
   id: uuid(),
   name: 'Jagras Mall',
   defense: 1,
@@ -258,7 +270,7 @@ export const jagrassMall = {
   armorPiece: ArmorPiece.CHEST,
   monster: greatJagrass.id,
 };
-export const jagrassGreaves = {
+export const jagrassGreaves: ArmorSeedData = {
   id: uuid(),
   name: 'Jagras Greaves',
   defense: 1,
@@ -270,7 +282,7 @@ export const jagrassGreaves = {
 };
 
 // Tobi-kadachi
-export const kadachiHelm = {
+export const kadachiHelm: ArmorSeedData = {
   id: uuid(),
   name: 'Kadachi Hood',
   defense: 0,
@@ -280,7 +292,7 @@ export const kadachiHelm = {
   armorPiece: ArmorPiece.HEAD,
   monster: tobiKadachi.id,
 };
-export const kadachiMall = {
+export const kadachiMall: ArmorSeedData = {
   id: uuid(),
   name: 'Kadachi Mall',
   defense: 1,
@@ -290,7 +302,7 @@ export const kadachiMall = {
   armorPiece: ArmorPiece.CHEST,
   monster: tobiKadachi.id,
 };
-export const kadachiGreaves = {
+export const kadachiGreaves: ArmorSeedData = {
   id: uuid(),
   name: 'Kadachi Greaves',
   defense: 0,
@@ -302,7 +314,7 @@ export const kadachiGreaves = {
 };
 
 // Anjanath
-export const anjanathHelm = {
+export const anjanathHelm: ArmorSeedData = {
   id: uuid(),
   name: 'Anjanath Hood',
   defense: 1,
@@ -312,7 +324,7 @@ export const anjanathHelm = {
   armorPiece: ArmorPiece.HEAD,
   monster: anjanath.id,
 };
-export const anjanathMall = {
+export const anjanathMall: ArmorSeedData = {
   id: uuid(),
   name: 'Anjanath Mall',
   defense: 1,
@@ -322,7 +334,7 @@ export const anjanathMall = {
   armorPiece: ArmorPiece.CHEST,
   monster: anjanath.id,
 };
-export const anjanathGreaves = {
+export const anjanathGreaves: ArmorSeedData = {
   id: uuid(),
   name: 'Anjanath Greaves',
   defense: 1,
@@ -334,7 +346,7 @@ export const anjanathGreaves = {
 };
 
 // Rathalos
-export const rathalosHelm = {
+export const rathalosHelm: ArmorSeedData = {
   id: uuid(),
   name: 'Rathalos Hood',
   defense: 2,
@@ -344,7 +356,7 @@ export const rathalosHelm = {
   armorPiece: ArmorPiece.HEAD,
   monster: rathalos.id,
 };
-export const rathalosMall = {
+export const rathalosMall: ArmorSeedData = {
   id: uuid(),
   name: 'Rathalos Mall',
   defense: 1,
@@ -354,7 +366,7 @@ export const rathalosMall = {
   armorPiece: ArmorPiece.CHEST,
   monster: rathalos.id,
 };
-export const rathalosGreaves = {
+export const rathalosGreaves: ArmorSeedData = {
   id: uuid(),
   name: 'Rathalos Greaves',
   defense: 1,
@@ -366,7 +378,7 @@ export const rathalosGreaves = {
 };
 
 // Azure Rathalos
-export const azureRathalosHelm = {
+export const azureRathalosHelm: ArmorSeedData = {
   id: uuid(),
   name: 'Azure Rathalos Hood',
   defense: 2,
@@ -376,7 +388,7 @@ export const azureRathalosHelm = {
   armorPiece: ArmorPiece.HEAD,
   monster: azureRathalos.id,
 };
-export const azureRathalosMall = {
+export const azureRathalosMall: ArmorSeedData = {
   id: uuid(),
   name: 'Azure Rathalos Mall',
   defense: 1,
@@ -386,7 +398,7 @@ export const azureRathalosMall = {
   armorPiece: ArmorPiece.CHEST,
   monster: azureRathalos.id,
 };
-export const azureRathalosGreaves = {
+export const azureRathalosGreaves: ArmorSeedData = {
   id: uuid(),
   name: 'Azure Rathalos Greaves',
   defense: 1,
@@ -398,7 +410,7 @@ export const azureRathalosGreaves = {
 };
 
 // Kushala Daora
-export const kushalaGlare = {
+export const kushalaGlare: ArmorSeedData = {
   id: uuid(),
   name: 'Kushala Glare',
   defense: 1,
@@ -408,7 +420,7 @@ export const kushalaGlare = {
   armorPiece: ArmorPiece.HEAD,
   monster: daora.id,
 };
-export const kushalaCista = {
+export const kushalaCista: ArmorSeedData = {
   id: uuid(),
   name: 'Kushala Cista',
   defense: 2,
@@ -418,7 +430,7 @@ export const kushalaCista = {
   armorPiece: ArmorPiece.CHEST,
   monster: daora.id,
 };
-export const kushalaCrus = {
+export const kushalaCrus: ArmorSeedData = {
   id: uuid(),
   name: 'Kushala Crus',
   defense: 2,
@@ -430,7 +442,7 @@ export const kushalaCrus = {
 };
 
 // Teostra
-export const kaiserCrown = {
+export const kaiserCrown: ArmorSeedData = {
   id: uuid(),
   name: 'kaiser Crown',
   defense: 2,
@@ -440,7 +452,7 @@ export const kaiserCrown = {
   armorPiece: ArmorPiece.HEAD,
   monster: teostra.id,
 };
-export const KaiserMall = {
+export const KaiserMall: ArmorSeedData = {
   id: uuid(),
   name: 'Kaiser Mall',
   defense: 1,
@@ -450,7 +462,7 @@ export const KaiserMall = {
   armorPiece: ArmorPiece.CHEST,
   monster: teostra.id,
 };
-export const KaiserGreaves = {
+export const KaiserGreaves: ArmorSeedData = {
   id: uuid(),
   name: 'Kaiser Greaves',
   defense: 2,
@@ -462,7 +474,7 @@ export const KaiserGreaves = {
 };
 
 // Nergigante
-export const nergiganteHelm = {
+export const nergiganteHelm: ArmorSeedData = {
   id: uuid(),
   name: 'Nergigante Helm',
   defense: 2,
@@ -472,7 +484,7 @@ export const nergiganteHelm = {
   armorPiece: ArmorPiece.HEAD,
   monster: nergigante.id,
 };
-export const nergigganteMall = {
+export const nergigganteMall: ArmorSeedData = {
   id: uuid(),
   name: 'Nergigante Mall',
   defense: 2,
@@ -482,7 +494,7 @@ export const nergigganteMall = {
   armorPiece: ArmorPiece.CHEST,
   monster: nergigante.id,
 };
-export const nergiganteGreaves = {
+export const nergiganteGreaves: ArmorSeedData = {
   id: uuid(),
   name: 'Nerggigante Greaves',
   defense: 1,
@@ -494,7 +506,7 @@ export const nergiganteGreaves = {
 };
 
 // Kulu-Ya-Ku
-export const kuluHeadPiece = {
+export const kuluHeadPiece: ArmorSeedData = {
   id: uuid(),
   name: 'Kulu Headpiece',
   defense: 1,
@@ -504,7 +516,7 @@ export const kuluHeadPiece = {
   armorPiece: ArmorPiece.HEAD,
   monster: kuluYaKu.id,
 };
-export const kuluMail = {
+export const kuluMail: ArmorSeedData = {
   id: uuid(),
   name: 'Kulu Mall',
   defense: 1,
@@ -514,7 +526,7 @@ export const kuluMail = {
   armorPiece: ArmorPiece.CHEST,
   monster: kuluYaKu.id,
 };
-export const kuluGreaves = {
+export const kuluGreaves: ArmorSeedData = {
   id: uuid(),
   name: 'Kulu Greaves',
   defense: 1,
