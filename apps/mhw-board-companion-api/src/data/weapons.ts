@@ -29,6 +29,7 @@ import {
   blosMedulla,
   boulderBone,
   carbaliteOre,
+  coralCrystal,
   daoraCarapace,
   daoraClaw,
   daoraGem,
@@ -42,6 +43,8 @@ import {
   dragoniteOre,
   dragonveinCrystal,
   earthrystal,
+  electroSac,
+  fertileMud,
   firecellStone,
   flameSac,
   fuciumOre,
@@ -84,7 +87,9 @@ import {
   rathalosCarapace,
   rathalosMarrow,
   rathalosMedulla,
+  rathalosPlate,
   rathalosScale,
+  rathalosTail,
   rathalosWebing,
   rathalosWing,
   sharpClaw,
@@ -94,7 +99,9 @@ import {
   teostraHorn,
   teostraMane,
   teostraPowder,
+  thunderSac,
   tobiKadachiClaw,
+  tobiKadachiElectrode,
   tobiKadachiPelt,
   tobiKadachiScale,
   toxicSac,
@@ -116,6 +123,70 @@ type WeaponSeedData = {
   previousWeapon?: string;
   materials?: Array<{ materialId: string; quantity: number }>;
 };
+
+const commonIronMaterialsFirst = [
+  { materialId: dragoniteOre.id, quantity: 1 },
+  { materialId: machaliteOre.id, quantity: 1 },
+  { materialId: monsterBoneMedium.id, quantity: 1 },
+];
+const commonIronMaterialsSecond = [
+  { materialId: fuciumOre.id, quantity: 2 },
+  { materialId: carbaliteOre.id, quantity: 2 },
+  { materialId: dragoniteOre.id, quantity: 3 },
+  { materialId: dragonveinCrystal.id, quantity: 2 },
+];
+const boneMaterialStarting = [{ materialId: monsterBoneSmall.id, quantity: 1 }];
+const commonBoneMaterialsFirst = [
+  { materialId: monsterBoneLarge.id, quantity: 1 },
+  { materialId: monsterBoneMedium.id, quantity: 1 },
+  { materialId: boulderBone.id, quantity: 1 },
+];
+const commonBoneMaterialsSecond = [
+  { materialId: monsterHardBone.id, quantity: 2 },
+  { materialId: monsterKeenbone.id, quantity: 2 },
+  { materialId: qualityBone.id, quantity: 3 },
+];
+
+const rathalosMaterialsFirst = [
+  { materialId: rathalosScale.id, quantity: 2 },
+  { materialId: rathalosWebing.id, quantity: 2 },
+  { materialId: infernoSac.id, quantity: 1 },
+  { materialId: rathalosMarrow.id, quantity: 1 },
+];
+
+const rathalosMaterialsSecond = [
+  { materialId: rathalosScale.id, quantity: 2 },
+  { materialId: rathalosCarapace.id, quantity: 1 },
+  { materialId: rathalosWing.id, quantity: 1 },
+  { materialId: rathalosMedulla.id, quantity: 1 },
+];
+
+const diablosMaterialFirst = [
+  { materialId: twistedHorn.id, quantity: 1 },
+  { materialId: diablosFang.id, quantity: 2 },
+  { materialId: diablosShell.id, quantity: 4 },
+  { materialId: monsterBoneLarge.id, quantity: 2 },
+];
+
+const diablosMaterialSecond = [
+  { materialId: majesticHorn.id, quantity: 2 },
+  { materialId: diablosCarapace.id, quantity: 2 },
+  { materialId: diablosRidge.id, quantity: 2 },
+  { materialId: blosMedulla.id, quantity: 1 },
+];
+
+const greatJagrasCommonMaterialsFirst = [
+  { materialId: greatJagrasClaw.id, quantity: 1 },
+  { materialId: greatJagrasHide.id, quantity: 1 },
+  { materialId: greatJagrasScale.id, quantity: 3 },
+  { materialId: sharpClaw.id, quantity: 1 },
+];
+const greatJagrasCommonMaterialsSecond = [
+  { materialId: greatJagrasClaw.id, quantity: 2 },
+  { materialId: greatJagrasScale.id, quantity: 2 },
+  { materialId: greatJagrasMane.id, quantity: 2 },
+  { materialId: piercingClaw.id, quantity: 1 },
+];
 
 const kuluYakuMaterialsFirst = [
   { materialId: kuluYakuBeak.id, quantity: 1 },
@@ -194,6 +265,11 @@ export const steelKnife: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: huntersKnife.id,
+  materials: [
+    { materialId: dragoniteOre.id, quantity: 1 },
+    { materialId: machaliteOre.id, quantity: 1 },
+    { materialId: monsterBoneMedium.id, quantity: 1 },
+  ],
 };
 
 export const chromeSlicer: WeaponSeedData = {
@@ -208,6 +284,12 @@ export const chromeSlicer: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: steelKnife.id,
+  materials: [
+    { materialId: fuciumOre.id, quantity: 2 },
+    { materialId: carbaliteOre.id, quantity: 2 },
+    { materialId: dragoniteOre.id, quantity: 3 },
+    { materialId: dragonveinCrystal.id, quantity: 2 },
+  ],
 };
 
 export const boneKukri: WeaponSeedData = {
@@ -221,6 +303,7 @@ export const boneKukri: WeaponSeedData = {
   damageThree: 1,
   damageFour: 0,
   damageFive: 0,
+  materials: boneMaterialStarting,
 };
 export const chiefKukri: WeaponSeedData = {
   id: uuid(),
@@ -234,6 +317,11 @@ export const chiefKukri: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: boneKukri.id,
+  materials: [
+    { materialId: monsterBoneMedium.id, quantity: 1 },
+    { materialId: boulderBone.id, quantity: 1 },
+    { materialId: monsterBoneLarge.id, quantity: 1 },
+  ],
 };
 export const grandBarong: WeaponSeedData = {
   id: uuid(),
@@ -247,6 +335,11 @@ export const grandBarong: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: chiefKukri.id,
+  materials: [
+    { materialId: monsterHardBone.id, quantity: 2 },
+    { materialId: monsterKeenbone.id, quantity: 2 },
+    { materialId: qualityBone.id, quantity: 3 },
+  ],
 };
 
 export const bloomingKnife: WeaponSeedData = {
@@ -262,6 +355,12 @@ export const bloomingKnife: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: huntersKnife.id,
   monster: pukeiPukei.id,
+  materials: [
+    { materialId: pukeiPukeiQuill.id, quantity: 2 },
+    { materialId: pukeiPukeiScale.id, quantity: 2 },
+    { materialId: poisonSac.id, quantity: 1 },
+    { materialId: pukeiPukeiTail.id, quantity: 1 },
+  ],
 };
 export const daturaBlossom: WeaponSeedData = {
   id: uuid(),
@@ -276,6 +375,12 @@ export const daturaBlossom: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: bloomingKnife.id,
   monster: pukeiPukei.id,
+  materials: [
+    { materialId: pukeiPukeiWing.id, quantity: 2 },
+    { materialId: pukeiPukeiScale.id, quantity: 2 },
+    { materialId: toxicSac.id, quantity: 2 },
+    { materialId: qualityBone.id, quantity: 3 },
+  ],
 };
 export const carapaceEdge: WeaponSeedData = {
   id: uuid(),
@@ -290,6 +395,11 @@ export const carapaceEdge: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneKukri.id,
   monster: barroth.id,
+  materials: [
+    { materialId: barrothClaw.id, quantity: 1 },
+    { materialId: barrothShell.id, quantity: 3 },
+    { materialId: barrothRidge.id, quantity: 3 },
+  ],
 };
 export const barrothClub: WeaponSeedData = {
   id: uuid(),
@@ -304,6 +414,11 @@ export const barrothClub: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: carapaceEdge.id,
   monster: barroth.id,
+  materials: [
+    { materialId: barrothClaw.id, quantity: 2 },
+    { materialId: barrothCarapace.id, quantity: 3 },
+    { materialId: barrothRidge.id, quantity: 3 },
+  ],
 };
 
 export const jagrasEdge: WeaponSeedData = {
@@ -319,6 +434,12 @@ export const jagrasEdge: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneKukri.id,
   monster: greatJagrass.id,
+  materials: [
+    { materialId: greatJagrasClaw.id, quantity: 2 },
+    { materialId: greatJagrasHide.id, quantity: 1 },
+    { materialId: greatJagrasScale.id, quantity: 2 },
+    { materialId: sharpClaw.id, quantity: 1 },
+  ],
 };
 export const jagrasGarotte: WeaponSeedData = {
   id: uuid(),
@@ -333,6 +454,12 @@ export const jagrasGarotte: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: jagrasEdge.id,
   monster: greatJagrass.id,
+  materials: [
+    { materialId: greatJagrasClaw.id, quantity: 1 },
+    { materialId: greatJagrasMane.id, quantity: 2 },
+    { materialId: greatJagrasScale.id, quantity: 3 },
+    { materialId: piercingClaw.id, quantity: 1 },
+  ],
 };
 export const flameKnife: WeaponSeedData = {
   id: uuid(),
@@ -347,6 +474,12 @@ export const flameKnife: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: huntersKnife.id,
   monster: rathalos.id,
+  materials: [
+    { materialId: rathalosScale.id, quantity: 1 },
+    { materialId: rathalosTail.id, quantity: 2 },
+    { materialId: rathalosPlate.id, quantity: 1 },
+    { materialId: infernoSac.id, quantity: 1 },
+  ],
 };
 export const heatEdge: WeaponSeedData = {
   id: uuid(),
@@ -361,6 +494,11 @@ export const heatEdge: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: flameKnife.id,
   monster: rathalos.id,
+  materials: [
+    { materialId: rathalosScale.id, quantity: 2 },
+    { materialId: rathalosCarapace.id, quantity: 2 },
+    { materialId: rathalosWing.id, quantity: 1 },
+  ],
 };
 export const nergalJack: WeaponSeedData = {
   id: uuid(),
@@ -448,6 +586,11 @@ export const dualSlicers: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: matchedSlicers.id,
+  materials: [
+    { materialId: dragoniteOre.id, quantity: 1 },
+    { materialId: machaliteOre.id, quantity: 1 },
+    { materialId: monsterBoneMedium.id, quantity: 1 },
+  ],
 };
 export const chromeSlicers: WeaponSeedData = {
   id: uuid(),
@@ -461,6 +604,12 @@ export const chromeSlicers: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: dualSlicers.id,
+  materials: [
+    { materialId: fuciumOre.id, quantity: 2 },
+    { materialId: carbaliteOre.id, quantity: 2 },
+    { materialId: dragoniteOre.id, quantity: 3 },
+    { materialId: dragonveinCrystal.id, quantity: 2 },
+  ],
 };
 export const boneHatchets: WeaponSeedData = {
   id: uuid(),
@@ -473,6 +622,7 @@ export const boneHatchets: WeaponSeedData = {
   damageThree: 0,
   damageFour: 0,
   damageFive: 0,
+  materials: boneMaterialStarting,
 };
 export const WildHatchets: WeaponSeedData = {
   id: uuid(),
@@ -486,6 +636,11 @@ export const WildHatchets: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: boneHatchets.id,
+  materials: [
+    { materialId: monsterBoneMedium.id, quantity: 1 },
+    { materialId: boulderBone.id, quantity: 1 },
+    { materialId: monsterBoneLarge.id, quantity: 1 },
+  ],
 };
 export const StrongHatchets: WeaponSeedData = {
   id: uuid(),
@@ -499,6 +654,11 @@ export const StrongHatchets: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: WildHatchets.id,
+  materials: [
+    { materialId: monsterHardBone.id, quantity: 2 },
+    { materialId: monsterKeenbone.id, quantity: 2 },
+    { materialId: qualityBone.id, quantity: 3 },
+  ],
 };
 export const PulsarHatchets: WeaponSeedData = {
   id: uuid(),
@@ -513,10 +673,16 @@ export const PulsarHatchets: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneHatchets.id,
   monster: tobiKadachi.id,
+  materials: [
+    { materialId: tobiKadachiElectrode.id, quantity: 1 },
+    { materialId: tobiKadachiClaw.id, quantity: 2 },
+    { materialId: electroSac.id, quantity: 2 },
+    { materialId: coralCrystal.id, quantity: 2 },
+  ],
 };
-export const KadachiHatchets: WeaponSeedData = {
+export const KadachiClaws: WeaponSeedData = {
   id: uuid(),
-  name: 'Kadachi Hatchets',
+  name: 'Kadachi Claws',
   weaponType: WeaponType.DOUBLE_BLADES,
   branch: CraftingBranch.MONSTER,
   defense: 0,
@@ -527,6 +693,11 @@ export const KadachiHatchets: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: PulsarHatchets.id,
   monster: tobiKadachi.id,
+  materials: [
+    { materialId: tobiKadachiElectrode.id, quantity: 2 },
+    { materialId: tobiKadachiClaw.id, quantity: 2 },
+    { materialId: thunderSac.id, quantity: 1 },
+  ],
 };
 export const blazingHatchets: WeaponSeedData = {
   id: uuid(),
@@ -541,10 +712,15 @@ export const blazingHatchets: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneHatchets.id,
   monster: anjanath.id,
+  materials: [
+    { materialId: anjanathScale.id, quantity: 3 },
+    { materialId: anjanathFang.id, quantity: 2 },
+    { materialId: flameSac.id, quantity: 1 },
+  ],
 };
-export const AnjaHatchets: WeaponSeedData = {
+export const AnjaCyclone: WeaponSeedData = {
   id: uuid(),
-  name: 'Anja Hatchets',
+  name: 'Anja Cyclone',
   weaponType: WeaponType.DOUBLE_BLADES,
   branch: CraftingBranch.MONSTER,
   defense: 0,
@@ -555,6 +731,11 @@ export const AnjaHatchets: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: blazingHatchets.id,
   monster: anjanath.id,
+  materials: [
+    { materialId: anjanathPelt.id, quantity: 4 },
+    { materialId: anjanathFang.id, quantity: 4 },
+    { materialId: firecellStone.id, quantity: 2 },
+  ],
 };
 export const diablosHatchets: WeaponSeedData = {
   id: uuid(),
@@ -569,6 +750,12 @@ export const diablosHatchets: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneHatchets.id,
   monster: diablos.id,
+  materials: [
+    { materialId: twistedHorn.id, quantity: 1 },
+    { materialId: diablosFang.id, quantity: 2 },
+    { materialId: diablosShell.id, quantity: 4 },
+    { materialId: monsterBoneLarge.id, quantity: 2 },
+  ],
 };
 export const diablosClubs: WeaponSeedData = {
   id: uuid(),
@@ -583,6 +770,12 @@ export const diablosClubs: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: diablosHatchets.id,
   monster: diablos.id,
+  materials: [
+    { materialId: majesticHorn.id, quantity: 2 },
+    { materialId: diablosCarapace.id, quantity: 2 },
+    { materialId: diablosRidge.id, quantity: 2 },
+    { materialId: blosMedulla.id, quantity: 1 },
+  ],
 };
 export const madnessPangas: WeaponSeedData = {
   id: uuid(),
@@ -597,6 +790,12 @@ export const madnessPangas: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneHatchets.id,
   monster: jyuratodus.id,
+  materials: [
+    { materialId: jyuratodusFin.id, quantity: 1 },
+    { materialId: jyuratodusShell.id, quantity: 2 },
+    { materialId: jyuratodusScale.id, quantity: 3 },
+    { materialId: aquaSac.id, quantity: 1 },
+  ],
 };
 export const jyuraHatchets: WeaponSeedData = {
   id: uuid(),
@@ -611,6 +810,13 @@ export const jyuraHatchets: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: madnessPangas.id,
   monster: jyuratodus.id,
+  materials: [
+    { materialId: jyuratodusFin.id, quantity: 1 },
+    { materialId: jyuratodusCarapace.id, quantity: 2 },
+    { materialId: jyuratodusScale.id, quantity: 2 },
+    { materialId: aquaSac.id, quantity: 1 },
+    { materialId: gajauScale.id, quantity: 1 },
+  ],
 };
 export const twinNails: WeaponSeedData = {
   id: uuid(),
@@ -728,6 +934,11 @@ export const greatBagpipe: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: metalBagpipe.id,
+  materials: [
+    { materialId: dragoniteOre.id, quantity: 2 },
+    { materialId: machaliteOre.id, quantity: 5 },
+    { materialId: monsterBoneMedium.id, quantity: 2 },
+  ],
 };
 export const fortissimo: WeaponSeedData = {
   id: uuid(),
@@ -741,6 +952,12 @@ export const fortissimo: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: greatBagpipe.id,
+  materials: [
+    { materialId: fuciumOre.id, quantity: 2 },
+    { materialId: carbaliteOre.id, quantity: 2 },
+    { materialId: dragoniteOre.id, quantity: 3 },
+    { materialId: dragonveinCrystal.id, quantity: 2 },
+  ],
 };
 export const boneHorn: WeaponSeedData = {
   id: uuid(),
@@ -753,6 +970,7 @@ export const boneHorn: WeaponSeedData = {
   damageThree: 0,
   damageFour: 0,
   damageFive: 0,
+  materials: [{ materialId: monsterBoneSmall.id, quantity: 2 }],
 };
 export const hardboneHorn: WeaponSeedData = {
   id: uuid(),
@@ -766,6 +984,11 @@ export const hardboneHorn: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: boneHorn.id,
+  materials: [
+    { materialId: boulderBone.id, quantity: 2 },
+    { materialId: monsterBoneLarge.id, quantity: 1 },
+    { materialId: monsterBoneMedium.id, quantity: 5 },
+  ],
 };
 export const heavyboneHorn: WeaponSeedData = {
   id: uuid(),
@@ -779,6 +1002,11 @@ export const heavyboneHorn: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: hardboneHorn.id,
+  materials: [
+    { materialId: monsterHardBone.id, quantity: 2 },
+    { materialId: monsterKeenbone.id, quantity: 2 },
+    { materialId: qualityBone.id, quantity: 3 },
+  ],
 };
 export const thunderGaida: WeaponSeedData = {
   id: uuid(),
@@ -793,6 +1021,13 @@ export const thunderGaida: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneHorn.id,
   monster: tobiKadachi.id,
+  materials: [
+    { materialId: dragoniteOre.id, quantity: 2 },
+    { materialId: tobiKadachiElectrode.id, quantity: 1 },
+    { materialId: tobiKadachiClaw.id, quantity: 2 },
+    { materialId: electroSac.id, quantity: 2 },
+    { materialId: coralCrystal.id, quantity: 2 },
+  ],
 };
 export const lightningDrum: WeaponSeedData = {
   id: uuid(),
@@ -807,6 +1042,12 @@ export const lightningDrum: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: thunderGaida.id,
   monster: tobiKadachi.id,
+  materials: [
+    { materialId: fuciumOre.id, quantity: 2 },
+    { materialId: tobiKadachiElectrode.id, quantity: 2 },
+    { materialId: tobiKadachiClaw.id, quantity: 2 },
+    { materialId: thunderSac.id, quantity: 1 },
+  ],
 };
 export const blazingHorn: WeaponSeedData = {
   id: uuid(),
@@ -821,6 +1062,11 @@ export const blazingHorn: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: metalBagpipe.id,
   monster: anjanath.id,
+  materials: [
+    { materialId: anjanathScale.id, quantity: 3 },
+    { materialId: anjanathFang.id, quantity: 2 },
+    { materialId: flameSac.id, quantity: 1 },
+  ],
 };
 export const anjaBarone: WeaponSeedData = {
   id: uuid(),
@@ -835,6 +1081,11 @@ export const anjaBarone: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: blazingHorn.id,
   monster: anjanath.id,
+  materials: [
+    { materialId: anjanathFang.id, quantity: 4 },
+    { materialId: anjanathPelt.id, quantity: 4 },
+    { materialId: firecellStone.id, quantity: 2 },
+  ],
 };
 export const bloomingHorn: WeaponSeedData = {
   id: uuid(),
@@ -849,6 +1100,12 @@ export const bloomingHorn: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneHorn.id,
   monster: pukeiPukei.id,
+  materials: [
+    { materialId: pukeiPukeiQuill.id, quantity: 2 },
+    { materialId: pukeiPukeiScale.id, quantity: 2 },
+    { materialId: poisonSac.id, quantity: 1 },
+    { materialId: pukeiPukeiTail.id, quantity: 1 },
+  ],
 };
 export const daturaHorn: WeaponSeedData = {
   id: uuid(),
@@ -863,6 +1120,12 @@ export const daturaHorn: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneHorn.id,
   monster: pukeiPukei.id,
+  materials: [
+    { materialId: pukeiPukeiWing.id, quantity: 2 },
+    { materialId: pukeiPukeiScale.id, quantity: 2 },
+    { materialId: toxicSac.id, quantity: 2 },
+    { materialId: qualityBone.id, quantity: 3 },
+  ],
 };
 export const aquaBagpipe: WeaponSeedData = {
   id: uuid(),
@@ -876,7 +1139,13 @@ export const aquaBagpipe: WeaponSeedData = {
   damageFour: 4,
   damageFive: 0,
   previousWeapon: boneHorn.id,
-  monster: pukeiPukei.id,
+  monster: jyuratodus.id,
+  materials: [
+    { materialId: jyuratodusFin.id, quantity: 1 },
+    { materialId: jyuratodusShell.id, quantity: 2 },
+    { materialId: jyuratodusScale.id, quantity: 3 },
+    { materialId: aquaSac.id, quantity: 1 },
+  ],
 };
 export const waterTamtam: WeaponSeedData = {
   id: uuid(),
@@ -890,7 +1159,14 @@ export const waterTamtam: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: aquaBagpipe.id,
-  monster: pukeiPukei.id,
+  monster: jyuratodus.id,
+  materials: [
+    { materialId: jyuratodusFin.id, quantity: 1 },
+    { materialId: jyuratodusCarapace.id, quantity: 2 },
+    { materialId: jyuratodusScale.id, quantity: 2 },
+    { materialId: aquaSac.id, quantity: 1 },
+    { materialId: gajauScale.id, quantity: 1 },
+  ],
 };
 export const nergalGroove: WeaponSeedData = {
   id: uuid(),
@@ -1008,6 +1284,11 @@ export const steelGunlance: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: ironGunlance.id,
+  materials: [
+    { materialId: dragoniteOre.id, quantity: 2 },
+    { materialId: machaliteOre.id, quantity: 5 },
+    { materialId: monsterBoneMedium.id, quantity: 2 },
+  ],
 };
 export const chromeGunlance: WeaponSeedData = {
   id: uuid(),
@@ -1021,6 +1302,12 @@ export const chromeGunlance: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: steelGunlance.id,
+  materials: [
+    { materialId: fuciumOre.id, quantity: 8 },
+    { materialId: carbaliteOre.id, quantity: 5 },
+    { materialId: dragoniteOre.id, quantity: 10 },
+    { materialId: dragonveinCrystal.id, quantity: 2 },
+  ],
 };
 export const boneGunlance: WeaponSeedData = {
   id: uuid(),
@@ -1033,6 +1320,7 @@ export const boneGunlance: WeaponSeedData = {
   damageThree: 0,
   damageFour: 0,
   damageFive: 0,
+  materials: boneMaterialStarting,
 };
 export const boneCannon: WeaponSeedData = {
   id: uuid(),
@@ -1046,6 +1334,11 @@ export const boneCannon: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: boneGunlance.id,
+  materials: [
+    { materialId: monsterBoneLarge.id, quantity: 1 },
+    { materialId: monsterBoneMedium.id, quantity: 5 },
+    { materialId: boulderBone.id, quantity: 2 },
+  ],
 };
 export const greatBoneGunlance: WeaponSeedData = {
   id: uuid(),
@@ -1059,6 +1352,11 @@ export const greatBoneGunlance: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: boneGunlance.id,
+  materials: [
+    { materialId: monsterHardBone.id, quantity: 4 },
+    { materialId: monsterKeenbone.id, quantity: 6 },
+    { materialId: qualityBone.id, quantity: 10 },
+  ],
 };
 export const jagrasGunlance: WeaponSeedData = {
   id: uuid(),
@@ -1073,6 +1371,7 @@ export const jagrasGunlance: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneGunlance.id,
   monster: greatJagrass.id,
+  materials: greatJagrasCommonMaterialsFirst,
 };
 export const gluttonGunlance: WeaponSeedData = {
   id: uuid(),
@@ -1087,6 +1386,12 @@ export const gluttonGunlance: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: jagrasGunlance.id,
   monster: greatJagrass.id,
+  materials: [
+    { materialId: greatJagrasScale.id, quantity: 6 },
+    { materialId: greatJagrasClaw.id, quantity: 4 },
+    { materialId: greatJagrasMane.id, quantity: 6 },
+    { materialId: piercingClaw.id, quantity: 5 },
+  ],
 };
 export const rathGunlance: WeaponSeedData = {
   id: uuid(),
@@ -1101,6 +1406,12 @@ export const rathGunlance: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneGunlance.id,
   monster: rathalos.id,
+  materials: [
+    { materialId: rathalosScale.id, quantity: 1 },
+    { materialId: rathalosWebing.id, quantity: 2 },
+    { materialId: flameSac.id, quantity: 2 },
+    { materialId: rathalosMarrow.id, quantity: 2 },
+  ],
 };
 export const redRook: WeaponSeedData = {
   id: uuid(),
@@ -1115,6 +1426,12 @@ export const redRook: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: rathGunlance.id,
   monster: rathalos.id,
+  materials: [
+    { materialId: rathalosScale.id, quantity: 6 },
+    { materialId: rathalosCarapace.id, quantity: 4 },
+    { materialId: rathalosWing.id, quantity: 2 },
+    { materialId: rathalosMedulla.id, quantity: 1 },
+  ],
 };
 export const carapaceCannon: WeaponSeedData = {
   id: uuid(),
@@ -1129,6 +1446,11 @@ export const carapaceCannon: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneGunlance.id,
   monster: barroth.id,
+  materials: [
+    { materialId: barrothClaw.id, quantity: 1 },
+    { materialId: barrothShell.id, quantity: 3 },
+    { materialId: barrothRidge.id, quantity: 2 },
+  ],
 };
 export const barrothBlaster: WeaponSeedData = {
   id: uuid(),
@@ -1143,6 +1465,12 @@ export const barrothBlaster: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: carapaceCannon.id,
   monster: barroth.id,
+  materials: [
+    { materialId: barrothClaw.id, quantity: 2 },
+    { materialId: barrothCarapace.id, quantity: 5 },
+    { materialId: barrothRidge.id, quantity: 2 },
+    { materialId: kestodonCarapace.id, quantity: 3 },
+  ],
 };
 export const madnessGunlance: WeaponSeedData = {
   id: uuid(),
@@ -1157,6 +1485,12 @@ export const madnessGunlance: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneGunlance.id,
   monster: jyuratodus.id,
+  materials: [
+    { materialId: jyuratodusFin.id, quantity: 1 },
+    { materialId: jyuratodusShell.id, quantity: 2 },
+    { materialId: jyuratodusScale.id, quantity: 1 },
+    { materialId: aquaSac.id, quantity: 1 },
+  ],
 };
 export const jyuraBuster: WeaponSeedData = {
   id: uuid(),
@@ -1171,6 +1505,12 @@ export const jyuraBuster: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: madnessGunlance.id,
   monster: jyuratodus.id,
+  materials: [
+    { materialId: jyuratodusFin.id, quantity: 2 },
+    { materialId: jyuratodusCarapace.id, quantity: 2 },
+    { materialId: jyuratodusScale.id, quantity: 3 },
+    { materialId: gajauScale.id, quantity: 1 },
+  ],
 };
 export const nergalRam: WeaponSeedData = {
   id: uuid(),
@@ -1256,6 +1596,11 @@ export const steelAssault: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: ironAssault.id,
+  materials: [
+    { materialId: dragoniteOre.id, quantity: 1 },
+    { materialId: machaliteOre.id, quantity: 1 },
+    { materialId: monsterBoneMedium.id, quantity: 1 },
+  ],
 };
 export const chromeAssault: WeaponSeedData = {
   id: uuid(),
@@ -1269,6 +1614,12 @@ export const chromeAssault: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: steelAssault.id,
+  materials: [
+    { materialId: fuciumOre.id, quantity: 2 },
+    { materialId: carbaliteOre.id, quantity: 2 },
+    { materialId: dragoniteOre.id, quantity: 3 },
+    { materialId: dragonveinCrystal.id, quantity: 2 },
+  ],
 };
 export const boneShooter: WeaponSeedData = {
   id: uuid(),
@@ -1281,6 +1632,7 @@ export const boneShooter: WeaponSeedData = {
   damageThree: 1,
   damageFour: 0,
   damageFive: 0,
+  materials: boneMaterialStarting,
 };
 export const heavyShooter: WeaponSeedData = {
   id: uuid(),
@@ -1294,6 +1646,11 @@ export const heavyShooter: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: boneShooter.id,
+  materials: [
+    { materialId: monsterBoneLarge.id, quantity: 1 },
+    { materialId: monsterBoneMedium.id, quantity: 1 },
+    { materialId: boulderBone.id, quantity: 1 },
+  ],
 };
 export const powerShooter: WeaponSeedData = {
   id: uuid(),
@@ -1307,6 +1664,11 @@ export const powerShooter: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: heavyShooter.id,
+  materials: [
+    { materialId: monsterHardBone.id, quantity: 2 },
+    { materialId: monsterKeenbone.id, quantity: 2 },
+    { materialId: qualityBone.id, quantity: 3 },
+  ],
 };
 export const jagrasAssault: WeaponSeedData = {
   id: uuid(),
@@ -1321,6 +1683,7 @@ export const jagrasAssault: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: ironAssault.id,
   monster: greatJagrass.id,
+  materials: greatJagrasCommonMaterialsFirst,
 };
 export const jagrasCannon: WeaponSeedData = {
   id: uuid(),
@@ -1335,6 +1698,7 @@ export const jagrasCannon: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: jagrasAssault.id,
   monster: greatJagrass.id,
+  materials: greatJagrasCommonMaterialsSecond,
 };
 export const pulsarShooter: WeaponSeedData = {
   id: uuid(),
@@ -1349,6 +1713,11 @@ export const pulsarShooter: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneShooter.id,
   monster: tobiKadachi.id,
+  materials: [
+    { materialId: tobiKadachiClaw.id, quantity: 1 },
+    { materialId: tobiKadachiScale.id, quantity: 3 },
+    { materialId: tobiKadachiPelt.id, quantity: 2 },
+  ],
 };
 export const kadachiLion: WeaponSeedData = {
   id: uuid(),
@@ -1363,6 +1732,12 @@ export const kadachiLion: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: pulsarShooter.id,
   monster: tobiKadachi.id,
+  materials: [
+    { materialId: tobiKadachiClaw.id, quantity: 2 },
+    { materialId: tobiKadachiPelt.id, quantity: 2 },
+    { materialId: tobiKadachiScale.id, quantity: 2 },
+    { materialId: dragonveinCrystal.id, quantity: 2 },
+  ],
 };
 export const bloomingShooter: WeaponSeedData = {
   id: uuid(),
@@ -1377,6 +1752,12 @@ export const bloomingShooter: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneShooter.id,
   monster: pukeiPukei.id,
+  materials: [
+    { materialId: pukeiPukeiQuill.id, quantity: 2 },
+    { materialId: pukeiPukeiScale.id, quantity: 2 },
+    { materialId: poisonSac.id, quantity: 1 },
+    { materialId: pukeiPukeiTail.id, quantity: 1 },
+  ],
 };
 export const daturaShooter: WeaponSeedData = {
   id: uuid(),
@@ -1391,6 +1772,12 @@ export const daturaShooter: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: bloomingShooter.id,
   monster: pukeiPukei.id,
+  materials: [
+    { materialId: pukeiPukeiWing.id, quantity: 2 },
+    { materialId: pukeiPukeiScale.id, quantity: 2 },
+    { materialId: toxicSac.id, quantity: 2 },
+    { materialId: qualityBone.id, quantity: 3 },
+  ],
 };
 export const diablosShooter: WeaponSeedData = {
   id: uuid(),
@@ -1405,6 +1792,12 @@ export const diablosShooter: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneShooter.id,
   monster: diablos.id,
+  materials: [
+    { materialId: twistedHorn.id, quantity: 1 },
+    { materialId: diablosFang.id, quantity: 2 },
+    { materialId: diablosShell.id, quantity: 4 },
+    { materialId: monsterBoneLarge.id, quantity: 2 },
+  ],
 };
 export const dualThreat: WeaponSeedData = {
   id: uuid(),
@@ -1419,6 +1812,12 @@ export const dualThreat: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: diablosShooter.id,
   monster: diablos.id,
+  materials: [
+    { materialId: majesticHorn.id, quantity: 2 },
+    { materialId: diablosCarapace.id, quantity: 3 },
+    { materialId: diablosRidge.id, quantity: 3 },
+    { materialId: blosMedulla.id, quantity: 1 },
+  ],
 };
 export const nergalRoar: WeaponSeedData = {
   id: uuid(),
@@ -1504,6 +1903,7 @@ export const eliteCommissionAxe: WeaponSeedData = {
   damageThree: 1,
   damageFour: 0,
   damageFive: 0,
+  materials: commonIronMaterialsFirst,
   previousWeapon: protoCommissionAxe.id,
 };
 export const chromeGuardian: WeaponSeedData = {
@@ -1517,6 +1917,7 @@ export const chromeGuardian: WeaponSeedData = {
   damageThree: 3,
   damageFour: 0,
   damageFive: 0,
+  materials: commonIronMaterialsSecond,
   previousWeapon: eliteCommissionAxe.id,
 };
 export const boneStrongarm: WeaponSeedData = {
@@ -1530,6 +1931,7 @@ export const boneStrongarm: WeaponSeedData = {
   damageThree: 0,
   damageFour: 0,
   damageFive: 0,
+  materials: boneMaterialStarting,
 };
 export const hardBoneStrongarm: WeaponSeedData = {
   id: uuid(),
@@ -1542,6 +1944,7 @@ export const hardBoneStrongarm: WeaponSeedData = {
   damageThree: 1,
   damageFour: 0,
   damageFive: 0,
+  materials: commonBoneMaterialsFirst,
   previousWeapon: boneStrongarm.id,
 };
 export const mightyStrongarm: WeaponSeedData = {
@@ -1555,6 +1958,7 @@ export const mightyStrongarm: WeaponSeedData = {
   damageThree: 3,
   damageFour: 0,
   damageFive: 0,
+  materials: commonBoneMaterialsSecond,
   previousWeapon: hardBoneStrongarm.id,
 };
 export const jagrasStrongarm: WeaponSeedData = {
@@ -1570,6 +1974,7 @@ export const jagrasStrongarm: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneStrongarm.id,
   monster: greatJagrass.id,
+  materials: greatJagrasCommonMaterialsFirst,
 };
 export const jagrasEscudo: WeaponSeedData = {
   id: uuid(),
@@ -1584,6 +1989,7 @@ export const jagrasEscudo: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: jagrasStrongarm.id,
   monster: greatJagrass.id,
+  materials: greatJagrasCommonMaterialsSecond,
 };
 export const pulsarStrongarm: WeaponSeedData = {
   id: uuid(),
@@ -1598,6 +2004,11 @@ export const pulsarStrongarm: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneStrongarm.id,
   monster: tobiKadachi.id,
+  materials: [
+    { materialId: tobiKadachiClaw.id, quantity: 1 },
+    { materialId: tobiKadachiScale.id, quantity: 3 },
+    { materialId: tobiKadachiPelt.id, quantity: 2 },
+  ],
 };
 export const kadachiKaina: WeaponSeedData = {
   id: uuid(),
@@ -1612,6 +2023,12 @@ export const kadachiKaina: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: pulsarStrongarm.id,
   monster: tobiKadachi.id,
+  materials: [
+    { materialId: tobiKadachiClaw.id, quantity: 2 },
+    { materialId: tobiKadachiScale.id, quantity: 2 },
+    { materialId: tobiKadachiPelt.id, quantity: 2 },
+    { materialId: dragonveinCrystal.id, quantity: 2 },
+  ],
 };
 export const mudslideBlade: WeaponSeedData = {
   id: uuid(),
@@ -1626,6 +2043,12 @@ export const mudslideBlade: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: protoCommissionAxe.id,
   monster: jyuratodus.id,
+  materials: [
+    { materialId: jyuratodusFin.id, quantity: 1 },
+    { materialId: jyuratodusShell.id, quantity: 2 },
+    { materialId: jyuratodusScale.id, quantity: 3 },
+    { materialId: aquaSac.id, quantity: 1 },
+  ],
 };
 export const jyuraDepth: WeaponSeedData = {
   id: uuid(),
@@ -1640,6 +2063,13 @@ export const jyuraDepth: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: mudslideBlade.id,
   monster: jyuratodus.id,
+  materials: [
+    { materialId: jyuratodusFin.id, quantity: 1 },
+    { materialId: jyuratodusCarapace.id, quantity: 2 },
+    { materialId: jyuratodusScale.id, quantity: 2 },
+    { materialId: aquaSac.id, quantity: 1 },
+    { materialId: gajauScale.id, quantity: 1 },
+  ],
 };
 export const diablosWall: WeaponSeedData = {
   id: uuid(),
@@ -1654,6 +2084,7 @@ export const diablosWall: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneStrongarm.id,
   monster: diablos.id,
+  materials: diablosMaterialFirst,
 };
 export const diablosTyrannis: WeaponSeedData = {
   id: uuid(),
@@ -1668,6 +2099,7 @@ export const diablosTyrannis: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: diablosWall.id,
   monster: diablos.id,
+  materials: diablosMaterialSecond,
 };
 export const daorasCasca: WeaponSeedData = {
   id: uuid(),
@@ -1752,6 +2184,7 @@ export const improvedSteelAxe: WeaponSeedData = {
   damageFour: 1,
   damageFive: 0,
   previousWeapon: protoIronAxe.id,
+  materials: commonIronMaterialsFirst,
 };
 export const perfectedAlloyAxe: WeaponSeedData = {
   id: uuid(),
@@ -1765,6 +2198,7 @@ export const perfectedAlloyAxe: WeaponSeedData = {
   damageFour: 3,
   damageFive: 0,
   previousWeapon: improvedSteelAxe.id,
+  materials: commonIronMaterialsSecond,
 };
 export const boneAxe: WeaponSeedData = {
   id: uuid(),
@@ -1777,6 +2211,7 @@ export const boneAxe: WeaponSeedData = {
   damageThree: 0,
   damageFour: 0,
   damageFive: 0,
+  materials: boneMaterialStarting,
 };
 export const boneSmasher: WeaponSeedData = {
   id: uuid(),
@@ -1790,6 +2225,7 @@ export const boneSmasher: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: boneAxe.id,
+  materials: commonBoneMaterialsFirst,
 };
 export const powerSmasher: WeaponSeedData = {
   id: uuid(),
@@ -1803,6 +2239,7 @@ export const powerSmasher: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: boneSmasher.id,
+  materials: commonBoneMaterialsSecond,
 };
 export const flammembeil: WeaponSeedData = {
   id: uuid(),
@@ -1817,6 +2254,12 @@ export const flammembeil: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneAxe.id,
   monster: anjanath.id,
+  materials: [
+    { materialId: anjanathFang.id, quantity: 2 },
+    { materialId: anjanathScale.id, quantity: 1 },
+    { materialId: anjanathPelt.id, quantity: 2 },
+    { materialId: flameSac.id, quantity: 2 },
+  ],
 };
 export const gnashingFlammembeil: WeaponSeedData = {
   id: uuid(),
@@ -1831,6 +2274,11 @@ export const gnashingFlammembeil: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: flammembeil.id,
   monster: anjanath.id,
+  materials: [
+    { materialId: anjanathNosebone.id, quantity: 4 },
+    { materialId: firecellStone.id, quantity: 2 },
+    { materialId: anjanathPelt.id, quantity: 4 },
+  ],
 };
 export const rathalosAxe: WeaponSeedData = {
   id: uuid(),
@@ -1845,6 +2293,12 @@ export const rathalosAxe: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: protoIronAxe.id,
   monster: rathalos.id,
+  materials: [
+    { materialId: rathalosScale.id, quantity: 1 },
+    { materialId: rathalosWebing.id, quantity: 2 },
+    { materialId: infernoSac.id, quantity: 1 },
+    { materialId: rathalosMarrow.id, quantity: 2 },
+  ],
 };
 export const rathbringerAxe: WeaponSeedData = {
   id: uuid(),
@@ -1859,6 +2313,7 @@ export const rathbringerAxe: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: rathalosAxe.id,
   monster: rathalos.id,
+  materials: rathalosMaterialsSecond,
 };
 export const carapaceAxe: WeaponSeedData = {
   id: uuid(),
@@ -1873,6 +2328,11 @@ export const carapaceAxe: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneAxe.id,
   monster: barroth.id,
+  materials: [
+    { materialId: barrothClaw.id, quantity: 1 },
+    { materialId: barrothShell.id, quantity: 4 },
+    { materialId: barrothRidge.id, quantity: 2 },
+  ],
 };
 export const barrothGrinder: WeaponSeedData = {
   id: uuid(),
@@ -1887,6 +2347,12 @@ export const barrothGrinder: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: carapaceAxe.id,
   monster: barroth.id,
+  materials: [
+    { materialId: barrothClaw.id, quantity: 2 },
+    { materialId: barrothCarapace.id, quantity: 3 },
+    { materialId: barrothRidge.id, quantity: 3 },
+    { materialId: fertileMud.id, quantity: 2 },
+  ],
 };
 export const diablosAxe: WeaponSeedData = {
   id: uuid(),
@@ -1901,6 +2367,7 @@ export const diablosAxe: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneAxe.id,
   monster: diablos.id,
+  materials: diablosMaterialFirst,
 };
 export const axeSemperTyrannis: WeaponSeedData = {
   id: uuid(),
@@ -1915,6 +2382,7 @@ export const axeSemperTyrannis: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: diablosAxe.id,
   monster: diablos.id,
+  materials: diablosMaterialSecond,
 };
 export const teostrasArx: WeaponSeedData = {
   id: uuid(),
@@ -2001,6 +2469,11 @@ export const steelLance: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: ironLance.id,
+  materials: [
+    { materialId: dragoniteOre.id, quantity: 2 },
+    { materialId: machaliteOre.id, quantity: 5 },
+    { materialId: monsterBoneMedium.id, quantity: 2 },
+  ]
 };
 export const chromeLance: WeaponSeedData = {
   id: uuid(),
@@ -2014,6 +2487,7 @@ export const chromeLance: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: steelLance.id,
+  materials: commonIronMaterialsSecond
 };
 export const boneLance: WeaponSeedData = {
   id: uuid(),
@@ -2026,6 +2500,7 @@ export const boneLance: WeaponSeedData = {
   damageThree: 0,
   damageFour: 0,
   damageFive: 0,
+  materials: boneMaterialStarting,
 };
 export const hardBoneLance: WeaponSeedData = {
   id: uuid(),
@@ -2039,6 +2514,11 @@ export const hardBoneLance: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: boneLance.id,
+  materials: [
+    { materialId: monsterBoneLarge.id , quantity: 1 },
+    { materialId: monsterBoneMedium.id , quantity: 5 },
+    { materialId: boulderBone.id , quantity: 2 }
+  ]
 };
 export const heavyBoneLance: WeaponSeedData = {
   id: uuid(),
@@ -2052,6 +2532,7 @@ export const heavyBoneLance: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: hardBoneLance.id,
+  materials: commonBoneMaterialsSecond
 };
 export const carapaceLance: WeaponSeedData = {
   id: uuid(),
@@ -2066,6 +2547,11 @@ export const carapaceLance: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneLance.id,
   monster: barroth.id,
+  materials: [
+    { materialId: barrothClaw.id, quantity: 1 },
+    { materialId: barrothShell.id, quantity: 3 },
+    { materialId: barrothRidge.id, quantity: 3 },
+  ]
 };
 export const barrothStinger: WeaponSeedData = {
   id: uuid(),
@@ -2080,6 +2566,11 @@ export const barrothStinger: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: carapaceLance.id,
   monster: barroth.id,
+  materials: [
+    { materialId: barrothClaw.id, quantity: 2 },
+    { materialId: barrothCarapace.id, quantity: 3 },
+    { materialId: barrothRidge.id, quantity: 3 },
+  ]
 };
 export const aquaHorn: WeaponSeedData = {
   id: uuid(),
@@ -2094,6 +2585,13 @@ export const aquaHorn: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneLance.id,
   monster: jyuratodus.id,
+  materials: [
+    { materialId: boulderBone.id, quantity: 2 },
+    { materialId: jyuratodusFin.id, quantity: 1 },
+    { materialId: jyuratodusShell.id, quantity: 2 },
+    { materialId: jyuratodusScale.id, quantity: 3 },
+    { materialId: aquaSac.id, quantity: 1 },
+  ]
 };
 export const waterSpike: WeaponSeedData = {
   id: uuid(),
@@ -2108,6 +2606,13 @@ export const waterSpike: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: aquaHorn.id,
   monster: jyuratodus.id,
+  materials: [
+    { materialId: jyuratodusFin.id, quantity: 1 },
+    { materialId: jyuratodusCarapace.id, quantity: 2 },
+    { materialId: jyuratodusScale.id, quantity: 2 },
+    { materialId: aquaSac.id, quantity: 1 },
+    { materialId: gajauScale.id, quantity: 1 },
+  ]
 };
 export const thunderLance: WeaponSeedData = {
   id: uuid(),
@@ -2122,6 +2627,13 @@ export const thunderLance: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneLance.id,
   monster: tobiKadachi.id,
+  materials: [
+    { materialId: dragoniteOre.id, quantity: 2 },
+    { materialId: tobiKadachiElectrode.id, quantity: 1 },
+    { materialId: tobiKadachiClaw.id, quantity: 2 },
+    { materialId: electroSac.id, quantity: 2 },
+    { materialId: coralCrystal.id, quantity: 2 },
+  ]
 };
 export const lightningSpire: WeaponSeedData = {
   id: uuid(),
@@ -2136,6 +2648,12 @@ export const lightningSpire: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: thunderLance.id,
   monster: tobiKadachi.id,
+  materials: [
+    { materialId: fuciumOre.id, quantity: 2 },
+    { materialId: tobiKadachiElectrode.id, quantity: 2 },
+    { materialId: tobiKadachiClaw.id, quantity: 2 },
+    { materialId: thunderSac.id, quantity: 1 },
+  ]
 };
 export const flameLance: WeaponSeedData = {
   id: uuid(),
@@ -2150,6 +2668,7 @@ export const flameLance: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: ironLance.id,
   monster: rathalos.id,
+  materials: rathalosMaterialsFirst
 };
 export const redTail: WeaponSeedData = {
   id: uuid(),
@@ -2164,6 +2683,7 @@ export const redTail: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: flameLance.id,
   monster: rathalos.id,
+  materials: rathalosMaterialsSecond
 };
 export const iceSteelSpear: WeaponSeedData = {
   id: uuid(),
@@ -2280,6 +2800,7 @@ export const steelBow: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: ironBow.id,
+  materials: commonIronMaterialsFirst,
 };
 export const alloyBow: WeaponSeedData = {
   id: uuid(),
@@ -2293,6 +2814,7 @@ export const alloyBow: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: steelBow.id,
+  materials: commonBoneMaterialsSecond,
 };
 export const huntersBow: WeaponSeedData = {
   id: uuid(),
@@ -2305,6 +2827,7 @@ export const huntersBow: WeaponSeedData = {
   damageThree: 0,
   damageFour: 0,
   damageFive: 0,
+  materials: boneMaterialStarting,
 };
 export const huntersStoutbow: WeaponSeedData = {
   id: uuid(),
@@ -2318,6 +2841,7 @@ export const huntersStoutbow: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: huntersBow.id,
+  materials: commonBoneMaterialsFirst,
 };
 export const huntersProudbow: WeaponSeedData = {
   id: uuid(),
@@ -2331,6 +2855,7 @@ export const huntersProudbow: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: huntersStoutbow.id,
+  materials: commonBoneMaterialsSecond,
 };
 export const bloomingArch: WeaponSeedData = {
   id: uuid(),
@@ -2345,6 +2870,12 @@ export const bloomingArch: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: huntersBow.id,
   monster: pukeiPukei.id,
+  materials: [
+    { materialId: pukeiPukeiQuill.id, quantity: 2 },
+    { materialId: pukeiPukeiScale.id, quantity: 2 },
+    { materialId: poisonSac.id, quantity: 1 },
+    { materialId: pukeiPukeiTail.id, quantity: 1 },
+  ]
 };
 export const daturaString: WeaponSeedData = {
   id: uuid(),
@@ -2359,6 +2890,12 @@ export const daturaString: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: bloomingArch.id,
   monster: pukeiPukei.id,
+  materials: [
+    { materialId: pukeiPukeiScale.id, quantity: 2 },
+    { materialId: pukeiPukeiWing.id, quantity: 2 },
+    { materialId: toxicSac.id, quantity: 2 },
+    { materialId: qualityBone.id, quantity: 3 },
+  ]
 };
 export const diablosBow: WeaponSeedData = {
   id: uuid(),
@@ -2373,6 +2910,7 @@ export const diablosBow: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: huntersBow.id,
   monster: diablos.id,
+  materials: diablosMaterialFirst,
 };
 export const diablosCoilbender: WeaponSeedData = {
   id: uuid(),
@@ -2387,6 +2925,7 @@ export const diablosCoilbender: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: diablosBow.id,
   monster: diablos.id,
+  materials: diablosMaterialSecond,
 };
 export const pulsarBow: WeaponSeedData = {
   id: uuid(),
@@ -2401,6 +2940,12 @@ export const pulsarBow: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: huntersBow.id,
   monster: tobiKadachi.id,
+  materials: [
+    { materialId: tobiKadachiElectrode.id, quantity: 2 },
+    { materialId: tobiKadachiClaw.id, quantity: 2 },
+    { materialId: electroSac.id, quantity: 1 },
+    { materialId: coralCrystal.id, quantity: 2 },
+  ]
 };
 export const flyingKadachiStrikebow: WeaponSeedData = {
   id: uuid(),
@@ -2415,6 +2960,12 @@ export const flyingKadachiStrikebow: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: pulsarBow.id,
   monster: tobiKadachi.id,
+  materials: [
+    { materialId: tobiKadachiScale.id, quantity: 2 },
+    { materialId: tobiKadachiClaw.id, quantity: 2 },
+    { materialId: tobiKadachiPelt.id, quantity: 2 },
+    { materialId: dragonveinCrystal.id, quantity: 2 },
+  ]
 };
 export const blazingBow: WeaponSeedData = {
   id: uuid(),
@@ -2429,6 +2980,11 @@ export const blazingBow: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: huntersBow.id,
   monster: anjanath.id,
+  materials: [
+    { materialId: anjanathScale.id, quantity: 3 },
+    { materialId: anjanathFang.id, quantity: 2 },
+    { materialId: flameSac.id, quantity: 1 },
+  ]
 };
 export const anjaArch: WeaponSeedData = {
   id: uuid(),
@@ -2443,6 +2999,11 @@ export const anjaArch: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: huntersBow.id,
   monster: anjanath.id,
+  materials: [
+    { materialId: anjanathFang.id, quantity: 4 },
+    { materialId: anjanathPelt.id, quantity: 4 },
+    { materialId: firecellStone.id, quantity: 2 },
+  ]
 };
 export const kuluArrow: WeaponSeedData = {
   id: uuid(),
@@ -2559,6 +3120,7 @@ export const busterBlade: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: busterSword.id,
+  materials: commonIronMaterialsFirst
 };
 export const chromeRazor: WeaponSeedData = {
   id: uuid(),
@@ -2572,6 +3134,7 @@ export const chromeRazor: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: busterBlade.id,
+  materials: commonIronMaterialsSecond
 };
 export const boneBlade: WeaponSeedData = {
   id: uuid(),
@@ -2584,6 +3147,7 @@ export const boneBlade: WeaponSeedData = {
   damageThree: 2,
   damageFour: 0,
   damageFive: 0,
+  materials: boneMaterialStarting,
 };
 export const boneSlasher: WeaponSeedData = {
   id: uuid(),
@@ -2597,6 +3161,7 @@ export const boneSlasher: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: boneBlade.id,
+  materials: commonBoneMaterialsFirst,
 };
 export const giantJawblade: WeaponSeedData = {
   id: uuid(),
@@ -2610,6 +3175,7 @@ export const giantJawblade: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: boneSlasher.id,
+  materials: commonBoneMaterialsSecond
 };
 export const bloomingBlade: WeaponSeedData = {
   id: uuid(),
@@ -2624,6 +3190,12 @@ export const bloomingBlade: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: busterSword.id,
   monster: pukeiPukei.id,
+  materials: [
+    { materialId: pukeiPukeiQuill.id, quantity: 2 },
+    { materialId: pukeiPukeiScale.id, quantity: 2 },
+    { materialId: poisonSac.id, quantity: 1 },
+    { materialId: pukeiPukeiTail.id, quantity: 1 },
+  ]
 };
 export const daturaBlaze: WeaponSeedData = {
   id: uuid(),
@@ -2638,6 +3210,12 @@ export const daturaBlaze: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: bloomingBlade.id,
   monster: pukeiPukei.id,
+  materials: [
+    { materialId: pukeiPukeiScale.id, quantity: 2 },
+    { materialId: pukeiPukeiWing.id, quantity: 2 },
+    { materialId: toxicSac.id, quantity: 2 },
+    { materialId: qualityBone.id, quantity: 3 },
+  ]
 };
 export const carapaceBuster: WeaponSeedData = {
   id: uuid(),
@@ -2652,6 +3230,11 @@ export const carapaceBuster: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: boneBlade.id,
   monster: barroth.id,
+  materials: [
+    { materialId: barrothClaw.id, quantity: 1 },
+    { materialId: barrothShell.id, quantity: 3 },
+    { materialId: barrothRidge.id, quantity: 3 },
+  ]
 };
 export const barrothShredder: WeaponSeedData = {
   id: uuid(),
@@ -2666,6 +3249,11 @@ export const barrothShredder: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: carapaceBuster.id,
   monster: barroth.id,
+  materials: [
+    { materialId: barrothClaw.id, quantity: 2 },
+    { materialId: barrothCarapace.id, quantity: 3 },
+    { materialId: barrothRidge.id, quantity: 3 },
+  ]
 };
 export const jagrasBlade: WeaponSeedData = {
   id: uuid(),
@@ -2680,6 +3268,12 @@ export const jagrasBlade: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: busterSword.id,
   monster: greatJagrass.id,
+  materials: [
+    { materialId: greatJagrasClaw.id, quantity: 2 },
+    { materialId: greatJagrasHide.id, quantity: 1 },
+    { materialId: greatJagrasScale.id, quantity: 2 },
+    { materialId: sharpClaw.id, quantity: 1 },
+  ]
 };
 export const jagrasHacker: WeaponSeedData = {
   id: uuid(),
@@ -2694,6 +3288,7 @@ export const jagrasHacker: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: jagrasBlade.id,
   monster: greatJagrass.id,
+  materials: greatJagrasCommonMaterialsSecond
 };
 export const flameBlade: WeaponSeedData = {
   id: uuid(),
@@ -2708,6 +3303,7 @@ export const flameBlade: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: busterSword.id,
   monster: rathalos.id,
+  materials: rathalosMaterialsFirst
 };
 export const redWing: WeaponSeedData = {
   id: uuid(),
@@ -2722,6 +3318,7 @@ export const redWing: WeaponSeedData = {
   damageFive: 0,
   previousWeapon: flameBlade.id,
   monster: rathalos.id,
+  materials: rathalosMaterialsSecond,
 };
 export const icesteelEdge: WeaponSeedData = {
   id: uuid(),
@@ -2844,7 +3441,7 @@ export const boneBludgeon: WeaponSeedData = {
   damageThree: 0,
   damageFour: 1,
   damageFive: 0,
-  materials: [{ materialId: monsterBoneSmall.id, quantity: 1 }],
+  materials: boneMaterialStarting,
 };
 export const fossilBludgeon: WeaponSeedData = {
   id: uuid(),
@@ -3190,7 +3787,7 @@ export const boneRod: WeaponSeedData = {
   damageThree: 1,
   damageFour: 0,
   damageFive: 0,
-  materials: [{ materialId: monsterBoneSmall.id, quantity: 1 }],
+  materials: boneMaterialStarting,
 };
 export const hardBoneRod: WeaponSeedData = {
   id: uuid(),
@@ -3538,7 +4135,7 @@ export const huntersRifle: WeaponSeedData = {
   damageThree: 0,
   damageFour: 0,
   damageFive: 0,
-  materials: [{ materialId: monsterBoneSmall.id, quantity: 1 }],
+  materials: boneMaterialStarting,
 };
 export const powerRifle: WeaponSeedData = {
   id: uuid(),
@@ -3667,12 +4264,7 @@ export const jagrasBlitz: WeaponSeedData = {
   damageFour: 0,
   damageFive: 0,
   previousWeapon: chainBlitz.id,
-  materials: [
-    { materialId: greatJagrasClaw.id, quantity: 1 },
-    { materialId: greatJagrasHide.id, quantity: 1 },
-    { materialId: greatJagrasScale.id, quantity: 3 },
-    { materialId: sharpClaw.id, quantity: 1 },
-  ],
+  materials: greatJagrasCommonMaterialsFirst,
   monster: greatJagrass.id,
 };
 export const jagrasFire: WeaponSeedData = {
@@ -3856,7 +4448,7 @@ export const boneShotel: WeaponSeedData = {
   damageThree: 0,
   damageFour: 0,
   damageFive: 0,
-  materials: [{ materialId: monsterBoneSmall.id, quantity: 1 }],
+  materials: boneMaterialStarting,
 };
 export const hardBoneShotel: WeaponSeedData = {
   id: uuid(),

@@ -159,6 +159,7 @@ export const dragoniteOre = { id: uuid(), name: 'Draonite Ore', isCommon: true, 
 export const fuciumOre = { id: uuid(), name: 'Fucium Ore', isCommon: true, rarity: 0, type: MaterialType.ORE };
 export const dragonveinCrystal = { id: uuid(), name: 'Dragonvein Crystal', isCommon: true, rarity: 0, type: MaterialType.ORE };
 export const lightCrystal = { id: uuid(), name: 'Light Crystal', isCommon: false, rarity: 0, type: MaterialType.ORE };
+export const coralCrystal = { id: uuid(), name: 'Coral Crystal', isCommon: false, rarity: 0, type: MaterialType.ORE };
 
 // Monster part's
 export const wingdrakeHide = { id: uuid(), name: 'Wingdrake Hide', isCommon: true, rarity: 0, type: MaterialType.MONSTER_PART };
