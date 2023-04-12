@@ -10,6 +10,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
+      ssl: process.env.MODE === 'PROD' ? { rejectUnauthorized: false, sslMode: 'required' } : false as any,
       synchronize: true,
       autoLoadEntities: true,
     }),

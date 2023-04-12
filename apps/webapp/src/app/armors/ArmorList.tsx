@@ -30,7 +30,7 @@ export function ArmorList() {
     }
 
     return filteredArmorList.filter((weapon) =>
-      weapon.name.includes(debouncedSearch)
+      weapon.name.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase())
     );
   }, [debouncedSearch, armorList, inventory.armors]);
 
