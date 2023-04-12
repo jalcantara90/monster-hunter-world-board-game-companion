@@ -10,6 +10,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
+      ssl:
+        process.env.MODE === 'PROD'
+          ? { rejectUnauthorized: false, sslMode: 'required' }
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          : (false as any),
       synchronize: true,
       autoLoadEntities: true,
     }),

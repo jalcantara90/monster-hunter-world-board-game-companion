@@ -15,7 +15,13 @@ async function bootstrap() {
   app.setGlobalPrefix(globalPrefix);
   app.useGlobalPipes(new ValidationPipe());
 
-  app.enableCors();
+  app.enableCors({
+    allowedHeaders: '*',
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    credentials: true,
+  });
 
   const config = new DocumentBuilder()
     .setTitle('MHW companion API')
