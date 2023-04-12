@@ -15,7 +15,8 @@
     "migrations:revert": "yarn typeorm -- migration:revert",
     "typeorm-build-config": "cd apps/mhw-board-companion-api && tsc ./src/typeorm.config.ts --outdir ../../dist/api",
     "typeorm-generate-migrations": "typeorm-ts-node-esm migration:generate migrations -- -d apps/mhw-board-companion-api/src/ormconfig.ts migration:generate test",
-    "typeorm-run-migrations": "npm run typeorm-build-config && typeorm -d dist/typeorm.config.js migration:run"
+    "typeorm-run-migrations": "npm run typeorm-build-config && typeorm -d dist/typeorm.config.js migration:run",
+    "start:prod": "node ./dist/apps/mhw-board-companion-api/main.js"
   },
   "private": true,
   "dependencies": {
