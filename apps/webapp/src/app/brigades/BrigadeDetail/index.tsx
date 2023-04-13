@@ -79,7 +79,7 @@ export function BrigadeDetail({
           <BrigadeCardSkeletonList quantity={5} />
         ) : (
           campaignList?.map((campaign, index) => (
-            <Link to={`campaigns/${campaign.id}`}>
+            <Link to={`/campaigns/${campaign.id}`}>
               <BrigadeCard
                 index={index}
                 key={campaign.id}
