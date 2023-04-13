@@ -11,16 +11,15 @@
   align-items: center;
   justify-content: space-around;
 
-&__action {
-  background-color: transparent;
-  border: 1px solid colors.$cta-primary;
-  color: colors.$text-primary;
-  border-radius: 100%;
-  width: 2.5rem;
-  height: 2.5rem;
-}
-
-  svg {
-    width: 1.5rem;
+  &__action {
+    background-color: transparent;
+    border: 1px solid colors.$cta-primary;
+    color: colors.$text-primary;
+    border-radius: 100%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
