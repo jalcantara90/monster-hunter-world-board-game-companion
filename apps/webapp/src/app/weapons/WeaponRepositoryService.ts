@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment';
 import { Weapon } from './types';
 
 export interface IWeaponRepository {
@@ -5,7 +6,7 @@ export interface IWeaponRepository {
 }
 
 export class WeaponRepositoryService implements IWeaponRepository {
-  private readonly baseUrl = 'http://localhost:3099/api/weapons';
+  private readonly baseUrl =  `${environment.baseUrl}/weapons`;
   async findAll(): Promise<Weapon[]> {
     const response = await fetch(this.baseUrl);
 
