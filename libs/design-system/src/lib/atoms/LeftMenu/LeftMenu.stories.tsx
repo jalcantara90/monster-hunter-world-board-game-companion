@@ -1,6 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 import { SideMenuContextProvider } from '../../molecules/SideMenu';
 import { LeftMenu, LeftMenuProps } from './index';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 export default {
   title: 'Atoms/LeftMenu',
@@ -9,7 +10,11 @@ export default {
 
 const Template: Story<LeftMenuProps> = (args) => (
   <SideMenuContextProvider initialActive={true}>
-    <LeftMenu {...args} />
+    <RouterProvider
+      router={createBrowserRouter([
+        { path: '/', element: <LeftMenu {...args} /> },
+      ])}
+    />
   </SideMenuContextProvider>
 );
 
