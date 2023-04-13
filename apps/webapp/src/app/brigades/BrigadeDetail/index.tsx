@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
   BrigadeCard,
   BrigadeCardSkeletonList,
@@ -79,12 +79,13 @@ export function BrigadeDetail({
           <BrigadeCardSkeletonList quantity={5} />
         ) : (
           campaignList?.map((campaign, index) => (
-            <BrigadeCard
-              route={`campaigns/${campaign.id}`}
-              index={index}
-              key={campaign.id}
-              name={campaign.name}
-            />
+            <Link to={`campaigns/${campaign.id}`}>
+              <BrigadeCard
+                index={index}
+                key={campaign.id}
+                name={campaign.name}
+              />
+            </Link>
           ))
         )}
       </section>

@@ -9,13 +9,13 @@ import {
   FullPageLoader,
   useToast,
 } from '@mhwboard-companion/design-system';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useBrigadeList } from './hooks';
 import { IBrigadeRepository } from './BrigadeRepositoryService';
 
 import styles from './BrigadeList.module.scss';
 import { BrigadeForm, BrigadeModal } from './BrigadeModal';
-import { useNavigate } from 'react-router-dom';
 
 type BrigadeListProps = {
   brigadeRepository: IBrigadeRepository;
@@ -67,12 +67,9 @@ export function BrigadeList({ brigadeRepository }: BrigadeListProps) {
           <BrigadeCardSkeletonList quantity={5} />
         ) : (
           brigadeList?.map((brigade, index) => (
-            <BrigadeCard
-              route={`brigades/${brigade.id}`}
-              index={index}
-              key={brigade.id}
-              name={brigade.name}
-            />
+            <Link to={`brigades/${brigade.id}`}>
+              <BrigadeCard index={index} key={brigade.id} name={brigade.name} />
+            </Link>
           ))
         )}
       </section>
