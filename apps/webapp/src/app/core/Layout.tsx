@@ -5,32 +5,8 @@ import { Outlet } from 'react-router-dom';
 
 const routes = [
   {
-    name: 'Campaigns',
-    route: '/campaigns',
-  },
-  {
-    name: 'Hunters',
-    route: '/hunters',
-  },
-  {
-    name: 'Brigades',
+    name: 'Home',
     route: '/',
-  },
-  {
-    name: 'Armors',
-    route: '/armors',
-  },
-  {
-    name: 'Materials',
-    route: '/materials',
-  },
-  {
-    name: 'Monsters',
-    route: '/monsters',
-  },
-  {
-    name: 'Weapons',
-    route: '/weapons',
   },
 ];
 

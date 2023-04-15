@@ -75,6 +75,8 @@ export function HunterManagement() {
         value={search}
         onChange={(ev) => setSearch(ev.target.value)}
         hideError
+        type="search"
+        placeholder=" Example: Iron ore"
       />
       <InventoryItemList
         inventoryId={inventory.inventoryId}

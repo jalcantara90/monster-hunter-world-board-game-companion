@@ -16,10 +16,12 @@
     border: 1px solid colors.$cta-primary;
     color: colors.$text-primary;
     border-radius: 100%;
-    width: 2.5rem;
-    height: 2.5rem;
+    height: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    svg {
+      width: 1rem;
+    }
   }
 }

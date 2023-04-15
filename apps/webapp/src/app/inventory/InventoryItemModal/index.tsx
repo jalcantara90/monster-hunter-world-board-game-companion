@@ -52,6 +52,7 @@ export const InventoryItemModal = () => {
                   onChange={(option) => {
                     field.onChange((option as { value: string }).value);
                   }}
+                  placeholder="Example: Monster bone medium"
                 />
               );
             }}

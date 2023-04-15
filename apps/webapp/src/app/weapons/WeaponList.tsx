@@ -30,7 +30,9 @@ export function WeaponList() {
     }
 
     return filteredWeaponList.filter((weapon) =>
-      weapon.name.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase())
+      weapon.name
+        .toLocaleLowerCase()
+        .includes(debouncedSearch.toLocaleLowerCase())
     );
   }, [debouncedSearch, weaponList, inventory.weapons]);
 
@@ -64,6 +66,8 @@ export function WeaponList() {
         value={search}
         onChange={(ev) => setSearch(ev.target.value)}
         hideError
+        type="search"
+        placeholder=" Example: Steel Gunlance"
       />
       {weaponFilteredList.map((weapon) => (
         <WeaponCard
