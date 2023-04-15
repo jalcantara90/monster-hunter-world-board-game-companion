@@ -1,8 +1,8 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
+  AddHunterButton,
   BrigadeCard,
   BrigadeCardSkeletonList,
-  FloatingButton,
   ListContainer,
   PlusIcon,
   SectionTitle,
@@ -69,24 +69,25 @@ export function BrigadeDetail({
   return (
     <ListContainer>
       <SectionTitle title="Campaigns" />
-      <section className={styles.campaignList__floating}>
-        <FloatingButton onClick={showCreateCampaignModal}>
-          <PlusIcon />
-        </FloatingButton>
-      </section>
       <section className={styles.campaignList}>
         {isLoading ? (
           <BrigadeCardSkeletonList quantity={5} />
         ) : (
-          campaignList?.map((campaign, index) => (
-            <Link to={`/campaigns/${campaign.id}`}>
-              <BrigadeCard
-                index={index}
-                key={campaign.id}
-                name={campaign.name}
-              />
-            </Link>
-          ))
+          <>
+            {campaignList?.map((campaign, index) => (
+              <Link to={`/campaigns/${campaign.id}`}>
+                <BrigadeCard
+                  index={index}
+                  key={campaign.id}
+                  name={campaign.name}
+                />
+              </Link>
+            ))}
+            <AddHunterButton onClick={showCreateCampaignModal}>
+              <PlusIcon />
+              Add Campaign
+            </AddHunterButton>
+          </>
         )}
       </section>
     </ListContainer>

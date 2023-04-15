@@ -30,7 +30,9 @@ export function ArmorList() {
     }
 
     return filteredArmorList.filter((weapon) =>
-      weapon.name.toLocaleLowerCase().includes(debouncedSearch.toLocaleLowerCase())
+      weapon.name
+        .toLocaleLowerCase()
+        .includes(debouncedSearch.toLocaleLowerCase())
     );
   }, [debouncedSearch, armorList, inventory.armors]);
 
@@ -64,6 +66,8 @@ export function ArmorList() {
         value={search}
         onChange={(ev) => setSearch(ev.target.value)}
         hideError
+        type="search"
+        placeholder="Example: Alloy Helm"
       />
       {armorFilteredList.map((armor) => (
         <ArmorPieceCard

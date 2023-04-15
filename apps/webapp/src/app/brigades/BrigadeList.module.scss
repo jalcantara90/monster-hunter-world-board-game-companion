@@ -3,7 +3,7 @@
 
 .brigadeList {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  grid-template-columns: 1fr;
   gap: spacing.$xs;
 
   &__container {
@@ -17,16 +17,7 @@
     bottom: 1rem;
     right: 1rem;
     svg {
-      max-width: 2rem;
-    }
-  }
-
-  &__floating {
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    svg {
-      max-width: 2rem;
+      width: 2rem;
     }
   }
 }

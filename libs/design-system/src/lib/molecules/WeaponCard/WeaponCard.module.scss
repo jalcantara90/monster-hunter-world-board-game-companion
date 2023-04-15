@@ -61,4 +61,6 @@
 
 .previousWeapon {
   font: typography.$b300-regular;
+  display: flex;
+  gap: spacing.$tiny;
 }

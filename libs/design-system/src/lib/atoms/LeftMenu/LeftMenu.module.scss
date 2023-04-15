@@ -1,6 +1,7 @@
 @use '../../settings/colors';
 @use '../../settings/border';
 @use '../../settings/spacing';
+@use '../../settings/zindex';
 @use '../../tools/typography' as mixins;
 
 .leftMenu {
@@ -15,6 +16,7 @@
   position: absolute;
   transition: all 0.3s ease-in-out;
   transform: translateX(-100vw);
+  z-index: zindex.$header;
 
    &--open {
     transform: translateX(0);

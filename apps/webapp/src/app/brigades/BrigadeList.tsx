@@ -3,11 +3,11 @@ import {
   BrigadeCardSkeletonList,
   ListContainer,
   SectionTitle,
-  FloatingButton,
   PlusIcon,
   useModal,
   FullPageLoader,
   useToast,
+  AddHunterButton,
 } from '@mhwboard-companion/design-system';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -57,20 +57,25 @@ export function BrigadeList({ brigadeRepository }: BrigadeListProps) {
   return (
     <ListContainer>
       <SectionTitle title="Brigades" />
-      <section className={styles.brigadeList__floating}>
-        <FloatingButton onClick={showCreateBrigadeModal}>
-          <PlusIcon />
-        </FloatingButton>
-      </section>
       <section className={styles.brigadeList}>
         {isLoading ? (
           <BrigadeCardSkeletonList quantity={5} />
         ) : (
-          brigadeList?.map((brigade, index) => (
-            <Link to={`brigades/${brigade.id}`}>
-              <BrigadeCard index={index} key={brigade.id} name={brigade.name} />
-            </Link>
-          ))
+          <>
+            {brigadeList?.map((brigade, index) => (
+              <Link to={`brigades/${brigade.id}`}>
+                <BrigadeCard
+                  index={index}
+                  key={brigade.id}
+                  name={brigade.name}
+                />
+              </Link>
+            ))}
+            <AddHunterButton onClick={showCreateBrigadeModal}>
+              <PlusIcon />
+              Add Brigade
+            </AddHunterButton>
+          </>
         )}
       </section>
       {isCreating && <FullPageLoader />}

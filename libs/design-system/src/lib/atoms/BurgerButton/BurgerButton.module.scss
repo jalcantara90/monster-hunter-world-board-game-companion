@@ -4,7 +4,6 @@
 .burgerButton {
   display: flex;
   flex-direction: column;
-  width: 3rem;
   border: 0;
   background: transparent;
   gap: .5rem;
@@ -13,7 +12,7 @@
   &__line {
     background: colors.$white;
     height: 3px;
-    width: 100%;
+    width: 3rem;
     border-radius: border.$radius-default;
     transition: all .3s;
     transform-origin: left;
@@ -21,7 +20,7 @@
 
   &--active {
     .burgerButton__line:first-child {
-      transform: rotate(38deg);
+      transform: rotate(30deg);
     }
 
     .burgerButton__line:nth-child(2) {
@@ -29,7 +28,7 @@
     }
 
     .burgerButton__line:last-child {
-      transform: rotate(-37deg);
+      transform: rotate(-30deg);
     }
   }
 

@@ -57,12 +57,12 @@ export function ModalContextProvider({ children }: ModalContextProviderProps) {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const confirmModal = (result: any) => {
-    promiseInfo?.resolve({ result, isCanceled: false });
+    promiseInfo?.resolve({ result, isCancelled: false });
     setModal(undefined);
   };
 
   const cancelModal = () => {
-    promiseInfo?.resolve({ isCanceled: true });
+    promiseInfo?.resolve({ isCancelled: true });
     setModal(undefined);
   };
 

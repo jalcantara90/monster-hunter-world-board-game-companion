@@ -57,6 +57,7 @@ export function AddCampaignHunterModal() {
                 onChange={(option) =>
                   field.onChange((option as { value: string }).value)
                 }
+                placeholder="Type a hunter name"
               />
             )}
           />
@@ -72,6 +73,7 @@ export function AddCampaignHunterModal() {
                 onChange={(option) =>
                   field.onChange((option as { value: string }).value)
                 }
+                placeholder="Example: Great Sword"
               />
             )}
           />

@@ -10,6 +10,7 @@
   outline: none;
   transition: border 0.3s;
   font: typography.$b200-regular;
+  border-radius: none;
 
   &--error {
     border: 1px solid colors.$state-error;
