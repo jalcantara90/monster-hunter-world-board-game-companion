@@ -75,12 +75,8 @@ export function BrigadeDetail({
         ) : (
           <>
             {campaignList?.map((campaign, index) => (
-              <Link to={`/campaigns/${campaign.id}`}>
-                <BrigadeCard
-                  index={index}
-                  key={campaign.id}
-                  name={campaign.name}
-                />
+              <Link key={campaign.id} to={`/campaigns/${campaign.id}`}>
+                <BrigadeCard index={index} name={campaign.name} />
               </Link>
             ))}
             <AddHunterButton onClick={showCreateCampaignModal}>

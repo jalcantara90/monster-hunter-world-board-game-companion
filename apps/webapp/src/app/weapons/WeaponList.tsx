@@ -20,6 +20,10 @@ export function WeaponList() {
   const [search, setSearch] = useState('');
   const debouncedSearch = useDebounce(search);
 
+  const inventoryMaterials = useMemo(() => {
+    return [...inventory.commonMaterials, ...inventory.otherMaterials];
+  }, [inventory.commonMaterials, inventory.otherMaterials]);
+
   const weaponFilteredList = useMemo(() => {
     const filteredWeaponList = weaponList.filter(
       (weapon) => !inventory.weapons.some((w) => w.id === weapon.id)
@@ -73,6 +77,7 @@ export function WeaponList() {
         <WeaponCard
           key={weapon.id}
           {...weapon}
+          inventoryMaterials={inventoryMaterials}
           craftWeapon={handleCraftWeapon}
         />
       ))}

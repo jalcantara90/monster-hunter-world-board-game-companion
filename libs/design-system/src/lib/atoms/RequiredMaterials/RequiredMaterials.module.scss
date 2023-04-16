@@ -1,5 +1,6 @@
 @use '../../settings/colors';
 @use '../../settings/typography';
+@use '../../settings/spacing';
 
 .requirementList {
   list-style: none;
@@ -13,5 +14,26 @@
   &__secondaryText {
     color: colors.$text-secondary;
     font: typography.$b300-regular;
+  }
+
+  &__item {
+    display: flex;
+    gap: spacing.$tiny;
+
+    &--has-zero {
+      color: colors.$state-error;
+    }
+
+    &--has-enough {
+      color: colors.$state-active;
+    }
+
+    &--not-has-enough {
+      color: colors.$state-warning;
+    }
+  }
+
+  .quantityLeft {
+    color: colors.$text-secondary;
   }
 }

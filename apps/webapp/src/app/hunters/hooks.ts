@@ -55,13 +55,33 @@ export function useHunterInventory({
 }
 
 export function useHunterInventoryItem() {
+  const { setInventory } = useInventoryContext();
+
   const updateInventoryItem = async (
     inventoryItemId: string,
     quantity: number
   ) => {
-    return await inventoryRepository.updateInventoryItem(inventoryItemId, {
+    await inventoryRepository.updateInventoryItem(inventoryItemId, {
       quantity,
     });
+
+    setInventory((inventory) => ({
+      ...inventory,
+      commonMaterials: inventory.commonMaterials.map((material) => {
+        if (material.id === inventoryItemId) {
+          material.quantity = quantity;
+        }
+
+        return material;
+      }),
+      otherMaterials: inventory.otherMaterials.map((material) => {
+        if (material.id === inventoryItemId) {
+          material.quantity = quantity;
+        }
+
+        return material;
+      }),
+    }));
   };
 
   const addInventoryItem = (inventoryId: string, materialId: string) => {

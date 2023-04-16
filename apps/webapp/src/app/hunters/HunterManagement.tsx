@@ -95,7 +95,7 @@ export function HunterManagement() {
           <div className={styles.titleContainer}>
             <h5>Weapons: </h5>
             <Link to="weapons">
-              <Button> Add Weapons </Button>
+              <Button> Add </Button>
             </Link>
           </div>
         </Collapsable.Header>
@@ -124,7 +124,7 @@ export function HunterManagement() {
           <div className={styles.titleContainer}>
             <h5>Armors: </h5>
             <Link to="armors">
-              <Button> Add Armors </Button>
+              <Button> Add </Button>
             </Link>
           </div>
         </Collapsable.Header>
@@ -191,7 +191,7 @@ const InventoryItemList = ({
       <Collapsable.Header>
         <div className={styles.titleContainer}>
           <h5>{title}</h5>
-          <Button onClick={showMaterialModalForm}> Add Material </Button>
+          <Button onClick={showMaterialModalForm}> Add </Button>
         </div>
       </Collapsable.Header>
       <Collapsable.Content>

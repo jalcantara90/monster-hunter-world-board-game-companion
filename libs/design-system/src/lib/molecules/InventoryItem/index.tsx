@@ -15,7 +15,7 @@ export function InventoryItem({
   id,
   name,
   quantity,
-  update,
+  update
 }: InventoryItemProps) {
   const [computedQuantity, setComputedQuantity] = useState(quantity);
   const debouncedQuantity = useDebounce(computedQuantity);
@@ -51,13 +51,15 @@ export function InventoryItem({
   return (
     <article className={styles.inventoryItem}>
       {name}
-      <button onClick={substract} className={styles.inventoryItem__action}>
-        <SubstractIcon />
-      </button>
-      {computedQuantity}
-      <button onClick={add} className={styles.inventoryItem__action}>
-        <PlusIcon />
-      </button>
+      <div className={styles.inventoryItem__actions}>
+        <button onClick={substract} className={styles.inventoryItem__action}>
+          <SubstractIcon />
+        </button>
+        {computedQuantity}
+        <button onClick={add} className={styles.inventoryItem__action}>
+          <PlusIcon />
+        </button>
+      </div>
     </article>
   );
 }

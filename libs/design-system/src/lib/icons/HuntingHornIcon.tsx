@@ -9,6 +9,7 @@ export function HuntingHornIcon({ size = 'sm' }: IconProps) {
       className={styles[`icon--${size}`]}
     >
       <path
+        d="m5.689 286.681 2.116-2.381-2.381-1.852H4.366v2.646H3.043s-.794 0-.794.793v.53s0 .793.794.793h2.116s.53 0 .53-.529V284.3l.264.53z"
         style={{
           display: 'inline',
           opacity: 1,
@@ -25,10 +26,10 @@ export function HuntingHornIcon({ size = 'sm' }: IconProps) {
           strokeDashoffset: 0,
           strokeOpacity: 1,
         }}
-        d="m10.583 283.374.794-.53h1.588l2.116.795.265.529v2.646l-.265.529v1.058l.265.265h.529v1.323h-1.852l-.794-.794v-3.704l-.264-.265h-.53l-1.058.794h-.794zM6.35 283.374l-.794-.53H3.97l-2.117.795-.264.529v2.646l.264.529v1.058l-.264.265h-.53v1.323H2.91l.794-.794v-3.704l.265-.265h.529l1.058.794h.794z"
         transform="translate(0 -280.067)"
       />
       <path
+        d="M11.245 294.354h2.381v-2.646h-2.381z"
         style={{
           display: 'inline',
           opacity: 1,
@@ -45,10 +46,30 @@ export function HuntingHornIcon({ size = 'sm' }: IconProps) {
           strokeDashoffset: 0,
           strokeOpacity: 1,
         }}
-        d="M10.583 291.047h.794v4.762h-5.82v-4.762zM10.054 287.343h.53v3.704H6.35v-3.704zM10.054 286.284v1.059H6.88v-1.059z"
         transform="translate(0 -280.067)"
       />
       <path
+        d="M5.953 291.18h1.852l-2.116-2.382-2.382 2.381 1.588 1.588h3.969l3.44-3.44v-3.44h1.851v3.44h-1.058v2.381h-1.852v2.117s0 1.323-1.323 1.323H4.63l-3.175-3.175v-1.852l2.381-2.381h8.203v1.587l-3.175 3.175H5.159l-1.323-1.323 1.853-1.852 1.322 1.323v.265H5.69z"
+        style={{
+          display: 'inline',
+          opacity: 1,
+          vectorEffect: 'none',
+          fill: '#f4f4f4',
+          fillOpacity: 1,
+          fillRule: 'evenodd',
+          stroke: '#000',
+          strokeWidth: 0.5291667,
+          strokeLinecap: 'butt',
+          strokeLinejoin: 'round',
+          strokeMiterlimit: 4,
+          strokeDasharray: 'none',
+          strokeDashoffset: 0,
+          strokeOpacity: 1,
+        }}
+        transform="translate(0 -280.067)"
+      />
+      <path
+        d="M7.54 294.09H5.69v1.852h.793l1.323-.794v-1.058zM1.984 292.767v2.38H4.63h-.529zM13.626 291.973l1.852-1.852v-.794H13.097v2.381h.529zM12.568 283.506v-.264l-.794-.794v-1.323h1.323v.53h.264v-.53h1.323v1.323l-.793.794v.264z"
         style={{
           display: 'inline',
           opacity: 1,
@@ -65,15 +86,15 @@ export function HuntingHornIcon({ size = 'sm' }: IconProps) {
           strokeDashoffset: 0,
           strokeOpacity: 1,
         }}
-        d="M8.467 282.845H6.35v3.44h4.233v-3.44zM6.88 282.845v-1.323s0-.265.264-.265H9.79s.264 0 .264.265v1.323z"
         transform="translate(0 -280.067)"
       />
       <path
+        d="M14.155 285.887h-1.852v-2.38h1.852z"
         style={{
           display: 'inline',
           opacity: 1,
           vectorEffect: 'none',
-          fill: '#444',
+          fill: '#f4f4f4',
           fillOpacity: 1,
           fillRule: 'evenodd',
           stroke: '#000',
@@ -85,27 +106,6 @@ export function HuntingHornIcon({ size = 'sm' }: IconProps) {
           strokeDashoffset: 0,
           strokeOpacity: 1,
         }}
-        d="M7.938 291.047h1.058v2.117H7.938zM7.938 291.047v-1.588l.529-.529.529.53v1.587z"
-        transform="translate(0 -280.067)"
-      />
-      <path
-        style={{
-          display: 'inline',
-          opacity: 1,
-          vectorEffect: 'none',
-          fill: '#99999b',
-          fillOpacity: 1,
-          fillRule: 'evenodd',
-          stroke: '#000',
-          strokeWidth: 0.5291667,
-          strokeLinecap: 'butt',
-          strokeLinejoin: 'round',
-          strokeMiterlimit: 4,
-          strokeDasharray: 'none',
-          strokeDashoffset: 0,
-          strokeOpacity: 1,
-        }}
-        d="M10.583 288.136h2.646v3.44h1.323v1.323h-2.646v-3.44h-1.323z"
         transform="translate(0 -280.067)"
       />
     </svg>

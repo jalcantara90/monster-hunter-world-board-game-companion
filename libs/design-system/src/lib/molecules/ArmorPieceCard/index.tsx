@@ -3,7 +3,10 @@ import { ArmorIcon } from '../../atoms/ArmorIcon';
 import { Button } from '../../atoms/Button';
 import { ElementType } from '../../atoms/ElementType';
 import { DefenseIcon } from '../../icons/DefenseIcon';
-import { RequiredMaterial, RequiredMaterials } from '../../atoms/RequiredMaterials';
+import {
+  RequiredMaterial,
+  RequiredMaterials,
+} from '../../atoms/RequiredMaterials';
 
 import styles from './ArmorPiece.module.scss';
 
@@ -15,6 +18,7 @@ export type ArmorPieceCardProps = {
   elementalDefense: number;
   elementalDefenseType: Elemental;
   materials?: RequiredMaterial[];
+  inventoryMaterials?: RequiredMaterial[];
   craftArmor?: (armorId: string) => void;
 };
 
@@ -27,6 +31,7 @@ export function ArmorPieceCard({
   elementalDefenseType = Elemental.NONELEMENTAL,
   craftArmor,
   materials = [],
+  inventoryMaterials = [],
 }: ArmorPieceCardProps) {
   return (
     <article className={styles.armorPiece}>
@@ -34,7 +39,11 @@ export function ArmorPieceCard({
         <ArmorIcon armorPiece={armorPiece} size="lg" />
         {name}
         {craftArmor && (
-          <Button className={styles.armorPiece__craftAction} variant="inverted" onClick={() => craftArmor(id)}>
+          <Button
+            className={styles.armorPiece__craftAction}
+            variant="inverted"
+            onClick={() => craftArmor(id)}
+          >
             Craft
           </Button>
         )}
@@ -58,7 +67,10 @@ export function ArmorPieceCard({
           <div className={styles.armorPiece__secondaryText}>
             Craft requirement:
           </div>
-          <RequiredMaterials materials={materials} />
+          <RequiredMaterials
+            materials={materials}
+            inventoryMaterials={inventoryMaterials}
+          />
         </div>
       )}
     </article>

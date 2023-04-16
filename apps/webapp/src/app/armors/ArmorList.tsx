@@ -20,6 +20,10 @@ export function ArmorList() {
   const [search, setSearch] = useState('');
   const debouncedSearch = useDebounce(search);
 
+  const inventoryMaterials = useMemo(() => {
+    return [...inventory.commonMaterials, ...inventory.otherMaterials];
+  }, [inventory.commonMaterials, inventory.otherMaterials]);
+
   const armorFilteredList = useMemo(() => {
     const filteredArmorList = armorList.filter(
       (armor) => !inventory.armors.some((w) => w.id === armor.id)
@@ -74,6 +78,7 @@ export function ArmorList() {
           key={armor.id}
           {...armor}
           craftArmor={handleCraftArmor}
+          inventoryMaterials={inventoryMaterials}
         />
       ))}
     </ListContainer>
