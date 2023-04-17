@@ -1,5 +1,7 @@
 import {
+  Dispatch,
   ReactNode,
+  SetStateAction,
   createContext,
   useCallback,
   useContext,
@@ -14,11 +16,17 @@ const campaignRepository = new CampaignRepositoryService();
 type InventoryContextProps = {
   inventory: InventoryHunter;
   loadInventory: (campaignId: string, hunterId: string) => Promise<void>;
+  setInventory: Dispatch<SetStateAction<InventoryHunter>>;
 };
 
 const InventoryContext = createContext<InventoryContextProps>({
   inventory: {} as InventoryHunter,
   loadInventory: (_campaignId: string, _hunterId: string) => {
+    throw new Error(
+      'Ensure that your component is wrapeed with InventoryContextProvider'
+    );
+  },
+  setInventory: () => {
     throw new Error(
       'Ensure that your component is wrapeed with InventoryContextProvider'
     );
@@ -53,7 +61,9 @@ export function InventoryContextProvider({
   );
 
   return (
-    <InventoryContext.Provider value={{ inventory, loadInventory }}>
+    <InventoryContext.Provider
+      value={{ inventory, loadInventory, setInventory }}
+    >
       {children}
     </InventoryContext.Provider>
   );

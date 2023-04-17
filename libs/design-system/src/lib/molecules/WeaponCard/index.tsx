@@ -2,14 +2,11 @@ import { WeaponType } from '@mhwboard-companion/common-api';
 import { Button } from '../../atoms/Button';
 import { WeaponIcon } from '../../atoms/WeaponIcon';
 import { DefenseIcon } from '../../icons/DefenseIcon';
-import { RequiredMaterials } from '../../atoms/RequiredMaterials';
+import {
+  RequiredMaterial,
+  RequiredMaterials,
+} from '../../atoms/RequiredMaterials';
 import styles from './WeaponCard.module.scss';
-
-type WeaponMaterial = {
-  id: string;
-  name: string;
-  quantity: number;
-};
 
 type PreviousWeapon = {
   name: string;
@@ -20,7 +17,8 @@ export type WeaponCardProps = {
   id: string;
   weaponType: WeaponType;
   name: string;
-  materials?: WeaponMaterial[];
+  materials?: RequiredMaterial[];
+  inventoryMaterials?: RequiredMaterial[];
   previousWeapon?: PreviousWeapon;
   defense?: number;
   damageOne?: number;
@@ -35,6 +33,7 @@ export function WeaponCard({
   id,
   name,
   materials = [],
+  inventoryMaterials = [],
   previousWeapon,
   weaponType,
   damageOne = 0,
@@ -115,7 +114,10 @@ export function WeaponCard({
           <div className={styles.weaponCard__secondaryText}>
             Craft requirement:
           </div>
-          <RequiredMaterials materials={materials} />
+          <RequiredMaterials
+            materials={materials}
+            inventoryMaterials={inventoryMaterials}
+          />
 
           {previousWeapon && (
             <div className={styles.previousWeapon}>

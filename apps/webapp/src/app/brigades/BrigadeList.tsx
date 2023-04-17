@@ -63,12 +63,8 @@ export function BrigadeList({ brigadeRepository }: BrigadeListProps) {
         ) : (
           <>
             {brigadeList?.map((brigade, index) => (
-              <Link to={`brigades/${brigade.id}`}>
-                <BrigadeCard
-                  index={index}
-                  key={brigade.id}
-                  name={brigade.name}
-                />
+              <Link key={brigade.id} to={`brigades/${brigade.id}`}>
+                <BrigadeCard index={index} name={brigade.name} />
               </Link>
             ))}
             <AddHunterButton onClick={showCreateBrigadeModal}>

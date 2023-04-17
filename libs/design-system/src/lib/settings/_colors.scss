@@ -10,6 +10,7 @@ $_secondary-violet: #7026f4;
 $_transparent: #00000000;
 $_primary-blue: #2196f3;
 $_secondary-blue: #9ac1e0;
+$_primary_orange: #d68e09;
 
 $_secondary-pink: #e0a4bf;
 $_secondary-grey: #2a2a2a;
@@ -58,6 +59,7 @@ $white-hover: rgb(255 255 255 / 70%);
 
 $state-active: $_primary-green;
 $state-success: $_primary-yellow;
+$state-warning: $_primary_orange;
 $state-error: $_error;
 $state-disabled: $_primary-grayLight;
 $state-disabled-bg: $_primary-grayLighter;
