@@ -1,0 +1,28 @@
+@use '../../settings/border';
+@use '../../settings/colors';
+
+.avatar {
+  border: 2px solid colors.$brand;
+  border-radius: border.$radius-full;
+  margin: 0;
+
+  &--xs {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &--sm {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  &--lg {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  img {
+    width: 100%;
+    border-radius: border.$radius-full;
+  }
+}

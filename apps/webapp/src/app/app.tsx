@@ -4,15 +4,18 @@ import {
 } from '@mhwboard-companion/design-system';
 import { Router } from './Router';
 import { InventoryContextProvider } from './inventory/InvventoryContext';
+import { AuthContextProvider } from './auth/AuthProvider';
 
 export function App() {
   return (
-    <ModalContextProvider>
-      <InventoryContextProvider>
-        <Router />
-      </InventoryContextProvider>
-      <ToastContainer />
-    </ModalContextProvider>
+    <AuthContextProvider>
+      <ModalContextProvider>
+        <InventoryContextProvider>
+          <Router />
+        </InventoryContextProvider>
+        <ToastContainer />
+      </ModalContextProvider>
+    </AuthContextProvider>
   );
 }
 

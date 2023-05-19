@@ -1,13 +1,10 @@
 @use '../../settings/spacing';
+@use '../../settings/colors';
 
 .header {
-  background-image: url(../../assets/bg_blown.jpg);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: spacing.$xxs;
-
-  &__image {
-    width: 100px;
-  }
+  padding: spacing.$xxs spacing.$sm;
+  background-color: colors.$bg-primary;
 }

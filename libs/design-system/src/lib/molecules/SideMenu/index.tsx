@@ -19,8 +19,9 @@ export function SideMenu({ items, children }: SideMenuProps) {
   return (
     <SideMenuContextProvider>
       <div className={styles.topBar}>
-        <Header />
-        <BurgerButton className={styles.floatingButton} />
+        <Header>
+          <BurgerButton className={styles.floatingButton} />
+        </Header>
       </div>
 
       <section className={styles.content}>
