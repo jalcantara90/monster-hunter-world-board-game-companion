@@ -8,6 +8,7 @@ import { HunterManagement } from './hunters/HunterManagement';
 import { InventoryList } from './inventory/InventoryList';
 import { MaterialList } from './materials/MaterialList';
 import { WeaponList } from './weapons/WeaponList';
+import { Login } from './auth/Login';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
         element: <MaterialList />,
       },
     ],
+  },
+  {
+    path: 'login',
+    element: <Login />,
   },
 ]);
 

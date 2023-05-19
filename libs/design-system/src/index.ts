@@ -10,6 +10,10 @@ export { Input } from './lib/atoms/forms/Input';
 export { Select } from './lib/atoms/forms/Select';
 export { Form } from './lib/atoms/forms/Form';
 export { AddHunterButton } from './lib/atoms/AddHunterButton';
+export { MonsterHunterWorldLogo } from './lib/atoms/MonsterHunterLogo';
+export { Avatar } from './lib/atoms/Avatar';
+export { Popover } from './lib/atoms/Popover';
+export { Header } from './lib/atoms/Header';
 
 // Molecules
 export { SideMenu } from './lib/molecules/SideMenu';

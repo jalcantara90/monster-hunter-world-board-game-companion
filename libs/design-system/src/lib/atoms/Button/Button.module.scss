@@ -11,6 +11,7 @@
   font: typography.$b300-bold;
   align-items: center;
   transition: border 0.4s;
+  justify-content: center;
 
   &--primary {
     background-color: colors.$cta-primary;

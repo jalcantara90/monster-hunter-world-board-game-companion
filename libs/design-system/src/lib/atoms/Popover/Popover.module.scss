@@ -1,0 +1,39 @@
+@use '../../settings/spacing';
+@use '../../settings/colors';
+
+.popover {
+  padding: 0;
+  position: relative;
+
+  &__action {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  &__panel {
+    position: absolute;
+    right: 0;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$tiny;
+    background-color: colors.$bg-primary;
+    padding: spacing.$tiny;
+    list-style: none;
+    margin-top: 0;
+  }
+
+  &__action {
+    color: colors.$text-primary;
+    width: 100%;
+    display: flex;
+    padding: spacing.$tiny;
+
+    &:hover {
+      background-color: colors.$cta-secondary-hover;
+    }
+  }
+}
