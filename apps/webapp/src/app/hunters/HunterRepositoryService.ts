@@ -3,7 +3,8 @@ import { Hunter, CreateHunterRequest, UpdateHunterRequest } from './types';
 
 export interface IHunterRepository {
   findAll(): Promise<Hunter[]>;
-  find(campaignId: string): Promise<Hunter>;
+  find(hunterId: string): Promise<Hunter>;
+  findByUserId(userId: string): Promise<Hunter>;
   create(request: CreateHunterRequest): Promise<Hunter>;
   update(request: UpdateHunterRequest): Promise<Hunter>;
   delete(campaignId: string): Promise<void>;
@@ -21,7 +22,12 @@ export class HunterRepositoryService implements IHunterRepository {
       body: JSON.stringify(request),
     });
 
-    return await response.json();
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.message);
+    }
+
+    return data;
   }
 
   async update(request: UpdateHunterRequest): Promise<Hunter> {
@@ -45,6 +51,17 @@ export class HunterRepositoryService implements IHunterRepository {
 
   async find(hunterId: string): Promise<Hunter> {
     const response = await fetch(`${this.baseUrl}/${hunterId}`);
+
+    return await response.json();
+  }
+
+  async findByUserId(userId: string): Promise<Hunter> {
+    const response = await fetch(`${this.baseUrl}/users/${userId}`);
+
+    if (!response.ok) {
+      const error = await response.text();
+      throw new Error(error);
+    }
 
     return await response.json();
   }

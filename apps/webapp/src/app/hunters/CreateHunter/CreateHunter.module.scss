@@ -1,0 +1,8 @@
+@use 'settings/spacing';
+
+.createHunter {
+  display: flex;
+  flex-direction: column;
+  gap: spacing.$sm;
+  padding: spacing.$sm;
+}

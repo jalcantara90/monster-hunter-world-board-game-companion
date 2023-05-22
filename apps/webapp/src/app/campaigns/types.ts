@@ -5,6 +5,7 @@ import {
   CraftingBranch,
 } from '@mhwboard-companion/common-api';
 import { Material } from '../materials/types';
+import { Hunter } from '../hunters/types';
 
 export type Campaign = {
   id: string;
@@ -19,12 +20,6 @@ export type CampaignHunters = {
   id: string;
   weaponType: WeaponType;
   hunter: Hunter;
-};
-
-export type Hunter = {
-  id: string;
-  name: string;
-  palicoName: string;
 };
 
 export type HunterCampaignRequest = {
