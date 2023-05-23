@@ -1,7 +1,8 @@
 export type Hunter = {
   id: string;
   name: string;
-  palicoName: string;
+  userId: string;
+  palicoName?: string;
 };
 
 export type CreateHunterRequest = Omit<Hunter, 'id'>;

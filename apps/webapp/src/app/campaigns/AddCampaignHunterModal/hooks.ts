@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { Hunter } from '../types';
 import { HunterRepositoryService } from '../../hunters/HunterRepositoryService';
+import { Hunter } from '../../hunters/types';
 
 const hunterRepository = new HunterRepositoryService();
 

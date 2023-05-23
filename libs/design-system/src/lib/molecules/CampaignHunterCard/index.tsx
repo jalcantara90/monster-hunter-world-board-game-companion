@@ -8,7 +8,7 @@ import styles from './CampaignHunterCard.module.scss';
 
 export type CampaignHunterCardProps = {
   name: string;
-  palicoName: string;
+  palicoName?: string;
   weaponType: WeaponType;
 };
 

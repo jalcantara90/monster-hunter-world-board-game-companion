@@ -5,6 +5,7 @@ import { HunterEntity } from '../../infrastructure/entity/Hunter.entity';
 
 export interface HunterRepository {
   find(id: string): Promise<HunterResponse>;
+  findByUserId(userId: string): Promise<HunterEntity>;
   findAll({
     hunterIds,
     isApiResponse,

@@ -11,4 +11,8 @@ export class CreateHunterRequest {
   @IsString()
   @MinLength(3)
   palicoName: string;
+
+  @ApiProperty()
+  @IsString()
+  userId: string;
 }

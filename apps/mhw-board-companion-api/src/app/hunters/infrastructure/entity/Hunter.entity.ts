@@ -8,4 +8,7 @@ export class HunterEntity extends BaseEntity {
 
   @Column({ type: 'varchar' })
   palicoName: string;
+
+  @Column({ type: 'varchar', unique: true, nullable: true })
+  userId: string;
 }

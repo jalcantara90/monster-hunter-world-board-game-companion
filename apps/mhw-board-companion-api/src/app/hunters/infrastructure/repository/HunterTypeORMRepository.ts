@@ -30,6 +30,10 @@ export class HunterTypeORMRepository implements HunterRepository {
     return this.hunterMapper.fromEntity(hunterEntity);
   }
 
+  findByUserId(userId: string): Promise<HunterEntity> {
+    return this.hunterRepository.findOneBy({ userId });
+  }
+
   async create(hunter: CreateHunterRequest): Promise<HunterResponse> {
     const newHunter = this.hunterRepository.create(hunter);
     const hunterEntity = await this.hunterRepository.save(newHunter);

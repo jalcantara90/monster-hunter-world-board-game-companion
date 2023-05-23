@@ -19,6 +19,7 @@ import { GetHunterListCommand } from '../../application/GetHunterList/GetHunterL
 import { UpdateHunterCommand } from '../../application/UpdateHunter/UpdateHunter.command';
 import { CreateHunterRequest } from '../../domain/requests/CreateHunterRequest';
 import { UpdateHunterRequest } from '../../domain/requests/UpdateHunterRequest';
+import { GetHunterByUserIdCommand } from '../../application/GetHunterByUserId/GetHunterByUserId.command';
 
 @ApiTags('Hunters')
 @Controller('hunters')
@@ -38,6 +39,11 @@ export class HuntersController {
   @Get(':id')
   findOne(@Param('id', ParseUUIDPipe) id: string) {
     return this.commandBus.execute(new GetHunterByIdCommand(id));
+  }
+
+  @Get('/users/:userId')
+  findByUserId(@Param('userId') userId: string) {
+    return this.commandBus.execute(new GetHunterByUserIdCommand(userId));
   }
 
   @Patch(':id')

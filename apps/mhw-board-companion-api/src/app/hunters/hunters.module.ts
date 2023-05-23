@@ -17,6 +17,7 @@ import {
   CampaignHuntersEntity,
 } from '../campaigns/infrastructure/entity/Campaign.entity';
 import { GetHunterListHandler } from './application/GetHunterList/GetHunterList.handler';
+import { GetHunterByUserIdHandler } from './application/GetHunterByUserId/GetHunterByUserId.handler';
 
 const hunterHandlers = [
   CreateHunterHandler,
@@ -25,6 +26,7 @@ const hunterHandlers = [
   DeleteHunterByIdHandler,
   GetCampaignHuntersHandler,
   GetHunterListHandler,
+  GetHunterByUserIdHandler
 ];
 
 @Module({

@@ -17,6 +17,7 @@ import {
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@mhwboard-companion/design-system';
+import { HunterRepositoryService } from '../hunters/HunterRepositoryService';
 
 const AuthContext = createContext<{ auth: Auth }>({ auth: {} as Auth });
 
@@ -70,20 +71,29 @@ export function useAuth() {
     }
   }, [error, toast]);
 
-  return { user, loading };
+  return { user: user as User, loading };
 }
 
 export function useLogin() {
   const { auth } = useContext(AuthContext);
   const [user, setUser] = useState<User>();
   const toast = useToast();
+  const hunterRepository = new HunterRepositoryService();
+  const navigate = useNavigate();
 
   const signInWithGoogle = async () => {
     const googleProvider = new GoogleAuthProvider();
     try {
       const res = await signInWithPopup(auth, googleProvider);
       const user = res.user;
-      setUser(user);
+
+      try {
+        const hunter = await hunterRepository.findByUserId(user.uid);
+      } catch(error) {
+        navigate('/hunters/create');
+      } finally {
+        setUser(user);
+      }
     } catch (err) {
       console.error(err);
       toast.error((err as { message: string }).message);
