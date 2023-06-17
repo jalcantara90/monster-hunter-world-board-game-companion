@@ -9,7 +9,7 @@ export class WeaponRepositoryService implements IWeaponRepository {
   private readonly baseUrl = `${environment.baseUrl}/weapons`;
   async findAll({ weaponType }: Partial<Weapon>): Promise<Weapon[]> {
     const params = new URLSearchParams();
-    if (weaponType) {
+    if (weaponType !== null && weaponType !== undefined) {
       params.append('weaponType', weaponType.toString());
     }
     const response = await fetch(`${this.baseUrl}?${params.toString()}`);
