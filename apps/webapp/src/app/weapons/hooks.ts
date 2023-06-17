@@ -25,7 +25,7 @@ export function useWeaponList() {
   }, []);
 
   useEffect(() => {
-    if (!inventory?.weaponType) {
+    if (inventory?.weaponType === null || inventory?.weaponType === undefined) {
       return;
     }
 
