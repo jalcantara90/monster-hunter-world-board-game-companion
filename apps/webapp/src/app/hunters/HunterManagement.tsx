@@ -3,6 +3,7 @@ import {
   useHunterManagement,
   useHunterInventory,
   useHunterInventoryItem,
+  usePotionsManager,
 } from './hooks';
 import {
   SectionTitle,
@@ -26,6 +27,7 @@ import {
 import { useInventoryContext } from '../inventory/InvventoryContext';
 import { useMemo, useState } from 'react';
 import { useDebounce } from '@mhwboard-companion/utils';
+import { useNotificator } from '../core/SocketContext';
 
 export function HunterManagement() {
   const [search, setSearch] = useState('');
@@ -69,7 +71,7 @@ export function HunterManagement() {
   return (
     <section className={styles.hunterManagement}>
       <SectionTitle title={hunter?.name} />
-
+      <CampaignPotions />
       <Input
         label="Filter materials by name:"
         value={search}
@@ -212,3 +214,35 @@ const InventoryItemList = ({
     </Collapsable>
   );
 };
+
+const ADD_POTION = 'add-potion';
+
+function CampaignPotions() {
+  const { campaignId } = useParams();
+  const { potions } = usePotionsManager({ campaignId: campaignId as string });
+  const { send } = useNotificator();
+
+  if (potions === undefined) {
+    return null;
+  }
+
+  const updatePotion = (quantity: number) => {
+    send({
+      message: ADD_POTION,
+      payload: {
+        campaignId,
+        potions: quantity,
+      },
+    });
+  };
+
+  return (
+    <InventoryItem
+      name="Potions"
+      id="potion"
+      quantity={potions}
+      max={3}
+      update={(_, quantity) => updatePotion(quantity)}
+    />
+  );
+}

@@ -10,12 +10,16 @@ export type InventoryItemProps = {
   id: string;
   quantity: number;
   update: (id: string, quantity: number) => void;
+  max?: number;
+  min?: number;
 };
 export function InventoryItem({
   id,
   name,
   quantity,
-  update
+  update,
+  max,
+  min = 0,
 }: InventoryItemProps) {
   const [computedQuantity, setComputedQuantity] = useState(quantity);
   const debouncedQuantity = useDebounce(computedQuantity);
@@ -23,7 +27,15 @@ export function InventoryItem({
 
   const add = () => {
     setUpdated(true);
-    setComputedQuantity((qty) => qty + 1);
+
+    setComputedQuantity((qty) => {
+      const addedQty = qty + 1;
+      if (max && max < addedQty) {
+        return max;
+      }
+
+      return addedQty
+    });
   };
 
   const substract = () => {
@@ -31,11 +43,11 @@ export function InventoryItem({
     setComputedQuantity((qty) => {
       const substractedQty = qty - 1;
 
-      if (qty - 1 > 0) {
+      if (qty - 1 > min) {
         return substractedQty;
       }
 
-      return 0;
+      return min;
     });
   };
 
@@ -45,8 +57,17 @@ export function InventoryItem({
     }
 
     update(id, debouncedQuantity);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedQuantity, id]);
+
+  useEffect(() => {
+    if (computedQuantity === quantity) {
+      return;
+    }
+
+    setComputedQuantity(quantity);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [quantity, setComputedQuantity]);
 
   return (
     <article className={styles.inventoryItem}>

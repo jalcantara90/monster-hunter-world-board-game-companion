@@ -21,7 +21,10 @@ import { BrigadeEntity } from '../brigades/infrastructure/entity/Brigade.entity'
 import { hunterProviders } from '../hunters/hunters.providers';
 import { HunterEntity } from '../hunters/infrastructure/entity/Hunter.entity';
 import { inventoryProviders } from '../inventories/inventories.providers';
-import { InventoryEntity, InventoryItemsEntity } from '../inventories/infrastructure/entity/Inventory.entity';
+import {
+  InventoryEntity,
+  InventoryItemsEntity,
+} from '../inventories/infrastructure/entity/Inventory.entity';
 import { GetCampaignListByBrigadeIdCommandHandler } from './application/GetCampaignHunterInventory/GetCampaignHunterInventory.handler';
 import { materialProviders } from '../materials/materials.providers';
 import { armorProviders } from '../armors/armors.providers';
@@ -35,6 +38,7 @@ import {
   WeaponCraftingEntity,
   WeaponEntity,
 } from '../weapons/infrastructure/entity/Weapon.entity';
+import { UpdateCampaignPotionsHandler } from './application/UpdateCampaignPotions/UpdateCampaignPotions.handler';
 
 const commandHandlers = [
   CreateCampaignHandler,
@@ -44,6 +48,7 @@ const commandHandlers = [
   GetCampaignListByBrigadeIdHandler,
   AddCampaigHuntersHandler,
   GetCampaignListByBrigadeIdCommandHandler,
+  UpdateCampaignPotionsHandler,
 ];
 
 @Module({

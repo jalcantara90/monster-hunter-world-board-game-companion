@@ -24,7 +24,6 @@ import { AddCampaignHuntersCommand } from '../../application/AddCampaignsHunters
 import { GetCampaignHuntersCommand } from '../../../hunters/application/GetCampaignHunters/GetCampaignHunters.command';
 import { ApiTags } from '@nestjs/swagger';
 import { GetCampaignHunterInventoryCommand } from '../../application/GetCampaignHunterInventory/GetCampaignHunterInventory.command';
-
 @ApiTags('Campaigns')
 @Controller('campaigns')
 export class CampaignsController {
@@ -56,7 +55,9 @@ export class CampaignsController {
     @Param('campaignId', ParseUUIDPipe) campaignId: string,
     @Param('hunterId', ParseUUIDPipe) hunterId: string
   ) {
-    return this.commandBus.execute(new GetCampaignHunterInventoryCommand(campaignId, hunterId));
+    return this.commandBus.execute(
+      new GetCampaignHunterInventoryCommand(campaignId, hunterId)
+    );
   }
 
   @Post(':campaignId/hunters')

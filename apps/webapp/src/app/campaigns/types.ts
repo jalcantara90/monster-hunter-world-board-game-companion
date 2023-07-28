@@ -11,9 +11,10 @@ export type Campaign = {
   id: string;
   name: string;
   brigadeId: string;
+  potions: number;
 };
 
-export type CreateCampaignRequest = Omit<Campaign, 'id'>;
+export type CreateCampaignRequest = Omit<Campaign, 'id' | 'potions'>;
 export type UpdateCampaignRequest = Campaign;
 
 export type CampaignHunters = {

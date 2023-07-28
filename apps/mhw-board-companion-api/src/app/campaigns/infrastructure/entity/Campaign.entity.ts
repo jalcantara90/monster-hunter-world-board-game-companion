@@ -9,6 +9,9 @@ export class CampaignEntity extends BaseEntity {
   @Column({ type: 'varchar' })
   name: string;
 
+  @Column({ type: 'int', default: 0 })
+  potions: number;
+
   @ManyToOne(() => BrigadeEntity, (brigade) => brigade.id)
   @JoinColumn()
   brigadeId: string;

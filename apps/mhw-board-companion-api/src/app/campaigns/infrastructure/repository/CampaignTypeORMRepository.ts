@@ -72,4 +72,12 @@ export class CampaignTypeORMRepository implements CampaignRepository {
 
     await this.campaignRepository.update(id, { isActive: false });
   }
+
+  async updatePotions(id: string, potions: number): Promise<CampaignEntity> {
+    await this.campaignRepository.update(id, { potions });
+    return this.campaignRepository.findOneBy({
+      id,
+      isActive: true,
+    });
+  }
 }
