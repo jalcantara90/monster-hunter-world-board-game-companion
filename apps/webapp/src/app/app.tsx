@@ -5,15 +5,18 @@ import {
 import { Router } from './Router';
 import { InventoryContextProvider } from './inventory/InvventoryContext';
 import { AuthContextProvider } from './auth/AuthProvider';
+import { SocketProvider } from './core/SocketContext';
 
 export function App() {
   return (
     <AuthContextProvider>
       <ModalContextProvider>
-        <InventoryContextProvider>
-          <Router />
-        </InventoryContextProvider>
-        <ToastContainer />
+        <SocketProvider>
+          <InventoryContextProvider>
+            <Router />
+          </InventoryContextProvider>
+          <ToastContainer />
+        </SocketProvider>
       </ModalContextProvider>
     </AuthContextProvider>
   );

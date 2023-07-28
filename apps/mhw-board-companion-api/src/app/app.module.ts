@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Logger, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { HuntersModule } from './hunters/hunters.module';
 
@@ -12,6 +12,8 @@ import { MonstersModule } from './monsters/monsters.module';
 import { ArmorsModule } from './armors/armors.module';
 import { WeaponsModule } from './weapons/weapons.module';
 import { InventoriesModule } from './inventories/inventories.module';
+import { PotionsGateway } from './potions/potions.gateway';
+import { CqrsModule } from '@nestjs/cqrs';
 
 @Module({
   imports: [
@@ -27,9 +29,10 @@ import { InventoriesModule } from './inventories/inventories.module';
     MonstersModule,
     ArmorsModule,
     WeaponsModule,
-    InventoriesModule
+    InventoriesModule,
+    CqrsModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, PotionsGateway, Logger],
 })
 export class AppModule {}

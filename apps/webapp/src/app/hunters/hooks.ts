@@ -3,6 +3,9 @@ import { HunterRepositoryService } from './HunterRepositoryService';
 import { Hunter } from './types';
 import { InventoryRepositoryService } from '../inventory/InventoryRepositoryService';
 import { useInventoryContext } from '../inventory/InvventoryContext';
+import { CampaignRepositoryService } from '../campaigns/CampaignRepositoryService';
+import { useListener } from '../core/SocketContext';
+import { Campaign } from '../campaigns/types';
 
 type UseHunterManagementProps = {
   hunterId: string;
@@ -90,5 +93,42 @@ export function useHunterInventoryItem() {
   return {
     updateInventoryItem,
     addInventoryItem,
+  };
+}
+
+const POTIONS_UPDATED = 'POTIONS_UPDATED';
+const campaignRepository = new CampaignRepositoryService();
+
+export function usePotionsManager({ campaignId }: { campaignId: string }) {
+  const [potions, setPotions] = useState<number>();
+
+  const getCampaign = useCallback(async (campaignId: string) => {
+    const response = await campaignRepository.find(campaignId);
+    setPotions(response.potions);
+  }, []);
+
+  const updatePotion = useCallback(
+    (campaign: Campaign) => {
+      if (campaignId !== campaign.id) {
+        return;
+      }
+
+      setPotions(campaign.potions);
+    },
+    [campaignId]
+  );
+
+  useListener(POTIONS_UPDATED, updatePotion);
+
+  useEffect(() => {
+    if (!campaignId) {
+      return;
+    }
+
+    getCampaign(campaignId);
+  }, [campaignId, getCampaign]);
+
+  return {
+    potions,
   };
 }

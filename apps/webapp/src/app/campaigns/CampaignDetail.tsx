@@ -18,6 +18,7 @@ import {
   AddCampaignHunterModal,
 } from './AddCampaignHunterModal';
 
+
 type CampaignDetailProps = {
   campaignRepository: ICampaignRepository;
 };
@@ -90,11 +91,7 @@ interface HunterListProps {
   addHunter: () => void;
 }
 
-function HunterList({
-  isLoading,
-  hunterList,
-  addHunter,
-}: HunterListProps) {
+function HunterList({ isLoading, hunterList, addHunter }: HunterListProps) {
   if (isLoading) {
     return (
       <>
