@@ -16,6 +16,7 @@ import {
   useToast,
   Input,
   Collapsable,
+  PotionManager,
 } from '@mhwboard-companion/design-system';
 import { InventoryMaterial } from '../campaigns/types';
 
@@ -237,12 +238,8 @@ function CampaignPotions() {
   };
 
   return (
-    <InventoryItem
-      name="Potions"
-      id="potion"
-      quantity={potions}
-      max={3}
-      update={(_, quantity) => updatePotion(quantity)}
-    />
+    <div>
+      <PotionManager potions={potions} update={updatePotion} />
+    </div>
   );
 }
