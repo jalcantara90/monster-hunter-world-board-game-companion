@@ -14,5 +14,6 @@ const Template: Story<PotionManagerProps> = (args) => (
 export const potionsManager = Template.bind({});
 potionsManager.args = {
   potions: 1,
+  // eslint-disable-next-line no-console
   update: (potions) => console.log(potions)
 }

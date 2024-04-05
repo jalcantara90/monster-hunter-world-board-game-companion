@@ -43,6 +43,7 @@ function CollapsableContent({ children }: CollapsableContainerProps) {
   const { isCollapsed } = useCollapsableContext();
 
   if (isCollapsed) {
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     return <></>;
   }
 
