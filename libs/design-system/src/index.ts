@@ -24,6 +24,7 @@ export {
 export { ArmorPieceCard } from './lib/molecules/ArmorPieceCard';
 export { WeaponCard } from './lib/molecules/WeaponCard';
 export { InventoryItem } from './lib/molecules/InventoryItem';
+export { PotionManager } from './lib/molecules/PotionManager';
 
 // Objects
 export { ListContainer } from './lib/objects/ListContainer';
